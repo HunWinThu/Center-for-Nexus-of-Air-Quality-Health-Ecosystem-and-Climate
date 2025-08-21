@@ -14,5 +14,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/air-quality-nexus-center-clean/",
+  base: "/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate/",
 });
