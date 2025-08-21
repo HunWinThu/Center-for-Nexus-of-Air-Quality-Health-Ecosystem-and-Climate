@@ -1,0 +1,133 @@
+.honeycomb-grid {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hexagon-container {
+  position: absolute;
+  width: 230px;
+  height: 199.2px; /* width * 0.866 for symmetric flat hexagon */
+}
+
+/* Special size for center hexagon */
+.center.hexagon-container {
+  width: 300px;
+  height: 259.8px;
+}
+
+/* Positioning for the hexagons */
+.center {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.top {
+  left: 50%;
+  top: calc(50% - 247px);
+  transform: translate(-50%, -50%);
+}
+
+.topLeft {
+  left: calc(50% - 220px);
+  top: calc(50% - 120px);
+  transform: translate(-50%, -50%);
+}
+
+.topRight {
+  left: calc(50% + 220px);
+  top: calc(50% - 120px);
+  transform: translate(-50%, -50%);
+}
+
+.bottom {
+  left: 50%;
+  top: calc(50% + 245px);
+  transform: translate(-50%, -50%);
+}
+
+.bottomLeft {
+  left: calc(50% - 220px);
+  top: calc(50% + 120px);
+  transform: translate(-50%, -50%);
+}
+
+.bottomRight {
+  left: calc(50% + 220px);
+  top: calc(50% + 120px);
+  transform: translate(-50%, -50%);
+}
+
+.hexagon {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s ease;
+  cursor: default;
+}
+
+/* Clickable hexagons (all except center) */
+.hexagon-container:not(.center) .hexagon {
+  cursor: pointer;
+}
+
+/* Hover effect - rotate hexagon but not content */
+.hexagon-container:not(.center):hover .hexagon {
+  transform: rotate(180deg);
+}
+
+.hexagon-content {
+  transform: rotate(0deg);
+  transition: transform 0.6s ease;
+}
+
+/* Keep text stable while hexagon rotates */
+.hexagon-container:not(.center):hover .hexagon-content {
+  transform: rotate(-180deg);
+}
+
+.center .hexagon {
+  background: linear-gradient(45deg, #1e3a8a, #3b82f6, #1e3a8a);
+}
+
+.top .hexagon {
+  background: linear-gradient(45deg, #15803d, #22c55e, #15803d);
+}
+
+.bottom .hexagon {
+  background: linear-gradient(45deg, #1d4ed8, #60a5fa, #1d4ed8);
+}
+
+.topLeft .hexagon {
+  background: linear-gradient(45deg, #0d9488, #2dd4bf, #0d9488);
+}
+
+.topRight .hexagon {
+  background: linear-gradient(45deg, #047857, #34d399, #047857);
+}
+
+.bottomLeft .hexagon {
+  background: linear-gradient(45deg, #1e40af, #3b82f6, #1e40af);
+}
+
+.bottomRight .hexagon {
+  background: linear-gradient(45deg, #0369a1, #38bdf8, #0369a1);
+}
+
+.hexagon-content {
+  padding: 1rem;
+  text-align: center;
+  max-width: 200px;
+}
+
+.center .hexagon-content {
+  max-width: 260px;
+}
