@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
+import { useScrollToTop } from '@/hooks/use-scroll-to-top';
 import teamPlaceholder from '@/assets/team-placeholder.jpg';
 import researchgateIcon from '@/assets/icons/researchgate.svg';
 import { coreTeam } from './Team';
@@ -17,6 +18,10 @@ interface Member {
   researchgate?: string;
 }
 
+interface LocationState {
+  member?: Member;
+}
+
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
 const setMeta = (name: string, content: string) => {
@@ -30,13 +35,26 @@ const setMeta = (name: string, content: string) => {
 };
 
 export default function TeamMember() {
+  // Use layout effect for immediate scroll before paint
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { slug } = useParams<{ slug: string }>();
   const location = useLocation();
-  const stateMember = (location.state as any)?.member as Member | undefined;
+  const stateMember = (location.state as LocationState)?.member;
 
   const allMembers: Member[] = [...coreTeam] as Member[];
   const found = slug ? allMembers.find((m) => slugify(m.name) === slug) : undefined;
   const member: Member | undefined = stateMember ?? found;
+
+  // Additional scroll when slug changes (navigating between team members)
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
+  // Scroll to top when navigating between different team members
+  useScrollToTop(slug);
 
   useEffect(() => {
     const name = member?.name ?? 'Team Member';
