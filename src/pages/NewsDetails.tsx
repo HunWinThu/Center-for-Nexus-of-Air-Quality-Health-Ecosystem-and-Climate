@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { MainLayout } from '@/components/layout/MainLayout';
+import { useScrollToTop } from '@/hooks/use-scroll-to-top';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Calendar, Clock, MapPin, Users, Tag } from 'lucide-react';
@@ -130,16 +130,17 @@ const NewsDetails = () => {
   const allItems = [...newsItems, ...events];
   const item = allItems.find(p => p.id === parseInt(id || '0'));
 
+  // Scroll to top when navigating to news/event
+  useScrollToTop(id);
+
   if (!item) {
     return (
-      <MainLayout>
-        <div className="container mx-auto px-4 py-20 text-center">
-          <h1 className="text-2xl font-bold mb-4">Content Not Found</h1>
-          <Button onClick={() => navigate('/news')}>
-            Back to News
-          </Button>
-        </div>
-      </MainLayout>
+      <div className="container mx-auto px-4 py-20 text-center">
+        <h1 className="text-2xl font-bold mb-4">Content Not Found</h1>
+        <Button onClick={() => navigate('/news')}>
+          Back to News
+        </Button>
+      </div>
     );
   }
 
@@ -173,13 +174,12 @@ const NewsDetails = () => {
   };
 
   return (
-    <MainLayout>
-      <motion.main
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-        className="pt-20"
-      >
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="pt-20"
+    >
         {/* Back Button */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <Button
@@ -313,9 +313,7 @@ const NewsDetails = () => {
             )}
           </div>
         </section>
-      </motion.main>
-
-    </MainLayout>
+      </motion.div>
   );
 };
 

@@ -46,8 +46,8 @@ export const ANIMATION_VARIANTS = {
 export const ROUTES = {
   HOME: '/',
   ABOUT: '/about',
-  WHAT_WE_DO: '/what-we-do',
-  BLOG: '/blog',
+  OUR_THEMATIC_AREAS: '/our-thematic-areas',
+  PROJECTS: '/projects',
   NEWS: '/news',
   ACTIVITIES: '/activities',
   PUBLICATIONS: '/publications',

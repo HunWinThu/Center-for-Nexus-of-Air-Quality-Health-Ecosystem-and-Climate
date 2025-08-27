@@ -12,7 +12,7 @@ const Header = () => {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
-    { name: 'Projects', href: '/blog' },
+    { name: 'Projects', href: '/projects' },
     { name: 'News', href: '/news' },
     { name: 'Publications', href: '/publications' },
     { name: 'Resources', href: '/resources' },
@@ -27,7 +27,7 @@ const Header = () => {
         <div className="flex justify-between items-center py-3">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <img src={logo} alt="Air Quality Nexus" className="h-16 w-28 md:h-16 md:w-34 rounded-full" />
+            <img src={logo} alt="Air Quality Nexus" className="h-24 w-30 md:h-28 md:w-34 rounded-full" />
             <span className="text-lg md:text-2xl font-semibold leading-snug text-black">
               Center for Nexus of Air Quality,<br/> Health, Ecosystem, and Climate
             </span>
@@ -38,13 +38,13 @@ const Header = () => {
             {navigation.map((item) => {
               if (item.name === 'About Us') {
                 return (
-                  <div key={item.name} className="relative group">
+                  <div key={item.name} className="relative group flex items-center">
                     <Link
                       to="/about"
-                      className={`text-lg font-semibold tracking-wide transition-colors hover:text-primary ${
-                        isActive('/about') || isActive('/launching-event') || isActive('/what-we-do') || isActive('/team')
-                          ? 'text-primary border-b-2 border-primary pb-1'
-                          : 'text-black'
+                      className={`text-lg font-semibold tracking-wide border-b-2 pb-1 transition-colors hover:text-primary ${
+                        isActive('/about') || isActive('/launching-event') || isActive('/our-thematic-areas') || isActive('/team')
+                          ? 'text-primary border-primary'
+                          : 'text-black border-transparent'
                       }`}
                     >
                       {item.name}
@@ -58,7 +58,7 @@ const Header = () => {
                           Launching Event
                         </Link>
                         <Link 
-                          to="/what-we-do" 
+                          to="/our-thematic-areas" 
                           className="block rounded-lg px-4 py-2 text-lg font-medium hover:bg-accent hover:text-primary transition-colors"
                         >
                           Our Thematic Areas
@@ -140,25 +140,25 @@ const Header = () => {
                         Launching Event
                       </Link>
                       <Link
-                        to="/what-we-do"
+                        to="/our-thematic-areas"
                         className="block px-3 py-2 text-base rounded-md text-black hover:text-primary hover:bg-accent"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        What We Do
+                        Our Thematic Areas
                       </Link>
                       <Link
                         to="/team"
                         className="block px-3 py-2 text-base rounded-md text-black hover:text-primary hover:bg-accent"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        Team
+                        Advisory Committee
                       </Link>
                       <Link
                         to="/committee"
                         className="block px-3 py-2 text-base rounded-md text-black hover:text-primary hover:bg-accent"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        Team
+                        
                       </Link>                      
                     </div>
                   </div>

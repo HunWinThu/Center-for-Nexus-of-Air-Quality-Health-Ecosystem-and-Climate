@@ -1,0 +1,8 @@
+├── .github/
+│   └── workflows/
+│       └── deploy.yml          # GitHub Actions workflow
+├── public/                     # Static assets
+├── src/                       # Source code
+├── package.json               # Dependencies & scripts
+├── vite.config.ts            # Vite configuration
+└── Other config files...

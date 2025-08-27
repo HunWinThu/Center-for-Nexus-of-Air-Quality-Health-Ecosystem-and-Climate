@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { MainLayout } from '@/components/layout/MainLayout';
+import { useScrollToTop } from '@/hooks/use-scroll-to-top';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, DollarSign, Clock, Users, Target, Activity, Trophy } from 'lucide-react';
@@ -153,16 +153,17 @@ const ProjectDetails = () => {
   const allProjects = [...projects.ongoing, ...projects.completed, ...projects.upcoming];
   const project = allProjects.find(p => p.id === parseInt(id || '0'));
 
+  // Scroll to top when navigating to project
+  useScrollToTop(id);
+
   if (!project) {
     return (
-      <MainLayout>
-        <div className="container mx-auto px-4 py-20 text-center">
-          <h1 className="text-2xl font-bold mb-4">Project Not Found</h1>
-          <Button onClick={() => navigate('/blog')}>
-            Back to Projects
-          </Button>
-        </div>
-      </MainLayout>
+      <div className="container mx-auto px-4 py-20 text-center">
+        <h1 className="text-2xl font-bold mb-4">Project Not Found</h1>
+        <Button onClick={() => navigate('/blog')}>
+          Back to Projects
+        </Button>
+      </div>
     );
   }
 
@@ -196,13 +197,12 @@ const ProjectDetails = () => {
   };
 
   return (
-    <MainLayout>
-      <motion.main
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-        className="pt-20"
-      >
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="pt-20"
+    >
         {/* Back Button */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <Button
@@ -217,7 +217,7 @@ const ProjectDetails = () => {
 
         {/* Hero Image */}
         <motion.section 
-          className="relative w-full h-64 md:h-96 overflow-hidden"
+          className="relative w-full h-screen overflow-hidden"
           variants={imageVariants}
         >
           <img 
@@ -330,9 +330,7 @@ const ProjectDetails = () => {
             </div>
           </div>
         </section>
-      </motion.main>
-
-    </MainLayout>
+      </motion.div>
   );
 };
 

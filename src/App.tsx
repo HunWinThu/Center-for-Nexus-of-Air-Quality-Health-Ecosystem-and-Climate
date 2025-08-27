@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, useLocation, Outlet } from "react-router-
 import { ThemeProvider } from "@/components/theme-provider";
 import { LoadingProvider } from "@/components/common/LoadingProvider";
 import { MainLayout } from "@/components/layout/MainLayout";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { ROUTES } from "@/constants";
 
 // Page imports
@@ -30,7 +31,8 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <BrowserRouter basename={import.meta.env.MODE === 'production' ? "/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate" : ""}>
+    <BrowserRouter basename={import.meta.env.PROD ? "/air-quality-nexus-center" : ""}>
+      <ScrollToTop />
       <ThemeProvider defaultTheme="light" storageKey="air-quality-theme">
         <LoadingProvider>
           <TooltipProvider>
@@ -40,7 +42,7 @@ const App = () => (
               </MainLayout>}>
                 <Route path={ROUTES.HOME} element={<Index />} />
                 <Route path={ROUTES.ABOUT} element={<About />} />
-                <Route path={ROUTES.BLOG} element={<Blog />} />
+                <Route path={ROUTES.PROJECTS} element={<Blog />} />
                 <Route path="/project/:id" element={<ProjectDetails />} />
                 <Route path={ROUTES.NEWS} element={<News />} />
                 <Route path="/news/:id" element={<NewsDetails />} />
@@ -49,7 +51,7 @@ const App = () => (
                 <Route path={ROUTES.RESOURCES} element={<Resources />} />
                 <Route path={ROUTES.TEAM} element={<Team />} />
                 <Route path="/team/:slug" element={<TeamMember />} />
-                <Route path={ROUTES.WHAT_WE_DO} element={<OurThematicAreas />} />
+                <Route path={ROUTES.OUR_THEMATIC_AREAS} element={<OurThematicAreas />} />
                 <Route path={ROUTES.CONTACT} element={<Contact />} />
                 <Route path={ROUTES.LAUNCHING_EVENT} element={<LaunchingEvent />} />
                 <Route path={ROUTES.COMMITTEE} element={<Committee />} />
