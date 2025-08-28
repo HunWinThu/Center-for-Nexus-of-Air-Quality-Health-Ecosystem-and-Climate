@@ -139,7 +139,7 @@ const About = () => {
       />
     </div>
   </Card>
-  <p className="text-muted-foreground text-xl font-bold font-medium text-center mt-4 max-w-8xl">
+  <p className="text-muted-foreground text-xl font-medium text-center mt-4 max-w-8xl">
     Figure 1: Rice straw open burning at the rice field in Pathumthani, Thailand (Photo taken on 30 August 2024)
   </p>
 </div>
