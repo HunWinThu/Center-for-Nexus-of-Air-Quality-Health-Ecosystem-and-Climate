@@ -2,7 +2,17 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Download, FileText, Database, Globe, BookOpen, Users, ExternalLink } from "lucide-react";
+import { Download, FileText, Database, Globe, BookOpen, Users, ExternalLink, LucideIcon } from "lucide-react";
+
+interface Resource {
+  title: string;
+  description: string;
+  type: string;
+  format?: string;
+  url?: string;
+  icon: LucideIcon;
+  badge: string;
+}
 
 const Resources = () => {
   const fadeUpVariants = {
@@ -103,7 +113,7 @@ const Resources = () => {
     ]
   };
 
-  const ResourceCard = ({ resource, isExternal = false }: { resource: any, isExternal?: boolean }) => (
+  const ResourceCard = ({ resource, isExternal = false }: { resource: Resource, isExternal?: boolean }) => (
     <motion.div variants={cardVariants}>
       <Card className="h-full hover:shadow-lg transition-shadow">
         <CardHeader>

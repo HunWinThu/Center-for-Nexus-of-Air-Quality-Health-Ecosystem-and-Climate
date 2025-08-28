@@ -202,7 +202,7 @@ const Index = () => {
               variants={fadeUpVariants}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.4 }}
             >
-              <Link to="/blog" aria-label="Go to Projects">
+              <Link to="/projects" aria-label="Go to Projects">
                 <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
                   Explore Our Research
                   <ArrowRight className="ml-2" size={20} />
