@@ -31,7 +31,7 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <BrowserRouter basename={import.meta.env.PROD ? "/air-quality-nexus-center" : ""}>
+    <BrowserRouter basename={import.meta.env.PROD ? "/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate" : ""}>
       <ScrollToTop />
       <ThemeProvider defaultTheme="light" storageKey="air-quality-theme">
         <LoadingProvider>

@@ -3,7 +3,7 @@
 export const SITE_CONFIG = {
   name: 'Air Quality Nexus Center',
   description: 'A leading Center in conducting and implementing application research with the aim to gain multiple benefits from reducing air pollution.',
-  baseUrl: 'https://hunwinthu.github.io/air-quality-nexus-center',
+  baseUrl: 'https://hunwinthu.github.io/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate',
   contact: {
     email: 'airqualitynexus@ait.ac.th',
     phone: '+66 9-9797-6360',
