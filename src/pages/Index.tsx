@@ -203,7 +203,7 @@ const Index = () => {
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.4 }}
             >
               <Link to="/projects" aria-label="Go to Projects">
-                <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
+                <Button size="lg" className="px-8 py-4 text-lg bg-background/80 text-foreground backdrop-blur-md border border-white/30 shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-2xl">
                   Explore Our Research
                   <ArrowRight className="ml-2" size={20} />
                 </Button>
@@ -213,8 +213,11 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Section Separator */}
+      <div className="border-t border-gray-200"></div>
+
       {/* About Our Center Card */}
-      <section className="py-24 bg-[linear-gradient(to_right,white,#e0f2fe)]">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-16"
@@ -276,8 +279,11 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Section Separator */}
+      <div className="border-t border-gray-200"></div>
+
       {/* Recent Research & News */}
-      <section className="py-20 bg-[linear-gradient(to_right,white,#e0f2fe)]">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold text-foreground mb-6">News & Events</h2>
@@ -315,7 +321,7 @@ const Index = () => {
                     </div>
                   </div>
                   <p className="text-muted-foreground mb-4">A comprehensive conference bringing together researchers, policymakers, and industry experts to discuss latest developments in air quality management across Southeast Asia.</p>
-                  <Button variant="outline" className="w-full">
+                  <Button className="w-full px-8 py-4 text-lg bg-background/80 text-foreground backdrop-blur-md border border-white/30 shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-2xl">
                     Learn More
                   </Button>
                 </CardContent>
@@ -345,7 +351,7 @@ const Index = () => {
                     </div>
                   </div>
                   <p className="text-muted-foreground mb-4">Hands-on workshop for building technical capacity in emission inventory development using latest methodologies and tools.</p>
-                  <Button variant="outline" className="w-full">
+                  <Button className="w-full px-8 py-4 text-lg bg-background/80 text-foreground backdrop-blur-md border border-white/30 shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-2xl">
                     Learn More
                   </Button>
                 </CardContent>
@@ -357,7 +363,7 @@ const Index = () => {
             <Link to="/news" aria-label="Go to News & Events">
               <Button
                 size="lg"
-                className="px-8 py-4 text-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all hover:-translate-y-1 hover:shadow-lg"
+                className="px-8 py-4 text-lg bg-background/80 text-foreground backdrop-blur-md border border-white/30 shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-2xl"
               >
                 View All News & Events
                 <ArrowRight className="ml-2" size={20} />
@@ -392,9 +398,11 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Section Separator */}
+      <div className="border-t border-gray-200"></div>
 
       {/* Features Section */}
-        <section className="py-20 bg-[linear-gradient(to_right,white,#e0f2fe)]">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-5xl font-bold text-foreground mb-6">Our Thematic Areas</h2>
@@ -427,10 +435,11 @@ const Index = () => {
           </div>
         </section>
 
-
+        {/* Section Separator */}
+        <div className="border-t border-gray-200"></div>
 
       {/* Strategic Partners Section */}
-      <section className="py-20 bg-[linear-gradient(to_right,white,#e0f2fe)]">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold text-foreground mb-6">Strategic Partners</h2>
@@ -535,9 +544,11 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Section Separator */}
+      <div className="border-t border-gray-200"></div>
 
        {/* International partners and collaborators */}
-       <section className="py-20 bg-[linear-gradient(to_right,white,#e0f2fe)]">
+       <section className="py-20 bg-white">
          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
            <div className="text-center mb-12">
              <h2 className="text-5xl md:text-5xl font-bold text-foreground mb-4">International Partners and Collaborators</h2>
@@ -570,10 +581,13 @@ const Index = () => {
          </div>
        </section>
 
+       {/* Section Separator */}
+       <div className="border-t border-gray-200"></div>
+
       {/* Call to Action */}
-      <section className="py-20 bg-[linear-gradient(to_right,white,#e0f2fe)]">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="bg-gradient-to-r from-white/10 to-sky-blue/10 border-primary/10">
+          <Card className="bg-white border-primary/10">
             <CardContent className="p-12 text-center">
               <Leaf className="mx-auto mb-6 text-primary" size={64} />
               <h2 className="text-3xl font-bold text-foreground mb-4">Join Our Mission</h2>
@@ -585,8 +599,7 @@ const Index = () => {
                   <Link to="/contact" aria-label="Go to Partners Page">
                     <Button 
                       size="lg" 
-                      variant="secondary" 
-                      className="bg-green-600 text-white hover:bg-green-700"
+                      className="px-8 py-4 text-lg bg-background/80 text-foreground backdrop-blur-md border border-white/30 shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-2xl"
                     >
                       Partner With Us
                       <ArrowRight className="ml-2" size={20} />
@@ -598,7 +611,7 @@ const Index = () => {
         </div>
       </section>
 
-            <section className="py-20 bg-[linear-gradient(to_right,white,#e0f2fe)]">
+            {/* <section className="py-20 bg-[linear-gradient(to_right,white,#e0f2fe)]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-4 text-center">
             <div className="flex justify-center items-center space-x-2">
@@ -615,7 +628,7 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
     </>
   );

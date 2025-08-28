@@ -50,28 +50,28 @@ const Header = () => {
                       {item.name}
                     </Link>
                     <div className="absolute top-full left-0 mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform translate-y-[-10px] group-hover:translate-y-0 z-50">
-                      <div className="min-w-[250px] rounded-xl border border-border bg-white/50 bg-opacity-50 backdrop-blur-xl shadow-lg p-2">
+                      <div className="min-w-[250px] rounded-xl bg-white/40 backdrop-blur-md border border-gray-200 shadow-xl p-2">
                         <Link 
                           to="/launching-event" 
-                          className="block rounded-lg px-3 py-2 text-lg font-medium hover:bg-accent hover:text-primary transition-colors"
+                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-800 hover:bg-gray-100 hover:text-primary transition-colors"
                         >
                           Launching Event
                         </Link>
                         <Link 
                           to="/our-thematic-areas" 
-                          className="block rounded-lg px-4 py-2 text-lg font-medium hover:bg-accent hover:text-primary transition-colors"
+                          className="block rounded-lg px-4 py-2 text-lg font-medium text-gray-800 hover:bg-gray-100 hover:text-primary transition-colors"
                         >
                           Our Thematic Areas
                         </Link>
                         <Link 
                           to="/team" 
-                          className="block rounded-lg px-3 py-2 text-lg font-medium hover:bg-accent hover:text-primary transition-colors"
+                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-800 hover:bg-gray-100 hover:text-primary transition-colors"
                         >
                           Our Team
                         </Link>
                         <Link 
                           to="/committee" 
-                          className="block rounded-lg px-3 py-2 text-lg font-medium hover:bg-accent hover:text-primary transition-colors"
+                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-800 hover:bg-gray-100 hover:text-primary transition-colors"
                         >
                           Advisory Committee
                         </Link>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-import logo from '@/assets/AQC_logo.jpg';
+import logo from '@/assets/aqc.png';
 
 const Footer = () => {
   return (
@@ -63,10 +63,61 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-8 pt-8 text-center">
-          <p className="text-sm opacity-90">
-            © 2024 Air Quality Nexus Center. All rights reserved.
-          </p>
+        <div className="border-t border-white/20 mt-8 pt-8">
+          <div className="flex flex-col items-center space-y-1">
+            {/* Logo and Name */}
+            <div className="flex flex-col items-center space-y-1 sm:flex-row sm:space-y-0 sm:space-x-4">
+              <img 
+                src={logo} 
+                alt="Air Quality Nexus Center Logo" 
+                className="h-24 w-24 object-contain"
+              />
+              <div className="text-center">
+                <h4 className="text-2xl font-semibold text-white">Air Quality Nexus Center</h4>
+              </div>
+            </div>
+
+            {/* Social Media Icons */}
+            <div className="flex items-center space-x-6">
+              <a 
+                href="https://facebook.com/airqualitynexus" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
+                aria-label="Facebook"
+              >
+                <Facebook size={32} />
+              </a>
+              <a 
+                href="https://linkedin.com/company/airqualitynexus" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={32} />
+              </a>
+              <a 
+                href="https://instagram.com/airqualitynexus" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
+                aria-label="Instagram"
+              >
+                <Instagram size={24} />
+              </a>
+            </div>
+
+            {/* Copyright */}
+            <div className="text-center">
+              <p className="text-sm opacity-90">
+                © 2024 Air Quality Nexus Center. All rights reserved.
+              </p>
+              <p className="text-xs opacity-70 mt-1">
+                Leading research in air quality, health, ecosystem, and climate nexus
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

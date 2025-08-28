@@ -125,7 +125,7 @@ const News = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-air-light to-accent overflow-hidden">
+      <section className="py-20 bg-white overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="max-w-4xl mx-auto text-center"

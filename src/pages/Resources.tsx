@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Download, FileText, Database, Globe, BookOpen, Users, ExternalLink, LucideIcon } from "lucide-react";
 
 interface Resource {
@@ -11,7 +10,6 @@ interface Resource {
   format?: string;
   url?: string;
   icon: LucideIcon;
-  badge: string;
 }
 
 const Resources = () => {
@@ -45,16 +43,14 @@ const Resources = () => {
         description: "Comprehensive database of air quality measurements across Asia-Pacific region",
         type: "Database",
         format: "CSV, JSON",
-        icon: Database,
-        badge: "Updated Monthly"
+        icon: Database
       },
       {
         title: "Emission Inventory Data",
         description: "Regional emission inventory data for various pollutants and sectors",
         type: "Dataset",
         format: "Excel, NetCDF",
-        icon: FileText,
-        badge: "2024 Release"
+        icon: FileText
       }
     ],
     tools: [
@@ -63,16 +59,14 @@ const Resources = () => {
         description: "Guidelines and protocols for establishing air quality monitoring networks",
         type: "Toolkit",
         format: "PDF",
-        icon: BookOpen,
-        badge: "Best Practice"
+        icon: BookOpen
       },
       {
         title: "Policy Assessment Framework",
         description: "Framework for evaluating air quality policies and their effectiveness",
         type: "Framework",
         format: "PDF, Templates",
-        icon: Users,
-        badge: "Policy Tool"
+        icon: Users
       }
     ],
     reports: [
@@ -81,16 +75,14 @@ const Resources = () => {
         description: "Annual assessment of air quality trends and patterns in the region",
         type: "Report",
         format: "PDF",
-        icon: FileText,
-        badge: "Annual Report"
+        icon: FileText
       },
       {
         title: "Health Impact Assessment Guidelines",
         description: "Methodology for assessing health impacts of air pollution",
         type: "Guidelines",
         format: "PDF",
-        icon: BookOpen,
-        badge: "Health Focus"
+        icon: BookOpen
       }
     ],
     links: [
@@ -99,16 +91,14 @@ const Resources = () => {
         description: "World Health Organization air quality guidelines and resources",
         url: "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
         type: "External Link",
-        icon: Globe,
-        badge: "WHO"
+        icon: Globe
       },
       {
         title: "UNEP Air Quality Portal",
         description: "United Nations Environment Programme air quality resources",
         url: "https://www.unep.org/explore-topics/air",
         type: "Portal",
-        icon: ExternalLink,
-        badge: "UNEP"
+        icon: ExternalLink
       }
     ]
   };
@@ -127,7 +117,6 @@ const Resources = () => {
                 <p className="text-sm text-muted-foreground mt-1">{resource.type}</p>
               </div>
             </div>
-            <Badge variant="secondary">{resource.badge}</Badge>
           </div>
         </CardHeader>
         <CardContent className="flex-1 flex flex-col">
@@ -165,7 +154,7 @@ const Resources = () => {
     <>
       {/* Hero Section */}
       <motion.section 
-        className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5"
+        className="py-20 bg-white"
         initial="hidden"
         animate="visible"
         variants={fadeUpVariants}

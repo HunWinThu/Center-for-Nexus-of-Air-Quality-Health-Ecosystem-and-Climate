@@ -92,8 +92,11 @@ const About = () => {
         </div>
       </section>
 
+      {/* Section Separator */}
+      <div className="border-t border-gray-200"></div>
+
       {/* Background Section */}
-      <section className="py-10 bg-background">
+      <section className="py-10 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-3">
@@ -144,8 +147,11 @@ const About = () => {
         </div>
       </section>
 
+      {/* Section Separator */}
+      <div className="border-t border-gray-200"></div>
+
       {/* Rationale Section */}
-      <section className="py-10 bg-gradient-to-br from-accent/20 to-primary/5">
+      <section className="py-10 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-3">

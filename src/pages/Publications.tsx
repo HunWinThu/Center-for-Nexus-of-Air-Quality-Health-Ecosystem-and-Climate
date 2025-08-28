@@ -210,7 +210,7 @@ const Publications = () => {
   return (
     <>
       {/* Hero Section - matching website style */}
-      <section className="py-20 bg-gradient-to-br from-air-light to-accent">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial="hidden"

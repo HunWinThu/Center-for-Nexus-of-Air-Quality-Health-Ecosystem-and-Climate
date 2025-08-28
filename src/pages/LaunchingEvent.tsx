@@ -188,7 +188,7 @@ const gallery = [
         </div>
       </section>
 
-      <section className="py-20 bg-[linear-gradient(to_right,white,#e0f2fe)]">
+      <section className="py-20 bg-white">
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-green-800 via-green-400 to-sky-blue-600 bg-clip-text text-transparent">

@@ -7,7 +7,7 @@ const Contact = () => {
   return (
     <>
       <ContactHero />
-      <section className="py-20">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ContactInfo />
           <div className="grid grid-cols-1 gap-12 max-w-2xl mx-auto w-full">

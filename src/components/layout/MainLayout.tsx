@@ -11,10 +11,11 @@ export function MainLayout({ children }: MainLayoutProps) {
   const { isMobileMenuOpen, closeMobileMenu } = useLayoutStore();
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Header />
       <AnimatePresence mode="wait">
         <motion.main
+          className="bg-white"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 10 }}

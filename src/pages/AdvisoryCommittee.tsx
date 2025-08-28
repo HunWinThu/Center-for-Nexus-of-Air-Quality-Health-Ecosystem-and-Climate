@@ -223,7 +223,7 @@ const Committee = () => {
     <>
       {/* Hero Section with Enhanced Animations */}
       <motion.section 
-        className="py-20 bg-gradient-to-br from-air-light to-accent overflow-hidden"
+        className="py-20 bg-white overflow-hidden"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
@@ -259,8 +259,11 @@ const Committee = () => {
         </div>
       </motion.section>
 
+      {/* Section Separator */}
+      <div className="border-t border-gray-200"></div>
+
       {/* Advisory Committee Members with Modern Grid Animation */}
-      <section className="py-20 overflow-hidden">
+      <section className="py-20 bg-white overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Title Animation */}
           <motion.div
@@ -290,8 +293,8 @@ const Committee = () => {
                 whileHover="hover"
                 style={{ transformStyle: "preserve-3d" }}
               >
-                <Card className="group hover:shadow-2xl transition-all duration-500 bg-background border border-border relative overflow-hidden">
-                  <CardContent className="p-6 relative z-10">
+                <Card className="group hover:shadow-2xl transition-all duration-500 bg-background border border-border relative overflow-hidden h-full flex flex-col">
+                  <CardContent className="p-6 relative z-10 flex-1 flex flex-col">
                     <div className="text-center mb-4">
                       <motion.div
                         className="relative overflow-hidden rounded-lg mb-4 mx-auto"
@@ -353,7 +356,7 @@ const Committee = () => {
                     </div>
                     
                     <motion.p 
-                      className="text-base text-muted-foreground mb-0 pt-3 text-center leading-relaxed"
+                      className="text-base text-muted-foreground mb-0 pt-3 text-center leading-relaxed flex-1"
                       variants={textVariants}
                     >
                       {member.bio}
