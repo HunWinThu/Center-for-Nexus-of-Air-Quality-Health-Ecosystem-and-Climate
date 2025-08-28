@@ -22,7 +22,7 @@ import teamPlaceholder from '@/assets/team-placeholder.jpg';
 
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
-export const coreTeam = [
+const coreTeam = [
   {
     id: 1,
     name: 'Prof. Dr. Nguyen Thi Kim Oanh',

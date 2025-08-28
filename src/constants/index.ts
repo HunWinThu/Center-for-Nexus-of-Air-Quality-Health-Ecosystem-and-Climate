@@ -49,7 +49,6 @@ export const ROUTES = {
   OUR_THEMATIC_AREAS: '/our-thematic-areas',
   PROJECTS: '/projects',
   NEWS: '/news',
-  ACTIVITIES: '/activities',
   PUBLICATIONS: '/publications',
   RESOURCES: '/resources',
   TEAM: '/team',

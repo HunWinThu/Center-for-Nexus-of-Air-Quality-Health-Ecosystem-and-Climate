@@ -16,7 +16,6 @@ import Blog from "./pages/Blog";
 import ProjectDetails from "./pages/ProjectDetails";
 import News from "./pages/News";
 import NewsDetails from "./pages/NewsDetails";
-import Activities from "./pages/Activities";
 import Publications from "./pages/Publications";
 import Resources from "./pages/Resources";
 import Team from "./pages/Team";
@@ -46,7 +45,6 @@ const App = () => (
                 <Route path="/project/:id" element={<ProjectDetails />} />
                 <Route path={ROUTES.NEWS} element={<News />} />
                 <Route path="/news/:id" element={<NewsDetails />} />
-                <Route path={ROUTES.ACTIVITIES} element={<Activities />} />
                 <Route path={ROUTES.PUBLICATIONS} element={<Publications />} />
                 <Route path={ROUTES.RESOURCES} element={<Resources />} />
                 <Route path={ROUTES.TEAM} element={<Team />} />

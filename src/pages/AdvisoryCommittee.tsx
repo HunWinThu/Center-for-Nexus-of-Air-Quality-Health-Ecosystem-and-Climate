@@ -26,7 +26,7 @@ import teamPlaceholder from '@/assets/team-placeholder.jpg';
 
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
-export const advisoryCommittee = [
+const advisoryCommittee = [
   {
     id: 2,
     name: "Prof. Ram Shrestha",

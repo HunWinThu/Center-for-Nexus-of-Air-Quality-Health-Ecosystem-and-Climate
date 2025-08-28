@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-import logo from '@/assets/logo.png';
+import logo from '@/assets/AQC_logo.jpg';
 
 const Footer = () => {
   return (
@@ -15,8 +15,8 @@ const Footer = () => {
             <h3 className="text-2xl font-semibold">Quick Links</h3>
             <nav className="flex flex-col space-y-2">
               <Link to="/about" className="text-base opacity-90 hover:opacity-100 transition-opacity">About Us</Link>
-              <Link to="/blog" className="text-base opacity-90 hover:opacity-100 transition-opacity">Projects</Link>
-              <Link to="/activities" className="text-base opacity-90 hover:opacity-100 transition-opacity">News</Link>
+              <Link to="/projects" className="text-base opacity-90 hover:opacity-100 transition-opacity">Projects</Link>
+              <Link to="/news" className="text-base opacity-90 hover:opacity-100 transition-opacity">News</Link>
               <Link to="/team" className="text-base opacity-90 hover:opacity-100 transition-opacity">Our Team</Link>
             </nav>
           </div>

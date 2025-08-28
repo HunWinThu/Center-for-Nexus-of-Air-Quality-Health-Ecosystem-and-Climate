@@ -3,7 +3,125 @@ import { useLocation, useParams } from 'react-router-dom';
 import { useScrollToTop } from '@/hooks/use-scroll-to-top';
 import teamPlaceholder from '@/assets/team-placeholder.jpg';
 import researchgateIcon from '@/assets/icons/researchgate.svg';
-import { coreTeam } from './Team';
+
+// Team member images
+import kim from '@/assets/prof.Kim.jpeg';
+import huy from '@/assets/dr.huy.jpg';
+import ktoo from '@/assets/Ms. Ktoo.jpg';
+import Huyen from '@/assets/Dr. Truong Thi Huyen.jpg';
+import Nguyen from '@/assets/ms-chi.jpg';
+import Dang from '@/assets/dang.jpeg';
+import Hun from '@/assets/Hun Win Thu.jpg';
+import May from '@/assets/May.jpg';
+import Pant from '@/assets/Ms. Keishu Pant.jpg';
+
+const coreTeam = [
+  {
+    id: 1,
+    name: 'Prof. Dr. Nguyen Thi Kim Oanh',
+    role: 'Director',
+    department: 'Doctor of Engineering in Environmental Technology and Management, AIT',
+    bio: 'Prof. Nguyen Thi Kim Oanh is a distinguished professor and the founding director of the Center for Nexus of Air Quality, Health, Ecosystem, and Climate at AIT.',
+    Expertise: 'Air pollution monitoring; Dispersion modeling and receptor modeling; Emission inventory and projection',
+    specialties: ['Air Quality', 'Emission Inventory', 'Environmental Health'],
+    image: kim,
+    viewprofile: 'kim.oanh@ait.ac.th',
+    researchgate: 'https://www.researchgate.net/profile/Nguyen-Thi-Oanh',
+  },
+  {
+    id: 2,
+    name: 'Dr. Lai Nguyen Huy',
+    role: 'Manager',
+    department: 'Doctor of Engineering in Environmental Technology and Management, AIT',
+    bio: 'Dr. Lai Nguyen Huy is an Air Quality Specialist and Research Specialist at AIT.',
+    Expertise: 'Air pollution data systems; Climate and air quality interaction',
+    specialties: ['Air Pollution Modeling', 'Monitoring', 'Data Analysis'],
+    image: huy,
+    viewprofile: 'lainguyenhuy@ait.asia',
+    researchgate: 'https://www.researchgate.net/profile/Lai-Huy-2',
+  },
+  {
+    id: 3,
+    name: 'Ms. Khing Thwe Oo',
+    role: 'Research Associate',
+    department: 'Master of Engineering in Environmental Engineering and Management, AIT',
+    bio: 'Ms. Khing Thwe Oo is a Research Associate at AIT with expertise in air pollution research.',
+    Expertise: 'Administration; Air pollution monitoring',
+    specialties: ['Emission Inventory', 'Air Quality Management'],
+    image: ktoo,
+    viewprofile: 'https://www.linkedin.com/in/kim-oanh/',
+  },
+  {
+    id: 4,
+    name: 'Dr. Truong Thi Huyen',
+    role: 'Associate Member',
+    department: 'Doctor of Philosophy in Environmental Technology and Management, AIT',
+    bio: 'Dr. Truong Thi Huyen is an environmental specialist with expertise in air quality research.',
+    Expertise: 'Environmental research and analysis',
+    specialties: ['Environmental Research', 'Air Quality'],
+    image: Huyen,
+    viewprofile: 'https://www.linkedin.com/in/kim-oanh/',
+  },
+  {
+    id: 5,
+    name: 'Dr. Nguyen Nhat Ha Chi',
+    role: 'Associate Member',
+    department: 'Doctor of Philosophy in Environmental Technology and Management, AIT',
+    bio: 'Dr. Ha Chi Nguyen Nhat is an Air Quality Specialist with expertise in air quality modeling.',
+    Expertise: 'Air quality and meteorology modeling; Emission inventory',
+    specialties: ['Emission Inventory', 'Air Quality Management'],
+    image: Nguyen,
+    viewprofile: 'https://www.linkedin.com/in/kim-oanh/',
+    researchgate: 'https://www.researchgate.net/profile/Ha-Chi-Nguyen-Nhat'
+  },
+  {
+    id: 6,
+    name: 'Mr. Ha Quang Dang',
+    role: 'Research Assistant',
+    department: 'Bachelor of Engineering in Environmental Engineering, HUST',
+    bio: 'Mr. Ha Quang Dang is a Research Assistant at AIT with experience in air pollution monitoring.',
+    Expertise: 'Research Assistant_Air pollution monitoring',
+    specialties: ['Emission Inventory', 'Air Quality Management'],
+    alignTop: true,
+    image: Dang,
+    viewprofile: 'https://www.linkedin.com/in/kim-oanh/',
+  },
+  {
+    id: 7,
+    name: 'Mr. Hun Win Thu',
+    role: 'Research Assistant & IoT Engineer',
+    department: 'Master of Engineering in Telecommunications, AIT',
+    bio: 'Mr. Hun Win Thu is a Research Assistant and IoT Engineer at AIT.',
+    Expertise: 'Research Assistant_ICT Support and IoT Engineer',
+    specialties: ['Emission Inventory', 'Air Quality Management'],
+    alignTop: true,
+    image: Hun,
+    viewprofile: 'https://www.linkedin.com/in/kim-oanh/',
+  },
+  {
+    id: 8,
+    name: 'Ms. May Hnin Aye',
+    role: 'Associate Member',
+    department: 'Master of Science in Remote Sensing & GIS',
+    bio: 'Ms. May Hnin Aye is a GIS Analyst at AIT specializing in remote sensing.',
+    Expertise: 'Remote Sensing and GIS Analyst',
+    specialties: ['Emission Inventory', 'Air Quality Management'],
+    image: May,
+    viewprofile: 'https://www.linkedin.com/in/kim-oanh/',
+  },
+  {
+    id: 9,
+    name: 'Ms. Keishu Pant',
+    role: 'PhD Candidate',
+    department: 'Student',
+    bio: 'Ms. Keishu Pant specializes in emission inventory and air quality management.',
+    Expertise: 'Research Assistant_Air pollution monitoring',
+    specialties: ['Emission Inventory', 'Air Quality Management'],
+    alignTop: true,
+    image: Pant,
+    viewprofile: 'https://www.linkedin.com/in/kim-oanh/',
+  },
+];
 
 interface Member {
   id: number;
