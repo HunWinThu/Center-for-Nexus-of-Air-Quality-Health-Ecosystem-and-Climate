@@ -87,11 +87,11 @@ const publications: Record<string, Publication[]> = {
       cite: 'Kim Oanh, N. T., & Huy, L. N. (2024). Atmospheric Emissions from Electricity Generation in Southeast Asia: Development Trend and Policy Responses. Current Pollution Reports, 10(1), 54-69. doi:https://doi.org/10.1007/s40726-023-00289-0',
     },
     {
-      title: 'Comparative analysis of PM2.5 levels in various microenvironments associated with common cooking practices in selected Asian countries.',
+      title: 'Comparative analysis of PM<sub>2.5</sub> levels in various microenvironments associated with common cooking practices in selected Asian countries.',
       authors: 'Kim Oanh, N. T., Huy, L. N., Maneepatra, W., Winijkul, E., Giandomenico, A., Tantrakarnapa, K., Co, H. X., Cuong, D. M., Tsou, M. C. M., Hien, T. T., Chi, N. D. C., Ngan, T. A., & Lung, S.-C. C. (2024).',
       journal: 'Air Quality, Atmosphere & Health.',
       doi: 'https://doi.org/10.1007/s11869-024-01615-1',
-      cite: 'Kim Oanh, N. T., Huy, L. N., Maneepatra, W., Winijkul, E., Giandomenico, A., Tantrakarnapa, K., Co, H. X., Cuong, D. M., Tsou, M. C. M., Hien, T. T., Chi, N. D. C., Ngan, T. A., & Lung, S.-C. C. (2024). Comparative analysis of PM2.5 levels in various microenvironments associated with common cooking practices in selected Asian countries. Air Quality, Atmosphere & Health. doi:https://doi.org/10.1007/s11869-024-01615-1',
+      cite: 'Kim Oanh, N. T., Huy, L. N., Maneepatra, W., Winijkul, E., Giandomenico, A., Tantrakarnapa, K., Co, H. X., Cuong, D. M., Tsou, M. C. M., Hien, T. T., Chi, N. D. C., Ngan, T. A., & Lung, S.-C. C. (2024). Comparative analysis of PM<sub>2.5</sub> levels in various microenvironments associated with common cooking practices in selected Asian countries. Air Quality, Atmosphere & Health. doi:https://doi.org/10.1007/s11869-024-01615-1',
     },
   ],
   2023: [
@@ -110,11 +110,11 @@ const publications: Record<string, Publication[]> = {
       cite: 'Huy, L. N., Kim Oanh, N. T., Huong, C. T. D., & Huyen, T. T. (2023). Analysis of atmospheric emissions associated with on-road and inland waterway transport in Vietnam: Past, current lyckand future control scenarios. Atmospheric Pollution Research, 14(8), 101810. doi:https://doi.org/10.1016/j.apr.2023.101810',
     },
     {
-      title: 'Chemical composition and potential sources of PM2.5 in Hanoi.',
+      title: 'Chemical composition and potential sources of PM<sub>2.5</sub> in Hanoi.',
       authors: 'Makkonen, U., Vestenius, M., Huy, L. N., Anh, N. T. N., Linh, P. T. V., Thuy, P. T., Phuong, H. T. M., Nguyen, H., Thuy, L. T., Aurela, M., Hellén, H., Loven, K., Kouznetsov, R., Kyllönen, K., Teinilä, K., & Kim Oanh, N. T. (2023).',
       journal: 'Atmospheric Environment, 299, 119650.',
       doi: 'https://doi.org/10.1016/j.atmosenv.2023.119650',
-      cite: 'Makkonen, U., Vestenius, M., Huy, L. N., Anh, N. T. N., Linh, P. T. V., Thuy, P. T., Phuong, H. T. M., Nguyen, H., Thuy, L. T., Aurela, M., Hellén, H., Loven, K., Kouznetsov, R., Kyllönen, K., Teinilä, K., & Kim Oanh, N. T. (2023). Chemical composition and potential sources of PM2.5 in Hanoi. Atmospheric Environment, 299, 119650. doi:https://doi.org/10.1016/j.atmosenv.2023.119650',
+      cite: 'Makkonen, U., Vestenius, M., Huy, L. N., Anh, N. T. N., Linh, P. T. V., Thuy, P. T., Phuong, H. T. M., Nguyen, H., Thuy, L. T., Aurela, M., Hellén, H., Loven, K., Kouznetsov, R., Kyllönen, K., Teinilä, K., & Kim Oanh, N. T. (2023). Chemical composition and potential sources of PM<sub>2.5</sub> in Hanoi. Atmospheric Environment, 299, 119650. doi:https://doi.org/10.1016/j.atmosenv.2023.119650',
     },
     {
       title: 'Air quality management status and needs of countries in South Asia and Southeast Asia.',
@@ -154,11 +154,11 @@ const publications: Record<string, Publication[]> = {
       cite: 'Phuc, N. H., & Kim Oanh, N. T. (2022). Large spatio-temporal variations of size-resolved particulate matter and volatile organic compounds in urban area with heavy traffic. Environmental Science and Pollution Research, 29(15), 21491-21507. doi:https://doi.org/10.1007/s11356-021-16921-9',
     },
     {
-      title: 'Research Priorities of Applying Low-Cost PM2.5 Sensors in Southeast Asian Countries.',
+      title: 'Research Priorities of Applying Low-Cost PM<sub>2.5</sub> Sensors in Southeast Asian Countries.',
       authors: 'Lung, S.-C. C., Thi Hien, T., Cambaliza, M. O. L., Hlaing, O. M. T., Oanh, N. T. K., Latif, M. T., Lestari, P., Salam, A., Lee, S.-Y., Wang, W.-C. V., Tsou, M.-C. M., Cong-Thanh, T., Cruz, M. T., Tantrakarnapa, K., Othman, M., Roy, S., Dang, T. N., & Agustian, D. (2022).',
       journal: 'International Journal of Environmental Research and Public Health, 19(3), 1522.',
       doi: 'https://doi.org/10.3390/ijerph19031522',
-      cite: 'Lung, S.-C. C., Thi Hien, T., Cambaliza, M. O. L., Hlaing, O. M. T., Oanh, N. T. K., Latif, M. T., Lestari, P., Salam, A., Lee, S.-Y., Wang, W.-C. V., Tsou, M.-C. M., Cong-Thanh, T., Cruz, M. T., Tantrakarnapa, K., Othman, M., Roy, S., Dang, T. N., & Agustian, D. (2022). Research Priorities of Applying Low-Cost PM2.5 Sensors in Southeast Asian Countries. International Journal of Environmental Research and Public Health, 19(3), 1522. doi:https://doi.org/10.3390/ijerph19031522',
+      cite: 'Lung, S.-C. C., Thi Hien, T., Cambaliza, M. O. L., Hlaing, O. M. T., Oanh, N. T. K., Latif, M. T., Lestari, P., Salam, A., Lee, S.-Y., Wang, W.-C. V., Tsou, M.-C. M., Cong-Thanh, T., Cruz, M. T., Tantrakarnapa, K., Othman, M., Roy, S., Dang, T. N., & Agustian, D. (2022). Research Priorities of Applying Low-Cost PM<sub>2.5</sub> Sensors in Southeast Asian Countries. International Journal of Environmental Research and Public Health, 19(3), 1522. doi:https://doi.org/10.3390/ijerph19031522',
     },
     {
       title: 'Effects of length-to-diameter ratio, pinewood sawdust, and sodium lignosulfonate on quality of rice straw pellets produced via a flat die pellet mill.',
@@ -174,7 +174,9 @@ const Publications = () => {
   const [copiedIndex, setCopiedIndex] = useState(-1);
 
   const handleCopy = (text: string, index: number) => {
-    navigator.clipboard.writeText(text);
+    // Strip HTML tags for clipboard
+    const plainText = text.replace(/<[^>]*>/g, '');
+    navigator.clipboard.writeText(plainText);
     toast.success('Citation copied to clipboard!');
     setCopiedIndex(index);
     setTimeout(() => setCopiedIndex(-1), 2000); // Reset after 2 seconds
@@ -301,9 +303,10 @@ const Publications = () => {
                             </div>
                             <div className="min-w-0 flex-1">
                               <Link to={pub.doi} target="_blank" rel="noopener noreferrer" className="block mb-4">
-                                <h3 className="text-xl font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
-                                  {pub.title}
-                                </h3>
+                                <h3 
+                                  className="text-xl font-bold text-foreground leading-tight group-hover:text-primary transition-colors"
+                                  dangerouslySetInnerHTML={{ __html: pub.title }}
+                                />
                               </Link>
                               
                               <div className="text-sm text-muted-foreground mb-3">Published Year: {year}</div>
@@ -329,7 +332,10 @@ const Publications = () => {
                                   <Quote className="mr-2 flex-shrink-0" size={16} />
                                 </div>
                                 <div className="flex items-start justify-between gap-2">
-                                  <p className="text-sm text-foreground flex-1 pr-2">{pub.cite}</p>
+                                  <p 
+                                    className="text-sm text-foreground flex-1 pr-2"
+                                    dangerouslySetInnerHTML={{ __html: pub.cite }}
+                                  />
                                   <Button 
                                     variant="ghost" 
                                     size="icon" 

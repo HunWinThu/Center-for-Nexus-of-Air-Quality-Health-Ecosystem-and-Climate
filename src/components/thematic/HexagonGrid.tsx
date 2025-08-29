@@ -58,7 +58,7 @@ export const HexagonGrid = () => {
       position: 'top',
       bgColor: 'bg-conic-180 from-indigo-600 via-indigo-50 to-indigo-600',
       modalData: {
-        description: "Our comprehensive air quality monitoring program employs state-of-the-art equipment and methodologies to track pollutant concentrations across various environments. We conduct detailed chemical analysis of atmospheric samples, including PM2.5, PM10, ozone, nitrogen oxides, and volatile organic compounds. Our source apportionment studies help identify the major contributors to air pollution, enabling targeted intervention strategies. Through continuous monitoring networks and advanced analytical techniques, we provide real-time data and insights that inform policy decisions and public health recommendations.",
+        description: "Our comprehensive air quality monitoring program employs state-of-the-art equipment and methodologies to track pollutant concentrations across various environments. We conduct detailed chemical analysis of atmospheric samples, including PM<sub>2.5</sub>, PM10, ozone, nitrogen oxides, and volatile organic compounds. Our source apportionment studies help identify the major contributors to air pollution, enabling targeted intervention strategies. Through continuous monitoring networks and advanced analytical techniques, we provide real-time data and insights that inform policy decisions and public health recommendations.",
         image: monitoringImg,
         imageAlt: "Air quality monitoring equipment and chemical analysis"
       }
