@@ -65,7 +65,9 @@ const About = () => {
                     <img 
                       src={img} 
                       alt={`Slide ${index + 1}`}
-                      className="object-contain max-w-full max-h-[80vh]"
+                      className={`object-contain max-h-[80vh] ${
+                        index === 0 ? 'max-w-[60vw]' : 'max-w-full'
+                      }`}
                       style={{
                         width: "auto",
                         height: "auto"

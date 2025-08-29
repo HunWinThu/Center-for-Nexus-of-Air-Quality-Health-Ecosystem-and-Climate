@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { Menu, X } from 'lucide-react';
 import logo from '@/assets/aqc.png';
 
@@ -50,28 +49,29 @@ const Header = () => {
                       {item.name}
                     </Link>
                     <div className="absolute top-full left-0 mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform translate-y-[-10px] group-hover:translate-y-0 z-50">
-                      <div className="min-w-[250px] rounded-xl bg-white/40 backdrop-blur-md border border-gray-200 shadow-xl p-2">
+                      {/* Firefox-compatible blur effect */}
+                      <div className="min-w-[250px] rounded-xl bg-white/50 backdrop-blur-xl border border-white/40 shadow-2xl p-2" style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}>
                         <Link 
                           to="/launching-event" 
-                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-800 hover:bg-gray-100 hover:text-primary transition-colors"
+                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-primary transition-colors"
                         >
                           Launching Event
                         </Link>
                         <Link 
                           to="/our-thematic-areas" 
-                          className="block rounded-lg px-4 py-2 text-lg font-medium text-gray-800 hover:bg-gray-100 hover:text-primary transition-colors"
+                          className="block rounded-lg px-4 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-primary transition-colors"
                         >
                           Our Thematic Areas
                         </Link>
                         <Link 
                           to="/team" 
-                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-800 hover:bg-gray-100 hover:text-primary transition-colors"
+                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-primary transition-colors"
                         >
                           Our Team
                         </Link>
                         <Link 
                           to="/committee" 
-                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-800 hover:bg-gray-100 hover:text-primary transition-colors"
+                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-primary transition-colors"
                         >
                           Advisory Committee
                         </Link>
@@ -84,19 +84,10 @@ const Header = () => {
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`text-lg font-semibold tracking-wide border-b-2 pb-1 ${
-                    ['Home', 'About Us', 'Projects', 'News', 'Publications', 'Resources', 'Contact Us'].includes(item.name)
-                      ? `relative overflow-hidden group ${isActive(item.href)
-                        ? 'text-primary border-primary'
-                        : 'text-black border-transparent'} 
-                        before:absolute before:top-0 before:left-[-100%] before:w-full before:h-full 
-                        before:bg-gradient-to-r before:from-transparent before:via-primary/20 before:to-transparent 
-                        hover:before:left-[100%] before:transition-all before:duration-700 before:ease-in-out`
-                      : `transition-colors hover:text-primary ${
-                        isActive(item.href)
-                          ? 'text-primary border-primary'
-                          : 'text-black border-transparent'
-                      }`
+                  className={`text-lg font-semibold tracking-wide border-b-2 pb-1 transition-colors hover:text-primary ${
+                    isActive(item.href)
+                      ? 'text-primary border-primary'
+                      : 'text-black border-transparent'
                   }`}
                 >
                   {item.name}
@@ -116,7 +107,8 @@ const Header = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-background/80 backdrop-blur-md border-t border-border rounded-lg mt-2">
+            {/* Fixed: Enhanced mobile backdrop blur */}
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-black/5 backdrop-blur-2xl border-t border-white/20 rounded-lg mt-2 @supports-backdrop-blur:bg-black/10">
               {navigation.map((item) =>
                 item.name === 'About Us' ? (
                   <div key={item.name}>
@@ -124,41 +116,41 @@ const Header = () => {
                       to={item.href}
                       className={`block px-3 py-2 text-lg font-medium rounded-md transition-colors ${
                         isActive(item.href)
-                          ? 'text-primary bg-accent'
-                          : 'text-black hover:text-primary hover:bg-accent'
+                          ? 'text-gray-900 bg-white/30'
+                          : 'text-gray-800 hover:text-gray-900 hover:bg-white/30'
                       }`}
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.name}
                     </Link>
-                    <div className="ml-4">
+                    <div className="ml-4 bg-black/5 backdrop-blur-lg rounded-md p-1 @supports-backdrop-blur:bg-black/10">
                       <Link
                         to="/launching-event"
-                        className="block px-3 py-2 text-base rounded-md text-black hover:text-primary hover:bg-accent"
+                        className="block px-3 py-2 text-base rounded-md text-gray-800 hover:text-gray-900 hover:bg-white/30"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         Launching Event
                       </Link>
                       <Link
                         to="/our-thematic-areas"
-                        className="block px-3 py-2 text-base rounded-md text-black hover:text-primary hover:bg-accent"
+                        className="block px-3 py-2 text-base rounded-md text-gray-800 hover:text-gray-900 hover:bg-white/30"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         Our Thematic Areas
                       </Link>
                       <Link
                         to="/team"
-                        className="block px-3 py-2 text-base rounded-md text-black hover:text-primary hover:bg-accent"
+                        className="block px-3 py-2 text-base rounded-md text-gray-800 hover:text-gray-900 hover:bg-white/30"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        Advisory Committee
+                        Our Team
                       </Link>
                       <Link
                         to="/committee"
-                        className="block px-3 py-2 text-base rounded-md text-black hover:text-primary hover:bg-accent"
+                        className="block px-3 py-2 text-base rounded-md text-gray-800 hover:text-gray-900 hover:bg-white/30"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        
+                        Advisory Committee
                       </Link>                      
                     </div>
                   </div>
@@ -166,10 +158,10 @@ const Header = () => {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className={`block px-3 py-2 text-lg font-medium rounded-md ${
+                    className={`block px-3 py-2 text-lg font-medium rounded-md transition-colors ${
                       isActive(item.href)
-                        ? 'text-primary bg-accent'
-                        : 'text-black hover:text-primary hover:bg-accent'
+                        ? 'text-gray-900 bg-white/30'
+                        : 'text-gray-800 hover:text-gray-900 hover:bg-white/30'
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >

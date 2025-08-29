@@ -173,6 +173,9 @@ const Resources = () => {
         </div>
       </motion.section>
 
+      {/* Section Separator */}
+      <div className="border-t border-gray-200"></div>
+
       {/* Main Content */}
       <div className="container mx-auto px-4 py-16">
         
@@ -184,18 +187,21 @@ const Resources = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
         >
-          <motion.div variants={cardVariants} className="mb-8">
+          <div className="mb-8">
             <h2 className="text-3xl font-bold mb-4">Databases & Datasets</h2>
             <p className="text-muted-foreground text-lg">
               Curated datasets and databases for air quality research and analysis.
             </p>
-          </motion.div>
+          </div>
           <div className="grid md:grid-cols-2 gap-6">
             {resources.databases.map((resource, index) => (
               <ResourceCard key={index} resource={resource} />
             ))}
           </div>
         </motion.section>
+
+        {/* Section Separator */}
+        <div className="border-t border-gray-200 mb-16"></div>
 
         {/* Tools & Frameworks */}
         <motion.section 
@@ -205,18 +211,21 @@ const Resources = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
         >
-          <motion.div variants={cardVariants} className="mb-8">
+          <div className="mb-8">
             <h2 className="text-3xl font-bold mb-4">Tools & Frameworks</h2>
             <p className="text-muted-foreground text-lg">
               Practical tools and frameworks to support air quality monitoring and policy development.
             </p>
-          </motion.div>
+          </div>
           <div className="grid md:grid-cols-2 gap-6">
             {resources.tools.map((resource, index) => (
               <ResourceCard key={index} resource={resource} />
             ))}
           </div>
         </motion.section>
+
+        {/* Section Separator */}
+        <div className="border-t border-gray-200 mb-16"></div>
 
         {/* Reports & Guidelines */}
         <motion.section 
@@ -226,18 +235,21 @@ const Resources = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
         >
-          <motion.div variants={cardVariants} className="mb-8">
+          <div className="mb-8">
             <h2 className="text-3xl font-bold mb-4">Reports & Guidelines</h2>
             <p className="text-muted-foreground text-lg">
               Research reports, assessment guidelines, and best practice documentation.
             </p>
-          </motion.div>
+          </div>
           <div className="grid md:grid-cols-2 gap-6">
             {resources.reports.map((resource, index) => (
               <ResourceCard key={index} resource={resource} />
             ))}
           </div>
         </motion.section>
+
+        {/* Section Separator */}
+        <div className="border-t border-gray-200 mb-16"></div>
 
         {/* External Links */}
         <motion.section
@@ -246,12 +258,12 @@ const Resources = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
         >
-          <motion.div variants={cardVariants} className="mb-8">
+          <div className="mb-8">
             <h2 className="text-3xl font-bold mb-4">External Resources</h2>
             <p className="text-muted-foreground text-lg">
               Links to important external resources and partner organizations.
             </p>
-          </motion.div>
+          </div>
           <div className="grid md:grid-cols-2 gap-6">
             {resources.links.map((resource, index) => (
               <ResourceCard key={index} resource={resource} isExternal={true} />
