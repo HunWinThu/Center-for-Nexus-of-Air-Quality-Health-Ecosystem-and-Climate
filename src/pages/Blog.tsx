@@ -278,14 +278,23 @@ const Blog = () => {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs defaultValue="ongoing">
-            <TabsList className="grid w-full grid-cols-3 bg-muted">
-              <TabsTrigger value="ongoing" className="py-4 data-[state=active]:bg-background">
+            <TabsList className="grid w-full grid-cols-3 bg-accent/50 p-2 rounded-lg mb-8">
+              <TabsTrigger 
+                value="ongoing" 
+                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
+              >
                 On-going Projects
               </TabsTrigger>
-              <TabsTrigger value="completed" className="py-4 data-[state=active]:bg-background">
+              <TabsTrigger 
+                value="completed" 
+                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
+              >
                 Completed Projects
               </TabsTrigger>
-              <TabsTrigger value="upcoming" className="py-4 data-[state=active]:bg-background">
+              <TabsTrigger 
+                value="upcoming" 
+                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
+              >
                 Upcoming Projects
               </TabsTrigger>
             </TabsList>
