@@ -450,6 +450,13 @@ const eventsData: NewsItem[] = [
   },
 ];
 
+// Sort eventsData by date (latest first)
+const sortedEventsData = [...eventsData].sort((a, b) => {
+  const dateA = parseDate(a.date);
+  const dateB = parseDate(b.date);
+  return dateB.getTime() - dateA.getTime();
+});
+
 const resources: NewsItem[] = [
   {
     id: 1,
@@ -665,7 +672,7 @@ const resources: NewsItem[] = [
                 initial="hidden"
                 animate="visible"
               >
-                {eventsData.map((event) => (
+                {sortedEventsData.map((event) => (
                   <motion.div
                     key={event.id}
                     variants={cardVariants}

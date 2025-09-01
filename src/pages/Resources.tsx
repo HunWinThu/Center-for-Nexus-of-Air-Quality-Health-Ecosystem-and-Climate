@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Download, FileText, Database, Globe, BookOpen, Users, ExternalLink, LucideIcon } from "lucide-react";
+
+// Import publication cover image for Nepal report
+import nepalReportCover from "@/assets/News&Events/image23.png";
 
 interface Resource {
   title: string;
@@ -9,6 +13,8 @@ interface Resource {
   type: string;
   format?: string;
   url?: string;
+  downloadUrl?: string;
+  image?: string;
   icon: LucideIcon;
 }
 
@@ -24,15 +30,20 @@ const Resources = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
+        delayChildren: 0.1,
       },
     },
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 60, scale: 0.9 },
     visible: { 
       opacity: 1, 
       y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.7,
+      }
     },
   };
 
@@ -71,6 +82,15 @@ const Resources = () => {
     ],
     reports: [
       {
+        title: "State of Air for Nepal with the focus in Kathmandu Valley",
+        description: "A comprehensive technical report led by the AIT team, published as part of the 5-year USAID-funded Clean Air project consortium. This assessment provides science-based evidence for Nepal to tackle air pollution problems through appropriate clean air measures. The report analyzes multiple data sources including ground-based and satellite monitoring, emissions inventories, model simulations, and reanalysis data, with a focus on PM2.5. Reviewed by recognized experts both inside and outside Nepal, including the Department of Environment.",
+        type: "Technical Report",
+        format: "PDF",
+        image: nepalReportCover,
+        downloadUrl: "#", // Replace with actual download link
+        icon: FileText
+      },
+      {
         title: "Regional Air Quality Assessment 2024",
         description: "Annual assessment of air quality trends and patterns in the region",
         type: "Report",
@@ -105,47 +125,73 @@ const Resources = () => {
 
   const ResourceCard = ({ resource, isExternal = false }: { resource: Resource, isExternal?: boolean }) => (
     <motion.div variants={cardVariants}>
-      <Card className="h-full hover:shadow-lg transition-shadow">
-        <CardHeader>
-          <div className="flex items-start justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="p-2 bg-primary/10 rounded-lg">
-                <resource.icon className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <CardTitle className="text-lg">{resource.title}</CardTitle>
-                <p className="text-sm text-muted-foreground mt-1">{resource.type}</p>
+      <Card className="hover:shadow-lg transition-shadow overflow-hidden">
+        <div className="flex flex-col md:flex-row">
+          {/* Image section - Full display */}
+          {resource.image && (
+            <div className="md:w-1/3 w-full">
+              <div className="relative h-64 md:h-full overflow-hidden">
+                <img 
+                  src={resource.image} 
+                  alt={resource.title}
+                  className="w-full h-full object-contain bg-gray-50"
+                />
               </div>
             </div>
-          </div>
-        </CardHeader>
-        <CardContent className="flex-1 flex flex-col">
-          <p className="text-muted-foreground mb-4 flex-1">{resource.description}</p>
-          {!isExternal && resource.format && (
-            <p className="text-sm text-muted-foreground mb-4">Format: {resource.format}</p>
           )}
-          <Button 
-            variant="outline" 
-            className="w-full"
-            onClick={() => {
-              if (isExternal && resource.url) {
-                window.open(resource.url, '_blank');
-              }
-            }}
-          >
-            {isExternal ? (
-              <>
-                <ExternalLink className="h-4 w-4 mr-2" />
-                Visit Resource
-              </>
-            ) : (
-              <>
-                <Download className="h-4 w-4 mr-2" />
-                Download
-              </>
-            )}
-          </Button>
-        </CardContent>
+          
+          {/* Content section */}
+          <div className={`${resource.image ? 'md:w-2/3' : 'w-full'} flex flex-col`}>
+            <CardHeader>
+              <div className="flex items-start space-x-3">
+                <div className="p-2 bg-primary/10 rounded-lg flex-shrink-0">
+                  <resource.icon className="h-6 w-6 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <CardTitle className="text-xl mb-2">{resource.title}</CardTitle>
+                  <p className="text-sm text-muted-foreground font-medium">{resource.type}</p>
+                  {!isExternal && resource.format && (
+                    <p className="text-sm text-muted-foreground mt-1">Format: {resource.format}</p>
+                  )}
+                </div>
+              </div>
+            </CardHeader>
+            
+            <CardContent className="flex-1 flex flex-col pt-0">
+              <p className="text-muted-foreground mb-6 flex-1 leading-relaxed">{resource.description}</p>
+              
+              <Button 
+                variant="default" 
+                size="lg"
+                className="w-full md:w-auto self-start px-8 py-3 text-lg font-semibold shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105"
+                onClick={() => {
+                  if (isExternal && resource.url) {
+                    window.open(resource.url, '_blank');
+                  } else if (resource.downloadUrl) {
+                    // Handle download - either open link or trigger download
+                    if (resource.downloadUrl === "#") {
+                      alert("Download link will be available soon!");
+                    } else {
+                      window.open(resource.downloadUrl, '_blank');
+                    }
+                  }
+                }}
+              >
+                {isExternal ? (
+                  <>
+                    <ExternalLink className="h-5 w-5 mr-3" />
+                    Visit Resource
+                  </>
+                ) : (
+                  <>
+                    <Download className="h-5 w-5 mr-3" />
+                    Download Resource
+                  </>
+                )}
+              </Button>
+            </CardContent>
+          </div>
+        </div>
       </Card>
     </motion.div>
   );
@@ -156,7 +202,8 @@ const Resources = () => {
       <motion.section 
         className="py-20 bg-white"
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
         variants={fadeUpVariants}
         transition={{ duration: 0.8 }}
       >
@@ -176,101 +223,99 @@ const Resources = () => {
       {/* Section Separator */}
       <div className="border-t border-gray-200"></div>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-16">
-        
-        {/* Databases & Datasets */}
-        <motion.section 
-          className="mb-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <div className="mb-8">
-            <h2 className="text-3xl font-bold mb-4">Databases & Datasets</h2>
-            <p className="text-muted-foreground text-lg">
-              Curated datasets and databases for air quality research and analysis.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {resources.databases.map((resource, index) => (
-              <ResourceCard key={index} resource={resource} />
-            ))}
-          </div>
-        </motion.section>
+      {/* Main Content - Tabbed Interface */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <Tabs defaultValue="reports" className="w-full">
+            <TabsList className="grid w-full grid-cols-4 bg-accent/50 p-2 rounded-lg mb-8">
+              <TabsTrigger 
+                value="reports" 
+                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
+              >
+                <FileText className="mr-2" size={16} />
+                Reports & Guidelines
+              </TabsTrigger>
+              <TabsTrigger 
+                value="databases" 
+                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
+              >
+                <Database className="mr-2" size={16} />
+                Databases & Datasets
+              </TabsTrigger>
+              <TabsTrigger 
+                value="tools" 
+                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
+              >
+                <BookOpen className="mr-2" size={16} />
+                Tools & Frameworks
+              </TabsTrigger>
+              <TabsTrigger 
+                value="links" 
+                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
+              >
+                <Globe className="mr-2" size={16} />
+                External Resources
+              </TabsTrigger>
+            </TabsList>
 
-        {/* Section Separator */}
-        <div className="border-t border-gray-200 mb-16"></div>
+            {/* Reports & Guidelines Tab */}
+            <TabsContent value="reports" className="mt-8">
+              <motion.div 
+                className="space-y-6"
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+              >
+                {resources.reports.map((resource, index) => (
+                  <ResourceCard key={index} resource={resource} />
+                ))}
+              </motion.div>
+            </TabsContent>
 
-        {/* Tools & Frameworks */}
-        <motion.section 
-          className="mb-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <div className="mb-8">
-            <h2 className="text-3xl font-bold mb-4">Tools & Frameworks</h2>
-            <p className="text-muted-foreground text-lg">
-              Practical tools and frameworks to support air quality monitoring and policy development.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {resources.tools.map((resource, index) => (
-              <ResourceCard key={index} resource={resource} />
-            ))}
-          </div>
-        </motion.section>
+            {/* Databases & Datasets Tab */}
+            <TabsContent value="databases" className="mt-8">
+              <motion.div 
+                className="space-y-6"
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+              >
+                {resources.databases.map((resource, index) => (
+                  <ResourceCard key={index} resource={resource} />
+                ))}
+              </motion.div>
+            </TabsContent>
 
-        {/* Section Separator */}
-        <div className="border-t border-gray-200 mb-16"></div>
+            {/* Tools & Frameworks Tab */}
+            <TabsContent value="tools" className="mt-8">
+              <motion.div 
+                className="space-y-6"
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+              >
+                {resources.tools.map((resource, index) => (
+                  <ResourceCard key={index} resource={resource} />
+                ))}
+              </motion.div>
+            </TabsContent>
 
-        {/* Reports & Guidelines */}
-        <motion.section 
-          className="mb-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <div className="mb-8">
-            <h2 className="text-3xl font-bold mb-4">Reports & Guidelines</h2>
-            <p className="text-muted-foreground text-lg">
-              Research reports, assessment guidelines, and best practice documentation.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {resources.reports.map((resource, index) => (
-              <ResourceCard key={index} resource={resource} />
-            ))}
-          </div>
-        </motion.section>
-
-        {/* Section Separator */}
-        <div className="border-t border-gray-200 mb-16"></div>
-
-        {/* External Links */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <div className="mb-8">
-            <h2 className="text-3xl font-bold mb-4">External Resources</h2>
-            <p className="text-muted-foreground text-lg">
-              Links to important external resources and partner organizations.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {resources.links.map((resource, index) => (
-              <ResourceCard key={index} resource={resource} isExternal={true} />
-            ))}
-          </div>
-        </motion.section>
-      </div>
+            {/* External Resources Tab */}
+            <TabsContent value="links" className="mt-8">
+              <motion.div 
+                className="space-y-6"
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+              >
+                {resources.links.map((resource, index) => (
+                  <ResourceCard key={index} resource={resource} isExternal={true} />
+                ))}
+              </motion.div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </section>
 
     </>
   );

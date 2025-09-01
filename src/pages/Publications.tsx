@@ -278,10 +278,9 @@ const Publications = () => {
                     <motion.div
                       key={index}
                       variants={cardVariants}
-                      whileHover={{ y: -4, scale: 1.01 }}
                       className="group"
                     >
-                      <Card className="hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-background to-accent/10 border-2 border-transparent hover:border-primary/20 flex flex-col">
+                      <Card className="overflow-hidden hover:shadow-lg hover:scale-[1.02] transition-all duration-300 ease-in-out bg-gradient-to-br from-background to-accent/10 border border-border flex flex-col">
                         <CardContent className="p-6 flex-grow">
                           <div className="flex gap-4">
                             <div className="flex-shrink-0">
