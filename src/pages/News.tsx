@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Calendar, Clock, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // Import images
 import capacityImg from '@/assets/capacity.jpg';
@@ -49,6 +49,17 @@ interface NewsItem {
   link: string;
 }
 
+interface SupabaseEvent {
+  id: string;
+  title: string;
+  description: string;
+  event_date: string;
+  event_time: string;
+  location: string;
+  image_url?: string;
+  is_active: boolean;
+}
+
 interface Event {
   id: number;
   title: string;
@@ -61,6 +72,8 @@ interface Event {
 
 const News = () => {
   const navigate = useNavigate();
+  const [supabaseEvents, setSupabaseEvents] = useState<SupabaseEvent[]>([]);
+  const [loadingEvents, setLoadingEvents] = useState(true);
   
   // Animation variants
   const fadeUpVariants = {
@@ -89,7 +102,70 @@ const News = () => {
     visible: { opacity: 1, scale: 1 }
   };
 
-const upcomingEvents: Event[] = []; // No future events beyond current date (31 Aug 2025)
+  // Load events from Supabase
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const { supabase } = await import('@/services/supabase');
+        const { data, error } = await supabase
+          .from('upcoming_events')
+          .select('*')
+          .eq('is_active', true)
+          .order('event_date', { ascending: true });
+
+        if (error) {
+          console.error('Error fetching events:', error);
+        } else {
+          console.log('Fetched events from database:', data);
+          setSupabaseEvents(data || []);
+        }
+      } catch (err) {
+        console.error('Error loading events:', err);
+      } finally {
+        setLoadingEvents(false);
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
+const upcomingEvents: Event[] = supabaseEvents
+  .filter(event => {
+    let eventDateTime;
+    
+    // Check if event_date already includes time (ISO format)
+    if (event.event_date.includes('T')) {
+      // Date is already in ISO format, use it directly
+      eventDateTime = new Date(event.event_date);
+    } else {
+      // Date is just date, combine with time
+      eventDateTime = new Date(`${event.event_date}T${event.event_time || '00:00'}`);
+    }
+    
+    const currentDateTime = new Date();
+    
+    console.log(`Event: ${event.title}`);
+    console.log(`Raw event_date: ${event.event_date}`);
+    console.log(`Raw event_time: ${event.event_time}`);
+    console.log(`Parsed Event DateTime: ${eventDateTime}`);
+    console.log(`Current DateTime: ${currentDateTime}`);
+    console.log(`Is Future Event: ${eventDateTime > currentDateTime}`);
+    console.log('---');
+    
+    return eventDateTime > currentDateTime;
+  })
+  .map(event => ({
+    id: parseInt(event.id.substring(0, 8), 16),
+    title: event.title,
+    date: event.event_date,
+    time: event.event_time || '00:00',
+    location: event.location || 'TBA',
+    description: event.description || '',
+    image: event.image_url || '/placeholder.svg'
+  }));
+
+console.log('Total events from DB:', supabaseEvents.length);
+console.log('Upcoming events after filter:', upcomingEvents.length);
 
 const newsItems: NewsItem[] = [
   {
@@ -419,6 +495,44 @@ const sortedNewsItems = [...newsItems].sort((a, b) => {
   return dateB.getTime() - dateA.getTime();
 });
 
+// Convert past Supabase events to news items format
+const pastEventsAsNews: NewsItem[] = supabaseEvents
+  .filter(event => {
+    let eventDateTime;
+    
+    // Check if event_date already includes time (ISO format)
+    if (event.event_date.includes('T')) {
+      // Date is already in ISO format, use it directly
+      eventDateTime = new Date(event.event_date);
+    } else {
+      // Date is just date, combine with time
+      eventDateTime = new Date(`${event.event_date}T${event.event_time || '00:00'}`);
+    }
+    
+    const currentDateTime = new Date();
+    return eventDateTime <= currentDateTime;
+  })
+  .map(event => ({
+    id: parseInt(event.id.substring(0, 8), 16),
+    title: event.title,
+    excerpt: event.description || 'Event completed',
+    category: "Event",
+    date: new Date(event.event_date).toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    }),
+    image: event.image_url || '',
+    link: "#"
+  }));
+
+// Combine past events with existing news items and sort
+const allNewsItems = [...pastEventsAsNews, ...newsItems].sort((a, b) => {
+  const dateA = parseDate(a.date);
+  const dateB = parseDate(b.date);
+  return dateB.getTime() - dateA.getTime();
+});
+
 // Events data
 const eventsData: NewsItem[] = [
   {
@@ -532,7 +646,12 @@ const resources: NewsItem[] = [
                 initial="hidden"
                 animate="visible"
               >
-                {upcomingEvents.length === 0 ? (
+                {loadingEvents ? (
+                  <div className="col-span-full text-center py-12">
+                    <div className="animate-spin w-8 h-8 border-2 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
+                    <p className="text-muted-foreground">Loading upcoming events...</p>
+                  </div>
+                ) : upcomingEvents.length === 0 ? (
                   <div className="col-span-full text-center py-12">
                     <Calendar className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
                     <h3 className="text-xl font-semibold mb-2">No Upcoming Events</h3>
@@ -589,15 +708,6 @@ const resources: NewsItem[] = [
                           >
                             {event.description}
                           </motion.p>
-                          <motion.div variants={fadeUpVariants}>
-                            <Button 
-                              variant="outline" 
-                              className="w-full"
-                              onClick={() => navigate(`/news/${event.id}`)}
-                            >
-                              Learn More
-                            </Button>
-                          </motion.div>
                         </CardContent>
                       </Card>
                     </motion.div>
@@ -614,7 +724,7 @@ const resources: NewsItem[] = [
                 initial="hidden"
                 animate="visible"
               >
-                {sortedNewsItems.map((news) => (
+                {allNewsItems.map((news) => (
                   <motion.div
                     key={news.id}
                     variants={cardVariants}
@@ -643,6 +753,9 @@ const resources: NewsItem[] = [
                                 day: 'numeric' 
                               })}
                             </span>
+                            {news.category === "Event" && (
+                              <Badge variant="secondary">Past Event</Badge>
+                            )}
                           </motion.div>
                           <motion.h3 
                             className="text-xl font-semibold mb-3 leading-tight"

@@ -26,6 +26,9 @@ import OurThematicAreas from "./pages/OurThematicAreas";
 import Committee from "./pages/AdvisoryCommittee";
 import NotFound from "./pages/NotFound";
 
+// Simple admin page
+import SimpleAdminLogin from "./pages/admin/SimpleAdminLogin";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -36,6 +39,10 @@ const App = () => (
         <LoadingProvider>
           <TooltipProvider>
             <Routes>
+              {/* Simple Admin Route */}
+              <Route path="/admin" element={<SimpleAdminLogin />} />
+              
+              {/* Main Website Routes */}
               <Route element={<MainLayout>
                 <Outlet />
               </MainLayout>}>
