@@ -15,7 +15,7 @@ export async function fetchData<T>(
   table: string,
   query: {
     select?: string;
-    eq?: Record<string, any>;
+    eq?: Record<string, unknown>;
     order?: { column: string; ascending?: boolean };
     limit?: number;
   }

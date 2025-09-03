@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { StructuredData, usePageSEO } from '@/components/common/SEO';
 import { BookOpen, Layers, Scale, Shield, GraduationCap, ArrowRight, Wind, BarChart3, Users, Globe, Leaf, Zap } from 'lucide-react';
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import Home from '@/assets/HOME.jpg';
@@ -45,6 +46,13 @@ import { Link } from 'react-router-dom';
 
 
 const Index = () => {
+  // SEO setup
+  usePageSEO(
+    'Air Quality Nexus Center - Leading Air Quality Research',
+    'A leading Center in conducting and implementing application research with the aim to gain multiple benefits from reducing air pollution through improvement of health of human and ecosystem, and protection of the climate system.',
+    'https://hunwinthu.github.io/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate/HOME.jpg'
+  );
+
   // Animation variants
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 80 },
@@ -167,6 +175,16 @@ const Index = () => {
 
   return (
     <>
+      {/* Structured Data for SEO */}
+      <StructuredData
+        type="Organization"
+        data={{}}
+      />
+      <StructuredData
+        type="WebSite"
+        data={{}}
+      />
+      
       {/* Hero Section */}
       <section className="relative h-screen overflow-hidden">
         <div 

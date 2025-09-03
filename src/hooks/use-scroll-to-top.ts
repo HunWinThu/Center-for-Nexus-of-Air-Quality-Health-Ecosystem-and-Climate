@@ -4,7 +4,7 @@ import { useEffect } from 'react';
  * Custom hook to scroll to top when component mounts or dependency changes
  * @param dependency - Optional dependency to trigger scroll on change
  */
-export const useScrollToTop = (dependency?: any) => {
+export const useScrollToTop = (dependency?: unknown) => {
   useEffect(() => {
     // Multiple scroll attempts to ensure it works
     window.scrollTo(0, 0);
