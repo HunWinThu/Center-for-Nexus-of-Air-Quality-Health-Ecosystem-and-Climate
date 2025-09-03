@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { StructuredData, usePageSEO } from '@/components/common/SEO';
-import { BookOpen, Layers, Scale, Shield, GraduationCap, ArrowRight, Wind, BarChart3, Users, Globe, Leaf, Zap } from 'lucide-react';
+import { BookOpen, Layers, Scale, Shield, GraduationCap, ArrowRight, Wind, BarChart3, Users, Globe, Leaf, Zap, Clock, Calendar } from 'lucide-react';
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import Home from '@/assets/HOME.jpg';
 import missionsHero from '@/assets/hig-quality.jpg';
@@ -13,6 +13,8 @@ import partner1 from '@/assets/partners-1.png';
 import partner2 from '@/assets/partner-2.png';
 import partner3 from '@/assets/partner-3.png';
 import partner4 from '@/assets/partners-4.jpeg';
+import partner5 from '@/assets/partner-5.png';
+import partner6 from '@/assets/partner-6.png';
 import igesLogo from '@/assets/partners/international/iges.svg';
 import pcdLogo from '@/assets/partners/international/pcd-thailand.png';
 import climateImage from '@/assets/co-benefits.png';
@@ -41,17 +43,820 @@ import unep from '@/assets/collaborators/United_Nations_Environment_Programme_Lo
 import vanlang from '@/assets/collaborators/vanlang.png';
 import vnu from '@/assets/collaborators/VNU-USSH (1).jpg';
 import bg_3 from '@/assets/bg_3.jpg';
+import React, { lazy, Suspense, useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { supabase } from '@/services/supabase';
+import { getLatestNews, type NewsItem } from '@/data/allSharedNewsData';
 
 
 const Index = () => {
+  // Types for events and news
+  interface SupabaseEvent {
+    id: string;
+    title: string;
+    description: string;
+    event_date: string;
+    event_time: string;
+    location: string;
+    image_url?: string;
+    is_active: boolean;
+  }
+
+  interface NewsItem {
+    id: number;
+    title: string;
+    date: string;
+    category: string;
+    content: string;
+    image: string;
+    location?: string;
+    time?: string;
+  }
+
   // SEO setup
   usePageSEO(
     'Air Quality Nexus Center - Leading Air Quality Research',
     'A leading Center in conducting and implementing application research with the aim to gain multiple benefits from reducing air pollution through improvement of health of human and ecosystem, and protection of the climate system.',
     'https://hunwinthu.github.io/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate/HOME.jpg'
   );
+
+  // Lazy loading hook
+  const useIntersectionObserver = (threshold = 0.1) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+      const currentRef = ref.current;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.unobserve(entry.target);
+          }
+        },
+        { threshold }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, [threshold]);
+
+    return [ref, isVisible] as const;
+  };
+
+  // Card Skeleton Component
+  const CardSkeleton = ({ className = "" }: { className?: string }) => (
+    <div className={`animate-pulse ${className}`}>
+      <div className="bg-gray-200 rounded-3xl p-6 space-y-4">
+        <div className="h-6 bg-gray-300 rounded w-3/4"></div>
+        <div className="space-y-2">
+          <div className="h-4 bg-gray-300 rounded"></div>
+          <div className="h-4 bg-gray-300 rounded w-5/6"></div>
+        </div>
+      </div>
+    </div>
+  );
+
+  // Mission Vision Cards Component
+  const MissionVisionCards = () => {
+    const [missionRef, missionVisible] = useIntersectionObserver(0.2);
+    const [visionRef, visionVisible] = useIntersectionObserver(0.2);
+
+    return (
+      <div className="max-w-4xl mx-auto grid grid-cols-1 gap-8">
+        <div ref={visionRef}>
+          {visionVisible ? (
+            <motion.div
+              className="bg-white/15 backdrop-blur-lg p-8 md:p-10 rounded-3xl border border-white/20 shadow-2xl"
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <h2 className="text-5xl font-bold text-white mb-4">Our Vision</h2>
+              <p className="text-xl text-white/90">
+                Air Quality Nexus will be a leading Center in conducting and implementing application research with the aim to gain
+                multiple benefits from reducing air pollution through improvement of health of human and ecosystem,
+                and protection of the climate system.
+              </p>
+            </motion.div>
+          ) : (
+            <CardSkeleton className="h-64" />
+          )}
+        </div>
+        
+        <div ref={missionRef}>
+          {missionVisible ? (
+            <motion.div
+              className="bg-white/15 backdrop-blur-lg p-8 md:p-10 rounded-3xl border border-white/20 shadow-2xl"
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+            >
+              <h2 className="text-5xl font-bold text-white mb-4">Our Missions</h2>
+              <ul className="text-xl list-disc pl-6 space-y-3 text-white/90">
+                <li>Conduct high-quality research demonstrated by real-life applications for improving air quality in Asia and beyond;</li>
+                <li>Focus on the multi-pollutant and multi-effect approach to provide cost-effective solutions to complex air pollution problems;</li>
+                <li>Demonstrate and quantitatively assess the co-benefits to air quality and climate of integrated measures applicable in local context;</li>
+                <li>Continue and expand international cooperation in conducting research projects, consultancies, training, etc.;</li>
+                <li>Provide assistance to governments, and other development partners in the planning, designing, scaling up, and implementation of clean air action plans with multiple benefits.</li>
+                <li>Build capacity and promote multi-disciplinary approaches in atmospheric sciences within AIT and internationally;</li>
+              </ul>
+            </motion.div>
+          ) : (
+            <CardSkeleton className="h-96" />
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  // Hook to track the news events state
+  const useNewsEventsData = () => {
+    const [upcomingEvents, setUpcomingEvents] = useState<SupabaseEvent[]>([]);
+    const [pastEvents, setPastEvents] = useState<NewsItem[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [showingEvents, setShowingEvents] = useState(false);
+
+    // Events data (same as in News.tsx Events tab)
+    const eventsData: NewsItem[] = [
+      {
+        id: 1,
+        title: "Launching Ceremony",
+        content: "On July 10, 2024, the Center for Nexus of Air Quality, Health, Ecosystem, and Climate known as the Air Quality Nexus Center hosted its official launching ceremony. Led by Distinguished Professor Nguyen Thi Kim Oanh as a Director, the Center aims to advance capacity building and cutting-edge research in atmospheric sciences, fostering multidisciplinary collaboration within the Center and with global partners.",
+        category: "Event",
+        date: "10 July 2024",
+        image: "/placeholder.svg"
+      },
+      {
+        id: 2,
+        title: "International workshop of project SOOT-SEA – Atmospheric Activities",
+        content: "On 4 October 2024, AirQC successfully organized the international workshop for the project SOOT-SEA – Atmospheric Activities at AITCC, with participation from the French and ASEAN colleagues. SOOT-SEA is an international network focused on understanding the impact of black carbon in Southeast Asia, funded by IRD, France.",
+        category: "Event",
+        date: "4 October 2024",
+        image: "/placeholder.svg"
+      },
+      {
+        id: 3,
+        title: "Organized a Public Seminar: Wildfire Smoke Health Impacts and Adaptation",
+        content: "On 18 June 2025, the AirQC Center hosted a public seminar on Wildfire Smoke: Health Impacts and Adaptation in Southeast Asia and Australia, bringing together regional and international experts to discuss health risks from wildfire smoke and haze under climate change.",
+        category: "Event",
+        date: "18 June 2025",
+        image: "/placeholder.svg"
+      }
+    ];
+
+    useEffect(() => {
+      const fetchEvents = async () => {
+        try {
+          const { data, error } = await supabase
+            .from('upcoming_events')
+            .select('*')
+            .eq('is_active', true)
+            .order('event_date', { ascending: true });
+
+          if (error) {
+            console.error('Error fetching events:', error);
+          } else if (data) {
+            const now = new Date();
+            
+            // Filter to only future events
+            const futureEvents = data.filter((event: SupabaseEvent) => {
+              const eventDate = new Date(
+                event.event_date.includes('T') 
+                  ? event.event_date 
+                  : `${event.event_date}T${event.event_time || '00:00'}`
+              );
+              return eventDate > now;
+            });
+
+            // Convert past Supabase events to news items format for fallback
+            const pastSupabaseEvents = data
+              .filter((event: SupabaseEvent) => {
+                const eventDate = new Date(
+                  event.event_date.includes('T') 
+                    ? event.event_date 
+                    : `${event.event_date}T${event.event_time || '00:00'}`
+                );
+                return eventDate <= now;
+              })
+              .map((event: SupabaseEvent) => ({
+                id: parseInt(event.id.substring(0, 8), 16),
+                title: event.title,
+                content: event.description || 'Event completed',
+                category: "Event",
+                date: new Date(event.event_date).toLocaleDateString('en-US', { 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                }),
+                image: event.image_url || '/placeholder.svg',
+                location: event.location,
+                time: event.event_time
+              }));
+
+            // Combine past Supabase events with static events data
+            const allPastEvents = [...pastSupabaseEvents, ...eventsData].sort((a, b) => {
+              const dateA = new Date(a.date);
+              const dateB = new Date(b.date);
+              return dateB.getTime() - dateA.getTime();
+            });
+
+            setUpcomingEvents(futureEvents);
+            setPastEvents(allPastEvents);
+            setShowingEvents(futureEvents.length > 0);
+          }
+        } catch (err) {
+          console.error('Error loading events:', err);
+          // Fallback to static events data if Supabase fails
+          setPastEvents(eventsData);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      fetchEvents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    return { upcomingEvents, pastEvents, loading, showingEvents };
+  };
+
+  // Dynamic subtitle component
+  const NewsEventsSubtitle = () => {
+    const { showingEvents, loading } = useNewsEventsData();
+    
+    if (loading) {
+      return (
+        <h3 className="text-2xl font-bold">Latest Updates</h3>
+      );
+    }
+
+    return (
+      <h3 className="text-2xl font-bold">
+        {showingEvents ? 'Upcoming Events' : 'Events'}
+      </h3>
+    );
+  };
+  const NewsEventsCards = () => {
+    const [newsRef, newsVisible] = useIntersectionObserver(0.1);
+    const { upcomingEvents, pastEvents, loading, showingEvents } = useNewsEventsData();
+
+    // Use upcoming events if available, otherwise use events from Events tab
+    const showEvents = upcomingEvents.length > 0;
+    const displayItems = showEvents ? upcomingEvents.slice(0, 1) : pastEvents.slice(0, 1);
+
+    return (
+      <div ref={newsRef}>
+        {newsVisible ? (
+          <motion.div
+            className="max-w-4xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            {loading ? (
+              <div className="animate-pulse">
+                <div className="bg-gray-200 rounded-2xl h-[400px] shadow-lg"></div>
+              </div>
+            ) : (
+              displayItems.map((item, idx) => (
+                <motion.div
+                  key={showEvents ? (item as SupabaseEvent).id : (item as NewsItem).id}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  <Card className="group relative overflow-hidden bg-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-3 border-0 rounded-3xl">
+                    {/* Professional Event Banner */}
+                    <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary via-primary/80 to-primary/60"></div>
+                    
+                    {/* Full-width Hero Section */}
+                    <div className="grid lg:grid-cols-2 gap-0 min-h-[350px]">
+                      {/* Hero Image Section */}
+                      <div className="relative overflow-hidden lg:order-1">
+                        <img 
+                          src={
+                            showEvents 
+                              ? (item as SupabaseEvent).image_url || '/placeholder.svg'
+                              : (item as NewsItem).image || '/placeholder.svg'
+                          } 
+                          alt={
+                            showEvents 
+                              ? (item as SupabaseEvent).title
+                              : (item as NewsItem).title
+                          }
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 min-h-[300px] lg:min-h-[350px]"
+                        />
+                        
+                        {/* Professional Date Badge */}
+                        <div className="absolute top-6 right-6">
+                          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl">
+                            <div className="text-center">
+                              <div className="text-3xl font-bold text-primary">
+                                {showEvents 
+                                  ? new Date((item as SupabaseEvent).event_date).getDate()
+                                  : new Date((item as NewsItem).date).getDate()
+                                }
+                              </div>
+                              <div className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
+                                {showEvents 
+                                  ? new Date((item as SupabaseEvent).event_date).toLocaleDateString('en-US', { month: 'short' })
+                                  : new Date((item as NewsItem).date).toLocaleDateString('en-US', { month: 'short' })
+                                }
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Event Type Badge */}
+                        <div className="absolute top-6 left-6">
+                          <Badge className="bg-gradient-to-r from-primary to-primary/80 text-white px-4 py-2 text-sm font-semibold rounded-full shadow-xl">
+                            {showEvents ? 'UPCOMING EVENT' : 'EVENT'}
+                          </Badge>
+                        </div>
+
+                        {/* Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent lg:from-transparent lg:via-transparent lg:to-black/20"></div>
+                      </div>
+
+                      {/* Content Section */}
+                      <div className="p-6 lg:p-8 flex flex-col justify-center lg:order-2">
+                        {/* Title Section */}
+                        <div className="mb-6">
+                          <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-4 group-hover:text-primary transition-colors duration-300">
+                            {showEvents ? (item as SupabaseEvent).title : (item as NewsItem).title}
+                          </h3>
+                          
+                          {/* Professional Event Details */}
+                          <div className="space-y-3 mb-4">
+                            {/* Time Info */}
+                            <div className="flex items-center gap-3 text-gray-600">
+                              <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                                <Clock className="w-4 h-4 text-primary" />
+                              </div>
+                              <div>
+                                <p className="font-semibold text-gray-900 text-sm">Time</p>
+                                <p className="text-xs">
+                                  {showEvents 
+                                    ? (item as SupabaseEvent).event_time || 'Time TBA'
+                                    : (item as NewsItem).time || 'Published'
+                                  }
+                                </p>
+                              </div>
+                            </div>
+
+                            {/* Location Info */}
+                            {(showEvents ? (item as SupabaseEvent).location : (item as NewsItem).location) && (
+                              <div className="flex items-center gap-3 text-gray-600">
+                                <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                                  <Globe className="w-4 h-4 text-primary" />
+                                </div>
+                                <div>
+                                  <p className="font-semibold text-gray-900 text-sm">Location</p>
+                                  <p className="text-xs">
+                                    {showEvents 
+                                      ? (item as SupabaseEvent).location
+                                      : (item as NewsItem).location
+                                    }
+                                  </p>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Description Section */}
+                        <div className="mb-6">
+                          <p className="text-gray-600 leading-relaxed text-base">
+                            {showEvents 
+                              ? (item as SupabaseEvent).description || 'Join us for this upcoming event.'
+                              : ((item as NewsItem).content || 'Event information.').slice(0, 150) + '...'
+                            }
+                          </p>
+                        </div>
+
+                        {/* Professional CTA Section */}
+                        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                              <Calendar className="w-5 h-5 text-primary" />
+                            </div>
+                            <div>
+                              <p className="font-semibold text-gray-900 text-sm">
+                                {showEvents ? 'Save the Date' : 'Learn More'}
+                              </p>
+                              <p className="text-xs text-gray-500">
+                                {showEvents ? 'Add to your calendar' : 'View event details'}
+                              </p>
+                            </div>
+                          </div>
+                          
+                          <Button 
+                            className="group/btn bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white px-6 py-2.5 rounded-full font-semibold text-base shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                          >
+                            <span>{showEvents ? 'Register Now' : 'Read More'}</span>
+                            <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </motion.div>
+              ))
+            )}
+          </motion.div>
+        ) : (
+          <div className="max-w-4xl mx-auto">
+            <div className="animate-pulse bg-gray-200 rounded-3xl h-[400px] shadow-2xl"></div>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  // Latest News Cards Component
+  const LatestNewsCards = () => {
+    const [newsRef, newsVisible] = useIntersectionObserver(0.1);
+
+    return (
+      <div ref={newsRef}>
+        {newsVisible ? (
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            {getLatestNews(3).map((news, idx) => (
+              <motion.div
+                key={news.id}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: idx * 0.2 }}
+              >
+                <Link to="/news" className="block">
+                  <Card className="group relative overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-0 rounded-2xl h-[420px] cursor-pointer flex flex-col">
+                    {/* News Image */}
+                    <div className="relative overflow-hidden">
+                      <img 
+                        src={news.image || '/placeholder.svg'} 
+                        alt={news.title}
+                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                      
+                      {/* Date Badge */}
+                      <div className="absolute top-4 right-4">
+                        <div className="bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-lg">
+                          <div className="text-center">
+                            <div className="text-lg font-bold text-primary">
+                              {new Date(news.date).getDate()}
+                            </div>
+                            <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                              {new Date(news.date).toLocaleDateString('en-US', { month: 'short' })}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <CardContent className="p-6 flex-1 flex flex-col justify-between">
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold text-gray-900 leading-tight mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-2">
+                          {news.title}
+                        </h3>
+                        
+                        <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                          {news.excerpt.slice(0, 120) + '...'}
+                        </p>
+                      </div>
+
+                      {/* Footer */}
+                      <div className="flex items-center justify-end pt-4 border-t border-gray-100 mt-auto">
+                        <div className="text-primary hover:text-primary hover:bg-primary/10 px-3 py-1 rounded-lg font-medium text-sm transition-all duration-300 flex items-center gap-1">
+                          Read More
+                          <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {[...Array(3)].map((_, i) => (
+              <CardSkeleton key={i} className="h-80" />
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  // Thematic Areas Cards Component
+  const ThematicAreasCards = () => {
+    const [thematicRef, thematicVisible] = useIntersectionObserver(0.1);
+
+    return (
+      <div ref={thematicRef}>
+        {thematicVisible ? (
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            {features.slice(0, 6).map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Link 
+                  to={`/what-we-do#${feature.title.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`}
+                  className="block"
+                >
+                  <Card 
+                    className="group hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-background to-accent/50 aspect-square cursor-pointer hover:scale-105"
+                  >
+                    <CardContent className="h-full p-6 flex flex-col items-center justify-center text-center">
+                      <feature.icon className="mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" size={99} />
+                      <h3 className="text-2xl font-semibold text-foreground mb-3">{feature.title}</h3>
+                      <p className="text-muted-foreground">{feature.description}</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {[...Array(6)].map((_, i) => (
+              <CardSkeleton key={i} className="aspect-square" />
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  // Strategic Partners Cards Component
+  const StrategicPartnersCards = () => {
+    const [partnersRef, partnersVisible] = useIntersectionObserver(0.1);
+
+    return (
+      <div ref={partnersRef}>
+        {partnersVisible ? (
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="flex flex-col items-center text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 80, damping: 14, delay: 0.2 }}
+                className="w-full flex flex-col items-center"
+              >
+                <a href="https://cleanairasia.org/" target="_blank" rel="noopener noreferrer" className="w-full">
+                  <Card className="group hover:shadow-lg transition-all duration-300 bg-white rounded-3xl h-44 w-full flex items-center justify-center">
+                    <CardContent className="p-6 h-full w-full flex items-center justify-center">
+                      <img 
+                        src={partner1}
+                        alt="Clean Air Asia logo"
+                        className="max-h-full max-w-full object-contain"
+                        loading="lazy"
+                      />
+                    </CardContent>
+                  </Card>
+                </a>
+                <h3 className="mt-3 text-base font-medium text-foreground">Clean Air Asia</h3>
+              </motion.div>
+            </div>
+            
+            <div className="flex flex-col items-center text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 80, damping: 14, delay: 0.05 }}
+                className="w-full flex flex-col items-center"
+              >
+                <a href="https://www.fhi360.org/" target="_blank" rel="noopener noreferrer" className="w-full">
+                  <Card className="group hover:shadow-lg transition-all duration-300 bg-white rounded-3xl h-44 w-full flex items-center justify-center">
+                    <CardContent className="p-6 h-full w-full flex items-center justify-center">
+                      <img 
+                        src={partner2}
+                        alt="FHI 360 logo"
+                        className="max-h-full max-w-full object-contain"
+                        loading="lazy"
+                      />
+                    </CardContent>
+                  </Card>
+                </a>
+                <h3 className="mt-3 text-base font-medium text-foreground">Family Health International (FHI 360)</h3>
+              </motion.div>
+            </div>
+
+            <div className="flex flex-col items-center text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 80, damping: 14, delay: 0.1 }}
+                className="w-full flex flex-col items-center"
+              >
+                <a href="https://www.canberra.edu.au/faculties/health/heal" target="_blank" rel="noopener noreferrer" className="w-full">
+                  <Card className="group hover:shadow-lg transition-all duration-300 bg-white rounded-3xl h-44 w-full flex items-center justify-center">
+                    <CardContent className="p-6 h-full w-full flex items-center justify-center">
+                      <img 
+                        src={partner3}
+                        alt="HEAL Global Research Centre logo"
+                        className="max-h-full max-w-full object-contain"
+                        loading="lazy"
+                      />
+                    </CardContent>
+                  </Card>
+                </a>
+                <h3 className="mt-3 text-base font-medium text-foreground">Healthy Environments and Lives (HEAL) Global Research Centre</h3>
+              </motion.div>
+            </div>
+            
+            <div className="flex flex-col items-center text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 80, damping: 14, delay: 0.15 }}
+                className="w-full flex flex-col items-center"
+              >
+                <a href="https://www.sinica.edu.tw/en" target="_blank" rel="noopener noreferrer" className="w-full">
+                  <Card className="group hover:shadow-lg transition-all duration-300 bg-white rounded-3xl h-44 w-full flex items-center justify-center">
+                    <CardContent className="p-6 h-full w-full flex items-center justify-center">
+                      <img 
+                        src={partner4}
+                        alt="Academia Sinica logo"
+                        className="max-h-full max-w-full object-contain"
+                        loading="lazy"
+                      />
+                    </CardContent>
+                  </Card>
+                </a>
+                <h3 className="mt-3 text-base font-medium text-foreground">Academia Sinica</h3>
+              </motion.div>
+            </div>
+            
+            <div className="flex flex-col items-center text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 80, damping: 14, delay: 0.2 }}
+                className="w-full flex flex-col items-center"
+              >
+                <a href="https://www.egis-group.com/" target="_blank" rel="noopener noreferrer" className="w-full">
+                  <Card className="group hover:shadow-lg transition-all duration-300 bg-white rounded-3xl h-44 w-full flex items-center justify-center">
+                    <CardContent className="p-6 h-full w-full flex items-center justify-center">
+                      <img 
+                        src={partner5}
+                        alt="egis logo"
+                        className="max-h-full max-w-full object-contain"
+                        loading="lazy"
+                      />
+                    </CardContent>
+                  </Card>
+                </a>
+                <h3 className="mt-3 text-base font-medium text-foreground">egis</h3>
+              </motion.div>
+            </div>
+            
+            <div className="flex flex-col items-center text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 80, damping: 14, delay: 0.25 }}
+                className="w-full flex flex-col items-center"
+              >
+                <a href="https://www.canberra.edu.au/" target="_blank" rel="noopener noreferrer" className="w-full">
+                  <Card className="group hover:shadow-lg transition-all duration-300 bg-white rounded-3xl h-44 w-full flex items-center justify-center">
+                    <CardContent className="p-6 h-full w-full flex items-center justify-center">
+                      <img 
+                        src={partner6}
+                        alt="University of Canberra logo"
+                        className="max-h-full max-w-full object-contain"
+                        loading="lazy"
+                      />
+                    </CardContent>
+                  </Card>
+                </a>
+                <h3 className="mt-3 text-base font-medium text-foreground">University of Canberra</h3>
+              </motion.div>
+            </div>
+          </motion.div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+            {[...Array(6)].map((_, i) => (
+              <CardSkeleton key={i} className="h-56" />
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  // International Collaborators Cards Component
+  const InternationalCollaboratorsCards = () => {
+    const [collabRef, collabVisible] = useIntersectionObserver(0.1);
+
+    return (
+      <div ref={collabRef}>
+        {collabVisible ? (
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            {collaborators.map((p, idx) => (
+              <div key={idx} className="flex flex-col items-center text-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ type: 'spring', stiffness: 80, damping: 14, delay: idx * 0.06 }}
+                  className="w-full flex flex-col items-center"
+                >
+                  <a href={p.href} target="_blank" rel="noopener noreferrer" className="w-full">
+                    <Card className="group hover:shadow-lg transition-all duration-300 bg-white rounded-3xl h-36 w-full flex items-center justify-center">
+                      <CardContent className="p-4 h-full w-full flex items-center justify-center">
+                        <img src={p.logo} alt={`${p.name} logo`} loading="lazy" className="max-h-full max-w-full object-contain" />
+                      </CardContent>
+                    </Card>
+                  </a>
+                  <h3 className="mt-3 text-sm font-medium text-foreground">{p.name}</h3>
+                </motion.div>
+              </div>
+            ))}
+          </motion.div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {[...Array(21)].map((_, i) => (
+              <CardSkeleton key={i} className="h-48" />
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  // Call to Action Card Component
+  const CallToActionCard = () => {
+    const [ctaRef, ctaVisible] = useIntersectionObserver(0.2);
+
+    return (
+      <div ref={ctaRef}>
+        {ctaVisible ? (
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <Card className="bg-white border-primary/10">
+              <CardContent className="p-12 text-center">
+                <Leaf className="mx-auto mb-6 text-primary" size={64} />
+                <h2 className="text-3xl font-bold text-foreground mb-4">Join Our Mission</h2>
+                <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+                  Whether you're a researcher, community member, or organization, there are many ways 
+                  to contribute to cleaner air and healthier communities.
+                </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link to="/contact" aria-label="Go to Partners Page">
+                      <Button 
+                        size="lg" 
+                        className="px-8 py-4 text-lg bg-background/80 text-foreground backdrop-blur-md border border-white/30 shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-2xl"
+                      >
+                        Partner With Us
+                        <ArrowRight className="ml-2" size={20} />
+                      </Button>
+                    </Link>
+                  </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ) : (
+          <CardSkeleton className="h-80" />
+        )}
+      </div>
+    );
+  };
 
   // Animation variants
   const fadeUpVariants = {
@@ -145,7 +950,8 @@ const Index = () => {
     { name: 'FHI 360', href: 'https://www.fhi360.org/', logo: partner2 },
     { name: 'HEAL Global Research Centre', href: 'https://www.canberra.edu.au/faculties/health/heal', logo: partner3 },
     { name: 'Academia Sinica', href: 'https://www.sinica.edu.tw/en', logo: partner4 },
-    { name: 'IGES', href: 'https://www.iges.or.jp/', logo: igesLogo },
+    { name: 'egis', href: 'https://www.egis-group.com/', logo: partner5 },
+    { name: 'University of Canberra', href: 'https://www.canberra.edu.au/', logo: partner6 },
     { name: 'Pollution Control Department, Thailand', href: 'https://www.pcd.go.th/', logo: pcdLogo },
   ];
 
@@ -157,7 +963,6 @@ const Index = () => {
     { name: 'FHI 360', href: 'https://www.fhi360.org/', logo: partner2 },
     { name: 'HEAL', href: 'https://www.canberra.edu.au/faculties/health/heal', logo: partner3 },
     { name: 'Academia Sinica', href: 'https://www.sinica.edu.tw/en', logo: partner4 },
-    { name: 'Hanoi University of Science and Technology', href: 'https://hust.edu.vn/en/', logo: hanoiUniversity },
     { name: 'EANET', href: 'https://www.eanet.asia/', logo: eanet },
     { name: 'Pollution Control Department', href: 'https://www.pcd.go.th/', logo: pcd },
     { name: 'Emory University', href: 'https://www.emory.edu/home/index.html', logo: emory },
@@ -169,8 +974,6 @@ const Index = () => {
     { name: 'RIFS', href: 'https://www.rifs-potsdam.de/en', logo: rifs },
     { name: 'Particles Plus', href: 'https://particlesplus.com/', logo: particlesPlus },
     { name: 'UNEP', href: 'https://www.unep.org/', logo: unep },
-    { name: 'VANLANG', href: 'https://www.vlu.edu.vn/en', logo: vanlang },    
-    { name: 'VNU', href: 'https://english.hus.vnu.edu.vn/', logo: vnu },
   ];
 
   return (
@@ -275,27 +1078,9 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/20 to-black/30"></div>
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto grid grid-cols-1 gap-8">
-            <div className="bg-white/15 backdrop-blur-lg p-8 md:p-10 rounded-3xl border border-white/20 shadow-2xl">
-              <h2 className="text-5xl font-bold text-white mb-4">Our Vision</h2>
-              <p className="text-xl text-white/90">
-                Air Quality Nexus will be a leading Center in conducting and implementing application research with the aim to gain
-                multiple benefits from reducing air pollution through improvement of health of human and ecosystem,
-                and protection of the climate system.
-              </p>
-            </div>
-            <div className="bg-white/15 backdrop-blur-lg p-8 md:p-10 rounded-3xl border border-white/20 shadow-2xl">
-              <h2 className="text-5xl font-bold text-white mb-4">Our Missions</h2>
-              <ul className="text-xl list-disc pl-6 space-y-3 text-white/90">
-                <li>Conduct high-quality research demonstrated by real-life applications for improving air quality in Asia and beyond;</li>
-                <li>Focus on the multi-pollutant and multi-effect approach to provide cost-effective solutions to complex air pollution problems;</li>
-                <li>Demonstrate and quantitatively assess the co-benefits to air quality and climate of integrated measures applicable in local context;</li>
-                <li>Continue and expand international cooperation in conducting research projects, consultancies, training, etc.;</li>
-                <li>Provide assistance to governments, and other development partners in the planning, designing, scaling up, and implementation of clean air action plans with multiple benefits.</li>
-                <li>Build capacity and promote multi-disciplinary approaches in atmospheric sciences within AIT and internationally;</li>
-              </ul>
-            </div>
-          </div>
+          <Suspense fallback={<div className="max-w-4xl mx-auto grid grid-cols-1 gap-8"><CardSkeleton className="h-64" /><CardSkeleton className="h-96" /></div>}>
+            <MissionVisionCards />
+          </Suspense>
         </div>
       </section>
 
@@ -303,92 +1088,50 @@ const Index = () => {
       <div className="border-t border-gray-200"></div>
 
       {/* Recent Research & News */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-20"> 
             <h2 className="text-5xl font-bold text-foreground mb-6">News & Events</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Stay updated with our latest research findings, publications, and news from the Air Quality Nexus Center.
-            </p>
-          </div>
+          </div>      
           
-          <div className="mb-16">
-            <div className="flex items-center gap-2 mb-6">
-              <h3 className="text-2xl font-bold">Upcoming Events</h3>
+          {/* Upcoming Events Section */}
+          <div className="mb-20">
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent flex-1"></div>
+              <NewsEventsSubtitle />
+              <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent flex-1"></div>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="relative">
-                  <img 
-                    src={capacity} 
-                    alt="International Conference on Air Quality Management"
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-primary text-primary-foreground">
-                      Sep 15
-                    </Badge>
-                  </div>
-                </div>
-                <CardContent className="p-6">
-                  <h4 className="text-xl font-semibold mb-2">International Conference on Air Quality Management</h4>
-                  <div className="text-sm text-muted-foreground mb-2">
-                    <div className="flex items-center gap-1 mb-1">
-                      9:00 AM - 5:00 PM
-                    </div>
-                    <div className="flex items-center gap-1">
-                      Bangkok, Thailand
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground mb-4">A comprehensive conference bringing together researchers, policymakers, and industry experts to discuss latest developments in air quality management across Southeast Asia.</p>
-                  <Button className="w-full px-8 py-4 text-lg bg-background/80 text-foreground backdrop-blur-md border border-white/30 shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-2xl">
-                    Learn More
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="relative">
-                  <img 
-                    src={multidisciplinaryImage} 
-                    alt="Workshop on Emission Inventory Development"
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-primary text-primary-foreground">
-                      Oct 22
-                    </Badge>
-                  </div>
-                </div>
-                <CardContent className="p-6">
-                  <h4 className="text-xl font-semibold mb-2">Workshop on Emission Inventory Development</h4>
-                  <div className="text-sm text-muted-foreground mb-2">
-                    <div className="flex items-center gap-1 mb-1">
-                      2:00 PM - 6:00 PM
-                    </div>
-                    <div className="flex items-center gap-1">
-                      Virtual Event
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground mb-4">Hands-on workshop for building technical capacity in emission inventory development using latest methodologies and tools.</p>
-                  <Button className="w-full px-8 py-4 text-lg bg-background/80 text-foreground backdrop-blur-md border border-white/30 shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-2xl">
-                    Learn More
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
+              <Suspense fallback={<div className="max-w-4xl mx-auto"><div className="animate-pulse bg-gray-200 rounded-3xl h-[400px] shadow-2xl"></div></div>}>
+              <NewsEventsCards />
+            </Suspense>
           </div>
-                    {/* Navigation Button */}
-          <div className="text-center">
-            <Link to="/news" aria-label="Go to News & Events">
-              <Button
-                size="lg"
-                className="px-8 py-4 text-lg bg-background/80 text-foreground backdrop-blur-md border border-white/30 shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-2xl"
-              >
-                View All News & Events
-                <ArrowRight className="ml-2" size={20} />
-              </Button>
-            </Link>
+
+          {/* Latest News Section */}
+          <div className="mb-20">
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent flex-1"></div>
+              <h3 className="text-2xl font-bold">Latest News</h3>
+              <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent flex-1"></div>
+            </div>
+            <Suspense fallback={<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><div className="animate-pulse bg-gray-200 rounded-3xl h-[300px] shadow-xl"></div><div className="animate-pulse bg-gray-200 rounded-3xl h-[300px] shadow-xl"></div><div className="animate-pulse bg-gray-200 rounded-3xl h-[300px] shadow-xl"></div></div>}>
+              <LatestNewsCards />
+            </Suspense>
+          </div>
+
+          {/* Navigation Button */}
+          <div className="text-center mt-16">
+            <div className="inline-flex flex-col items-center gap-4">
+              <p className="text-muted-foreground">Discover more events and news</p>
+              <Link to="/news" aria-label="Go to News & Events">
+                <Button
+                  size="lg"
+                  className="group px-8 py-4 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  View All News & Events
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -433,25 +1176,9 @@ const Index = () => {
             </div>
                   
             {/* Modified grid layout - 3 columns × 2 rows */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-            {features.slice(0, 6).map((feature, index) => ( // Show only 6 items (3×2)
-              <Link 
-                key={index}
-                to={`/what-we-do#${feature.title.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`}
-                className="block"
-              >
-                <Card 
-                  className="group hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-background to-accent/50 aspect-square cursor-pointer hover:scale-105" // aspect-square makes it square
-                >
-                  <CardContent className="h-full p-6 flex flex-col items-center justify-center text-center">
-                    <feature.icon className="mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" size={99} />
-                    <h3 className="text-2xl font-semibold text-foreground mb-3">{feature.title}</h3>
-                    <p className="text-muted-foreground">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-            </div>
+            <Suspense fallback={<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">{[...Array(6)].map((_, i) => (<CardSkeleton key={i} className="aspect-square" />))}</div>}>
+              <ThematicAreasCards />
+            </Suspense>
           </div>
         </section>
 
@@ -468,99 +1195,9 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="flex flex-col items-center text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ type: 'spring', stiffness: 80, damping: 14, delay: 0.2 }}
-                className="w-full flex flex-col items-center"
-              >
-                <a href="https://cleanairasia.org/" target="_blank" rel="noopener noreferrer" className="w-full">
-                  <Card className="group hover:shadow-lg transition-all duration-300 bg-background/80 backdrop-blur-sm rounded-3xl h-44 w-full flex items-center justify-center">
-                    <CardContent className="p-6 h-full w-full flex items-center justify-center">
-                      <img 
-                        src={partner1}
-                        alt="Clean Air Asia logo"
-                        className="max-h-full max-w-full object-contain"
-                      />
-                    </CardContent>
-                  </Card>
-                </a>
-                <h3 className="mt-3 text-base font-medium text-foreground">Clean Air Asia</h3>
-              </motion.div>
-            </div>
-            
-            <div className="flex flex-col items-center text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ type: 'spring', stiffness: 80, damping: 14, delay: 0.05 }}
-                className="w-full flex flex-col items-center"
-              >
-                <a href="https://www.fhi360.org/" target="_blank" rel="noopener noreferrer" className="w-full">
-                  <Card className="group hover:shadow-lg transition-all duration-300 bg-background/80 backdrop-blur-sm rounded-3xl h-44 w-full flex items-center justify-center">
-                    <CardContent className="p-6 h-full w-full flex items-center justify-center">
-                      <img 
-                        src={partner2}
-                        alt="FHI 360 logo"
-                        className="max-h-full max-w-full object-contain"
-                      />
-                    </CardContent>
-                  </Card>
-                </a>
-                <h3 className="mt-3 text-base font-medium text-foreground">Family Health International (FHI 360)</h3>
-              </motion.div>
-            </div>
-
-            <div className="flex flex-col items-center text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ type: 'spring', stiffness: 80, damping: 14, delay: 0.1 }}
-                className="w-full flex flex-col items-center"
-              >
-                <a href="https://www.canberra.edu.au/faculties/health/heal" target="_blank" rel="noopener noreferrer" className="w-full">
-                  <Card className="group hover:shadow-lg transition-all duration-300 bg-background/80 backdrop-blur-sm rounded-3xl h-44 w-full flex items-center justify-center">
-                    <CardContent className="p-6 h-full w-full flex items-center justify-center">
-                      <img 
-                        src={partner3}
-                        alt="HEAL Global Research Centre logo"
-                        className="max-h-full max-w-full object-contain"
-                      />
-                    </CardContent>
-                  </Card>
-                </a>
-                <h3 className="mt-3 text-base font-medium text-foreground">Healthy Environments and Lives (HEAL) Global Research Centre</h3>
-              </motion.div>
-            </div>
-            
-            <div className="flex flex-col items-center text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ type: 'spring', stiffness: 80, damping: 14, delay: 0.15 }}
-                className="w-full flex flex-col items-center"
-              >
-                <a href="https://www.sinica.edu.tw/en" target="_blank" rel="noopener noreferrer" className="w-full">
-                  <Card className="group hover:shadow-lg transition-all duration-300 bg-background/80 backdrop-blur-sm rounded-3xl h-44 w-full flex items-center justify-center">
-                    <CardContent className="p-6 h-full w-full flex items-center justify-center">
-                      <img 
-                        src={partner4}
-                        alt="Academia Sinica logo"
-                        className="max-h-full max-w-full object-contain"
-                      />
-                    </CardContent>
-                  </Card>
-                </a>
-                <h3 className="mt-3 text-base font-medium text-foreground">Academia Sinica</h3>
-              </motion.div>
-            </div>
-          </div>
+          <Suspense fallback={<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">{[...Array(6)].map((_, i) => (<CardSkeleton key={i} className="h-56" />))}</div>}>
+            <StrategicPartnersCards />
+          </Suspense>
         </div>
       </section>
 
@@ -576,28 +1213,9 @@ const Index = () => {
                Key international organizations and universities we collaborate with.
              </p>
            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-              {collaborators.map((p, idx) => (
-                <div key={idx} className="flex flex-col items-center text-center">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20, scale: 0.98 }}
-                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ type: 'spring', stiffness: 80, damping: 14, delay: idx * 0.06 }}
-                    className="w-full flex flex-col items-center"
-                  >
-                    <a href={p.href} target="_blank" rel="noopener noreferrer" className="w-full">
-                      <Card className="group hover:shadow-lg transition-all duration-300 bg-background/80 backdrop-blur-sm rounded-3xl h-36 w-full flex items-center justify-center">
-                        <CardContent className="p-4 h-full w-full flex items-center justify-center">
-                          <img src={p.logo} alt={`${p.name} logo`} loading="lazy" className="max-h-full max-w-full object-contain" />
-                        </CardContent>
-                      </Card>
-                    </a>
-                    <h3 className="mt-3 text-sm font-medium text-foreground">{p.name}</h3>
-                  </motion.div>
-                </div>
-              ))}
-            </div>
+            <Suspense fallback={<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">{[...Array(21)].map((_, i) => (<CardSkeleton key={i} className="h-48" />))}</div>}>
+              <InternationalCollaboratorsCards />
+            </Suspense>
          </div>
        </section>
 
@@ -607,27 +1225,9 @@ const Index = () => {
       {/* Call to Action */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="bg-white border-primary/10">
-            <CardContent className="p-12 text-center">
-              <Leaf className="mx-auto mb-6 text-primary" size={64} />
-              <h2 className="text-3xl font-bold text-foreground mb-4">Join Our Mission</h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Whether you're a researcher, community member, or organization, there are many ways 
-                to contribute to cleaner air and healthier communities.
-              </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link to="/contact" aria-label="Go to Partners Page">
-                    <Button 
-                      size="lg" 
-                      className="px-8 py-4 text-lg bg-background/80 text-foreground backdrop-blur-md border border-white/30 shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-2xl"
-                    >
-                      Partner With Us
-                      <ArrowRight className="ml-2" size={20} />
-                    </Button>
-                  </Link>
-                </div>
-            </CardContent>
-          </Card>
+          <Suspense fallback={<CardSkeleton className="h-80" />}>
+            <CallToActionCard />
+          </Suspense>
         </div>
       </section>
 

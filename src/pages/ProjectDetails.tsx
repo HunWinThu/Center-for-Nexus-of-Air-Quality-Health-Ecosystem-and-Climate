@@ -13,7 +13,7 @@ import riceStrawBurningImg from '@/assets/rice-straw-burning.jpg';
 import governmentImg from '@/assets/government.jpg';
 import higQualityImg from '@/assets/hig-quality.jpg';
 import coBenefitsImg from '@/assets/co-benefits.png';
-
+import laos from '@/assets/Laos_neighbours.png'
 interface Project {
   id: number;
   title: string;
@@ -45,7 +45,7 @@ const ProjectDetails = () => {
         duration: '2023-2026',
         objectives: 'To support partner countries and cities in the region in their efforts to develop and implement policies and projects in order to improve air quality.',
         activities: 'Technical support at local and national levels to enhance knowledge of air pollution phenomena, strengthen local capacities, and support public policy formulation',
-        image: capacityImg
+        image: governmentImg
       },
       {
         id: 2,
@@ -70,7 +70,7 @@ const ProjectDetails = () => {
           'Compile emission inventory',
           'Provide recommendations'
         ],
-        image: riceStrawBurningImg
+        image: laos
       },
       {
         id: 4,
@@ -217,13 +217,13 @@ const ProjectDetails = () => {
 
         {/* Hero Image */}
         <motion.section 
-          className="relative w-full h-screen overflow-hidden"
+          className="relative w-full h-96 md:h-[500px] lg:h-[600px] overflow-hidden"
           variants={imageVariants}
         >
           <img 
             src={project.image} 
             alt={project.title}
-            className="w-full h-full object-cover"
+            className={`w-full h-full ${project.image === laos ? 'object-contain bg-gray-50' : 'object-cover'}`}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
           

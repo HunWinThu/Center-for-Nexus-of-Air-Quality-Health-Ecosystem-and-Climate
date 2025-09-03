@@ -14,6 +14,8 @@ import riceStrawBurningImg from '@/assets/rice-straw-burning.jpg';
 import governmentImg from '@/assets/government.jpg';
 import higQualityImg from '@/assets/hig-quality.jpg';
 import coBenefitsImg from '@/assets/co-benefits.png';
+import laos from '@/assets/Laos_neighbours.png'
+
 
 interface Project {
   id: number;
@@ -74,16 +76,6 @@ const Blog = () => {
         image: governmentImg
       },
       {
-        id: 2,
-        title: 'Climate Change Adaptation to Smoke Haze for Improved Child Health in Southeast Asia',
-        sponsor: 'e-Asia',
-        partners: 'Australia, Thailand, Indonesia, Cambodia, and Laos',
-        duration: '2024-2027',
-        objectives: 'To strengthen research and development capabilities towards resolution of shared challenges across the region.',
-        activities: 'Assess the effectiveness of climate change adaptation interventions for strengthening community resilience to smoke haze in SEA',
-        image: airPollutionResearchImg
-      },
-      {
         id: 3,
         title: 'Assessment of agricultural and forest burning emissions in Lao PDR (Forest Fire Emission- Lao)',
         sponsor: 'The World Bank Group (WBG)',
@@ -96,7 +88,7 @@ const Blog = () => {
           'Compile emission inventory',
           'Provide recommendations'
         ],
-        image: riceStrawBurningImg
+        image: laos
       },
       {
         id: 4,
@@ -158,20 +150,15 @@ const Blog = () => {
     ],
     upcoming: [
       {
-        id: 6,
-        title: 'Climate Attribution of Wildfire Smoke Impacts on Priority Population Health in Southeast Asia and Australia (CANBREATHE)',
-        sponsor: 'Wellcome Trust',
+        id: 2,
+        title: 'Climate Change Adaptation to Smoke Haze for Improved Child Health in Southeast Asia',
+        sponsor: 'e-Asia',
         partners: 'Australia, Thailand, Indonesia, Cambodia, and Laos',
-        duration: '2025-2028',
-        objectives: [
-          'Estimate burden of wildfire smoke on population health',
-          'Understand public perceptions of wildfire health impacts',
-          'Build skills and resilience',
-          'Inform climate and health policy development'
-        ],
-        activities: 'Apply climate attribution modelling and storylines to assess the influence of climate change on extreme wildfires and related health impacts',
-        image: coBenefitsImg
-      }
+        duration: '2024-2027',
+        objectives: 'To strengthen research and development capabilities towards resolution of shared challenges across the region.',
+        activities: 'Assess the effectiveness of climate change adaptation interventions for strengthening community resilience to smoke haze in SEA',
+        image: airPollutionResearchImg
+      },
     ]
   };
 
@@ -182,7 +169,7 @@ const Blog = () => {
         <img 
           src={project.image} 
           alt={project.title}
-          className="w-full h-48 object-cover"
+          className={`w-full h-96 ${project.image === laos ? 'object-contain bg-gray-50' : 'object-cover'}`}
         />
       </div>
       <CardHeader>
@@ -242,8 +229,9 @@ const Blog = () => {
         )}
         
         <Button 
-          variant="outline" 
-          className="w-full mt-4"
+          variant="default" 
+          size="lg"
+          className="w-full md:w-auto self-start px-8 py-3 text-lg font-semibold shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105"
           onClick={() => navigate(`/project/${project.id}`)}
         >
           View Project Details
@@ -300,19 +288,19 @@ const Blog = () => {
             </TabsList>
             
             <TabsContent value="ongoing" className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-8">
                 {projects.ongoing.map(renderProjectCard)}
               </div>
             </TabsContent>
             
             <TabsContent value="completed" className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-8">
                 {projects.completed.map(renderProjectCard)}
               </div>
             </TabsContent>
             
             <TabsContent value="upcoming" className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-8">
                 {projects.upcoming.map(renderProjectCard)}
               </div>
             </TabsContent>

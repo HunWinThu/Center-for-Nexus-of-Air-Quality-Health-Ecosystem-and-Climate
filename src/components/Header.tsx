@@ -49,8 +49,8 @@ const Header = () => {
                       {item.name}
                     </Link>
                     <div className="absolute top-full left-0 mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform translate-y-[-10px] group-hover:translate-y-0 z-50">
-                      {/* Firefox-compatible blur effect */}
-                      <div className="min-w-[250px] rounded-xl bg-white/50 backdrop-blur-xl border border-white/40 shadow-2xl p-2" style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}>
+                      {/* Firefox-compatible blur effect matching header */}
+                      <div className="min-w-[250px] rounded-xl bg-white/50 backdrop-blur-md border border-white/40 shadow-2xl p-2">
                         <Link 
                           to="/launching-event" 
                           className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-primary transition-colors"
@@ -107,8 +107,8 @@ const Header = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            {/* Fixed: Enhanced mobile backdrop blur */}
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-black/5 backdrop-blur-2xl border-t border-white/20 rounded-lg mt-2 @supports-backdrop-blur:bg-black/10">
+            {/* Enhanced mobile backdrop blur matching header */}
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/20 backdrop-blur-md border-t border-white/20 rounded-lg mt-2">
               {navigation.map((item) =>
                 item.name === 'About Us' ? (
                   <div key={item.name}>
@@ -123,7 +123,7 @@ const Header = () => {
                     >
                       {item.name}
                     </Link>
-                    <div className="ml-4 bg-black/5 backdrop-blur-lg rounded-md p-1 @supports-backdrop-blur:bg-black/10">
+                    <div className="ml-4 bg-white/10 backdrop-blur-md rounded-md p-1">
                       <Link
                         to="/launching-event"
                         className="block px-3 py-2 text-base rounded-md text-gray-800 hover:text-gray-900 hover:bg-white/30"

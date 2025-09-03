@@ -2,7 +2,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Calendar, Clock, ExternalLink } from 'lucide-react';
+import { Calendar, Clock, ExternalLink, Globe, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -38,7 +38,12 @@ import image20 from '@/assets/image20.jpeg';
 import image21 from '@/assets/image21.png';
 import image22 from '@/assets/image22.jpeg';
 import image23 from '@/assets/image23.png';
-
+import image24 from '@/assets/News&Events/image24.png';
+import image25 from '@/assets/News&Events/image25.jpeg';
+import image26 from '@/assets/News&Events/image26.jpeg';
+import image27 from '@/assets/News&Events/image27.jpg';
+import image28 from '@/assets/News&Events/image28.jpg';
+import image29 from '@/assets/News&Events/image29.jpg'
 interface NewsItem {
   id: number;
   title: string;
@@ -235,7 +240,7 @@ const newsItems: NewsItem[] = [
       "On 2-3 October 2024, Prof. Kim Oanh was a Speaker and Panelist at the “Climate and Health Regional Dialogue” organized by the Embassy of France to Thailand, at Mahidol University. This gathering brought together experts, researchers, and stakeholders to discuss the critical intersection of climate change and public health. The dialogue aimed to strengthen partnerships and enhance the collective capacity to address the health implications of climate change, paving the way for more resilient and adaptive health systems in the face of a changing climate. Prof. Kim Oanh engaged in meaningful discussions about the Co-control of emission sources for multiple benefits to air quality, health and climate, exchanging insights and exploring collaborative approaches to promote the co-controlling efforts.",
     category: "News",
     date: "2 October 2024",
-    image: "",
+    image: image28,
     link: "#",
   },
   {
@@ -355,7 +360,7 @@ const newsItems: NewsItem[] = [
       "Prof. Kim Oanh was interviewed by National TV (VTV1) to discuss the importance of accurate emission source data for effective emission control",
     category: "News",
     date: "22 April, 2025",
-    image: "",
+    image: image24,
     link: "#",
   },
   {
@@ -425,7 +430,7 @@ const newsItems: NewsItem[] = [
       "Prof. Kim Oanh and Dr. Lai Nguyen Huy visited the Research Institute for Health Sciences (RIHES) at Chiang Mai University as part of HEAL-HAZE and CANBREATHE. Prof. Kim delivered a technical presentation on air quality modeling and early warning systems, followed by a lab tour and collaborative discussions on joint air-health research.",
     category: "News",
     date: "19 June 2025",
-    image: "",
+    image: image25,
     link: "#",
   },
   {
@@ -446,6 +451,26 @@ const newsItems: NewsItem[] = [
     category: "News",
     date: "19 May 2025",
     image: "",
+    link: "#",
+  },
+  {
+    id: 29,
+    title: "Delivered Expert talk :Regional Workshop on Mitigation Potential of GHG Emissions from Open Waste Burning",
+    excerpt:
+      "On August 1, 2025, Prof. Kim Oanh, Center Director, virtually participated as an invited expert in the regional workshop titled “Mitigation Potential of GHG Emissions from Open Waste Burning under Present and Future Scenarios: Cases of South Asian Countries – Nepal and Bangladesh,” held in Kathmandu, Nepal. The workshop was jointly organized by the Center of Research for Environment, Energy and Water (CREEW), Nepal; the University of Dhaka, Bangladesh; and Kobe City University of Foreign Studies, Japan, with support from the Asia-Pacific Network for Global Change Research (APN). Prof. Oanh delivered a brief talk and provided comments, contributing expertise on the air quality and climate implications of waste burning while supporting dialogue on policy development and regional cooperation.",
+    category: "News",
+    date: "1 August 2025",
+    image: image27,
+    link: "#",
+  },
+  {
+    id: 30,
+    title: "Networking Meeting with ENVEA-APAQ",
+    excerpt:
+      "The Center hosted a networking meeting with Dr. Joseph Deng Mao, Head of Business Development at ENVEA–APAQ Group. ENVEA, a global leader in environmental monitoring solutions, acquired APAQ Group on August 6, 2025, expanding its advanced technologies and services across Southeast Asia. Established in Singapore in 2013, APAQ Group provides comprehensive air quality solutions, including consultancy, dispersion modeling, monitoring instrumentation, and training, delivering compliance-grade systems tailored to regional needs. The meeting provided an excellent opportunity to explore regional collaboration on air quality monitoring and data-driven environmental solutions.",
+    category: "News",
+    date: "6 August 2025",
+    image: image26,
     link: "#",
   },
 ];
@@ -495,8 +520,8 @@ const sortedNewsItems = [...newsItems].sort((a, b) => {
   return dateB.getTime() - dateA.getTime();
 });
 
-// Convert past Supabase events to news items format
-const pastEventsAsNews: NewsItem[] = supabaseEvents
+// Convert past Supabase events to events format (for Events tab)
+const pastEventsAsEvents: NewsItem[] = supabaseEvents
   .filter(event => {
     let eventDateTime;
     
@@ -526,14 +551,14 @@ const pastEventsAsNews: NewsItem[] = supabaseEvents
     link: "#"
   }));
 
-// Combine past events with existing news items and sort
-const allNewsItems = [...pastEventsAsNews, ...newsItems].sort((a, b) => {
+// Only news items for All News tab (no past events)
+const allNewsItems = [...newsItems].sort((a, b) => {
   const dateA = parseDate(a.date);
   const dateB = parseDate(b.date);
   return dateB.getTime() - dateA.getTime();
 });
 
-// Events data
+// Events data (combine static events with past Supabase events)
 const eventsData: NewsItem[] = [
   {
     id: 1,
@@ -559,13 +584,13 @@ const eventsData: NewsItem[] = [
     excerpt: "Organized a Public Seminar: ‘Wildfire Smoke: Health Impacts and Adaptation in Southeast Asia and Australia, paragraph On 18 June 2025, the AirQC Center hosted a public seminar on “Wildfire Smoke: Health Impacts and Adaptation in Southeast Asia and Australia,” bringing together regional and international experts to discuss health risks from wildfire smoke and haze under climate change. Part of the CANBREATHE and HEAL-HAZE projects, the event focused on climate attribution, health assessments, and adaptation for vulnerable groups. Key presentations covered early warning systems, health effects, and interventions like clean air rooms. The seminar also promoted policy dialogue and science-based regional planning. Following the seminar, experts were invited to a guided laboratory tour of AIT’s research facilities, including the EEM Ambient Laboratory, Air Quality Modeling Laboratory, and the EEM Main Environmental Laboratory",
     category: "Event",
     date: "18 June 2025",
-    image: image19,
+    image: image29,
     link: "#",
   },
 ];
 
-// Sort eventsData by date (latest first)
-const sortedEventsData = [...eventsData].sort((a, b) => {
+// Sort eventsData by date (latest first) and combine with past events
+const sortedEventsData = [...eventsData, ...pastEventsAsEvents].sort((a, b) => {
   const dateA = parseDate(a.date);
   const dateB = parseDate(b.date);
   return dateB.getTime() - dateA.getTime();
@@ -641,77 +666,137 @@ const resources: NewsItem[] = [
             {/* Upcoming Events Content */}
             <TabsContent value="upcoming" className="mt-8">
               <motion.div 
-                className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+                className="max-w-4xl mx-auto"
                 variants={staggerContainer}
                 initial="hidden"
                 animate="visible"
               >
                 {loadingEvents ? (
-                  <div className="col-span-full text-center py-12">
+                  <div className="text-center py-12">
                     <div className="animate-spin w-8 h-8 border-2 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
                     <p className="text-muted-foreground">Loading upcoming events...</p>
                   </div>
                 ) : upcomingEvents.length === 0 ? (
-                  <div className="col-span-full text-center py-12">
+                  <div className="text-center py-12">
                     <Calendar className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
                     <h3 className="text-xl font-semibold mb-2">No Upcoming Events</h3>
                     <p className="text-muted-foreground">Stay tuned for future events and announcements.</p>
                   </div>
                 ) : (
-                  upcomingEvents.map((event) => (
-                    <motion.div
-                      key={event.id}
-                      variants={cardVariants}
-                      transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-                    >
-                      <Card className="overflow-hidden hover:shadow-lg hover:scale-[1.02] transition-all duration-300 ease-in-out h-full">
-                        <div className="relative overflow-hidden">
-                          <motion.img 
-                            src={event.image} 
-                            alt={event.title}
-                            className="w-full h-48 object-cover"
-                            variants={imageVariants}
-                            transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
-                          />
-                          <div className="absolute top-4 left-4">
-                            <Badge className="bg-primary text-primary-foreground">
-                              {new Date(event.date).toLocaleDateString('en-US', { 
-                                month: 'short', 
-                                day: 'numeric' 
-                              })}
-                            </Badge>
+                  <div className="space-y-8">
+                    {upcomingEvents.map((event) => (
+                      <motion.div
+                        key={event.id}
+                        variants={cardVariants}
+                        transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+                      >
+                        <Card className="group relative overflow-hidden bg-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-3 border-0 rounded-3xl">
+                          {/* Professional Event Banner */}
+                          <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary via-primary/80 to-primary/60"></div>
+                          
+                          {/* Full-width Hero Section */}
+                          <div className="grid lg:grid-cols-2 gap-0 min-h-[350px]">
+                            {/* Hero Image Section */}
+                            <div className="relative overflow-hidden lg:order-1">
+                              <img 
+                                src={event.image || '/placeholder.svg'} 
+                                alt={event.title}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 min-h-[300px] lg:min-h-[350px]"
+                              />
+                              
+                              {/* Professional Date Badge */}
+                              <div className="absolute top-6 right-6">
+                                <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl">
+                                  <div className="text-center">
+                                    <div className="text-3xl font-bold text-primary">
+                                      {new Date(event.date).getDate()}
+                                    </div>
+                                    <div className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
+                                      {new Date(event.date).toLocaleDateString('en-US', { month: 'short' })}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Event Type Badge */}
+                              <div className="absolute top-6 left-6">
+                                <Badge className="bg-gradient-to-r from-primary to-primary/80 text-white px-4 py-2 text-sm font-semibold rounded-full shadow-xl">
+                                  UPCOMING EVENT
+                                </Badge>
+                              </div>
+
+                              {/* Gradient Overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent lg:from-transparent lg:via-transparent lg:to-black/20"></div>
+                            </div>
+
+                            {/* Content Section */}
+                            <div className="p-6 lg:p-8 flex flex-col justify-center lg:order-2">
+                              {/* Title Section */}
+                              <div className="mb-6">
+                                <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-4 group-hover:text-primary transition-colors duration-300">
+                                  {event.title}
+                                </h3>
+                                
+                                {/* Professional Event Details */}
+                                <div className="space-y-3 mb-4">
+                                  {/* Time Info */}
+                                  <div className="flex items-center gap-3 text-gray-600">
+                                    <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                                      <Clock className="w-4 h-4 text-primary" />
+                                    </div>
+                                    <div>
+                                      <p className="font-semibold text-gray-900 text-sm">Time</p>
+                                      <p className="text-xs">{event.time || 'Time TBA'}</p>
+                                    </div>
+                                  </div>
+
+                                  {/* Location Info */}
+                                  {event.location && (
+                                    <div className="flex items-center gap-3 text-gray-600">
+                                      <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                                        <Globe className="w-4 h-4 text-primary" />
+                                      </div>
+                                      <div>
+                                        <p className="font-semibold text-gray-900 text-sm">Location</p>
+                                        <p className="text-xs">{event.location}</p>
+                                      </div>
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+
+                              {/* Description Section */}
+                              <div className="mb-6">
+                                <p className="text-gray-600 leading-relaxed text-base">
+                                  {event.description || 'Join us for this upcoming event.'}
+                                </p>
+                              </div>
+
+                              {/* Professional CTA Section */}
+                              <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                                <div className="flex items-center gap-3">
+                                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                                    <Calendar className="w-5 h-5 text-primary" />
+                                  </div>
+                                  <div>
+                                    <p className="font-semibold text-gray-900 text-sm">Save the Date</p>
+                                    <p className="text-xs text-gray-500">Add to your calendar</p>
+                                  </div>
+                                </div>
+                                
+                                <Button 
+                                  className="group/btn bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white px-6 py-2.5 rounded-full font-semibold text-base shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                                >
+                                  <span>Register Now</span>
+                                  <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                                </Button>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <CardContent className="p-6">
-                          <motion.h3 
-                            className="text-xl font-semibold mb-2"
-                            variants={fadeUpVariants}
-                          >
-                            {event.title}
-                          </motion.h3>
-                          <motion.div 
-                            className="text-sm text-muted-foreground mb-2"
-                            variants={fadeUpVariants}
-                          >
-                            <div className="flex items-center gap-1 mb-1">
-                              <Clock className="w-4 h-4" />
-                              {event.time}
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <Calendar className="w-4 h-4" />
-                              {event.location}
-                            </div>
-                          </motion.div>
-                          <motion.p 
-                            className="text-muted-foreground mb-4"
-                            variants={fadeUpVariants}
-                          >
-                            {event.description}
-                          </motion.p>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))
+                        </Card>
+                      </motion.div>
+                    ))}
+                  </div>
                 )}
               </motion.div>
             </TabsContent>
