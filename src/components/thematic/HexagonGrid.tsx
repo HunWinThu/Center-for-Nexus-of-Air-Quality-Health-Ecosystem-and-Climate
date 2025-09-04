@@ -10,7 +10,14 @@ import healthImg from '@/assets/capacity.jpg';
 import emissionImg from '@/assets/air-pollution-research.png';
 import meteorologyImg from '@/assets/co-benefits.png';
 import modelingImg from '@/assets/rice-straw-burning.jpg';
-
+import slide1 from '@/assets/Our_Thematics/slide01_img01.png';
+import slide2 from '@/assets/Our_Thematics/slide01_img02.png';
+import slide3 from '@/assets/Our_Thematics/slide01_img03.png';
+import slide4 from '@/assets/Our_Thematics/slide01_img04.png';
+import slide5 from '@/assets/Our_Thematics/slide01_img05.png';
+import slide6 from '@/assets/Our_Thematics/slide01_img06.png';
+import slide7 from '@/assets/Our_Thematics/slide01_img07.png';
+import slide8 from '@/assets/Our_Thematics/slide01_img08.png';
 interface HexagonItem {
   title: string;
   position: 'top' | 'topLeft' | 'topRight' | 'center' | 'bottom' | 'bottomLeft' | 'bottomRight';
@@ -18,8 +25,8 @@ interface HexagonItem {
   onClick?: () => void;
   modalData?: {
     description: string;
-    image: string;
-    imageAlt: string;
+    images: string[];
+    imageAlts: string[];
   };
 }
 
@@ -27,8 +34,8 @@ interface ModalState {
   isOpen: boolean;
   title: string;
   description: string;
-  image: string;
-  imageAlt: string;
+  images: string[];
+  imageAlts: string[];
   position: 'left' | 'right';
   hexagonRect: DOMRect | null;
 }
@@ -41,8 +48,8 @@ export const HexagonGrid = () => {
     isOpen: false,
     title: '',
     description: '',
-    image: '',
-    imageAlt: '',
+    images: [],
+    imageAlts: [],
     position: 'right',
     hexagonRect: null
   });
@@ -58,9 +65,9 @@ export const HexagonGrid = () => {
       position: 'top',
       bgColor: 'bg-conic-180 from-indigo-600 via-indigo-50 to-indigo-600',
       modalData: {
-        description: "Our comprehensive air quality monitoring program employs state-of-the-art equipment and methodologies to track pollutant concentrations across various environments. We conduct detailed chemical analysis of atmospheric samples, including PM<sub>2.5</sub>, PM10, ozone, nitrogen oxides, and volatile organic compounds. Our source apportionment studies help identify the major contributors to air pollution, enabling targeted intervention strategies. Through continuous monitoring networks and advanced analytical techniques, we provide real-time data and insights that inform policy decisions and public health recommendations.",
-        image: monitoringImg,
-        imageAlt: "Air quality monitoring equipment and chemical analysis"
+        description: "Our comprehensive air quality monitoring program employs monitoring equipments and methodologies to track pollutant concentrations across various environments. We conduct detailed chemical analysis of atmospheric samples, including PM₂.₅, PM₁₀, ozone, nitrogen oxides, and volatile organic compounds. Our source apportionment studies help identify the major contributors to air pollution, enabling targeted intervention strategies. Through continuous monitoring networks and advanced analytical techniques, we provide real-time data and insights that inform policy decisions and public health recommendations.",
+        images: [monitoringImg, slide6],
+        imageAlts: ["Air quality monitoring equipment and chemical analysis", "Additional monitoring data visualization"]
       }
     },
     {
@@ -69,8 +76,8 @@ export const HexagonGrid = () => {
       bgColor: 'bg-conic-180 from-blue-700 via-blue-50 to-blue-700',
       modalData: {
         description: "We develop and demonstrate integrated approaches to air pollution control that address multiple pollutants simultaneously. Our demonstration projects showcase cost-effective technologies and practices that can be scaled up across different sectors. From industrial emission control systems to clean cooking technologies, we work with communities and governments to implement practical solutions. Our integrated approach considers economic feasibility, social acceptance, and environmental effectiveness to ensure sustainable long-term impact.",
-        image: controlImg,
-        imageAlt: "Integrated air pollution control demonstration projects"
+        images: [slide5],
+        imageAlts: ["Integrated air pollution control demonstration projects", "Control system implementation examples"]
       }
     },
     {
@@ -79,8 +86,8 @@ export const HexagonGrid = () => {
       bgColor: 'bg-conic-180 from-indigo-600 via-indigo-50 to-indigo-600',
       modalData: {
         description: "Our impact assessment research quantifies the effects of air pollution on human health and ecosystem services. We conduct epidemiological studies to understand the relationship between air quality and respiratory diseases, cardiovascular conditions, and other health outcomes. Our ecosystem research examines how air pollutants affect agricultural productivity, forest health, and biodiversity. Through advanced modeling and field studies, we provide evidence-based assessments that inform policy makers about the true costs of air pollution and the benefits of clean air initiatives.",
-        image: healthImg,
-        imageAlt: "Health and ecosystem impact assessment research"
+        images: [slide3],
+        imageAlts: ["Health and ecosystem impact assessment research", "Health impact data analysis"]
       }
     },
     {
@@ -89,8 +96,8 @@ export const HexagonGrid = () => {
       bgColor: 'bg-conic-180 from-indigo-700 via-indigo-50 to-indigo-700',
       modalData: {
         description: "We develop comprehensive emission inventories that catalog pollutant sources across different sectors including transportation, industry, agriculture, and residential activities. Our projection models forecast future emission scenarios under various policy and development pathways. Using advanced methodologies and local activity data, we provide accurate estimates of current emissions and reliable projections for future planning. These inventories serve as fundamental inputs for air quality modeling and policy development at local, national, and regional scales.",
-        image: emissionImg,
-        imageAlt: "Emission inventory development and projection modeling"
+        images: [slide2],
+        imageAlts: ["Emission inventory development and projection modeling", "Emission data visualization and analysis"]
       }
     },
     {
@@ -99,8 +106,8 @@ export const HexagonGrid = () => {
       bgColor: 'bg-conic-180 from-purple-600 via-purple-50 to-purple-600',
       modalData: {
         description: "Our meteorology and climate science research examines the complex interactions between weather patterns, climate change, and air quality. We study how meteorological conditions influence pollutant transport, transformation, and removal from the atmosphere. Our climate research investigates the co-benefits of air pollution control measures for climate change mitigation. Through advanced atmospheric science techniques, we provide insights into how changing climate conditions may affect future air quality and inform adaptation strategies for air pollution management.",
-        image: meteorologyImg,
-        imageAlt: "Meteorology and climate science research"
+        images: [slide1],
+        imageAlts: ["Meteorology and climate science research", "Climate data analysis and modeling"]
       }
     },
     {
@@ -109,8 +116,8 @@ export const HexagonGrid = () => {
       bgColor: 'bg-conic-180 from-purple-700 via-purple-50 to-purple-700',
       modalData: {
         description: "We employ sophisticated atmospheric dispersion models to predict how pollutants move through the atmosphere from their sources to receptor locations. Our modeling capabilities include both local-scale dispersion for industrial sources and regional-scale transport for understanding transboundary pollution. These models help predict air quality impacts of proposed developments, evaluate the effectiveness of emission control strategies, and support emergency response planning. Our modeling work combines meteorological data, emission inventories, and advanced numerical techniques to provide accurate air quality forecasts and scenario assessments.",
-        image: modelingImg,
-        imageAlt: "Atmospheric dispersion modeling and air quality prediction"
+        images: [slide7, slide8],
+        imageAlts: ["Atmospheric dispersion modeling and air quality prediction", "Modeling results and simulations"]
       }
     }
   ];
@@ -135,8 +142,8 @@ export const HexagonGrid = () => {
         isOpen: true,
         title: item.title,
         description: item.modalData.description,
-        image: item.modalData.image,
-        imageAlt: item.modalData.imageAlt,
+        images: item.modalData.images,
+        imageAlts: item.modalData.imageAlts,
         position: popupPosition,
         hexagonRect: rect
       });
@@ -148,8 +155,8 @@ export const HexagonGrid = () => {
       isOpen: false,
       title: '',
       description: '',
-      image: '',
-      imageAlt: '',
+      images: [],
+      imageAlts: [],
       position: 'right',
       hexagonRect: null
     });
@@ -204,8 +211,8 @@ export const HexagonGrid = () => {
         onClose={closeModal}
         title={modal.title}
         description={modal.description}
-        image={modal.image}
-        imageAlt={modal.imageAlt}
+        images={modal.images}
+        imageAlts={modal.imageAlts}
         position={modal.position}
         hexagonRect={modal.hexagonRect}
       />

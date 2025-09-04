@@ -84,7 +84,7 @@ const ProjectDetails = () => {
           'Develop technical guidelines on alternatives to open waste burning',
           'Co-lead action plan to reduce municipal solid waste open burning'
         ],
-        image: governmentImg
+        image: ""
       },
       {
         id: 7,
@@ -160,7 +160,7 @@ const ProjectDetails = () => {
     return (
       <div className="container mx-auto px-4 py-20 text-center">
         <h1 className="text-2xl font-bold mb-4">Project Not Found</h1>
-        <Button onClick={() => navigate('/blog')}>
+        <Button onClick={() => navigate('/projects')}>
           Back to Projects
         </Button>
       </div>
@@ -207,7 +207,7 @@ const ProjectDetails = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <Button
             variant="ghost"
-            onClick={() => navigate('/blog')}
+            onClick={() => navigate('/projects')}
             className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
           >
             <ArrowLeft size={20} />

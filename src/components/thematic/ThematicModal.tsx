@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -7,8 +7,8 @@ interface ThematicModalProps {
   onClose: () => void;
   title: string;
   description: string;
-  image: string;
-  imageAlt: string;
+  images: string[];
+  imageAlts: string[];
   position: 'left' | 'right';
   hexagonRect?: DOMRect | null;
 }
@@ -18,8 +18,8 @@ export const ThematicModal: React.FC<ThematicModalProps> = ({
   onClose,
   title,
   description,
-  image,
-  imageAlt,
+  images,
+  imageAlts,
   position = 'right',
   hexagonRect
 }) => {
@@ -55,8 +55,8 @@ export const ThematicModal: React.FC<ThematicModalProps> = ({
       };
     }
 
-    const modalWidth = 480; // Approximate modal width
-    const modalHeight = 600; // Approximate modal height
+    const modalWidth = 600; // Approximate modal width - increased
+    const modalHeight = 800; // Approximate modal height - increased
     const spacing = 20; // Space between hexagon and modal
 
     let top = hexagonRect.top + hexagonRect.height / 2 - modalHeight / 2;
@@ -102,7 +102,7 @@ export const ThematicModal: React.FC<ThematicModalProps> = ({
           
           {/* Modal positioned relative to hexagon */}
           <div
-            className="w-[480px] max-w-[90vw] bg-background rounded-2xl shadow-2xl border border-border/20 overflow-hidden transform transition-all duration-300 ease-out"
+            className="w-[600px] max-w-[90vw] bg-background rounded-2xl shadow-2xl border border-border/20 overflow-hidden transform transition-all duration-300 ease-out"
             style={getModalStyle()}
           >
             {/* Close Button */}
@@ -118,28 +118,47 @@ export const ThematicModal: React.FC<ThematicModalProps> = ({
             </div>
 
             <div className="relative">
-              {/* Image Section */}
-              <div className="relative w-full h-48 overflow-hidden">
-                <img
-                  src={image}
-                  alt={imageAlt}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+              {/* Images Section - Display both images */}
+              <div className="relative w-full">
+                {images.length > 0 && (
+                  <div className="grid grid-cols-1 gap-3">
+                    {/* First Image */}
+                    <div className="relative h-64 overflow-hidden rounded-lg bg-gray-50">
+                      <img
+                        src={images[0]}
+                        alt={imageAlts[0]}
+                        className="w-full h-full object-contain"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+                    </div>
+                    
+                    {/* Second Image (if exists) */}
+                    {images.length > 1 && (
+                      <div className="relative h-64 overflow-hidden rounded-lg bg-gray-50">
+                        <img
+                          src={images[1]}
+                          alt={imageAlts[1]}
+                          className="w-full h-full object-contain"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
 
               {/* Content Section */}
-              <div className="p-6 space-y-4">
+              <div className="p-8 space-y-4">
                 <div>
-                  <h2 className="text-xl font-bold text-primary leading-tight">
+                  <h2 className="text-2xl font-bold text-primary leading-tight">
                     {title}
                   </h2>
                 </div>
                 
                 <div className="space-y-3">
                   <div className="h-px bg-gradient-to-r from-primary/30 via-primary to-primary/30" />
-                  <div className="max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
-                    <p className="text-muted-foreground leading-relaxed text-sm">
+                  <div className="max-h-72 overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
+                    <p className="text-muted-foreground leading-relaxed text-base">
                       {description}
                     </p>
                   </div>

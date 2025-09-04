@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { StructuredData, usePageSEO } from '@/components/common/SEO';
-import { BookOpen, Layers, Scale, Shield, GraduationCap, ArrowRight, Wind, BarChart3, Users, Globe, Leaf, Zap, Clock, Calendar } from 'lucide-react';
+import { BookOpen, Layers, Scale, Shield, GraduationCap, ArrowRight, Wind, BarChart3, Users, Globe, Leaf, Zap, Clock, Calendar, Activity, Database, Settings, Cloud, Heart, TrendingUp } from 'lucide-react';
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import Home from '@/assets/HOME.jpg';
 import missionsHero from '@/assets/hig-quality.jpg';
@@ -26,6 +26,7 @@ import pm25Image from '@/assets/pm2.5.png';
 import riceStrawBurningImage from '@/assets/rice-straw-burning.jpg';
 import { Target, Eye } from 'lucide-react';
 import Airparif from '@/assets/collaborators/Airparif.png';
+import worldBank from '@/assets/world-bank.jpg';
 import bktp from '@/assets/collaborators/bktp.png';
 import citepa from '@/assets/collaborators/citepa-logo.jpg';
 import hanoiUniversity from '@/assets/collaborators/Đại_học_Bách_khoa_Hà_Nội_(logo).png';
@@ -584,7 +585,7 @@ const Index = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Link 
-                  to={`/what-we-do#${feature.title.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`}
+                  to="/our-thematic-areas#core-activities"
                   className="block"
                 >
                   <Card 
@@ -887,33 +888,33 @@ const Index = () => {
 
   const features = [
     {
-      icon: BookOpen, // More appropriate for research
-      title: 'High-Quality Research',
+      icon: Activity, // Represents monitoring and analysis activities
+      title: 'AQ Monitoring, Chemical Analysis, SA',
       description: ''
     },
     {
-      icon: Layers, // Represents multiple layers/pollutants
-      title: 'Multi-Pollutant Approach',
+      icon: Database, // Represents data collection and inventory
+      title: 'Emission Inventory and Emission Projection',
       description: ''
     },
     {
-      icon: Scale, // Represents balance/assessment
-      title: 'Co-Benefits Assessment',
+      icon: Wind, // Represents air flow and dispersion
+      title: 'Dispersion Modeling',
       description: ''
     },
     {
-      icon: Globe,
-      title: 'International Collaboration',
+      icon: Settings, // Represents integrated control systems
+      title: 'Integrated Air Pollution Control: Demonstration',
       description: ''
     },
     {
-      icon: Shield, // Represents government support
-      title: 'Government Assistance',
+      icon: Cloud, // Represents weather and climate
+      title: 'Meteorology and Climate Science',
       description: ''
     },
     {
-      icon: GraduationCap, // Represents training/education
-      title: 'Capacity Building & Training',
+      icon: Heart, // Represents health and well-being
+      title: 'Impact Assessment: Health and Ecosystem',
       description: ''
     }
   ];
@@ -956,6 +957,7 @@ const Index = () => {
   ];
 
   const collaborators = [
+    { name: 'World Bank', href: 'https://www.worldbank.org/ext/en/home', logo: worldBank },
     { name: 'Airparif', href: 'https://www.airparif.fr/', logo: Airparif },
     { name: 'BKTP', href: '#', logo: bktp },
     { name: 'Citepa', href: '#', logo: citepa },

@@ -102,7 +102,7 @@ const Blog = () => {
           'Develop technical guidelines on alternatives to open waste burning',
           'Co-lead action plan to reduce municipal solid waste open burning'
         ],
-        image: governmentImg
+        image: ""
       },
       {
         id: 7,
@@ -157,7 +157,7 @@ const Blog = () => {
         duration: '2024-2027',
         objectives: 'To strengthen research and development capabilities towards resolution of shared challenges across the region.',
         activities: 'Assess the effectiveness of climate change adaptation interventions for strengthening community resilience to smoke haze in SEA',
-        image: airPollutionResearchImg
+        image: ""
       },
     ]
   };
@@ -256,7 +256,7 @@ const Blog = () => {
               variants={fadeUpVariants}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              Our Projects
+              Projects
             </motion.h1>
           </motion.div>
         </div>

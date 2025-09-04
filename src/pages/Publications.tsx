@@ -227,7 +227,7 @@ const Publications = () => {
               variants={fadeUpVariants}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              Our Publications
+              Publications
             </motion.h1>
             <motion.p 
               className="text-xl text-muted-foreground max-w-2xl mx-auto"

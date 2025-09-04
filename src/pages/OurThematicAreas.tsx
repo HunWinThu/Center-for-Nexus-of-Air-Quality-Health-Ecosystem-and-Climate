@@ -149,7 +149,7 @@ const sections = [
 </section>
 
 {/* Core Activities Hexagon Grid */}
-<section className="py-12 bg-white">
+<section id="core-activities" className="py-12 bg-white">
   <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <motion.div
       initial={{ opacity: 0, y: 40 }}
