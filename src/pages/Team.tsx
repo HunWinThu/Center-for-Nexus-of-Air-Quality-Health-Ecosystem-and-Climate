@@ -130,23 +130,36 @@ const coreTeam = [
 ];
 
 const Team = () => {
-  // Animation variants
-  const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 50 },
+  // Enhanced animation variants with elegant lazy loading
+  const fadeUpVariants: Variants = {
+    hidden: { opacity: 0, y: 80 },
     visible: { 
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.6,
-        ease: "easeOut"
+        duration: 0.9,
+        ease: [0.25, 0.1, 0.25, 1] as const
+      }
+    }
+  };
+
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 60, scale: 0.9 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1] as const
       }
     },
     hover: {
-      y: -5,
-      scale: 1.02,
-      rotateY: 2,
+      y: -8,
+      scale: 1.03,
+      rotateY: 3,
       transition: {
-        duration: 0.3,
+        duration: 0.4,
         ease: "easeInOut"
       }
     }
@@ -157,28 +170,40 @@ const Team = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
+        staggerChildren: 0.5,
+        delayChildren: 0.7
       }
     }
   };
 
   const imageVariants: Variants = {
-    hidden: { scale: 1.2, opacity: 0 },
+    hidden: { scale: 1.3, opacity: 0 },
     visible: { 
       scale: 1, 
       opacity: 1,
       transition: {
-        duration: 1.2,
-        ease: "easeOut",
-        delay: 0.2
+        duration: 1.0,
+        ease: [0.25, 0.1, 0.25, 1] as const,
+        delay: 0.3
       }
     },
     hover: {
-      scale: 1.05,
+      scale: 1.08,
       transition: {
-        duration: 0.4,
+        duration: 0.5,
         ease: "easeInOut"
+      }
+    }
+  };
+
+  const titleVariants: Variants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 1.0,
+        ease: [0.25, 0.1, 0.25, 1] as const
       }
     }
   };
@@ -208,14 +233,26 @@ const Team = () => {
       {/* Hero Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+          <motion.div 
+            className="max-w-4xl mx-auto text-center"
+            variants={fadeUpVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.h1 
+              className="text-4xl md:text-6xl font-bold text-foreground mb-6"
+              variants={titleVariants}
+            >
               Our Team
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            </motion.h1>
+            <motion.p 
+              className="text-xl text-muted-foreground max-w-2xl mx-auto"
+              variants={fadeUpVariants}
+              transition={{ delay: 0.2 }}
+            >
               Meet the dedicated researchers and professionals at AIT working to improve air quality and environmental health.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
@@ -231,11 +268,11 @@ const Team = () => {
             variants={staggeredContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-150px" }}
           >
             {coreTeam.slice(0, 2).map((member) => (
               <motion.div key={member.id} variants={cardVariants} whileHover="hover" style={{ transformStyle: "preserve-3d" }}>
-                <Card className="group hover:shadow-2xl transition-all duration-500 bg-background border border-border relative overflow-hidden">
+                <Card className="group hover:shadow-2xl transition-all duration-700 bg-background border border-border relative overflow-hidden">
                   <CardContent className="p-6 relative z-10">
                     <div className="text-center mb-4">
                       <motion.div
@@ -249,22 +286,36 @@ const Team = () => {
                           alt={`${member.name} - ${member.role}`}
                           loading="lazy"
                           className={`w-full h-full border border-border bg-background object-cover ${member.alignTop ? 'object-top' : ''}`}
-                          whileHover={{ scale: 1.02 }}
-                          transition={{ duration: 0.3 }}
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.4 }}
                         />
                       </motion.div>
                       <Link to={`/team/${slugify(member.name)}`} state={{ member }} className="hover:underline">
                         <motion.h3 
                           className="text-xl font-semibold text-primary mb-1"
-                          whileHover={{ scale: 1.01 }}
-                          transition={{ duration: 0.2 }}
+                          whileHover={{ scale: 1.02 }}
+                          transition={{ duration: 0.3 }}
                         >
                           {member.name}
                         </motion.h3>
                       </Link>
-                      <p className="text-lg font-bold text-muted-foreground">{member.role}</p>
+                      <motion.p 
+                        className="text-lg font-bold text-muted-foreground"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5, duration: 0.6 }}
+                      >
+                        {member.role}
+                      </motion.p>
                       {member.department && (
-                        <p className="text-sm text-muted-foreground">{member.department}</p>
+                        <motion.p 
+                          className="text-sm text-muted-foreground"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.7, duration: 0.6 }}
+                        >
+                          {member.department}
+                        </motion.p>
                       )}
                     </div>
                   </CardContent>
@@ -279,11 +330,11 @@ const Team = () => {
             variants={staggeredContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-150px" }}
           >
             {coreTeam.slice(2).map((member) => (
               <motion.div key={member.id} variants={cardVariants} whileHover="hover" style={{ transformStyle: "preserve-3d" }}>
-                <Card className="group hover:shadow-2xl transition-all duration-500 bg-background border border-border relative overflow-hidden">
+                <Card className="group hover:shadow-2xl transition-all duration-700 bg-background border border-border relative overflow-hidden">
                   <CardContent className="p-6 relative z-10">
                     <div className="text-center mb-4">
                       <motion.div
@@ -297,22 +348,36 @@ const Team = () => {
                           alt={`${member.name} - ${member.role}`}
                           loading="lazy"
                           className={`w-full h-full border border-border bg-background object-cover ${member.alignTop ? 'object-top' : ''}`}
-                          whileHover={{ scale: 1.02 }}
-                          transition={{ duration: 0.3 }}
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.4 }}
                         />
                       </motion.div>
                       <Link to={`/team/${slugify(member.name)}`} state={{ member }} className="hover:underline">
                         <motion.h3 
                           className="text-xl font-semibold text-primary mb-1"
-                          whileHover={{ scale: 1.01 }}
-                          transition={{ duration: 0.2 }}
+                          whileHover={{ scale: 1.02 }}
+                          transition={{ duration: 0.3 }}
                         >
                           {member.name}
                         </motion.h3>
                       </Link>
-                      <p className="text-lg font-bold text-muted-foreground">{member.role}</p>
+                      <motion.p 
+                        className="text-lg font-bold text-muted-foreground"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5, duration: 0.6 }}
+                      >
+                        {member.role}
+                      </motion.p>
                       {member.department && (
-                        <p className="text-sm text-muted-foreground">{member.department}</p>
+                        <motion.p 
+                          className="text-sm text-muted-foreground"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.7, duration: 0.6 }}
+                        >
+                          {member.department}
+                        </motion.p>
                       )}
                     </div>
                   </CardContent>

@@ -19,9 +19,17 @@ interface Resource {
 }
 
 const Resources = () => {
+  // Animation variants - balanced timing for elegant loading
   const fadeUpVariants = {
-    hidden: { opacity: 0, y: 60 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 80 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.9,
+        ease: [0.25, 0.1, 0.25, 1] as const
+      }
+    }
   };
 
   const staggerContainer = {
@@ -29,22 +37,23 @@ const Resources = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
+        staggerChildren: 0.5,
+        delayChildren: 0.7
+      }
+    }
   };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 60, scale: 0.9 },
     visible: { 
       opacity: 1, 
-      y: 0,
+      y: 0, 
       scale: 1,
       transition: {
-        duration: 0.7,
+        duration: 0.9,
+        ease: [0.25, 0.1, 0.25, 1] as const
       }
-    },
+    }
   };
 
   const resources = {

@@ -136,13 +136,13 @@ const Index = () => {
         <div ref={visionRef}>
           {visionVisible ? (
             <motion.div
-              className="bg-white/15 backdrop-blur-lg p-8 md:p-10 rounded-3xl border border-white/20 shadow-2xl"
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-white/90 p-8 md:p-10 rounded-3xl border border-gray-200 shadow-xl"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             >
-              <h2 className="text-5xl font-bold text-white mb-4">Our Vision</h2>
-              <p className="text-xl text-white/90">
+              <h2 className="text-5xl font-bold text-gray-800 mb-4">Our Vision</h2>
+              <p className="text-xl text-gray-700">
                 Air Quality Nexus will be a leading Center in conducting and implementing application research with the aim to gain
                 multiple benefits from reducing air pollution through improvement of health of human and ecosystem,
                 and protection of the climate system.
@@ -156,13 +156,13 @@ const Index = () => {
         <div ref={missionRef}>
           {missionVisible ? (
             <motion.div
-              className="bg-white/15 backdrop-blur-lg p-8 md:p-10 rounded-3xl border border-white/20 shadow-2xl"
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+              className="bg-white/90 p-8 md:p-10 rounded-3xl border border-gray-200 shadow-xl"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
             >
-              <h2 className="text-5xl font-bold text-white mb-4">Our Missions</h2>
-              <ul className="text-xl list-disc pl-6 space-y-3 text-white/90">
+              <h2 className="text-5xl font-bold text-gray-800 mb-4">Our Missions</h2>
+              <ul className="text-xl list-disc pl-6 space-y-3 text-gray-700">
                 <li>Conduct high-quality research demonstrated by real-life applications for improving air quality in Asia and beyond;</li>
                 <li>Focus on the multi-pollutant and multi-effect approach to provide cost-effective solutions to complex air pollution problems;</li>
                 <li>Demonstrate and quantitatively assess the co-benefits to air quality and climate of integrated measures applicable in local context;</li>
@@ -1090,7 +1090,7 @@ const Index = () => {
       <div className="border-t border-gray-200"></div>
 
       {/* Recent Research & News */}
-      <section className="py-24 bg-white">
+      <section id="news-events" className="py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20"> 
             <h2 className="text-5xl font-bold text-foreground mb-6">News & Events</h2>

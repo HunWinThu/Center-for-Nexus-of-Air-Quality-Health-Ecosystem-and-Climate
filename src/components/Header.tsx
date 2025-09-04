@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import logo from '@/assets/aqc.png';
+import logo from '@/assets/AQN.png';
+import aitLogo from '@/assets/AIT.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,15 +22,13 @@ const Header = () => {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <header className="bg-transparent backdrop-blur-md border-b border-border sticky top-0 z-50">
+    <header className="bg-white border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-3">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <img src={logo} alt="Air Quality Nexus" className="h-24 w-30 md:h-28 md:w-34 rounded-full" />
-            <span className="text-lg md:text-2xl font-semibold leading-snug text-black">
-              Center for Nexus of Air Quality,<br/> Health, Ecosystem, and Climate
-            </span>
+        <div className="flex justify-between items-center py-0.5">
+          {/* Logos */}
+          <Link to="/" className="flex items-center space-x-1 ">
+            <img src={aitLogo} alt="AIT" className="   h-32 w-32 md:h-36 md:w-36 object-contain" />
+            <img src={logo} alt="Air Quality Nexus" className="h-32 w-32 md:h-36 md:w-36 rounded-full" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -40,7 +39,7 @@ const Header = () => {
                   <div key={item.name} className="relative group flex items-center">
                     <Link
                       to="/about"
-                      className={`text-lg font-semibold tracking-wide border-b-2 pb-1 transition-colors hover:text-primary ${
+                      className={`text-xl font-semibold tracking-wide border-b-2 pb-1 transition-colors hover:text-primary ${
                         isActive('/about') || isActive('/launching-event') || isActive('/our-thematic-areas') || isActive('/team')
                           ? 'text-primary border-primary'
                           : 'text-black border-transparent'
@@ -84,7 +83,7 @@ const Header = () => {
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`text-lg font-semibold tracking-wide border-b-2 pb-1 transition-colors hover:text-primary ${
+                  className={`text-xl font-semibold tracking-wide border-b-2 pb-1 transition-colors hover:text-primary ${
                     isActive(item.href)
                       ? 'text-primary border-primary'
                       : 'text-black border-transparent'

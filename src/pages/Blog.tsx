@@ -32,10 +32,17 @@ interface Project {
 const Blog = () => {
   const navigate = useNavigate();
 
-  // Animation variants
+  // Animation variants - balanced timing for elegant loading
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 80 },
-    visible: { opacity: 1, y: 0 }
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.9,
+        ease: [0.25, 0.1, 0.25, 1] as const
+      }
+    }
   };
 
   const staggerContainer = {
@@ -43,20 +50,35 @@ const Blog = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.4
+        staggerChildren: 0.5,
+        delayChildren: 0.7
       }
     }
   };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 60, scale: 0.9 },
-    visible: { opacity: 1, y: 0, scale: 1 }
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1] as const
+      }
+    }
   };
 
   const imageVariants = {
     hidden: { opacity: 0, scale: 1.2 },
-    visible: { opacity: 1, scale: 1 }
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: {
+        duration: 0.7,
+        ease: [0.25, 0.1, 0.25, 1] as const
+      }
+    }
   };
 
   const projects: {
