@@ -204,7 +204,7 @@ const sections = [
 </section>
 
         {/* CTA */}
-        <section className="py-12 bg-white">
+        {/* <section className="py-12 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-muted-foreground">
               Want to collaborate or learn more? Visit our Team page or Contact us.
@@ -214,7 +214,7 @@ const sections = [
               <a href="/air-quality-nexus-center/contact" className="underline text-primary">Contact Us</a>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
   );
 };
