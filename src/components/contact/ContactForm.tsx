@@ -48,7 +48,7 @@ export function ContactForm() {
         'service_fdnw9o3', // Your EmailJS service ID
         'template_acjp1ue', // Your EmailJS template ID
         {
-          to_email: 'mr.hunwinthu@gmail.com',
+          to_email: 'airqualitynexus@ait.ac.th',
           from_name: `${data.firstName} ${data.lastName}`,
           from_email: data.email,
           subject: data.subject,

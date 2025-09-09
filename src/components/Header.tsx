@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import logo from '@/assets/AQN.png';
+import logo from '@/assets/AQN1.png';
 import aitLogo from '@/assets/AIT.png';
 
 const Header = () => {
@@ -26,9 +26,9 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-0.5">
           {/* Logos */}
-          <Link to="/" className="flex items-center space-x-1 ">
+          <Link to="/" className="flex items-center -space-x-10 ">
             <img src={aitLogo} alt="AIT" className="   h-32 w-32 md:h-36 md:w-36 object-contain" />
-            <img src={logo} alt="Air Quality Nexus" className="h-32 w-32 md:h-36 md:w-36 rounded-full" />
+            <img src={logo} alt="Air Quality Nexus" className="h-32 w-32 md:h-36 md:w-56 rounded-full" />
           </Link>
 
           {/* Desktop Navigation */}

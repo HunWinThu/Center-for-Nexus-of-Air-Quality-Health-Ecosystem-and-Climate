@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-import logo from '@/assets/aqc.png';
+import logo from '@/assets/AQN1.png';
 
 const Footer = () => {
   return (
@@ -66,7 +66,7 @@ const Footer = () => {
         <div className="border-t border-white/20 mt-8 pt-8">
           <div className="flex flex-col items-center space-y-1">
             {/* Logo and Name */}
-            <div className="flex flex-col items-center space-y-1 sm:flex-row sm:space-y-0 sm:space-x-4">
+            <div className="flex flex-col items-center space-y-1 sm:flex-row sm:space-y-0 sm:-space-x-3">
               <img 
                 src={logo} 
                 alt="Air Quality Nexus Center Logo" 

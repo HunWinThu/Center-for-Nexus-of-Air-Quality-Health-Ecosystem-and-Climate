@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { StructuredData, usePageSEO } from '@/components/common/SEO';
 import { BookOpen, Layers, Scale, Shield, GraduationCap, ArrowRight, Wind, BarChart3, Users, Globe, Leaf, Zap, Clock, Calendar, Activity, Database, Settings, Cloud, Heart, TrendingUp } from 'lucide-react';
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-import Home from '@/assets/HOME.jpg';
+import Home from '@/assets/AIT_uni.png';
 import missionsHero from '@/assets/hig-quality.jpg';
 import cooperationImage from '@/assets/cooperation.jpg';
 import multidisciplinaryImage from '@/assets/multi.png';
@@ -43,7 +43,7 @@ import particlesPlus from '@/assets/collaborators/Particles-Plus-Logo-Opaque.jpg
 import unep from '@/assets/collaborators/United_Nations_Environment_Programme_Logo.svg.png';
 import vanlang from '@/assets/collaborators/vanlang.png';
 import vnu from '@/assets/collaborators/VNU-USSH (1).jpg';
-import bg_3 from '@/assets/bg_3.jpg';
+import bg_3 from '@/assets/AIT_uni_2.png';
 import React, { lazy, Suspense, useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
