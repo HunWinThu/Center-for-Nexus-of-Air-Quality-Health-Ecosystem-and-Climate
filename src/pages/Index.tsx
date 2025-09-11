@@ -620,7 +620,7 @@ const Index = () => {
       <div ref={partnersRef}>
         {partnersVisible ? (
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
@@ -1014,7 +1014,7 @@ const Index = () => {
               Center for Nexus of Air Quality, Health, Ecosystem, and Climate
             </motion.h1>
             <motion.p 
-              className="text-center text-xl md:text-2xl mb-8 text-white max-w-10xl mx-auto bg-green-700/85 rounded-full px-12 py-3 shadow"
+              className="text-center text-lg md:text-xl lg:text-2xl mb-8 text-white max-w-10xl mx-auto bg-green-700/85 rounded-full px-6 md:px-12 py-3 shadow"
               variants={fadeUpVariants}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
             >
