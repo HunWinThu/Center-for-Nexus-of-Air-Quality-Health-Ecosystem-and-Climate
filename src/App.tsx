@@ -35,7 +35,12 @@ const queryClient = new QueryClient();
 const App = () => (
   <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter basename={import.meta.env.PROD ? "/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate" : ""}>
+      <BrowserRouter 
+        basename={import.meta.env.PROD ? "/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate" : ""}
+        future={{
+          v7_startTransition: true,
+        }}
+      >
         <ScrollToTop />
         <ThemeProvider defaultTheme="light" storageKey="air-quality-theme">
           <LoadingProvider>

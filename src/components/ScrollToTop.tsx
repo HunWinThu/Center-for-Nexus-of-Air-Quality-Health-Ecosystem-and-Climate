@@ -1,20 +1,35 @@
-import { useLayoutEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLayoutEffect, useRef, useEffect } from 'react';
+import { useLocation, useNavigationType } from 'react-router-dom';
+
+// Store scroll positions for each route
+const scrollPositions = new Map<string, number>();
 
 export const ScrollToTop = () => {
   const { pathname } = useLocation();
+  const navigationType = useNavigationType();
+  const previousPath = useRef<string>('');
 
   useLayoutEffect(() => {
-    // Immediate scroll to top when pathname changes - before paint
-    window.scrollTo(0, 0);
+    // Save current scroll position before navigating away
+    if (previousPath.current && previousPath.current !== pathname) {
+      scrollPositions.set(previousPath.current, window.scrollY);
+    }
+
+    // Check if this is browser back/forward navigation using React Router's navigation type
+    const isBrowserNavigation = navigationType === 'POP';
     
-    // Backup scroll after a minimal delay
-    const timer = setTimeout(() => {
+    if (isBrowserNavigation && scrollPositions.has(pathname)) {
+      // This is browser back/forward - restore position
+      const savedPosition = scrollPositions.get(pathname) || 0;
+      window.scrollTo(0, savedPosition);
+    } else {
+      // Everything else - go to top
       window.scrollTo(0, 0);
-    }, 0);
-    
-    return () => clearTimeout(timer);
-  }, [pathname]);
+    }
+
+    // Update previous path reference
+    previousPath.current = pathname;
+  }, [pathname, navigationType]);
 
   return null;
 };

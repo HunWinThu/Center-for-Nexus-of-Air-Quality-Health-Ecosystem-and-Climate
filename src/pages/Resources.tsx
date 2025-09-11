@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Download, FileText, Database, Globe, BookOpen, Users, ExternalLink, LucideIcon } from "lucide-react";
+import { useState } from "react";
 
 // Import publication cover image for Nepal report
 import nepalReportCover from "@/assets/News&Events/image23.png";
@@ -19,6 +20,17 @@ interface Resource {
 }
 
 const Resources = () => {
+  const [activeTab, setActiveTab] = useState("reports");
+
+  // Handle tab change and scroll to top
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    // Force immediate scroll to top
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
+  };
+
   // Animation variants - balanced timing for elegant loading
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 80 },
@@ -235,35 +247,39 @@ const Resources = () => {
       {/* Main Content - Tabbed Interface */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Tabs defaultValue="reports" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 bg-accent/50 p-2 rounded-lg mb-8">
+          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
+            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 bg-accent/50 p-2 rounded-lg mb-8 gap-1">
               <TabsTrigger 
                 value="reports" 
-                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
+                className="text-sm md:text-lg font-semibold bg-background/80 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground hover:bg-primary/10 transition-colors p-2 md:p-3"
               >
-                <FileText className="mr-2" size={16} />
-                Reports & Guidelines
+                <FileText className="mr-1 md:mr-2" size={14} />
+                <span className="hidden sm:inline">Reports & Guidelines</span>
+                <span className="sm:hidden">Reports</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="databases" 
-                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
+                className="text-sm md:text-lg font-semibold bg-background/80 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground hover:bg-primary/10 transition-colors p-2 md:p-3"
               >
-                <Database className="mr-2" size={16} />
-                Databases & Datasets
+                <Database className="mr-1 md:mr-2" size={14} />
+                <span className="hidden sm:inline">Databases & Datasets</span>
+                <span className="sm:hidden">Data</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="tools" 
-                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
+                className="text-sm md:text-lg font-semibold bg-background/80 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground hover:bg-primary/10 transition-colors p-2 md:p-3"
               >
-                <BookOpen className="mr-2" size={16} />
-                Tools & Frameworks
+                <BookOpen className="mr-1 md:mr-2" size={14} />
+                <span className="hidden sm:inline">Tools & Frameworks</span>
+                <span className="sm:hidden">Tools</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="links" 
-                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
+                className="text-sm md:text-lg font-semibold bg-background/80 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground hover:bg-primary/10 transition-colors p-2 md:p-3"
               >
-                <Globe className="mr-2" size={16} />
-                External Resources
+                <Globe className="mr-1 md:mr-2" size={14} />
+                <span className="hidden sm:inline">External Resources</span>
+                <span className="sm:hidden">Links</span>
               </TabsTrigger>
             </TabsList>
 

@@ -124,28 +124,14 @@ export const HexagonGrid = () => {
 
   const handleClick = (item: HexagonItem, event: React.MouseEvent) => {
     if (item.position !== 'center' && item.modalData) {
-      // Get the hexagon element's position
-      const hexagonElement = event.currentTarget as HTMLElement;
-      const rect = hexagonElement.getBoundingClientRect();
-      
-      // Determine popup position based on hexagon position
-      // Right side hexagons (topRight, bottomRight) and bottom -> popup appears on right
-      // Left side hexagons (topLeft, bottomLeft) and top -> popup appears on left
-      const popupPosition = 
-        item.position === 'topRight' || 
-        item.position === 'bottomRight' || 
-        item.position === 'bottom' 
-          ? 'right' 
-          : 'left';
-      
       setModal({
         isOpen: true,
         title: item.title,
         description: item.modalData.description,
         images: item.modalData.images,
         imageAlts: item.modalData.imageAlts,
-        position: popupPosition,
-        hexagonRect: rect
+        position: 'right', // This will be ignored since we're centering
+        hexagonRect: null // Set to null to center the modal
       });
     }
   };
@@ -181,7 +167,7 @@ export const HexagonGrid = () => {
     <div className="py-12" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-[#1e3a8a] mb-16">Core research activities</h2>
-        <div className="relative h-[700px]">
+        <div className="relative h-[700px] overflow-auto lg:overflow-visible">
           <div className="honeycomb-grid">
             {items.map((item, index) => (
               <motion.div
