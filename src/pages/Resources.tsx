@@ -22,13 +22,9 @@ interface Resource {
 const Resources = () => {
   const [activeTab, setActiveTab] = useState("reports");
 
-  // Handle tab change and scroll to top
+  // Handle tab change without scrolling
   const handleTabChange = (value: string) => {
     setActiveTab(value);
-    // Force immediate scroll to top
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 0);
   };
 
   // Animation variants - balanced timing for elegant loading

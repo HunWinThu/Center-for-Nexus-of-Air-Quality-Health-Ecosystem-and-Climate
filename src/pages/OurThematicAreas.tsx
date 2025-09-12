@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { HexagonGrid } from '@/components/thematic/HexagonGrid';
+import ScopeCooperationDiagram from '@/components/diagrams/ScopeCooperationDiagram';
 
 import cooperationImg from '@/assets/cooperation.jpg';
 import capacityImg from '@/assets/capacity.jpg';
@@ -145,6 +146,24 @@ const sections = [
         <path key={i} d={`M0 ${20 + i*18} C 120 ${0 + i*18}, 260 ${40 + i*18}, 520 ${12 + i*18}`} className="stroke-primary" strokeWidth="2" fill="none" />
       ))}
     </svg>
+  </div>
+</section>
+
+{/* Scope & Cooperation Diagram */}
+<section className="py-16 bg-white">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+    >
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Scope & Cooperation Framework</h2>
+        <p className="text-lg text-muted-foreground">Our collaborative approach integrating air quality, climate, and planetary health</p>
+      </div>
+      <ScopeCooperationDiagram />
+    </motion.div>
   </div>
 </section>
 

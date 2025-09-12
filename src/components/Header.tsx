@@ -48,13 +48,16 @@ const Header = () => {
 
   const isActive = (href: string) => location.pathname === href;
 
-  // Navigation click handler (no manual scroll here; global ScrollToTop manages it)
+  // Force scroll to top for all navigation clicks
   const handleNavClick = () => {
-    // intentionally empty
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
   };
 
   const handleMobileNavClick = () => {
     setIsMenuOpen(false);
+    handleNavClick();
   };
 
   return (
