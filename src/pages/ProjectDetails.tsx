@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useScrollToTop } from '@/hooks/use-scroll-to-top';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, DollarSign, Clock, Users, Target, Activity, Trophy } from 'lucide-react';
@@ -152,9 +151,6 @@ const ProjectDetails = () => {
   // Find project by ID
   const allProjects = [...projects.ongoing, ...projects.completed, ...projects.upcoming];
   const project = allProjects.find(p => p.id === parseInt(id || '0'));
-
-  // Scroll to top when navigating to project
-  useScrollToTop(id);
 
   if (!project) {
     return (

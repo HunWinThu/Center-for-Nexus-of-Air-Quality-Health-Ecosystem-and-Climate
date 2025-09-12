@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useScrollToTop } from '@/hooks/use-scroll-to-top';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Calendar, Clock, MapPin, Users, Tag } from 'lucide-react';
@@ -13,9 +12,6 @@ const NewsDetails = () => {
 
   // Get news item from our data
   const item = getNewsById(parseInt(id || '0'));
-
-  // Scroll to top when navigating to news/event
-  useScrollToTop(id);
 
   if (!item) {
     return (

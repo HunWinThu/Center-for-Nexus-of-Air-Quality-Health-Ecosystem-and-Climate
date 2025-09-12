@@ -7,7 +7,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { LoadingProvider } from "@/components/common/LoadingProvider";
 import { ErrorBoundary } from "@/components/common/ErrorBoundary";
 import { MainLayout } from "@/components/layout/MainLayout";
-import { ScrollToTop } from "@/components/ScrollToTop";
 import { ROUTES } from "@/constants";
 
 // Page imports
@@ -41,7 +40,6 @@ const App = () => (
           v7_startTransition: true,
         }}
       >
-        <ScrollToTop />
         <ThemeProvider defaultTheme="light" storageKey="air-quality-theme">
           <LoadingProvider>
             <TooltipProvider>

@@ -21,6 +21,7 @@ import Saikawa from '@/assets/Advisory/Dr. Eri Saikawa.jpg';
 import Broomfield from '@/assets/Advisory/Dr. Mark Broomfield.jpg';
 import Mari from '@/assets/Advisory/Dr. Xavier Mari.jpeg';
 import Casanova from '@/assets/Advisory/Ms. Dang Espita Casanova.jpeg';
+import Tong from '@/assets/Advisory/Prof.TongZhu.png';
 
 import teamPlaceholder from '@/assets/team-placeholder.jpg';
 
@@ -102,6 +103,17 @@ const advisoryCommittee = [
     alignTop: true,
     image: Zusman,
     viewprofile: "https://www.iges.or.jp/en/about/staff/zusman-eric",
+    linkedin: "https://www.linkedin.com/in/eric-zusman-0b52001/"
+  },
+  {
+    id: 10,
+    name: "Dr. Tong Zhu",
+    role: "Advisory Member",
+    department: "College of Environmental Sciences and EngineeringPeking University",
+    bio: "Boya Chair Professor",
+    alignTop: true,
+    image: Tong,
+    viewprofile: "http://scholar.pku.edu.cn/tongzhu/bio",
     linkedin: "https://www.linkedin.com/in/eric-zusman-0b52001/"
   }
 ];
@@ -369,9 +381,9 @@ const Committee = () => {
             ))}
           </motion.div>
 
-          {/* Second Row - 3 Members */}
+          {/* Second Row - 4 Members */}
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center max-w-6xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
