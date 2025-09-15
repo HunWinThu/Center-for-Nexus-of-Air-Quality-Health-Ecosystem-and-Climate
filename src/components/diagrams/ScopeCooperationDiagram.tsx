@@ -195,7 +195,7 @@ const ScopeCooperationDiagram = () => {
             <div className="bg-yellow-200 border-2 border-yellow-400 w-52 h-24 rounded-lg text-center shadow-lg flex items-center justify-center">
               <div className="text-center">
                 <p className="font-bold text-gray-800 text-base leading-tight">Human: WHO, Canberra, SINICA</p>
-                <p className="font-bold text-gray-800 text-sm leading-tight">Ecosystem: EANET, York University</p>
+                <p className="font-bold text-gray-800 text-base leading-tight">Ecosystem: EANET, York University</p>
               </div>
             </div>
           </motion.div>

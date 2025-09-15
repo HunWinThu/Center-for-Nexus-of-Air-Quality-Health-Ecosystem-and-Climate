@@ -41,7 +41,7 @@ const contactInfo = [
     icon: Clock,
     title: 'Office Hours',
     content: 'Mon - Fri: 9 AM - 5 PM',
-    description: 'Saturday: 10 AM - 2 PM (by appointment)'
+    description: ''
   }
 ];
 
@@ -65,7 +65,20 @@ export function ContactInfo() {
               <info.icon className="mx-auto mb-4 text-primary" size={32} />
               <h3 className="text-lg font-semibold text-foreground mb-2">{info.title}</h3>
               <p className="text-primary font-medium mb-1">{info.content}</p>
-              <p className="text-sm text-muted-foreground">{info.description}</p>
+              {info.description && (
+                info.title === 'Visit Us' ? (
+                  <a 
+                    href={info.description}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-blue-600 hover:text-blue-800 underline hover:no-underline transition-colors duration-200"
+                  >
+                    View on Google Maps
+                  </a>
+                ) : (
+                  <p className="text-sm text-muted-foreground">{info.description}</p>
+                )
+              )}
             </CardContent>
           </Card>
         </motion.div>

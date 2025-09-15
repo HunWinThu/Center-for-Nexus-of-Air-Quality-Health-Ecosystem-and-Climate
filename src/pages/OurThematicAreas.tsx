@@ -139,15 +139,10 @@ const sections = [
       </motion.p>
     </motion.div>
   </div>
-  {/* Decorative waves */}
-  <div aria-hidden className="pointer-events-none absolute right-0 top-4 -z-10 opacity-30">
-    <svg width="520" height="220" viewBox="0 0 520 220" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden md:block">
-      {[...Array(10)].map((_, i) => (
-        <path key={i} d={`M0 ${20 + i*18} C 120 ${0 + i*18}, 260 ${40 + i*18}, 520 ${12 + i*18}`} className="stroke-primary" strokeWidth="2" fill="none" />
-      ))}
-    </svg>
-  </div>
 </section>
+
+{/* Section Separator */}
+<div className="border-t border-gray-200"></div>
 
 {/* Scope & Cooperation Diagram */}
 <section className="py-16 bg-white">
@@ -167,6 +162,9 @@ const sections = [
   </div>
 </section>
 
+{/* Section Separator */}
+<div className="border-t border-gray-200"></div>
+
 {/* Core Activities Hexagon Grid */}
 <section id="core-activities" className="py-12 bg-white">
   <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -183,6 +181,9 @@ const sections = [
     </motion.div>
   </div>
 </section>
+
+{/* Section Separator */}
+<div className="border-t border-gray-200"></div>
 
 {/* Sections - alternating layout */}
 <section className="py-16">
