@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import logo from '@/assets/AQN2.png';
+import logo from '@/assets/jpg2png/Slide7.png';
 import aitLogo from '@/assets/AIT.png';
 
 const Header = () => {
@@ -74,7 +74,7 @@ const Header = () => {
             <img
               src={logo}
               alt="Air Quality Nexus"
-              className="h-32 w-32 object-contain"
+              className="h-44 w-44 object-contain"
             />
           </Link>
 
@@ -179,7 +179,7 @@ const Header = () => {
                     <img
                       src={logo}
                       alt="Air Quality Nexus"
-                      className="h-32 w-32 object-contain"
+                      className="h-40 w-40 object-contain"
                     />
                   </Link>
                   <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(false)}>

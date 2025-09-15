@@ -2,11 +2,26 @@ import { motion } from "framer-motion";
 
 const ScopeCooperationDiagram = () => {
   return (
-    <div className="w-full max-w-6xl mx-auto">
-      <div className="relative w-full h-[800px] overflow-x-auto lg:overflow-visible">
-        <div className="relative min-w-[1000px] h-[800px]">
+    <div className="w-full max-w-none ml-0 mr-32 pl-0 pr-4" style={{ position: 'relative', isolation: 'isolate' }}>
+      <div className="relative w-full h-[900px] overflow-x-auto lg:overflow-visible" style={{ contain: 'layout style' }}>
+        <div className="relative min-w-[1200px] h-[900px]" style={{ position: 'relative', contain: 'layout' }}>
+          
+          {/* Dotted Rectangle covering the whole diagram */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+            className="absolute inset-4 border-4 border-dashed border-gray-400 rounded-lg z-10"
+            style={{
+              top: "80px",
+              left: "152px", 
+              right: "152px",
+              bottom: "72px"
+            }}
+          />
+
           {/* Overlapping Venn Diagram Circles */}
-          <div className="absolute inset-0 z-20 flex items-center justify-center">
+          <div className="absolute inset-0 z-20 flex items-center justify-center -translate-y-8">
             <div className="relative w-[400px] h-[320px]">
             {/* Air Pollution - Blue (left) */}
             <motion.div
@@ -73,97 +88,115 @@ const ScopeCooperationDiagram = () => {
         </div>
 
         {/* Adjusted Organization Boxes */}
-        {/* Top Organization Box - centered above circles using flex */}
-        <div className="absolute inset-0 z-30 flex items-start justify-center pt-4">
+        {/* Top Organization Box - centered on screen */}
+        <div className="absolute inset-0 z-30 flex items-start justify-center pt-8">
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
+            className="flex flex-col items-center"
           >
-            <div className="bg-yellow-200 border-2 border-yellow-400 px-4 py-2 rounded-lg text-center shadow-lg">
-              <p className="font-bold text-gray-800 text-lg">WMO, CCAC, IGES, RIFS, RICARDO</p>
+            <div className="bg-yellow-200 border-2 border-yellow-400 w-52 h-24 rounded-lg text-center shadow-lg flex items-center justify-center">
+              <p className="font-bold text-gray-800 text-base leading-tight">WMO, CCAC, IGES, RIFS, RICARDO</p>
             </div>
-            <div className="bg-purple-100 border border-purple-300 px-4 py-3 rounded-lg mt-2 text-base text-purple-700 shadow-lg text-center">
-              <p>• Co-benefits of emission reduction</p>
-              <p>• Co-control: GHG, SLCF, air pollutants</p>
-              <p>• Air pollution meteorology/climatology</p>
+            <div className="bg-purple-100 border border-purple-300 w-64 h-20 rounded-lg mt-2 shadow-lg flex items-center justify-start pl-3">
+              <div className="text-left text-purple-700">
+                <p className="text-sm leading-tight">• Co-benefits of emission reduction</p>
+                <p className="text-sm leading-tight">• Co-control: GHG, SLCF, air pollutants</p>
+                <p className="text-sm leading-tight">• Air pollution meteorology/climatology</p>
+              </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Left Side Organizations - adjusted position */}
+        {/* Left Side Organizations - positioned at exact middle of rectangle's left side */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="absolute left-20 top-1/4 transform -translate-y-1/2 z-30 space-y-4"
+          className="absolute left-12 z-30 flex gap-6 items-center"
+          style={{ top: "376px", transform: "translateY(-50%)" }}
         >
-          <div className="bg-yellow-200 border-2 border-yellow-400 px-4 py-3 rounded-lg shadow-lg">
-            <p className="font-bold text-gray-800 text-lg">CAA, IRD, IIASA, Universities</p>
-            <p className="text-base text-gray-600">(Clarkson, PKU, Colorado,</p>
-            <p className="text-base text-gray-600">Emory, etc.)</p>
+          <div className="bg-yellow-200 border-2 border-yellow-400 w-52 h-24 rounded-lg shadow-lg flex items-center justify-center">
+            <div className="text-center">
+              <p className="font-bold text-gray-800 text-base leading-tight">CAA, IRD, IIASA, Universities</p>
+              <p className="text-sm text-gray-600 leading-tight">(Clarkson, PKU, Colorado, Emory, etc.)</p>
+            </div>
           </div>
-          <div className="bg-blue-100 border border-blue-300 px-4 py-2 rounded-lg shadow-lg">
-            <p className="font-bold text-blue-700 text-lg">AIT: EEM, InterLab,</p>
-            <p className="font-bold text-blue-700 text-lg">RRC.RP</p>
+          <div className="bg-blue-100 border border-blue-300 w-40 h-16 rounded-lg shadow-lg flex items-center justify-center">
+            <div className="text-center">
+              <p className="font-bold text-blue-700 text-base leading-tight">AIT: EEM, InterLab,</p>
+              <p className="font-bold text-blue-700 text-base leading-tight">RRC.AP</p>
+            </div>
           </div>
         </motion.div>
 
-        {/* Right Side AIT Energy - adjusted position */}
+        {/* Right Side AIT Energy - aligned with AIT: EEM horizontally */}
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="absolute right-20 top-1/4 transform -translate-y-1/2 z-30"
+          className="absolute right-56 z-30"
+          style={{ top: "376px", transform: "translateY(-50%)" }}
         >
-          <div className="bg-blue-100 border border-blue-300 px-4 py-2 rounded-lg shadow-lg">
-            <p className="font-bold text-blue-700 text-lg">AIT: Energy</p>
-            <p className="font-bold text-blue-700 text-lg">Climate Change</p>
+          <div className="bg-blue-100 border border-blue-300 w-40 h-16 rounded-lg shadow-lg flex items-center justify-center">
+            <div className="text-center">
+              <p className="font-bold text-blue-700 text-base leading-tight">AIT: Energy</p>
+              <p className="font-bold text-blue-700 text-base leading-tight">Climate Change</p>
+            </div>
           </div>
         </motion.div>
 
-        {/* Bottom Left Effects - centered */}
+        {/* Bottom Left Effects - moved further top-right */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="absolute bottom-44 left-20 z-30"
+          className="absolute bottom-64 left-48 z-30"
         >
-          <div className="bg-purple-100 border border-purple-300 px-4 py-3 rounded-lg text-base text-purple-700 shadow-lg text-center">
-            <p>• Human: Toxic pollutants</p>
-            <p>• Ecosystem: phytotoxic pollutants, acid</p>
-            <p>deposition</p>
+          <div className="bg-purple-100 border border-purple-300 w-64 h-20 rounded-lg shadow-lg flex items-center justify-start pl-3">
+            <div className="text-left text-purple-700">
+              <p className="text-sm leading-tight">• Human: Toxic pollutants</p>
+              <p className="text-sm leading-tight">• Ecosystem: phytotoxic pollutants, acid deposition</p>
+            </div>
           </div>
         </motion.div>
 
-        {/* Bottom Right Effects - centered */}
+        {/* Bottom Right Effects - aligned with AIT: Energy box vertically */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0, duration: 0.6 }}
-          className="absolute bottom-44 right-20 z-30"
+          className="absolute bottom-64 right-56 z-30"
         >
-          <div className="bg-purple-100 border border-purple-300 px-4 py-3 rounded-lg text-base text-purple-700 shadow-lg text-center">
-            <p>• Climate intensification of</p>
-            <p>wildfires (extreme events) and</p>
-            <p>health effects</p>
+          <div className="bg-purple-100 border border-purple-300 w-64 h-20 rounded-lg shadow-lg flex items-center justify-start pl-3">
+            <div className="text-left text-purple-700">
+              <p className="text-sm leading-tight">• Climate intensification of</p>
+              <p className="text-sm leading-tight">wildfires (extreme events) and</p>
+              <p className="text-sm leading-tight">health effects</p>
+            </div>
           </div>
         </motion.div>
 
         {/* Bottom Center Organizations - centered using flex */}
-        <div className="absolute inset-0 z-30 flex items-end justify-center pb-12">
+        <div className="absolute inset-0 z-30 flex items-end justify-center pb-6">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.6 }}
             className="space-y-3 flex flex-col items-center"
           >
-            <div className="bg-yellow-200 border-2 border-yellow-400 px-4 py-2 rounded-lg text-center shadow-lg">
-              <p className="font-bold text-gray-800 text-base">Human: WHO, Canberra, SINICA</p>
-              <p className="font-bold text-gray-800 text-base">Ecosystem: EANET, York University</p>
+            <div className="bg-blue-100 border border-blue-300 w-40 h-16 rounded-lg shadow-lg flex items-center justify-center">
+              <div className="text-center">
+                <p className="font-bold text-blue-700 text-base leading-tight">AIT: Food & Water:</p>
+                <p className="font-bold text-blue-700 text-base leading-tight">Crops & Aquaculture</p>
+              </div>
             </div>
-            <div className="bg-blue-100 border border-blue-300 px-4 py-2 rounded-lg text-center shadow-lg">
-              <p className="font-bold text-blue-700 text-base">AIT: Food & Water: Crops & Aquaculture</p>
+            <div className="bg-yellow-200 border-2 border-yellow-400 w-52 h-24 rounded-lg text-center shadow-lg flex items-center justify-center">
+              <div className="text-center">
+                <p className="font-bold text-gray-800 text-base leading-tight">Human: WHO, Canberra, SINICA</p>
+                <p className="font-bold text-gray-800 text-sm leading-tight">Ecosystem: EANET, York University</p>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -175,7 +208,7 @@ const ScopeCooperationDiagram = () => {
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
             transition={{ delay: 1.4, duration: 0.8 }}
-            d="M 580 120 L 580 350"
+            d="M 660 220 L 660 370"
             stroke="#7c3aed"
             strokeWidth="3"
             fill="none"
@@ -187,7 +220,7 @@ const ScopeCooperationDiagram = () => {
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
             transition={{ delay: 1.6, duration: 0.8 }}
-            d="M 380 535 L 550 440"
+            d="M 444 564 L 620 460"
             stroke="#7c3aed"
             strokeWidth="3"
             fill="none"
@@ -199,7 +232,7 @@ const ScopeCooperationDiagram = () => {
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
             transition={{ delay: 1.8, duration: 0.8 }}
-            d="M 840 530 L 600 420"
+            d="M 840 566 L 700 460"
             stroke="#7c3aed"
             strokeWidth="3"
             fill="none"
