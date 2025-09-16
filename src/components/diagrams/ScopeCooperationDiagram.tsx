@@ -6,17 +6,18 @@ const ScopeCooperationDiagram = () => {
       <div className="relative w-full h-[900px] overflow-x-auto lg:overflow-visible" style={{ contain: 'layout style' }}>
         <div className="relative min-w-[1200px] h-[900px]" style={{ position: 'relative', contain: 'layout' }}>
           
-          {/* Dotted Rectangle covering the whole diagram */}
+          {/* Dotted Oval covering the whole diagram */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.8 }}
-            className="absolute inset-4 border-4 border-dashed border-gray-400 rounded-lg z-10"
+            className="absolute border-4 border-dashed border-gray-400 z-10"
             style={{
               top: "80px",
               left: "152px", 
               right: "152px",
-              bottom: "72px"
+              bottom: "72px",
+              borderRadius: "50%"
             }}
           />
 
@@ -152,7 +153,7 @@ const ScopeCooperationDiagram = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="absolute bottom-64 left-48 z-30"
+          className="absolute bottom-64 left-56 z-30"
         >
           <div className="bg-purple-100 border border-purple-300 w-64 h-20 rounded-lg shadow-lg flex items-center justify-start pl-3">
             <div className="text-left text-purple-700">
@@ -195,7 +196,7 @@ const ScopeCooperationDiagram = () => {
             <div className="bg-yellow-200 border-2 border-yellow-400 w-52 h-24 rounded-lg text-center shadow-lg flex items-center justify-center">
               <div className="text-center">
                 <p className="font-bold text-gray-800 text-base leading-tight">Human: WHO, Canberra, SINICA</p>
-                <p className="font-bold text-gray-800 text-base leading-tight">Ecosystem: EANET, York University</p>
+                <p className="font-bold text-gray-800 text-base  leading-tight">Ecosystem: EANET, York University</p>
               </div>
             </div>
           </motion.div>
@@ -220,7 +221,7 @@ const ScopeCooperationDiagram = () => {
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
             transition={{ delay: 1.6, duration: 0.8 }}
-            d="M 444 564 L 620 460"
+            d="M 478 564 L 620 460"
             stroke="#7c3aed"
             strokeWidth="3"
             fill="none"
