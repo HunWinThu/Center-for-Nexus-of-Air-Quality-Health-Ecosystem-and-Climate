@@ -116,7 +116,7 @@ const sections = [
   return (
       <main>
 {/* Hero */}
-<section className="relative py-16 md:py-20">
+{/* <section className="relative py-16 md:py-20">
   <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
     <motion.div
       initial="hidden"
@@ -139,7 +139,7 @@ const sections = [
       </motion.p>
     </motion.div>
   </div>
-</section>
+</section> */}
 
 {/* Section Separator */}
 <div className="border-t border-gray-200"></div>

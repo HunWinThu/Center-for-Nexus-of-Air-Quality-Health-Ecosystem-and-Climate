@@ -244,38 +244,34 @@ const Resources = () => {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 bg-accent/50 p-2 rounded-lg mb-8 gap-1">
+            <TabsList className="grid w-full grid-cols-4 bg-accent/50 p-2 rounded-lg mb-8">
               <TabsTrigger 
                 value="reports" 
-                className="text-sm md:text-lg font-semibold bg-background/80 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground hover:bg-primary/10 transition-colors p-2 md:p-3"
+                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
               >
-                <FileText className="mr-1 md:mr-2" size={14} />
-                <span className="hidden sm:inline">Reports & Guidelines</span>
-                <span className="sm:hidden">Reports</span>
+                <FileText className="mr-2" size={16} />
+                Reports
               </TabsTrigger>
               <TabsTrigger 
                 value="databases" 
-                className="text-sm md:text-lg font-semibold bg-background/80 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground hover:bg-primary/10 transition-colors p-2 md:p-3"
+                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
               >
-                <Database className="mr-1 md:mr-2" size={14} />
-                <span className="hidden sm:inline">Databases & Datasets</span>
-                <span className="sm:hidden">Data</span>
+                <Database className="mr-2" size={16} />
+                Data
               </TabsTrigger>
               <TabsTrigger 
                 value="tools" 
-                className="text-sm md:text-lg font-semibold bg-background/80 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground hover:bg-primary/10 transition-colors p-2 md:p-3"
+                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
               >
-                <BookOpen className="mr-1 md:mr-2" size={14} />
-                <span className="hidden sm:inline">Tools & Frameworks</span>
-                <span className="sm:hidden">Tools</span>
+                <BookOpen className="mr-2" size={16} />
+                Tools
               </TabsTrigger>
               <TabsTrigger 
                 value="links" 
-                className="text-sm md:text-lg font-semibold bg-background/80 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground hover:bg-primary/10 transition-colors p-2 md:p-3"
+                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
               >
-                <Globe className="mr-1 md:mr-2" size={14} />
-                <span className="hidden sm:inline">External Resources</span>
-                <span className="sm:hidden">Links</span>
+                <Globe className="mr-2" size={16} />
+                Links
               </TabsTrigger>
             </TabsList>
 
