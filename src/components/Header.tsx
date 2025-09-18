@@ -97,7 +97,7 @@ const Header = () => {
                     </Link>
                     <div className="absolute top-full left-0 mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform translate-y-[-10px] group-hover:translate-y-0 z-50">
                       {/* Firefox-compatible blur effect matching header */}
-                      <div className="min-w-[250px] rounded-xl bg-white/50 backdrop-blur-md border border-white/40 shadow-2xl p-2">
+                      <div className="min-w-[280px] rounded-xl bg-white/50 backdrop-blur-md border border-white/40 shadow-2xl p-2">
                         <Link 
                           to="/launching-event" 
                           onClick={handleNavClick}
@@ -110,7 +110,7 @@ const Header = () => {
                           onClick={handleNavClick}
                           className="block rounded-lg px-4 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-primary transition-colors"
                         >
-                          Our Thematic Areas
+                          Our Core Research Areas
                         </Link>
                         <Link 
                           to="/team" 

@@ -46,7 +46,7 @@ import vnu from '@/assets/collaborators/VNU-USSH (1).jpg';
 import bg_3 from '@/assets/AIT_uni_2.png';
 import React, { lazy, Suspense, useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { supabase } from '@/services/supabase';
 import { getLatestNews, type NewsItem } from '@/data/allSharedNewsData';
 
@@ -74,6 +74,21 @@ const Index = () => {
     location?: string;
     time?: string;
   }
+
+  // Handle hash navigation
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const elementId = location.hash.substring(1);
+      const element = document.getElementById(elementId);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'instant', block: 'start' });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   // SEO setup
   usePageSEO(
@@ -568,6 +583,19 @@ const Index = () => {
   const ThematicAreasCards = () => {
     const [thematicRef, thematicVisible] = useIntersectionObserver(0.1);
 
+    // Map feature titles to their respective thematic area routes
+    const getThematicRoute = (title: string) => {
+      const routeMap: { [key: string]: string } = {
+        'AQ Monitoring, Chemical Analysis, SA': '/thematic/monitoring-analysis',
+        'Emission Inventory and Emission Projection': '/thematic/emission-inventory',
+        'Dispersion Modeling': '/thematic/dispersion-modeling',
+        'Integrated Air Pollution Control: Demonstration': '/thematic/pollution-control',
+        'Meteorology and Climate Science': '/thematic/meteorology-climate',
+        'Impact Assessment: Health and Ecosystem': '/thematic/impact-assessment'
+      };
+      return routeMap[title] || '/our-thematic-areas#core-activities';
+    };
+
     return (
       <div ref={thematicRef}>
         {thematicVisible ? (
@@ -585,7 +613,7 @@ const Index = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Link 
-                  to="/our-thematic-areas#core-activities"
+                  to={getThematicRoute(feature.title)}
                   className="block"
                 >
                   <Card 
@@ -1007,11 +1035,11 @@ const Index = () => {
             variants={staggerContainer}
           >
             <motion.h1 
-              className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white-700 via-white-700 to-white-900 bg-clip-text"
+              className="text-4xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white-700 via-white-700 to-white-900 bg-clip-text"
               variants={fadeUpVariants}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              Center for Nexus of Air Quality, Health, Ecosystem, and Climate
+              Air Quality Nexus Center
             </motion.h1>
             <motion.p 
               className="text-center text-lg md:text-xl lg:text-2xl mb-8 text-white max-w-10xl mx-auto bg-green-700/85 rounded-full px-6 md:px-12 py-3 shadow"
@@ -1063,7 +1091,7 @@ const Index = () => {
               className="text-xl text-grey/90 leading-relaxed mb-6 font-medium max-w-6xl mx-auto text-center"
               variants={fadeUpVariants}
             >
-              Air Quality Nexus Center has a goal to serve as a focal point to build capacity and conduct cutting-edge 
+              Center for Nexus of Air Quality Health, Ecosystem, and Climate has a goal to serve as a focal point to build capacity and conduct cutting-edge 
               research in atmospheric sciences for effective improvement of air quality in Asia and beyond. The Center will be an institution-wide Center, cooperating with multidisciplinary and cutting-edge research 
               areas of the schools and other AIT Centers to foster collaboration and strengthen AIT research and education capacity.
             </motion.p>
@@ -1167,10 +1195,10 @@ const Index = () => {
       <div className="border-t border-gray-200"></div>
 
       {/* Features Section */}
-        <section className="py-20 bg-white">
+        <section id="research-areas" className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-5xl font-bold text-foreground mb-6">Our Thematic Areas</h2>
+              <h2 className="text-5xl font-bold text-foreground mb-6">Our Core Research Areas</h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 From cutting-edge research to community engagement, we tackle air quality challenges 
                 through multiple integrated approaches.

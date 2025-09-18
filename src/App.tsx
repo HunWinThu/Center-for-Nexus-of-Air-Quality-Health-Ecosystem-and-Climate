@@ -26,6 +26,14 @@ import OurThematicAreas from "./pages/OurThematicAreas";
 import Committee from "./pages/AdvisoryCommittee";
 import NotFound from "./pages/NotFound";
 
+// Thematic area pages
+import MonitoringAnalysis from "./pages/thematic/MonitoringAnalysis";
+import PollutionControl from "./pages/thematic/PollutionControl";
+import ImpactAssessment from "./pages/thematic/ImpactAssessment";
+import EmissionInventory from "./pages/thematic/EmissionInventory";
+import MeteorologyClimate from "./pages/thematic/MeteorologyClimate";
+import DispersionModeling from "./pages/thematic/DispersionModeling";
+
 // Simple admin page
 import SimpleAdminLogin from "./pages/admin/SimpleAdminLogin";
 
@@ -65,6 +73,15 @@ const App = () => (
                   <Route path={ROUTES.CONTACT} element={<Contact />} />
                   <Route path={ROUTES.LAUNCHING_EVENT} element={<LaunchingEvent />} />
                   <Route path={ROUTES.COMMITTEE} element={<Committee />} />
+                  
+                  {/* Thematic Area Routes */}
+                  <Route path="/thematic/monitoring-analysis" element={<MonitoringAnalysis />} />
+                  <Route path="/thematic/pollution-control" element={<PollutionControl />} />
+                  <Route path="/thematic/impact-assessment" element={<ImpactAssessment />} />
+                  <Route path="/thematic/emission-inventory" element={<EmissionInventory />} />
+                  <Route path="/thematic/meteorology-climate" element={<MeteorologyClimate />} />
+                  <Route path="/thematic/dispersion-modeling" element={<DispersionModeling />} />
+                  
                   <Route path="*" element={<NotFound />} />
                 </Route>
               </Routes>
