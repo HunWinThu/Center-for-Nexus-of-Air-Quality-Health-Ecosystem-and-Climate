@@ -1,6 +1,6 @@
 import { MainLayout } from '@/components/layout/MainLayout';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -171,7 +171,16 @@ const publications: Record<string, Publication[]> = {
 };
 
 const Publications = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [copiedIndex, setCopiedIndex] = useState(-1);
+  
+  // Get active tab from URL, default to '2025'
+  const activeTab = searchParams.get('tab') || '2025';
+  
+  // Function to handle tab changes and update URL
+  const handleTabChange = (tabValue: string) => {
+    setSearchParams({ tab: tabValue });
+  };
 
   const handleCopy = (text: string, index: number) => {
     // Strip HTML tags for clipboard
@@ -243,9 +252,9 @@ const Publications = () => {
       {/* Publications Content */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Tabs defaultValue="2024" className="w-full">
+          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
             <TabsList className="grid w-full grid-cols-4 bg-accent/50 p-2 rounded-lg mb-8">
-              {Object.keys(publications).map((year) => (
+              {['2025', '2024', '2023', '2022'].map((year) => (
                 <TabsTrigger 
                   key={year} 
                   value={year} 

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Calendar, Clock, ExternalLink, Globe, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 // Import images
@@ -77,8 +77,17 @@ interface Event {
 
 const News = () => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [supabaseEvents, setSupabaseEvents] = useState<SupabaseEvent[]>([]);
   const [loadingEvents, setLoadingEvents] = useState(true);
+  
+  // Get active tab from URL, default to 'news'
+  const activeTab = searchParams.get('tab') || 'news';
+  
+  // Function to handle tab changes and update URL
+  const handleTabChange = (tabValue: string) => {
+    setSearchParams({ tab: tabValue });
+  };
   
   // Animation variants - balanced timing for elegant loading
   const fadeUpVariants = {
@@ -660,7 +669,7 @@ const resources: NewsItem[] = [
       {/* Tabbed Content Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Tabs defaultValue="news" className="w-full">
+          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
             <TabsList className="grid w-full grid-cols-3 bg-accent/50 p-2 rounded-lg mb-8">
               <TabsTrigger 
                 value="upcoming" 

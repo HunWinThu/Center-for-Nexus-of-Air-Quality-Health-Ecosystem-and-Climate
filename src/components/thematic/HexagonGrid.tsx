@@ -82,7 +82,6 @@ export const HexagonGrid = () => {
   return (
     <div className="py-12" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-[#1e3a8a] mb-16">Core research activities</h2>
         <div className="relative h-[700px] overflow-auto lg:overflow-visible">
           <div className="honeycomb-grid">
             {items.map((item, index) => (

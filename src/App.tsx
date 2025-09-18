@@ -8,6 +8,7 @@ import { LoadingProvider } from "@/components/common/LoadingProvider";
 import { ErrorBoundary } from "@/components/common/ErrorBoundary";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { ROUTES } from "@/constants";
+import { useEffect, useRef } from "react";
 
 // Page imports
 import Index from "./pages/Index";
@@ -39,18 +40,53 @@ import SimpleAdminLogin from "./pages/admin/SimpleAdminLogin";
 
 const queryClient = new QueryClient();
 
-const App = () => (
+// Enhanced scroll restoration component
+function ScrollToTop() {
+  const location = useLocation();
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    // Skip scroll restoration on first render
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    // For homepage, use browser's native scroll restoration for back button
+    if (location.pathname === '/' || location.pathname === '') {
+      // Only scroll to top if this is a fresh navigation (not browser back/forward)
+      if (!window.history.state?.idx || window.history.state.idx === 0) {
+        window.scrollTo(0, 0);
+      }
+      // For browser back/forward, let the browser handle scroll restoration
+      return;
+    }
+
+    // For all other pages, scroll to top
+    window.scrollTo(0, 0);
+  }, [location.pathname, location.search]);
+
+  return null;
+}
+
+const App = () => {
+  // Enable browser's native scroll restoration for homepage
+  useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'auto';
+    }
+  }, []);
+
+  return (
   <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter 
         basename={import.meta.env.PROD ? "/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate" : ""}
-        future={{
-          v7_startTransition: true,
-        }}
       >
         <ThemeProvider defaultTheme="light" storageKey="air-quality-theme">
           <LoadingProvider>
             <TooltipProvider>
+              <ScrollToTop />
               <Routes>
                 {/* Simple Admin Route */}
                 <Route path="/admin" element={<SimpleAdminLogin />} />
@@ -93,6 +129,7 @@ const App = () => (
       </BrowserRouter>
     </QueryClientProvider>
   </ErrorBoundary>
-);
+  );
+};
 
 export default App;

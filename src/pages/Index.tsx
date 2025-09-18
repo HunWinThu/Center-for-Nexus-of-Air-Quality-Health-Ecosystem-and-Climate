@@ -97,8 +97,8 @@ const Index = () => {
     'https://hunwinthu.github.io/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate/HOME.jpg'
   );
 
-  // Lazy loading hook
-  const useIntersectionObserver = (threshold = 0.1) => {
+  // Optimized lazy loading hook for faster loading
+  const useIntersectionObserver = (threshold = 0.01, rootMargin = '300px') => {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
 
@@ -111,7 +111,10 @@ const Index = () => {
             observer.unobserve(entry.target);
           }
         },
-        { threshold }
+        { 
+          threshold,
+          rootMargin // Load content 300px before it comes into view
+        }
       );
 
       if (currentRef) {
@@ -123,7 +126,7 @@ const Index = () => {
           observer.unobserve(currentRef);
         }
       };
-    }, [threshold]);
+    }, [threshold, rootMargin]);
 
     return [ref, isVisible] as const;
   };
@@ -322,7 +325,7 @@ const Index = () => {
     );
   };
   const NewsEventsCards = () => {
-    const [newsRef, newsVisible] = useIntersectionObserver(0.1);
+    const [newsRef, newsVisible] = useIntersectionObserver(0.01);
     const { upcomingEvents, pastEvents, loading, showingEvents } = useNewsEventsData();
 
     // Use upcoming events if available, otherwise use events from Events tab
@@ -500,7 +503,7 @@ const Index = () => {
 
   // Latest News Cards Component
   const LatestNewsCards = () => {
-    const [newsRef, newsVisible] = useIntersectionObserver(0.1);
+    const [newsRef, newsVisible] = useIntersectionObserver(0.01);
 
     return (
       <div ref={newsRef}>
@@ -581,7 +584,7 @@ const Index = () => {
 
   // Thematic Areas Cards Component
   const ThematicAreasCards = () => {
-    const [thematicRef, thematicVisible] = useIntersectionObserver(0.1);
+    const [thematicRef, thematicVisible] = useIntersectionObserver(0.01);
 
     // Map feature titles to their respective thematic area routes
     const getThematicRoute = (title: string) => {
@@ -642,7 +645,7 @@ const Index = () => {
 
   // Strategic Partners Cards Component
   const StrategicPartnersCards = () => {
-    const [partnersRef, partnersVisible] = useIntersectionObserver(0.1);
+    const [partnersRef, partnersVisible] = useIntersectionObserver(0.01);
 
     return (
       <div ref={partnersRef}>
@@ -804,7 +807,7 @@ const Index = () => {
 
   // International Collaborators Cards Component
   const InternationalCollaboratorsCards = () => {
-    const [collabRef, collabVisible] = useIntersectionObserver(0.1);
+    const [collabRef, collabVisible] = useIntersectionObserver(0.01);
 
     return (
       <div ref={collabRef}>
@@ -1108,7 +1111,7 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/20 to-black/30"></div>
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <Suspense fallback={<div className="max-w-4xl mx-auto grid grid-cols-1 gap-8"><CardSkeleton className="h-64" /><CardSkeleton className="h-96" /></div>}>
+          <Suspense fallback={<div className="flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>}>
             <MissionVisionCards />
           </Suspense>
         </div>
@@ -1131,7 +1134,7 @@ const Index = () => {
               <NewsEventsSubtitle />
               <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent flex-1"></div>
             </div>
-              <Suspense fallback={<div className="max-w-4xl mx-auto"><div className="animate-pulse bg-gray-200 rounded-3xl h-[400px] shadow-2xl"></div></div>}>
+              <Suspense fallback={<div className="flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>}>
               <NewsEventsCards />
             </Suspense>
           </div>
@@ -1143,7 +1146,7 @@ const Index = () => {
               <h3 className="text-2xl font-bold">Latest News</h3>
               <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent flex-1"></div>
             </div>
-            <Suspense fallback={<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><div className="animate-pulse bg-gray-200 rounded-3xl h-[300px] shadow-xl"></div><div className="animate-pulse bg-gray-200 rounded-3xl h-[300px] shadow-xl"></div><div className="animate-pulse bg-gray-200 rounded-3xl h-[300px] shadow-xl"></div></div>}>
+            <Suspense fallback={<div className="flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>}>
               <LatestNewsCards />
             </Suspense>
           </div>
@@ -1206,7 +1209,7 @@ const Index = () => {
             </div>
                   
             {/* Modified grid layout - 3 columns × 2 rows */}
-            <Suspense fallback={<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">{[...Array(6)].map((_, i) => (<CardSkeleton key={i} className="aspect-square" />))}</div>}>
+            <Suspense fallback={<div className="flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>}>
               <ThematicAreasCards />
             </Suspense>
           </div>
@@ -1225,7 +1228,7 @@ const Index = () => {
             </p>
           </div>
           
-          <Suspense fallback={<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">{[...Array(6)].map((_, i) => (<CardSkeleton key={i} className="h-56" />))}</div>}>
+          <Suspense fallback={<div className="flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>}>
             <StrategicPartnersCards />
           </Suspense>
         </div>
@@ -1243,7 +1246,7 @@ const Index = () => {
                Key international organizations and universities we collaborate with.
              </p>
            </div>
-            <Suspense fallback={<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">{[...Array(21)].map((_, i) => (<CardSkeleton key={i} className="h-48" />))}</div>}>
+            <Suspense fallback={<div className="flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>}>
               <InternationalCollaboratorsCards />
             </Suspense>
          </div>
@@ -1255,7 +1258,7 @@ const Index = () => {
       {/* Call to Action */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Suspense fallback={<CardSkeleton className="h-80" />}>
+          <Suspense fallback={<div className="flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>}>
             <CallToActionCard />
           </Suspense>
         </div>
