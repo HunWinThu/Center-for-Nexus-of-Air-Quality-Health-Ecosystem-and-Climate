@@ -98,7 +98,7 @@ const advisoryCommittee = [
     id: 10,
     name: "Dr. Tong Zhu",
     role: "Advisory Member",
-    department: "College of Environmental Sciences and EngineeringPeking University",
+    department: "College of Environmental Sciences and Engineering, Peking University",
     bio: "Boya Chair Professor",
     alignTop: true,
     image: Tong,
@@ -334,7 +334,7 @@ const Committee = () => {
                         )}
                         
                         <motion.p 
-                          className="text-sm text-muted-foreground font-medium"
+                          className="text-base text-muted-foreground font-medium"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.6 }}
@@ -344,7 +344,7 @@ const Committee = () => {
                         
                         {member.department && (
                           <motion.p 
-                            className="text-sm text-muted-foreground mt-1"
+                            className="text-base text-muted-foreground mt-1"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.8 }}
@@ -424,7 +424,7 @@ const Committee = () => {
                         )}
                         
                         <motion.p 
-                          className="text-sm text-muted-foreground font-medium"
+                          className="text-base text-muted-foreground font-medium"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.6 }}
@@ -434,7 +434,7 @@ const Committee = () => {
                         
                         {member.department && (
                           <motion.p 
-                            className="text-sm text-muted-foreground mt-1"
+                            className="text-base text-muted-foreground mt-1"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.8 }}
