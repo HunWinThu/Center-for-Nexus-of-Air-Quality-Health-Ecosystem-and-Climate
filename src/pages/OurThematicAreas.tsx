@@ -145,7 +145,7 @@ const sections = [
 <div className="border-t border-gray-200"></div>
 
 {/* Scope & Cooperation Diagram */}
-<section className="py-16 bg-white">
+<section className="pt-16 pb-32 bg-white">
   <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -153,11 +153,120 @@ const sections = [
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      <div className="text-center mb-12">
+      <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Air Quality Nexus — Scope & Cooperation</h2>
         <p className="text-lg text-muted-foreground">Our collaborative approach integrating air quality, climate, and planetary health</p>
       </div>
       <ScopeCooperationDiagram />
+    </motion.div>
+  </div>
+</section>
+
+{/* Organization & Partners Legend */}
+<section className="pt-2 pb-10 bg-white">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+    >
+      
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+        
+        {/* Card 1: International Organizations */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ delay: 0.1, duration: 0.8 }}
+          className="bg-white border-2 border-yellow-400 rounded-lg shadow-lg p-4 sm:p-6 md:p-8 h-auto sm:h-56 md:h-60"
+        >
+          <div className="border-l-4 border-yellow-400 pl-3 sm:pl-4 md:pl-6 h-full">
+            <h4 className="font-bold text-yellow-600 text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3">International Organizations</h4>
+            <div className="flex flex-col space-y-1 text-sm sm:text-base">
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-yellow-600 sm:w-20 text-left mr-0 sm:mr-2">WMO</span><span>: World Meteorological Organization</span></div>
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-yellow-600 sm:w-20 text-left mr-0 sm:mr-2">CCAC</span><span>: Climate & Clean Air Coalition</span></div>
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-yellow-600 sm:w-20 text-left mr-0 sm:mr-2">IGES</span><span>: Institute for Global Environmental Strategies</span></div>
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-yellow-600 sm:w-20 text-left mr-0 sm:mr-2">RIFS</span><span>: Research Institute for Future Studies</span></div>
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-yellow-600 sm:w-20 text-left mr-0 sm:mr-2">RICARDO</span><span>: Ricardo Energy & Environment</span></div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Card 2: Research Institutions & Universities */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="bg-white border-2 border-yellow-500 rounded-lg shadow-lg p-4 sm:p-6 md:p-8 h-auto sm:h-56 md:h-60"
+        >
+          <div className="border-l-4 border-yellow-500 pl-3 sm:pl-4 md:pl-6 h-full">
+            <h4 className="font-bold text-yellow-700 text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3">Research Institutions & Universities</h4>
+            <div className="flex flex-col space-y-1 text-sm sm:text-base">
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-yellow-700 sm:w-20 text-left mr-0 sm:mr-2">CAA</span><span>: Clean Air Asia</span></div>
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-yellow-700 sm:w-20 text-left mr-0 sm:mr-2">IRD</span><span>: Institute of Research for Development</span></div>
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-yellow-700 sm:w-20 text-left mr-0 sm:mr-2">IIASA</span><span>: International Institute for Applied Systems Analysis</span></div>
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-yellow-700 sm:w-20 text-left mr-0 sm:mr-2">PKU</span><span>: Peking University</span></div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Card 3: Health & Environment Organizations */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="bg-white border-2 border-yellow-500 rounded-lg shadow-lg p-4 sm:p-6 md:p-8 h-auto sm:h-56 md:h-60"
+        >
+          <div className="border-l-4 border-yellow-500 pl-3 sm:pl-4 md:pl-6 h-full">
+            <h4 className="font-bold text-yellow-700 text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3">Health & Environment Organizations</h4>
+            <div className="flex flex-col space-y-1 text-sm sm:text-base">
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-yellow-700 sm:w-20 text-left mr-0 sm:mr-2">WHO</span><span>: World Health Organization</span></div>
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-yellow-700 sm:w-20 text-left mr-0 sm:mr-2">EANET</span><span>: Acid Deposition Monitoring Network in East Asia</span></div>
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-yellow-700 sm:w-20 text-left mr-0 sm:mr-2">SINICA</span><span>: Academia Sinica</span></div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Card 4: Asian Institute of Technology (AIT) */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="bg-white border-2 border-blue-400 rounded-lg shadow-lg p-4 sm:p-6 md:p-8 h-auto sm:h-56 md:h-60"
+        >
+          <div className="border-l-4 border-blue-400 pl-3 sm:pl-4 md:pl-6 h-full">
+            <h4 className="font-bold text-blue-600 text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3">Asian Institute of Technology (AIT)</h4>
+            <div className="flex flex-col space-y-1 text-sm sm:text-base">
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-blue-600 sm:w-20 text-left mr-0 sm:mr-2">AIT</span><span>: Asian Institute of Technology</span></div>
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-blue-600 sm:w-20 text-left mr-0 sm:mr-2">EEM</span><span>: Energy, Environment & Climate Change</span></div>
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-blue-600 sm:w-20 text-left mr-0 sm:mr-2">RRC.AP</span><span>: Regional Resource Centre for Asia and the Pacific</span></div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Card 5: Technical Terms - Centered in second row */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="bg-white border-2 border-green-500 rounded-lg shadow-lg p-4 sm:p-6 md:p-8 h-auto sm:h-44 md:h-48 lg:col-start-1 lg:col-end-3 lg:max-w-lg lg:mx-auto"
+        >
+          <div className="border-l-4 border-green-500 pl-3 sm:pl-4 md:pl-6 h-full">
+            <h4 className="font-bold text-green-600 text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3">Technical Terms</h4>
+            <div className="flex flex-col space-y-1 sm:space-y-2 text-sm sm:text-base">
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-green-600 sm:w-20 text-left mr-0 sm:mr-2">GHG</span><span>: Greenhouse Gases</span></div>
+              <div className="flex flex-col sm:flex-row"><span className="font-semibold text-green-600 sm:w-20 text-left mr-0 sm:mr-2">SLCF</span><span>: Short-Lived Climate Forcers</span></div>
+            </div>
+          </div>
+        </motion.div>
+
+      </div>
     </motion.div>
   </div>
 </section>

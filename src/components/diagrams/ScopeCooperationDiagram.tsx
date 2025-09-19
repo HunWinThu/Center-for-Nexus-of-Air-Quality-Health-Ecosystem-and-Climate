@@ -13,23 +13,22 @@ const ScopeCooperationDiagram = () => {
             transition={{ delay: 1.2, duration: 0.8 }}
             className="absolute border-4 border-dashed border-gray-400 z-10"
             style={{
-              top: "80px",
-              left: "152px", 
-              right: "152px",
-              bottom: "72px",
-              borderRadius: "50%"
-            }}
+              top: "7px",
+              left: "132px", 
+              right: "132px",
+              bottom: "-16px",
+              borderRadius: "50%"            }}
           />
 
           {/* Overlapping Venn Diagram Circles */}
           <div className="absolute inset-0 z-60 flex items-center justify-center -translate-y-5">
-            <div className="relative w-[400px] h-[320px]">
+            <div className="relative w-[540px] h-[440px]">
             {/* Air Pollution - Blue (left) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="absolute w-[240px] h-[240px] z-21"
+              className="absolute w-[320px] h-[320px] z-21"
               style={{ 
                 top: "0px",
                 left: "0px"
@@ -50,7 +49,7 @@ const ScopeCooperationDiagram = () => {
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.0, duration: 0.8 }}
-              className="absolute w-[240px] h-[240px] z-22"
+              className="absolute w-[320px] h-[320px] z-22"
               style={{ 
                 top: "0px",
                 right: "0px"
@@ -71,9 +70,9 @@ const ScopeCooperationDiagram = () => {
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.2, duration: 0.8 }}
-              className="absolute w-[240px] h-[240px] z-23"
+              className="absolute w-[320px] h-[320px] z-23"
               style={{ 
-                top: "160px",
+                top: "200px",
                 left: "20%",
                 transform: "translateX(-50%)"
               }}
@@ -91,23 +90,23 @@ const ScopeCooperationDiagram = () => {
 
         {/* Adjusted Organization Boxes */}
         {/* Top Organization Box - centered on screen */}
-        <div className="absolute inset-0 z-30 flex items-start justify-center pt-8">
+        <div className="absolute inset-0 z-30 flex items-start justify-center pt-0" style={{ marginTop: '-40px' }}>
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
             className="flex flex-col items-center"
           >
-            <div className="bg-yellow-200 border-2 border-yellow-400 w-60 h-28 rounded-lg text-center shadow-lg flex items-center justify-center">
-              <p className="font-bold text-gray-800 text-lg leading-tight">WMO, CCAC, IGES, RIFS, RICARDO</p>
+            <div className="bg-yellow-200 border-2 border-yellow-400 w-96 h-28 rounded-lg text-center shadow-lg flex items-center justify-center">
+              <p className="font-bold text-gray-800 text-xl leading-tight">WMO, CCAC, IGES, RIFS, RICARDO</p>
             </div>
-            <div className="border border-purple-300 w-72 h-28 rounded-lg mt-2 shadow-lg flex items-center justify-start pl-3" style={{ backgroundColor: '#25a05b' }}>
+            <div className="border border-purple-300 w-80 h-30 rounded-lg mt-2 shadow-lg flex items-center justify-start pl-3" style={{ backgroundColor: '#25a05b' }}>
               <div className="text-left text-white">
-                <p className="text-base leading-tight">• Co-benefits of emission reduction</p>
-                <p className="text-base leading-tight">• Co-control: GHG, SLCF,</p>
-                <p className="text-base leading-tight ml-2">air pollutants</p>
-                <p className="text-base leading-tight">• Air pollution meteorology/</p>
-                <p className="text-base leading-tight ml-2">climatology</p>
+                <p className="text-lg leading-tight">• Co-benefits of emission reduction</p>
+                <p className="text-lg leading-tight">• Co-control: GHG, SLCF,</p>
+                <p className="text-lg leading-tight ml-3">air pollutants</p>
+                <p className="text-lg leading-tight">• Air pollution meteorology/</p>
+                <p className="text-lg leading-tight ml-3">climatology</p>
               </div>
             </div>
           </motion.div>
@@ -121,10 +120,10 @@ const ScopeCooperationDiagram = () => {
           className="absolute left-4 z-30"
           style={{ top: "376px", transform: "translateY(-50%)" }}
         >
-          <div className="bg-yellow-200 border-2 border-yellow-400 w-60 h-28 rounded-lg shadow-lg flex items-center justify-center">
+          <div className="bg-yellow-200 border-2 border-yellow-400 w-80 h-28 rounded-lg shadow-lg flex items-center justify-center">
             <div className="text-center">
-              <p className="font-bold text-gray-800 text-lg leading-tight">CAA, IRD, IIASA, Universities</p>
-              <p className="text-base text-gray-600 leading-tight">(Clarkson, PKU, Colorado, Emory, etc.)</p>
+              <p className="font-bold text-gray-800 text-xl leading-tight">CAA, IRD, IIASA, Universities</p>
+              <p className="text-lg text-gray-600 leading-tight">(Clarkson, PKU, Colorado, Emory, etc.)</p>
             </div>
           </div>
         </motion.div>
@@ -135,7 +134,7 @@ const ScopeCooperationDiagram = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
           className="absolute z-30"
-          style={{ left: "272px", top: "376px", transform: "translateY(-50%)" }}
+          style={{ left: "210px", top: "250px", transform: "translateY(-50%)" }}
         >
           <div className="bg-blue-100 border border-blue-300 w-44 h-20 rounded-lg shadow-lg flex items-center justify-center">
             <div className="text-center">
@@ -151,7 +150,7 @@ const ScopeCooperationDiagram = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
           className="absolute right-56 z-30"
-          style={{ top: "376px", transform: "translateY(-50%)", display: "flex", alignItems: "center" }}
+          style={{ right: "210px", top: "250px", transform: "translateY(-50%)", display: "flex", alignItems: "center" }}
         >
           <div className="bg-blue-100 border border-blue-300 w-44 h-20 rounded-lg shadow-lg flex items-center justify-center">
             <div className="text-center">
@@ -166,13 +165,13 @@ const ScopeCooperationDiagram = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="absolute bottom-64 left-56 z-30"
+          className="absolute bottom-64 left-48 z-30"
         >
-          <div className="border border-purple-300 w-72 h-24 rounded-lg shadow-lg flex items-center justify-start pl-3" style={{ backgroundColor: '#8b5cf6' }}>
+          <div className="border border-purple-300 w-72 h-28 rounded-lg shadow-lg flex items-center justify-start pl-3" style={{ backgroundColor: '#8b5cf6' }}>
             <div className="text-left text-white">
-              <p className="text-base leading-tight">• Human: Toxic pollutants</p>
-              <p className="text-base leading-tight">• Ecosystem: phytotoxic pollutants,</p>
-              <p className="text-base leading-tight ml-2">acid deposition</p>
+              <p className="text-lg leading-tight">• Human: Toxic pollutants</p>
+              <p className="text-lg leading-tight">• Ecosystem: phytotoxic </p>
+              <p className="text-lg leading-tight ml-2">pollutants, acid deposition</p>
             </div>
           </div>
         </motion.div>
@@ -182,19 +181,19 @@ const ScopeCooperationDiagram = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0, duration: 0.6 }}
-          className="absolute bottom-64 right-56 z-30"
+          className="absolute bottom-64 right-48 z-30"
         >
-          <div className="border border-purple-300 w-72 h-24 rounded-lg shadow-lg flex items-center justify-start pl-3" style={{ backgroundColor: '#a58260' }}>
+          <div className="border border-purple-300 w-72 h-28 rounded-lg shadow-lg flex items-center justify-start pl-3" style={{ backgroundColor: '#a58260' }}>
             <div className="text-left text-white">
-              <p className="text-base leading-tight">• Climate intensification of</p>
-              <p className="text-base leading-tight ml-2">wildfires (extreme events) and</p>
-              <p className="text-base leading-tight ml-2">health effects</p>
+              <p className="text-lg leading-tight">• Climate intensification of</p>
+              <p className="text-lg leading-tight ml-3">wildfires (extreme events) and</p>
+              <p className="text-lg leading-tight ml-3">health effects</p>
             </div>
           </div>
         </motion.div>
 
         {/* Bottom Center Organizations - centered using flex */}
-        <div className="absolute inset-0 z-30 flex items-end justify-center pb-6">
+        <div className="absolute inset-0 z-30 flex items-end justify-center pb-0" style={{ marginBottom: '-50px' }}>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -207,10 +206,10 @@ const ScopeCooperationDiagram = () => {
                 <p className="font-bold text-blue-700 text-lg leading-tight">Crops & Aquaculture</p>
               </div>
             </div>
-            <div className="bg-yellow-200 border-2 border-yellow-400 w-60 h-28 rounded-lg text-center shadow-lg flex items-center justify-center">
+            <div className="bg-yellow-200 border-2 border-yellow-400 w-96 h-28 rounded-lg text-center shadow-lg flex items-center justify-center">
               <div className="text-center">
-                <p className="font-bold text-gray-800 text-lg leading-tight">Human: WHO, Canberra, SINICA</p>
-                <p className="font-bold text-gray-800 text-lg  leading-tight">Ecosystem: EANET, York University</p>
+                <p className="font-bold text-gray-800 text-xl leading-tight">Human: WHO, Canberra, SINICA</p>
+                <p className="font-bold text-gray-800 text-xl  leading-tight">Ecosystem: EANET, York University</p>
               </div>
             </div>
           </motion.div>
@@ -223,7 +222,7 @@ const ScopeCooperationDiagram = () => {
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
             transition={{ delay: 1.4, duration: 0.8 }}
-            d="M 660 220 L 660 390"
+            d="M 660 195 L 660 360"
             stroke="#1e7a47"
             strokeWidth="3"
             fill="none"
@@ -235,7 +234,7 @@ const ScopeCooperationDiagram = () => {
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
             transition={{ delay: 1.6, duration: 0.8 }}
-            d="M 478 564 L 620 465"
+            d="M 420 564 L 590 475"
             stroke="#7c3aed"
             strokeWidth="3"
             fill="none"
@@ -247,7 +246,7 @@ const ScopeCooperationDiagram = () => {
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
             transition={{ delay: 1.8, duration: 0.8 }}
-            d="M 840 566 L 700 465"
+            d="M 840 536 L 720 485"
             stroke="#8b6b4a"
             strokeWidth="3"
             fill="none"
@@ -305,13 +304,13 @@ const ScopeCooperationDiagram = () => {
 
         {/* Legend Sections Positioned Around Diagram */}
         
-        {/* Top Left: International Organizations */}
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
+        {/* Top Right: International Organizations */}
+                <motion.div 
+          initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 2.0, duration: 0.8 }}
           className="absolute z-40 bg-white border-2 border-yellow-400 rounded-lg shadow-lg p-4 max-w-sm"
-          style={{ top: "-50px", left: "-150px" }}
+          style={{ top: "-50px", right: "-100px" }}
         >
           <div className="border-l-4 border-yellow-400 pl-4">
             <h4 className="font-bold text-yellow-600 text-xl mb-3">International Organizations</h4>
@@ -328,13 +327,13 @@ const ScopeCooperationDiagram = () => {
           </div>
         </motion.div>
 
-        {/* Top Right: Research Institutions & Universities */}
+        {/* Top Left: Research Institutions & Universities */}
         <motion.div 
-          initial={{ opacity: 0, x: 20 }}
+          initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 2.2, duration: 0.8 }}
           className="absolute z-40 bg-white border-2 border-yellow-500 rounded-lg shadow-lg p-4 max-w-sm"
-          style={{ top: "-50px", right: "-150px" }}
+          style={{ top: "-50px", left: "-100px" }}
         >
           <div className="border-l-4 border-yellow-500 pl-4">
             <h4 className="font-bold text-yellow-700 text-xl mb-3">Research Institutions & Universities</h4>
@@ -355,7 +354,7 @@ const ScopeCooperationDiagram = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 2.4, duration: 0.8 }}
           className="absolute z-40 bg-white border-2 border-yellow-500 rounded-lg shadow-lg p-4 max-w-sm"
-          style={{ bottom: "-50px", left: "-150px" }}
+          style={{ bottom: "-50px", left: "-100px" }}
         >
           <div className="border-l-4 border-yellow-500 pl-4">
             <h4 className="font-bold text-yellow-700 text-xl mb-3">Health & Environment Organizations</h4>
@@ -374,7 +373,7 @@ const ScopeCooperationDiagram = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 2.6, duration: 0.8 }}
           className="absolute z-40 bg-white border-2 border-blue-400 rounded-lg shadow-lg p-4 max-w-sm"
-          style={{ bottom: "-50px", right: "-150px" }}
+          style={{ bottom: "-50px", right: "-100px" }}
         >
           <div className="border-l-4 border-blue-400 pl-4">
             <h4 className="font-bold text-blue-600 text-xl mb-3">Asian Institute of Technology (AIT)</h4>
@@ -394,7 +393,7 @@ const ScopeCooperationDiagram = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 2.8, duration: 0.8 }}
           className="absolute z-40 bg-white border-2 border-green-500 rounded-lg shadow-lg p-4 max-w-sm"
-          style={{ top: "45%", right: "-200px" }}
+          style={{ top: "45%", right: "-100px" }}
         >
           <div className="border-l-4 border-green-500 pl-4">
             <h4 className="font-bold text-green-600 text-xl mb-3">Technical Terms</h4>
@@ -404,6 +403,7 @@ const ScopeCooperationDiagram = () => {
             </div>
           </div>
         </motion.div>
+
         </div>
       </div>
     </div>
