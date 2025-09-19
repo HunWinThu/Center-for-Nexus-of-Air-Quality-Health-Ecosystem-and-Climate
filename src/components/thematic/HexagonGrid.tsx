@@ -16,7 +16,7 @@ export const HexagonGrid = () => {
   
   const items: HexagonItem[] = [
     {
-      title: "AirQC",
+      title: "Air Quality Nexus",
       position: 'center',
       bgColor: ''
     },

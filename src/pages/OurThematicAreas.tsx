@@ -154,7 +154,7 @@ const sections = [
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
     >
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">AirQC — Scope & Cooperation</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Air Quality Nexus — Scope & Cooperation</h2>
         <p className="text-lg text-muted-foreground">Our collaborative approach integrating air quality, climate, and planetary health</p>
       </div>
       <ScopeCooperationDiagram />
