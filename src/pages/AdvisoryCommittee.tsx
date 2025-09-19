@@ -29,15 +29,15 @@ const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').repla
 
 const advisoryCommittee = [
   {
-    id: 2,
-    name: "Prof. Ram Shrestha",
+    id: 5,
+    name: "Prof. Lisa Emberson",
     role: "Advisory Member",
-    department: "Asian Institute of Technology (AIT)",
-    bio: "Emeritus Professor, Sustainable Energy Transition Program, Department of Energy and Climate Change, AIT. Editor of Energy-The International Journal and Energy Economics, and is a member of the Editorial Advisory Board of International Energy Journal",
+    department: "Stockholm Environment Institute (SEI), University of York",
+    bio: "Centre Director of the York office at the Stockholm Environment Institute (SEI). Professor of Environmental Science in the Environment & Geography Dept., University of York, UK",
     alignTop: true,
-    image: Shrestha,
-    viewprofile: "https://ait.ac.th/people/prof-ram-shrestha/",
-    linkedin: "https://www.linkedin.com/in/ram-m-shrestha-3a6a8a40/?originalSubdomain=np"
+    image: Emberson,
+    viewprofile: "https://www.york.ac.uk/environment-geography/people/lisa-emberson/",
+    linkedin: "https://www.linkedin.com/in/lisa-emberson-7632871b/"
   },
   {
     id: 3,
@@ -51,6 +51,17 @@ const advisoryCommittee = [
     linkedin: "https://www.linkedin.com/in/philip-hopke-5b01409/"
   },
   {
+    id: 8,
+    name: "Dr. Shih-Chun Candice Lung",
+    role: "Advisory Member",
+    department: "Academia Sinica, Taiwan",
+    bio: "Deputy Director, Research Center for Environmental Changes (RCEC), Academia Sinica, Taiwan",
+    alignTop: true,
+    image: Lung,
+    viewprofile: "https://rcec.sinica.edu.tw/index_en.php?action=member&id=16",
+    linkedin: "https://www.linkedin.com/in/shih-chun-candice-lung-1024b9205/"
+  },
+  {
     id: 4,
     name: "Dr. Maheswar Rupakheti",
     role: "Advisory Member",
@@ -62,15 +73,15 @@ const advisoryCommittee = [
     linkedin: "https://www.linkedin.com/in/maheswar-rupakheti/"
   },
   {
-    id: 5,
-    name: "Prof. Lisa Emberson",
+    id: 2,
+    name: "Prof. Ram Shrestha",
     role: "Advisory Member",
-    department: "Stockholm Environment Institute (SEI), University of York",
-    bio: "Centre Director of the York office at the Stockholm Environment Institute (SEI). Professor of Environmental Science in the Environment & Geography Dept., University of York, UK",
+    department: "Asian Institute of Technology (AIT)",
+    bio: "Emeritus Professor, Sustainable Energy Transition Program, Department of Energy and Climate Change, AIT. Editor of Energy-The International Journal and Energy Economics, and is a member of the Editorial Advisory Board of International Energy Journal",
     alignTop: true,
-    image: Emberson,
-    viewprofile: "https://www.york.ac.uk/environment-geography/people/lisa-emberson/",
-    linkedin: "https://www.linkedin.com/in/lisa-emberson-7632871b/"
+    image: Shrestha,
+    viewprofile: "https://ait.ac.th/people/prof-ram-shrestha/",
+    linkedin: "https://www.linkedin.com/in/ram-m-shrestha-3a6a8a40/?originalSubdomain=np"
   },
   {
     id: 6,
@@ -84,15 +95,15 @@ const advisoryCommittee = [
     linkedin: "https://www.linkedin.com/in/sotiris-vardoulakis-b5759790/"
   },
   {
-    id: 8,
-    name: "Dr. Shih-Chun Candice Lung",
+    id: 10,
+    name: "Dr. Tong Zhu",
     role: "Advisory Member",
-    department: "Academia Sinica, Taiwan",
-    bio: "Deputy Director, Research Center for Environmental Changes (RCEC), Academia Sinica, Taiwan",
+    department: "College of Environmental Sciences and EngineeringPeking University",
+    bio: "Boya Chair Professor",
     alignTop: true,
-    image: Lung,
-    viewprofile: "https://rcec.sinica.edu.tw/index_en.php?action=member&id=16",
-    linkedin: "https://www.linkedin.com/in/shih-chun-candice-lung-1024b9205/"
+    image: Tong,
+    viewprofile: "http://scholar.pku.edu.cn/tongzhu/bio",
+    linkedin: "https://www.linkedin.com/in/eric-zusman-0b52001/"
   },
   {
     id: 9,
@@ -103,17 +114,6 @@ const advisoryCommittee = [
     alignTop: true,
     image: Zusman,
     viewprofile: "https://www.iges.or.jp/en/about/staff/zusman-eric",
-    linkedin: "https://www.linkedin.com/in/eric-zusman-0b52001/"
-  },
-  {
-    id: 10,
-    name: "Dr. Tong Zhu",
-    role: "Advisory Member",
-    department: "College of Environmental Sciences and EngineeringPeking University",
-    bio: "Boya Chair Professor",
-    alignTop: true,
-    image: Tong,
-    viewprofile: "http://scholar.pku.edu.cn/tongzhu/bio",
     linkedin: "https://www.linkedin.com/in/eric-zusman-0b52001/"
   }
 ];
@@ -235,7 +235,7 @@ const Committee = () => {
     <>
       {/* Hero Section with Enhanced Animations */}
       <motion.section 
-        className="py-20 bg-white overflow-hidden"
+        className="py-10 bg-white overflow-hidden"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
@@ -249,7 +249,7 @@ const Committee = () => {
               animate="visible"
               style={{ perspective: 1000 }}
             >
-              Advisory Committee
+              International Advisory Committee
             </motion.h1>
             <motion.p 
               className="text-xl text-muted-foreground max-w-2xl mx-auto"
@@ -271,25 +271,11 @@ const Committee = () => {
         </div>
       </motion.section>
 
-      {/* Section Separator */}
-      <div className="border-t border-gray-200"></div>
-
       {/* Advisory Committee Members with Modern Grid Animation */}
-      <section className="py-20 bg-white overflow-hidden">
+      <section className="py-10 bg-white overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Title Animation */}
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Meet Our Advisors
-            </h2>
-            <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
-          </motion.div>
+
 
           {/* First Row - 4 Members */}
           <motion.div 

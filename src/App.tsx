@@ -40,44 +40,26 @@ import SimpleAdminLogin from "./pages/admin/SimpleAdminLogin";
 
 const queryClient = new QueryClient();
 
-// Enhanced scroll restoration component
+// Simple scroll to top component
 function ScrollToTop() {
   const location = useLocation();
   const isFirstRender = useRef(true);
 
   useEffect(() => {
-    // Skip scroll restoration on first render
+    // Skip scroll to top on first render
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
     }
 
-    // For homepage, use browser's native scroll restoration for back button
-    if (location.pathname === '/' || location.pathname === '') {
-      // Only scroll to top if this is a fresh navigation (not browser back/forward)
-      if (!window.history.state?.idx || window.history.state.idx === 0) {
-        window.scrollTo(0, 0);
-      }
-      // For browser back/forward, let the browser handle scroll restoration
-      return;
-    }
-
-    // For all other pages, scroll to top
+    // Scroll to top for route changes
     window.scrollTo(0, 0);
-  }, [location.pathname, location.search]);
+  }, [location.pathname]);
 
   return null;
 }
 
-const App = () => {
-  // Enable browser's native scroll restoration for homepage
-  useEffect(() => {
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'auto';
-    }
-  }, []);
-
-  return (
+const App = () => (
   <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter 
@@ -129,7 +111,6 @@ const App = () => {
       </BrowserRouter>
     </QueryClientProvider>
   </ErrorBoundary>
-  );
-};
+);
 
 export default App;

@@ -174,7 +174,7 @@ const sections = [
       transition={{ duration: 0.8, delay: 0.4 }}
     >
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Core Research Activities</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Core Activities</h2>
         <p className="text-lg text-muted-foreground">Our key focus areas for improving air quality</p>
       </div>
       <HexagonGrid />
