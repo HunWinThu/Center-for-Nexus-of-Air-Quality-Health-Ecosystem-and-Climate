@@ -59,11 +59,24 @@ function ScrollToTop() {
   return null;
 }
 
+// Get basename based on deployment target
+const getBasename = () => {
+  if (!import.meta.env.PROD) return "";
+  
+  // Check if building for AIT server or GitHub Pages
+  if (import.meta.env.VITE_DEPLOY_TARGET === 'ait') {
+    return "/airqn";
+  } else {
+    // Default to GitHub Pages
+    return "/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate";
+  }
+};
+
 const App = () => (
   <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter 
-        basename={import.meta.env.PROD ? "/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate" : ""}
+        basename={getBasename()}
       >
         <ThemeProvider defaultTheme="light" storageKey="air-quality-theme">
           <LoadingProvider>

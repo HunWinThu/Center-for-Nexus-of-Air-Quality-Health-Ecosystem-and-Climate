@@ -6,10 +6,11 @@ import path from "path";
 export default defineConfig(({ mode }) => {
   // Determine base path based on environment
   let basePath = "/";
+  const isAitDeployment = process.env.DEPLOY_TARGET === 'ait';
   
   if (mode === 'production') {
     // Check if building for AIT server or GitHub Pages
-    if (process.env.DEPLOY_TARGET === 'ait') {
+    if (isAitDeployment) {
       basePath = "/airqn/";
     } else {
       // Default to GitHub Pages
@@ -30,6 +31,11 @@ export default defineConfig(({ mode }) => {
     },
     // Use dynamic base path based on deployment target
     base: basePath,
+    
+    // Define environment variables for runtime
+    define: {
+      'import.meta.env.VITE_DEPLOY_TARGET': JSON.stringify(process.env.DEPLOY_TARGET || 'github'),
+    },
     
     // Build optimizations
     build: {
