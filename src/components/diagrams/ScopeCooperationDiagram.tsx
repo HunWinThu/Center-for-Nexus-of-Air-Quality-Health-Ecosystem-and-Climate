@@ -310,11 +310,11 @@ const ScopeCooperationDiagram = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 2.0, duration: 0.8 }}
           className="absolute z-40 bg-white border-2 border-yellow-400 rounded-lg shadow-lg p-4 max-w-sm"
-          style={{ top: "-50px", right: "-100px" }}
+          style={{ top: "-50px", right: "-200px" }}
         >
           <div className="border-l-4 border-yellow-400 pl-4">
-            <h4 className="font-bold text-yellow-600 text-xl mb-3">International Organizations</h4>
-            <div className="flex flex-col space-y-2 text-base">
+            <h4 className="font-bold text-yellow-600 text-xl mb-1">International Organizations</h4>
+            <div className="flex flex-col space-y-1 text-base">
               <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1">WMO</span><span>: World Meteorological</span></div>
               <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1"></span><span className="ml-2">Organization</span></div>
               <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1">CCAC</span><span>: Climate & Clean Air Coalition</span></div>
@@ -333,17 +333,17 @@ const ScopeCooperationDiagram = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 2.2, duration: 0.8 }}
           className="absolute z-40 bg-white border-2 border-yellow-500 rounded-lg shadow-lg p-4 max-w-sm"
-          style={{ top: "-50px", left: "-100px" }}
+          style={{ top: "-50px", left: "-200px" }}
         >
           <div className="border-l-4 border-yellow-500 pl-4">
-            <h4 className="font-bold text-yellow-700 text-xl mb-3">Research Institutions & Universities</h4>
-            <div className="flex flex-col space-y-2 text-base">
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">CAA</span><span>: Clean Air Asia</span></div>
+            <h4 className="font-bold text-yellow-700 text-xl mb-1">Research Institutions & Universities</h4>
+            <div className="flex flex-col space-y-1 text-base">
+              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">CAA</span><span>: Clean Air Asia (Philippines)</span></div>
               <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">IRD</span><span>: Institute of Research for</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1"></span><span className="ml-2">Development</span></div>
+              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1"></span><span className="ml-2">Development (France)</span></div>
               <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">IIASA</span><span>: International Institute for Applied</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1"></span><span className="ml-2">Systems Analysis</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">PKU</span><span>: Peking University</span></div>
+              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1"></span><span className="ml-2">Systems Analysis (Austria)</span></div>
+              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">PKU</span><span>: Peking University (China)</span></div>
             </div>
           </div>
         </motion.div>
@@ -354,11 +354,11 @@ const ScopeCooperationDiagram = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 2.4, duration: 0.8 }}
           className="absolute z-40 bg-white border-2 border-yellow-500 rounded-lg shadow-lg p-4 max-w-sm"
-          style={{ bottom: "-50px", left: "-100px" }}
+          style={{ bottom: "-50px", left: "-200px" }}
         >
           <div className="border-l-4 border-yellow-500 pl-4">
-            <h4 className="font-bold text-yellow-700 text-xl mb-3">Health & Environment Organizations</h4>
-            <div className="flex flex-col space-y-2 text-base">
+            <h4 className="font-bold text-yellow-700 text-xl mb-1">Health & Environment Organizations</h4>
+            <div className="flex flex-col space-y-1 text-base">
               <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">WHO</span><span>: World Health Organization</span></div>
               <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">EANET</span><span>: Acid Deposition Monitoring</span></div>
               <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1"></span><span className="ml-2">Network in East Asia</span></div>
@@ -373,11 +373,11 @@ const ScopeCooperationDiagram = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 2.6, duration: 0.8 }}
           className="absolute z-40 bg-white border-2 border-blue-400 rounded-lg shadow-lg p-4 max-w-sm"
-          style={{ bottom: "-50px", right: "-100px" }}
+          style={{ bottom: "-50px", right: "-200px" }}
         >
           <div className="border-l-4 border-blue-400 pl-4">
-            <h4 className="font-bold text-blue-600 text-xl mb-3">Asian Institute of Technology (AIT)</h4>
-            <div className="flex flex-col space-y-2 text-base">
+            <h4 className="font-bold text-blue-600 text-xl mb-1">Asian Institute of Technology (AIT)</h4>
+            <div className="flex flex-col space-y-1 text-base">
               <div className="flex"><span className="font-semibold text-blue-600 w-16 text-left mr-1">AIT</span><span>: Asian Institute of Technology</span></div>
               <div className="flex"><span className="font-semibold text-blue-600 w-16 text-left mr-1">EEM</span><span>: Energy, Environment & Climate</span></div>
               <div className="flex"><span className="font-semibold text-blue-600 w-16 text-left mr-1"></span><span className="ml-2">Change</span></div>
@@ -393,11 +393,11 @@ const ScopeCooperationDiagram = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 2.8, duration: 0.8 }}
           className="absolute z-40 bg-white border-2 border-green-500 rounded-lg shadow-lg p-4 max-w-sm"
-          style={{ top: "45%", right: "-100px" }}
+          style={{ top: "45%", right: "-200px" }}
         >
           <div className="border-l-4 border-green-500 pl-4">
-            <h4 className="font-bold text-green-600 text-xl mb-3">Technical Terms</h4>
-            <div className="flex flex-col space-y-2 text-base">
+            <h4 className="font-bold text-green-600 text-xl mb-1">Technical Terms</h4>
+            <div className="flex flex-col space-y-1 text-base">
               <div className="flex"><span className="font-semibold text-green-600 w-16 text-left mr-1">GHG</span><span>: Greenhouse Gases</span></div>
               <div className="flex"><span className="font-semibold text-green-600 w-16 text-left mr-1">SLCF</span><span>: Short-Lived Climate Forcers</span></div>
             </div>
