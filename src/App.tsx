@@ -65,7 +65,7 @@ const getBasename = () => {
   
   // Check if building for AIT server or GitHub Pages
   if (import.meta.env.VITE_DEPLOY_TARGET === 'ait') {
-    return "/airqn";
+    return "";
   } else {
     // Default to GitHub Pages
     return "/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate";

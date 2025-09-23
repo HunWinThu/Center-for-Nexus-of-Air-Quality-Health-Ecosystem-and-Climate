@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
   if (mode === 'production') {
     // Check if building for AIT server or GitHub Pages
     if (isAitDeployment) {
-      basePath = "/airqn/";
+      basePath = "/";
     } else {
       // Default to GitHub Pages
       basePath = "/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate/";

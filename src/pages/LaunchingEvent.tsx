@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { MainLayout } from '@/components/layout/MainLayout';
 import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
+import { SMOOTH_TRANSITIONS } from '@/constants';
 //import homeImg from '@/assets/Laung.jpg';
 //import partners1 from '@/assets/partners-1.png';
 //import partners4 from '@/assets/partners-4.jpeg';
@@ -223,7 +224,7 @@ The launch event featured insights from prominent experts and stakeholders, high
                   initial={{ opacity: 0, x: xFrom, y: 20, scale: 0.98 }}
                   whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
                   viewport={{ once: true, amount: 0.35 }}
-                  transition={{ type: 'spring', stiffness: 70, damping: 16 }}
+                  transition={{ ...SMOOTH_TRANSITIONS.card }}
                 >
                   <Card className="group hover:shadow-lg transition-all duration-500 bg-grey/80 backdrop-blur-md border-/20 text-white transform hover:scale-105 will-change-transform" aria-label={`Quote from ${quote.name}`}>                    <CardContent className="p-6 md:p-8">
                       <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-6 md:gap-10`}>

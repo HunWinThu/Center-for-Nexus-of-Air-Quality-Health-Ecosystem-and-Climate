@@ -49,6 +49,7 @@ import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { supabase } from '@/services/supabase';
 import { getLatestNews, type NewsItem } from '@/data/allSharedNewsData';
+import { SMOOTH_TRANSITIONS } from '@/constants';
 
 
 const Index = () => {
@@ -150,21 +151,46 @@ const Index = () => {
     const [visionRef, visionVisible] = useIntersectionObserver(0.2);
 
     return (
-      <div className="max-w-4xl mx-auto grid grid-cols-1 gap-8">
+      <div className="max-w-4xl mx-auto grid grid-cols-1 gap-6 md:gap-8">
         <div ref={visionRef}>
           {visionVisible ? (
             <motion.div
-              className="bg-white/90 p-8 md:p-10 rounded-3xl border border-gray-200 shadow-xl"
+              className="bg-white/90 p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl border border-gray-200 shadow-xl"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
             >
-              <h2 className="text-5xl font-bold text-gray-800 mb-4">Our Vision</h2>
-              <p className="text-xl text-gray-700">
-                Air Quality Nexus will be a leading Center in conducting and implementing application research with the aim to gain
-                multiple benefits from reducing air pollution through improvement of health of human and ecosystem,
-                and protection of the climate system.
-              </p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">Our Vision</h2>
+              <div className="text-lg sm:text-xl text-gray-700 space-y-4 sm:space-y-6">
+                <p className="leading-relaxed text-justify">
+                  The Air Quality Nexus Center is envisioned as a leading institution dedicated to
+                  application-oriented research that addresses complex air pollution challenges. Its vision
+                  extends beyond reducing pollution to creating broader benefits for society through
+                  improving health of human and ecosystem and safeguarding the climate system.
+                </p>
+                <ul className="space-y-3 sm:space-y-4 pl-0">
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 sm:mr-3 mt-1 text-lg">•</span>
+                    <span className="text-sm sm:text-base lg:text-lg">Lead cutting-edge research and innovative application programs on air quality
+                    engineering and management.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 sm:mr-3 mt-1 text-lg">•</span>
+                    <span className="text-sm sm:text-base lg:text-lg">Promote integrated approaches linking air pollution control with climate
+                    protection.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 sm:mr-3 mt-1 text-lg">•</span>
+                    <span className="text-sm sm:text-base lg:text-lg">Provide science-based solutions for co-controlling air pollutants and climate
+                    forcers to protect human health and ecosystems.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 sm:mr-3 mt-1 text-lg">•</span>
+                    <span className="text-sm sm:text-base lg:text-lg">Place the center as a focal hub for advancing sustainable environmental
+                    management in Asia.</span>
+                  </li>
+                </ul>
+              </div>
             </motion.div>
           ) : (
             <CardSkeleton className="h-64" />
@@ -174,20 +200,39 @@ const Index = () => {
         <div ref={missionRef}>
           {missionVisible ? (
             <motion.div
-              className="bg-white/90 p-8 md:p-10 rounded-3xl border border-gray-200 shadow-xl"
+              className="bg-white/90 p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl border border-gray-200 shadow-xl"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
             >
-              <h2 className="text-5xl font-bold text-gray-800 mb-4">Our Missions</h2>
-              <ul className="text-xl list-disc pl-6 space-y-3 text-gray-700">
-                <li>Conduct high-quality research demonstrated by real-life applications for improving air quality in Asia and beyond;</li>
-                <li>Focus on the multi-pollutant and multi-effect approach to provide cost-effective solutions to complex air pollution problems;</li>
-                <li>Demonstrate and quantitatively assess the co-benefits to air quality and climate of integrated measures applicable in local context;</li>
-                <li>Continue and expand international cooperation in conducting research projects, consultancies, training, etc.;</li>
-                <li>Provide assistance to governments, and other development partners in the planning, designing, scaling up, and implementation of clean air action plans with multiple benefits.</li>
-                <li>Build capacity and promote multi-disciplinary approaches in atmospheric sciences within AIT and internationally;</li>
-              </ul>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">Our Missions</h2>
+              <div className="text-lg sm:text-xl text-gray-700 space-y-4 sm:space-y-6">
+                <p className="leading-relaxed text-justify">
+                  The Air Quality Nexus Center is committed to advancing science-based
+                  solutions through research and collaboration, with the mission of
+                  transforming knowledge into practical actions that improve air quality,
+                  protect planetary health, and the climate system.
+                </p>
+                <ul className="space-y-3 sm:space-y-4 pl-0">
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 sm:mr-3 mt-1 text-lg">•</span>
+                    <span className="text-sm sm:text-base lg:text-lg">Conduct high-quality, real-life applicable research.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 sm:mr-3 mt-1 text-lg">•</span>
+                    <span className="text-sm sm:text-base lg:text-lg">Promote integrated, multi-pollutant and multi-effect approaches.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 sm:mr-3 mt-1 text-lg">•</span>
+                    <span className="text-sm sm:text-base lg:text-lg">Quantify co-benefits of air quality and climate measures.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 sm:mr-3 mt-1 text-lg">•</span>
+                    <span className="text-sm sm:text-base lg:text-lg">Strengthening AIT's research and education through collaboration and
+                    partnerships.</span>
+                  </li>
+                </ul>
+              </div>
             </motion.div>
           ) : (
             <CardSkeleton className="h-96" />
@@ -197,12 +242,10 @@ const Index = () => {
     );
   };
 
-  // Hook to track the news events state
+  // Hook to track the news events state (simplified - no upcoming events)
   const useNewsEventsData = () => {
-    const [upcomingEvents, setUpcomingEvents] = useState<SupabaseEvent[]>([]);
     const [pastEvents, setPastEvents] = useState<NewsItem[]>([]);
     const [loading, setLoading] = useState(true);
-    const [showingEvents, setShowingEvents] = useState(false);
 
     // Events data (same as in News.tsx Events tab)
     const eventsData: NewsItem[] = [
@@ -233,272 +276,13 @@ const Index = () => {
     ];
 
     useEffect(() => {
-      const fetchEvents = async () => {
-        try {
-          const { data, error } = await supabase
-            .from('upcoming_events')
-            .select('*')
-            .eq('is_active', true)
-            .order('event_date', { ascending: true });
-
-          if (error) {
-            console.error('Error fetching events:', error);
-          } else if (data) {
-            const now = new Date();
-            
-            // Filter to only future events
-            const futureEvents = data.filter((event: SupabaseEvent) => {
-              const eventDate = new Date(
-                event.event_date.includes('T') 
-                  ? event.event_date 
-                  : `${event.event_date}T${event.event_time || '00:00'}`
-              );
-              return eventDate > now;
-            });
-
-            // Convert past Supabase events to news items format for fallback
-            const pastSupabaseEvents = data
-              .filter((event: SupabaseEvent) => {
-                const eventDate = new Date(
-                  event.event_date.includes('T') 
-                    ? event.event_date 
-                    : `${event.event_date}T${event.event_time || '00:00'}`
-                );
-                return eventDate <= now;
-              })
-              .map((event: SupabaseEvent) => ({
-                id: parseInt(event.id.substring(0, 8), 16),
-                title: event.title,
-                content: event.description || 'Event completed',
-                category: "Event",
-                date: new Date(event.event_date).toLocaleDateString('en-US', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
-                }),
-                image: event.image_url || '/placeholder.svg',
-                location: event.location,
-                time: event.event_time
-              }));
-
-            // Combine past Supabase events with static events data
-            const allPastEvents = [...pastSupabaseEvents, ...eventsData].sort((a, b) => {
-              const dateA = new Date(a.date);
-              const dateB = new Date(b.date);
-              return dateB.getTime() - dateA.getTime();
-            });
-
-            setUpcomingEvents(futureEvents);
-            setPastEvents(allPastEvents);
-            setShowingEvents(futureEvents.length > 0);
-          }
-        } catch (err) {
-          console.error('Error loading events:', err);
-          // Fallback to static events data if Supabase fails
-          setPastEvents(eventsData);
-        } finally {
-          setLoading(false);
-        }
-      };
-
-      fetchEvents();
+      // Since we're not showing upcoming events, just use static events data
+      setPastEvents(eventsData);
+      setLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return { upcomingEvents, pastEvents, loading, showingEvents };
-  };
-
-  // Dynamic subtitle component
-  const NewsEventsSubtitle = () => {
-    const { showingEvents, loading } = useNewsEventsData();
-    
-    if (loading) {
-      return (
-        <h3 className="text-2xl font-bold">Latest Updates</h3>
-      );
-    }
-
-    return (
-      <h3 className="text-2xl font-bold">
-        {showingEvents ? 'Upcoming Events' : 'Events'}
-      </h3>
-    );
-  };
-  const NewsEventsCards = () => {
-    const [newsRef, newsVisible] = useIntersectionObserver(0.01);
-    const { upcomingEvents, pastEvents, loading, showingEvents } = useNewsEventsData();
-
-    // Use upcoming events if available, otherwise use events from Events tab
-    const showEvents = upcomingEvents.length > 0;
-    const displayItems = showEvents ? upcomingEvents.slice(0, 1) : pastEvents.slice(0, 1);
-
-    return (
-      <div ref={newsRef}>
-        {newsVisible ? (
-          <motion.div
-            className="max-w-4xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            {loading ? (
-              <div className="animate-pulse">
-                <div className="bg-gray-200 rounded-2xl h-[400px] shadow-lg"></div>
-              </div>
-            ) : (
-              displayItems.map((item, idx) => (
-                <motion.div
-                  key={showEvents ? (item as SupabaseEvent).id : (item as NewsItem).id}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                  <Card className="group relative overflow-hidden bg-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-3 border-0 rounded-3xl">
-                    {/* Professional Event Banner */}
-                    <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary via-primary/80 to-primary/60"></div>
-                    
-                    {/* Full-width Hero Section */}
-                    <div className="grid lg:grid-cols-2 gap-0 min-h-[350px]">
-                      {/* Hero Image Section */}
-                      <div className="relative overflow-hidden lg:order-1">
-                        <img 
-                          src={
-                            showEvents 
-                              ? (item as SupabaseEvent).image_url || '/placeholder.svg'
-                              : (item as NewsItem).image || '/placeholder.svg'
-                          } 
-                          alt={
-                            showEvents 
-                              ? (item as SupabaseEvent).title
-                              : (item as NewsItem).title
-                          }
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 min-h-[300px] lg:min-h-[350px]"
-                        />
-                        
-                        {/* Professional Date Badge */}
-                        <div className="absolute top-6 right-6">
-                          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl">
-                            <div className="text-center">
-                              <div className="text-3xl font-bold text-primary">
-                                {showEvents 
-                                  ? new Date((item as SupabaseEvent).event_date).getDate()
-                                  : new Date((item as NewsItem).date).getDate()
-                                }
-                              </div>
-                              <div className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-                                {showEvents 
-                                  ? new Date((item as SupabaseEvent).event_date).toLocaleDateString('en-US', { month: 'short' })
-                                  : new Date((item as NewsItem).date).toLocaleDateString('en-US', { month: 'short' })
-                                }
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Event Type Badge */}
-                        <div className="absolute top-6 left-6">
-                          <Badge className="bg-gradient-to-r from-primary to-primary/80 text-white px-4 py-2 text-sm font-semibold rounded-full shadow-xl">
-                            {showEvents ? 'UPCOMING EVENT' : 'EVENT'}
-                          </Badge>
-                        </div>
-
-                        {/* Gradient Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent lg:from-transparent lg:via-transparent lg:to-black/20"></div>
-                      </div>
-
-                      {/* Content Section */}
-                      <div className="p-6 lg:p-8 flex flex-col justify-center lg:order-2">
-                        {/* Title Section */}
-                        <div className="mb-6">
-                          <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-4 group-hover:text-primary transition-colors duration-300">
-                            {showEvents ? (item as SupabaseEvent).title : (item as NewsItem).title}
-                          </h3>
-                          
-                          {/* Professional Event Details */}
-                          <div className="space-y-3 mb-4">
-                            {/* Time Info */}
-                            <div className="flex items-center gap-3 text-gray-600">
-                              <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                                <Clock className="w-4 h-4 text-primary" />
-                              </div>
-                              <div>
-                                <p className="font-semibold text-gray-900 text-sm">Time</p>
-                                <p className="text-xs">
-                                  {showEvents 
-                                    ? (item as SupabaseEvent).event_time || 'Time TBA'
-                                    : (item as NewsItem).time || 'Published'
-                                  }
-                                </p>
-                              </div>
-                            </div>
-
-                            {/* Location Info */}
-                            {(showEvents ? (item as SupabaseEvent).location : (item as NewsItem).location) && (
-                              <div className="flex items-center gap-3 text-gray-600">
-                                <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                                  <Globe className="w-4 h-4 text-primary" />
-                                </div>
-                                <div>
-                                  <p className="font-semibold text-gray-900 text-sm">Location</p>
-                                  <p className="text-xs">
-                                    {showEvents 
-                                      ? (item as SupabaseEvent).location
-                                      : (item as NewsItem).location
-                                    }
-                                  </p>
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-
-                        {/* Description Section */}
-                        <div className="mb-6">
-                          <p className="text-gray-600 leading-relaxed text-base">
-                            {showEvents 
-                              ? (item as SupabaseEvent).description || 'Join us for this upcoming event.'
-                              : ((item as NewsItem).content || 'Event information.').slice(0, 150) + '...'
-                            }
-                          </p>
-                        </div>
-
-                        {/* Professional CTA Section */}
-                        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                              <Calendar className="w-5 h-5 text-primary" />
-                            </div>
-                            <div>
-                              <p className="font-semibold text-gray-900 text-sm">
-                                {showEvents ? 'Save the Date' : 'Learn More'}
-                              </p>
-                              <p className="text-xs text-gray-500">
-                                {showEvents ? 'Add to your calendar' : 'View event details'}
-                              </p>
-                            </div>
-                          </div>
-                          
-                          <Button 
-                            className="group/btn bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white px-6 py-2.5 rounded-full font-semibold text-base shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
-                          >
-                            <span>{showEvents ? 'Register Now' : 'Read More'}</span>
-                            <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
-                </motion.div>
-              ))
-            )}
-          </motion.div>
-        ) : (
-          <div className="max-w-4xl mx-auto">
-            <div className="animate-pulse bg-gray-200 rounded-3xl h-[400px] shadow-2xl"></div>
-          </div>
-        )}
-      </div>
-    );
+    return { pastEvents, loading };
   };
 
   // Latest News Cards Component
@@ -622,10 +406,10 @@ const Index = () => {
                   <Card 
                     className="group hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-background to-accent/50 aspect-square cursor-pointer hover:scale-105"
                   >
-                    <CardContent className="h-full p-6 flex flex-col items-center justify-center text-center">
-                      <feature.icon className="mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" size={99} />
-                      <h3 className="text-2xl font-semibold text-foreground mb-3">{feature.title}</h3>
-                      <p className="text-muted-foreground">{feature.description}</p>
+                    <CardContent className="h-full p-4 sm:p-6 flex flex-col items-center justify-center text-center">
+                      <feature.icon className="mx-auto mb-3 sm:mb-4 text-primary group-hover:scale-110 transition-transform" size={60} />
+                      <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-foreground mb-2 sm:mb-3 leading-tight">{feature.title}</h3>
+                      <p className="text-muted-foreground text-sm">{feature.description}</p>
                     </CardContent>
                   </Card>
                 </Link>
@@ -660,7 +444,7 @@ const Index = () => {
               <motion.div
                 initial={{ opacity: 0, y: 24, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ type: 'spring', stiffness: 80, damping: 14, delay: 0.2 }}
+                transition={{ ...SMOOTH_TRANSITIONS.default, delay: 0.2 }}
                 className="w-full flex flex-col items-center"
               >
                 <a href="https://cleanairasia.org/" target="_blank" rel="noopener noreferrer" className="w-full">
@@ -683,7 +467,7 @@ const Index = () => {
               <motion.div
                 initial={{ opacity: 0, y: 24, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ type: 'spring', stiffness: 80, damping: 14, delay: 0.05 }}
+                transition={{ ...SMOOTH_TRANSITIONS.default, delay: 0.05 }}
                 className="w-full flex flex-col items-center"
               >
                 <a href="https://www.fhi360.org/" target="_blank" rel="noopener noreferrer" className="w-full">
@@ -706,7 +490,7 @@ const Index = () => {
               <motion.div
                 initial={{ opacity: 0, y: 24, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ type: 'spring', stiffness: 80, damping: 14, delay: 0.1 }}
+                transition={{ ...SMOOTH_TRANSITIONS.default, delay: 0.1 }}
                 className="w-full flex flex-col items-center"
               >
                 <a href="https://www.canberra.edu.au/faculties/health/heal" target="_blank" rel="noopener noreferrer" className="w-full">
@@ -729,7 +513,7 @@ const Index = () => {
               <motion.div
                 initial={{ opacity: 0, y: 24, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ type: 'spring', stiffness: 80, damping: 14, delay: 0.15 }}
+                transition={{ ...SMOOTH_TRANSITIONS.default, delay: 0.15 }}
                 className="w-full flex flex-col items-center"
               >
                 <a href="https://www.sinica.edu.tw/en" target="_blank" rel="noopener noreferrer" className="w-full">
@@ -752,7 +536,7 @@ const Index = () => {
               <motion.div
                 initial={{ opacity: 0, y: 24, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ type: 'spring', stiffness: 80, damping: 14, delay: 0.2 }}
+                transition={{ ...SMOOTH_TRANSITIONS.default, delay: 0.2 }}
                 className="w-full flex flex-col items-center"
               >
                 <a href="https://www.egis-group.com/" target="_blank" rel="noopener noreferrer" className="w-full">
@@ -775,7 +559,7 @@ const Index = () => {
               <motion.div
                 initial={{ opacity: 0, y: 24, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ type: 'spring', stiffness: 80, damping: 14, delay: 0.25 }}
+                transition={{ ...SMOOTH_TRANSITIONS.default, delay: 0.25 }}
                 className="w-full flex flex-col items-center"
               >
                 <a href="https://www.canberra.edu.au/" target="_blank" rel="noopener noreferrer" className="w-full">
@@ -823,7 +607,7 @@ const Index = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 20, scale: 0.98 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ type: 'spring', stiffness: 80, damping: 14, delay: idx * 0.06 }}
+                  transition={{ ...SMOOTH_TRANSITIONS.default, delay: idx * 0.06 }}
                   className="w-full flex flex-col items-center"
                 >
                   <a href={p.href} target="_blank" rel="noopener noreferrer" className="w-full">
@@ -1023,29 +807,43 @@ const Index = () => {
       
       {/* Hero Section */}
       <section className="relative h-screen overflow-hidden">
+        {/* Mobile Background */}
+        <div className="absolute inset-0 sm:hidden">
+          <img 
+            src={Home} 
+            alt="Air Quality Nexus Center" 
+            className="w-full h-full object-cover object-center"
+            style={{ objectPosition: 'center 20%' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
+        </div>
+        
+        {/* Desktop Background */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${Home})` }}
+          className="absolute inset-0 hidden sm:block bg-cover bg-center bg-no-repeat"
+          style={{ 
+            backgroundImage: `url(${Home})`,
+            backgroundPosition: 'center center'
+          }}
         >
-          {/* <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-sky-blue/20"></div> */}
         </div>
         
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-16 h-full flex items-center justify-center">
           <motion.div 
-            className="max-w-4xl mx-auto text-center text-white"
+            className="max-w-4xl mx-auto text-center text-white px-4"
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
           >
             <motion.h1 
-              className="text-4xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white-700 via-white-700 to-white-900 bg-clip-text"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-white-700 via-white-700 to-white-900 bg-clip-text leading-tight"
               variants={fadeUpVariants}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
               Air Quality Nexus Center
             </motion.h1>
             <motion.p 
-              className="text-center text-lg md:text-xl lg:text-2xl mb-8 text-white max-w-10xl mx-auto bg-green-700/85 rounded-full px-6 md:px-12 py-3 shadow"
+              className="text-center text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-white max-w-5xl mx-auto bg-green-700/85 rounded-2xl sm:rounded-full px-4 sm:px-6 md:px-12 py-3 sm:py-3 md:py-4 shadow leading-relaxed"
               variants={fadeUpVariants}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
             >
@@ -1054,14 +852,14 @@ const Index = () => {
               protection of the climate system.
             </motion.p>
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
               variants={fadeUpVariants}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.4 }}
             >
-              <Link to="/projects" aria-label="Go to Projects">
-                <Button size="lg" className="px-8 py-4 text-lg bg-background/80 text-foreground backdrop-blur-md border border-white/30 shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-2xl">
+              <Link to="/projects" aria-label="Go to Projects" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg bg-background/80 text-foreground backdrop-blur-md border border-white/30 shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-2xl">
                   Explore Our Research
-                  <ArrowRight className="ml-2" size={20} />
+                  <ArrowRight className="ml-2" size={18} />
                 </Button>
               </Link>
             </motion.div>
@@ -1084,14 +882,14 @@ const Index = () => {
             transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <motion.h2 
-              className="text-5xl md:text-5xl font-bold text-foreground mb-6 leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight"
               variants={fadeUpVariants}
             >
               Air Quality Nexus
               <span className="block text-primary">Center</span>
             </motion.h2>
             <motion.p 
-              className="text-xl text-grey/90 leading-relaxed mb-6 font-medium max-w-6xl mx-auto text-center"
+              className="text-lg sm:text-xl text-grey/90 leading-relaxed mb-6 font-medium max-w-6xl mx-auto text-center px-4"
               variants={fadeUpVariants}
             >
               Center for Nexus of Air Quality Health, Ecosystem, and Climate has a goal to serve as a focal point to build capacity and conduct cutting-edge 
@@ -1123,22 +921,10 @@ const Index = () => {
       {/* Recent Research & News */}
       <section id="news-events" className="py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20"> 
-            <h2 className="text-5xl font-bold text-foreground mb-6">News & Events</h2>
+          <div className="text-center mb-16 sm:mb-20"> 
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6">News & Events</h2>
           </div>      
           
-          {/* Upcoming Events Section */}
-          <div className="mb-20">
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent flex-1"></div>
-              <NewsEventsSubtitle />
-              <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent flex-1"></div>
-            </div>
-              <Suspense fallback={<div className="flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>}>
-              <NewsEventsCards />
-            </Suspense>
-          </div>
-
           {/* Latest News Section */}
           <div className="mb-20">
             <div className="flex items-center justify-center gap-3 mb-8">
@@ -1200,9 +986,9 @@ const Index = () => {
       {/* Features Section */}
         <section id="research-areas" className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl font-bold text-foreground mb-6">Our Core Research Areas</h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">Our Core Research Areas</h2>
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
                 From cutting-edge research to community engagement, we tackle air quality challenges 
                 through multiple integrated approaches.
               </p>
@@ -1221,9 +1007,9 @@ const Index = () => {
       {/* Strategic Partners Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-foreground mb-6">Strategic Partners</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">Strategic Partners</h2>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
               Collaborating with leading organizations to advance air quality research and policy worldwide.
             </p>
           </div>
@@ -1240,9 +1026,9 @@ const Index = () => {
        {/* International partners and collaborators */}
        <section className="py-20 bg-white">
          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="text-center mb-12">
-             <h2 className="text-5xl md:text-5xl font-bold text-foreground mb-4">International Partners and Collaborators</h2>
-             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+           <div className="text-center mb-8 sm:mb-12">
+             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">International Partners and Collaborators</h2>
+             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
                Key international organizations and universities we collaborate with.
              </p>
            </div>

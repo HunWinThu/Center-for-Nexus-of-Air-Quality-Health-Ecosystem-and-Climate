@@ -32,14 +32,36 @@ export const ANIMATION_VARIANTS = {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.4
+        staggerChildren: 0.15,
+        delayChildren: 0.2
       }
     }
   },
   cardVariants: {
-    hidden: { opacity: 0, y: 60, scale: 0.9 },
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
     visible: { opacity: 1, y: 0, scale: 1 }
+  }
+};
+
+// Smooth animation transitions to prevent shaking
+export const SMOOTH_TRANSITIONS = {
+  default: {
+    duration: 0.6,
+    ease: [0.25, 0.1, 0.25, 1] as const
+  },
+  spring: {
+    type: "spring" as const,
+    stiffness: 100,
+    damping: 20,
+    mass: 1
+  },
+  card: {
+    duration: 0.5,
+    ease: [0.25, 0.1, 0.25, 1] as const
+  },
+  hover: {
+    duration: 0.3,
+    ease: "easeInOut" as const
   }
 };
 
