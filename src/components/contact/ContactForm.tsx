@@ -123,6 +123,7 @@ export function ContactForm() {
               placeholder="your.email@example.com"
               {...register('email')}
               aria-invalid={!!errors.email}
+              className="placeholder:text-muted-foreground/30"
             />
             {errors.email && (
               <p className="text-sm text-destructive">{errors.email.message}</p>
@@ -136,6 +137,7 @@ export function ContactForm() {
               type="tel"
               placeholder="+1 (555) 123-4567"
               {...register('phone')}
+              className="placeholder:text-muted-foreground/30"
             />
           </div>
           
@@ -145,6 +147,7 @@ export function ContactForm() {
               id="organization"
               placeholder="Your organization or company"
               {...register('organization')}
+              className="placeholder:text-muted-foreground/30"
             />
           </div>
           

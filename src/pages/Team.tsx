@@ -387,6 +387,95 @@ const Team = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Section Separator */}
+      <div className="border-t border-gray-200"></div>
+
+      {/* Associated Members and Consultants Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="max-w-4xl mx-auto"
+            variants={fadeUpVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <motion.h2 
+              className="text-3xl md:text-4xl font-bold text-foreground mb-8 text-center"
+              variants={titleVariants}
+            >
+              Associated Members and Consultants
+            </motion.h2>
+            
+            <motion.div 
+              className="bg-white rounded-lg shadow-lg p-8"
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+            >
+              <div className="space-y-6">
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-lg text-foreground leading-relaxed">
+                    <span className="font-semibold">Assoc. Prof. Ekbordin Winijkul</span>, Head of Department of Water Resources and Environmental Engineering (WREE), AIT, Thailand.
+                  </p>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-lg text-foreground leading-relaxed">
+                    <span className="font-semibold">Dr. Vanisa Surapipith</span>, Deputy Director of Hub of Talents on Air Pollution and Climate, Thammasat University, Thailand.
+                  </p>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-lg text-foreground leading-relaxed">
+                    <span className="font-semibold">Prof. Eri Saikawa</span>, Winship Distinguished Research Professor of Environmental Sciences and Director, Emory Climate Talks, Emory University, GA, US.
+                  </p>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-lg text-foreground leading-relaxed">
+                    <span className="font-semibold">Dr. Maheswar Rupakheti</span>, Research Group Leader at Research Institute for Sustainability, Helmholtz Centre Potsdam, Germany.
+                  </p>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-lg text-foreground leading-relaxed">
+                    <span className="font-semibold">Assoc. Prof. Didin Agustian Permadi</span>, National Institute of Technology (ITENAS), Indonesia.
+                  </p>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-lg text-foreground leading-relaxed">
+                    <span className="font-semibold">Assoc. Prof. Prapat Pongkiatkul</span>, Environmental Engineering Department, KMUTT, Thailand.
+                  </p>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-lg text-foreground leading-relaxed">
+                    <span className="font-semibold">Assoc. Prof. Binod Pokharel</span>, Tribhuvan University, Nepal.
+                  </p>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-lg text-foreground leading-relaxed">
+                    <span className="font-semibold">Prof. Rejina Maskey Byanju</span>, Tribhuvan University, Nepal.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
     </>
   );
 };

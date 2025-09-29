@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Download, FileText, Database, Globe, BookOpen, Users, ExternalLink, LucideIcon } from "lucide-react";
-import { useState } from "react";
+import { useSearchParams } from 'react-router-dom';
 
 // Import publication cover image for Nepal report
 import nepalReportCover from "@/assets/News&Events/image23.png";
@@ -20,11 +20,14 @@ interface Resource {
 }
 
 const Resources = () => {
-  const [activeTab, setActiveTab] = useState("reports");
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+  // Get active tab from URL, default to 'reports'
+  const activeTab = searchParams.get('tab') || 'reports';
 
-  // Handle tab change without scrolling
-  const handleTabChange = (value: string) => {
-    setActiveTab(value);
+  // Function to handle tab changes and update URL
+  const handleTabChange = (tabValue: string) => {
+    setSearchParams({ tab: tabValue });
   };
 
   // Animation variants - balanced timing for elegant loading

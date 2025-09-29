@@ -313,7 +313,6 @@ const ScopeCooperationDiagram = () => {
           style={{ top: "-50px", right: "-200px" }}
         >
           <div className="border-l-4 border-yellow-400 pl-4">
-            <h4 className="font-bold text-yellow-600 text-xl mb-1">International Organizations</h4>
             <div className="flex flex-col space-y-1 text-base">
               <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1">WMO</span><span>: World Meteorological</span></div>
               <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1"></span><span className="ml-2">Organization</span></div>
@@ -321,8 +320,7 @@ const ScopeCooperationDiagram = () => {
               <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1">IGES</span><span>: Institute for Global</span></div>
               <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1"></span><span className="ml-2">Environmental Strategies</span></div>
               <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1">RIFS</span><span>: Research Institute for Sustainability</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1"></span><span className="ml-2">Studies</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1">RICARDO</span><span>: Ricardo Energy & Environment</span></div>
+              <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1">RICARDO</span><span>: Global Consultancy</span></div>
             </div>
           </div>
         </motion.div>
@@ -336,7 +334,6 @@ const ScopeCooperationDiagram = () => {
           style={{ top: "-50px", left: "-220px" }}
         >
           <div className="border-l-4 border-yellow-500 pl-4">
-            <h4 className="font-bold text-yellow-700 text-xl mb-1">Research Institutions & Universities</h4>
             <div className="flex flex-col space-y-1 text-base">
               <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">CAA</span><span>: Clean Air Asia</span></div>
               <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">IRD</span><span>: Institute of Research for</span></div>
@@ -365,12 +362,11 @@ const ScopeCooperationDiagram = () => {
           style={{ bottom: "-50px", left: "-220px" }}
         >
           <div className="border-l-4 border-yellow-500 pl-4">
-            <h4 className="font-bold text-yellow-700 text-xl mb-1">Health & Environment Organizations</h4>
             <div className="flex flex-col space-y-1 text-base">
               <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">WHO</span><span>: World Health Organization</span></div>
               <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">Canberra</span><span>: University of Canberra (Australia)</span></div>
               <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">SINICA</span><span>: Academia Sinica, Taiwan’s National</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1"></span><span className="ml-2">Academic Institution</span></div>
+              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1"></span><span className="ml-2">Academic Institution (Taiwan)</span></div>
               <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">EANET</span><span>: Acid Deposition Monitoring</span></div>
               <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1"></span><span className="ml-2">Network in East Asia</span></div>
               <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">York</span><span>: York University (Canada)</span></div>
@@ -378,7 +374,7 @@ const ScopeCooperationDiagram = () => {
           </div>
         </motion.div>
 
-        {/* Bottom Right: Asian Institute of Technology (AIT) */}
+        {/* Bottom Right: Asian Institute of Technology (AIT) & Technical Terms */}
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -387,30 +383,19 @@ const ScopeCooperationDiagram = () => {
           style={{ bottom: "-50px", right: "-200px" }}
         >
           <div className="border-l-4 border-blue-400 pl-4">
-            <h4 className="font-bold text-blue-600 text-xl mb-1">Asian Institute of Technology (AIT)</h4>
-            <div className="flex flex-col space-y-1 text-base">
+            <div className="flex flex-col space-y-1 text-base mb-3">
               <div className="flex"><span className="font-semibold text-blue-600 w-16 text-left mr-1">AIT</span><span>: Asian Institute of Technology</span></div>
               <div className="flex"><span className="font-semibold text-blue-600 w-16 text-left mr-1">EEM</span><span>: Environmental Engineering &</span></div>
               <div className="flex"><span className="font-semibold text-blue-600 w-16 text-left mr-1"></span><span className="ml-2">Management</span></div>
               <div className="flex"><span className="font-semibold text-blue-600 w-16 text-left mr-1">RRC.AP</span><span>: Regional Resource Centre for Asia</span></div>
               <div className="flex"><span className="font-semibold text-blue-600 w-16 text-left mr-1"></span><span className="ml-2">and the Pacific</span></div>
             </div>
-          </div>
-        </motion.div>
-
-        {/* Middle Right: Technical Terms */}
-        <motion.div 
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 2.8, duration: 0.8 }}
-          className="absolute z-40 bg-white border-2 border-green-500 rounded-lg shadow-lg p-4 max-w-sm"
-          style={{ top: "45%", right: "-200px" }}
-        >
-          <div className="border-l-4 border-green-500 pl-4">
-            <h4 className="font-bold text-green-600 text-xl mb-1">Technical Terms</h4>
-            <div className="flex flex-col space-y-1 text-base">
-              <div className="flex"><span className="font-semibold text-green-600 w-16 text-left mr-1">GHG</span><span>: Greenhouse Gases</span></div>
-              <div className="flex"><span className="font-semibold text-green-600 w-16 text-left mr-1">SLCF</span><span>: Short-Lived Climate Forcers</span></div>
+            
+            <div className="border-t border-green-200 pt-3">
+              <div className="flex flex-col space-y-1 text-base">
+                <div className="flex"><span className="font-semibold text-green-600 w-16 text-left mr-1">GHG</span><span>: Greenhouse Gases</span></div>
+                <div className="flex"><span className="font-semibold text-green-600 w-16 text-left mr-1">SLCF</span><span>: Short-Lived Climate Forcers</span></div>
+              </div>
             </div>
           </div>
         </motion.div>
