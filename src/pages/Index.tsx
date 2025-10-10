@@ -774,8 +774,8 @@ const Index = () => {
   const collaborators = [
     { name: 'World Bank', href: 'https://www.worldbank.org/ext/en/home', logo: worldBank },
     { name: 'Airparif', href: 'https://www.airparif.fr/', logo: Airparif },
-    { name: 'BKTP', href: '#', logo: bktp },
-    { name: 'Citepa', href: '#', logo: citepa },
+    { name: 'BKTP', href: 'https://hcmut.edu.vn/', logo: bktp },
+    { name: 'Citepa', href: 'https://www.citepa.org/', logo: citepa },
     { name: 'Clean Air Asia', href: 'https://cleanairasia.org/', logo: partner1 },
     { name: 'FHI 360', href: 'https://www.fhi360.org/', logo: partner2 },
     { name: 'HEAL', href: 'https://www.canberra.edu.au/faculties/health/heal', logo: partner3 },

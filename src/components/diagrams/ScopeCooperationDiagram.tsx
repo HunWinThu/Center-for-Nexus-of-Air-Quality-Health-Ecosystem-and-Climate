@@ -1,409 +1,314 @@
 import { motion } from "framer-motion";
+import React from "react";
 
-const ScopeCooperationDiagram = () => {
+/**
+ * Responsive SVG: scales to parent width while preserving aspect ratio.
+ * Author all positions in the 1000x800 viewBox space.
+ */
+const W = 1000;
+const H = 800;
+
+const fade = (delay = 0, y = 0) => ({
+  initial: { opacity: 0, y },
+  animate: { opacity: 1, y: 0, transition: { delay, duration: 0.6 } },
+});
+
+// Opacity-only (so it won't override your manual translate())
+const fadePos = (delay = 0) => ({
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { delay, duration: 0.6 } },
+});
+
+const grow = (delay = 0.8) => ({
+  initial: { opacity: 0, scale: 0.5 },
+  animate: { opacity: 1, scale: 1, transition: { delay, duration: 0.8 } },
+});
+
+const ScopeCooperationDiagramSVG: React.FC = () => {
   return (
-    <div className="w-full max-w-none ml-0 mr-32 pl-0 pr-4" style={{ position: 'relative', isolation: 'isolate' }}>
-      <div className="relative w-full h-[900px] overflow-x-auto lg:overflow-visible" style={{ contain: 'layout style' }}>
-        <div className="relative min-w-[1200px] h-[900px]" style={{ position: 'relative', contain: 'layout' }}>
-          
-          {/* Dotted Oval covering the whole diagram */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
-            className="absolute border-4 border-dashed border-gray-400 z-10"
-            style={{
-              top: "7px",
-              left: "132px", 
-              right: "132px",
-              bottom: "-16px",
-              borderRadius: "50%"            }}
-          />
+    <div className="w-full" style={{ overflowX: "auto" }}>
+      <motion.svg
+        role="img"
+        aria-labelledby="title desc"
+        width="100%"
+        height="auto"
+        viewBox={`0 0 ${W} ${H}`}
+        initial="initial"
+        animate="animate"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <title id="title">AirQC Nexus Scope & Cooperation</title>
+        <desc id="desc">
+          Venn diagram of Air Quality, Climate, and Planetary Health with
+          cooperating organizations and arrows showing relationships.
+        </desc>
 
-          {/* Overlapping Venn Diagram Circles */}
-          <div className="absolute inset-0 z-60 flex items-center justify-center -translate-y-5">
-            <div className="relative w-[540px] h-[440px]">
-            {/* Air Pollution - Blue (left) */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-              className="absolute w-[320px] h-[320px] z-21"
-              style={{ 
-                top: "0px",
-                left: "0px"
-              }}
-            >
-              <div className="w-full h-full rounded-full bg-blue-500 opacity-85 shadow-xl flex items-center justify-center">
-                <div className="text-center text-white -translate-x-8">
-                  <h4 className="font-bold text-xl mb-1">Air Quality</h4>
-                  <p className="text-lg">Air pollution</p>
-                  <p className="text-lg">engineering</p>
-                  <p className="text-lg">& management</p>
-                </div>
-              </div>
-            </motion.div>
+        {/* ====== Defs: markers & shadows ====== */}
+        <defs>
+          {/* Arrow markers */}
+          <marker id="arrow1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#1e7a47" />
+          </marker>
+          <marker id="arrow2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed" />
+          </marker>
+          <marker id="arrow3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#8b6b4a" />
+          </marker>
 
-            {/* Climate - Green (right) */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.0, duration: 0.8 }}
-              className="absolute w-[320px] h-[320px] z-22"
-              style={{ 
-                top: "0px",
-                right: "0px"
-              }}
-            >
-              <div className="w-full h-full rounded-full bg-green-500 opacity-85 shadow-xl flex items-center justify-center">
-                <div className="text-center text-white translate-x-8">
-                  <h4 className="font-bold text-xl mb-1">Climate</h4>
-                  <p className="text-lg">Meteorology &</p>
-                  <p className="text-lg">Science of</p>
-                  <p className="text-lg">Climate Change</p>
-                </div>
-              </div>
-            </motion.div>
+          {/* Soft shadow filter for cards/circles */}
+          <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodOpacity="0.25" />
+          </filter>
 
-            {/* Planetary Health - Red (bottom center) */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
-              className="absolute w-[320px] h-[320px] z-23"
-              style={{ 
-                top: "200px",
-                left: "20%",
-                transform: "translateX(-50%)"
-              }}
-            >
-              <div className="w-full h-full rounded-full bg-red-500 opacity-85 shadow-xl flex items-center justify-center">
-                <div className="text-center text-white translate-y-8">
-                  <h4 className="font-bold text-xl mb-1">Planetary Health</h4>
-                  <p className="text-lg">Air pollution effects</p>
-                  <p className="text-lg">on health & ecosystem</p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
+          {/* (Kept for reference) Dashed oval path */}
+          <path id="dashedOval"
+                d="M200,20 Q450,-40 700,20 Q860,180 700,640 Q450,700 200,640 Q40,480 200,20 Z" />
+        </defs>
 
-        {/* Adjusted Organization Boxes */}
-        {/* Top Organization Box - centered on screen */}
-        <div className="absolute inset-0 z-30 flex items-start justify-center pt-0" style={{ marginTop: '-40px' }}>
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="flex flex-col items-center"
-          >
-            <div className="bg-yellow-200 border-2 border-yellow-400 w-96 h-28 rounded-lg text-center shadow-lg flex items-center justify-center">
-              <p className="font-bold text-gray-800 text-xl leading-tight">WMO, CCAC, IGES, RIFS, RICARDO</p>
-            </div>
-            <div className="border border-purple-300 w-80 h-30 rounded-lg mt-2 shadow-lg flex items-center justify-start pl-3" style={{ backgroundColor: '#25a05b' }}>
-              <div className="text-left text-white">
-                <p className="text-lg leading-tight">• Co-benefits of emission reduction</p>
-                <p className="text-lg leading-tight">• Co-control: GHG, SLCF,</p>
-                <p className="text-lg leading-tight ml-3">air pollutants</p>
-                <p className="text-lg leading-tight">• Air pollution meteorology/</p>
-                <p className="text-lg leading-tight ml-3">climatology</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+        {/* ====== Dotted oval covering the diagram ====== */}
+        <motion.ellipse
+          cx="500"
+          cy="400"
+          rx="410"
+          ry="330"
+          stroke="#9CA3AF"
+          strokeWidth="3"
+          strokeDasharray="8 6"
+          fill="none"
+          variants={fade(1.2)}
+        />
 
-        {/* Left Side Universities Box */}
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="absolute left-4 z-30"
-          style={{ top: "376px", transform: "translateY(-50%)" }}
-        >
-          <div className="bg-yellow-200 border-2 border-yellow-400 w-80 h-28 rounded-lg shadow-lg flex items-center justify-center">
-            <div className="text-center">
-              <p className="font-bold text-gray-800 text-xl leading-tight">CAA, IRD, IIASA, Universities</p>
-              <p className="text-lg text-gray-600 leading-tight">(Clarkson, PKU, Colorado, Emory, etc.)</p>
-            </div>
-          </div>
-        </motion.div>
+        {/* ====== Venn circles ====== */}
+        <g transform="translate(240,220)">
+          {/* Left (Air Quality) */}
+          <motion.g variants={grow(0.8)} filter="url(#shadow)">
+            <circle cx="175" cy="125" r="110" fill="rgba(59,130,246,0.85)" />
+            <g transform="translate(155,95)">
+              <text x="0" y="0" textAnchor="middle" fontWeight="700" fontSize="20" fill="#fff">
+                Air Quality
+              </text>
+              <text x="0" y="20" textAnchor="middle" fontSize="16" fill="#fff">Air pollution</text>
+              <text x="0" y="38" textAnchor="middle" fontSize="16" fill="#fff">engineering</text>
+              <text x="0" y="56" textAnchor="middle" fontSize="16" fill="#fff">&amp; management</text>
+            </g>
+          </motion.g>
 
-        {/* Left Side AIT: EEM Box - aligned with AIT: Energy */}
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="absolute z-30"
-          style={{ left: "210px", top: "250px", transform: "translateY(-50%)" }}
-        >
-          <div className="bg-blue-100 border border-blue-300 w-44 h-20 rounded-lg shadow-lg flex items-center justify-center">
-            <div className="text-center">
-              <p className="font-bold text-blue-700 text-lg leading-tight">AIT: EEM, InterLab,</p>
-              <p className="font-bold text-blue-700 text-lg leading-tight">RRC.AP</p>
-            </div>
-          </div>
-        </motion.div>
+          {/* Right (Climate) */}
+          <motion.g variants={grow(1.0)} filter="url(#shadow)">
+            <circle cx="335" cy="125" r="110" fill="rgba(34,197,94,0.85)" />
+            <g transform="translate(350,95)">
+              <text x="0" y="0" textAnchor="middle" fontWeight="700" fontSize="20" fill="#fff">Climate</text>
+              <text x="0" y="20" textAnchor="middle" fontSize="16" fill="#fff">Meteorology &amp;</text>
+              <text x="0" y="38" textAnchor="middle" fontSize="16" fill="#fff">Science of</text>
+              <text x="0" y="56" textAnchor="middle" fontSize="16" fill="#fff">Climate Change</text>
+            </g>
+          </motion.g>
 
-        {/* Right Side AIT Energy - aligned with AIT: EEM horizontally */}
-        <motion.div 
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="absolute right-56 z-30"
-          style={{ right: "210px", top: "250px", transform: "translateY(-50%)", display: "flex", alignItems: "center" }}
-        >
-          <div className="bg-blue-100 border border-blue-300 w-44 h-20 rounded-lg shadow-lg flex items-center justify-center">
-            <div className="text-center">
-              <p className="font-bold text-blue-700 text-lg leading-tight">AIT: Energy</p>
-              <p className="font-bold text-blue-700 text-lg leading-tight">Climate Change</p>
-            </div>
-          </div>
-        </motion.div>
+          {/* Bottom (Planetary Health) */}
+          <motion.g variants={grow(1.2)} filter="url(#shadow)">
+            <circle cx="260" cy="275" r="110" fill="rgba(239,68,68,0.85)" />
+            <g transform="translate(260,275)">
+              <text x="0" y="0" textAnchor="middle" fontWeight="700" fontSize="20" fill="#fff">
+                Planetary Health
+              </text>
+              <text x="0" y="20" textAnchor="middle" fontSize="16" fill="#fff">Air pollution effects</text>
+              <text x="0" y="38" textAnchor="middle" fontSize="16" fill="#fff">on health &amp; ecosystem</text>
+            </g>
+          </motion.g>
+        </g>
 
-        {/* Bottom Left Effects - moved further top-right */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="absolute bottom-64 left-48 z-30"
-        >
-          <div className="border border-purple-300 w-72 h-28 rounded-lg shadow-lg flex items-center justify-start pl-3" style={{ backgroundColor: '#8b5cf6' }}>
-            <div className="text-left text-white">
-              <p className="text-lg leading-tight">• Human: Toxic pollutants</p>
-              <p className="text-lg leading-tight">• Ecosystem: phytotoxic </p>
-              <p className="text-lg leading-tight ml-2">pollutants, acid deposition</p>
-            </div>
-          </div>
-        </motion.div>
+        {/* ====== Top block (orgs + green pill) ====== */}
+        <g transform="translate(300,40)">
+          <motion.g variants={fade(0.2, -20)} filter="url(#shadow)">
+            <rect x="0" y="0" width="380" height="80" rx="8" fill="#FEF08A" stroke="#F59E0B" strokeWidth="3" />
+            <text x="190" y="48" textAnchor="middle" fontWeight="700" fontSize="16" fill="#1F2937">
+              WMO, CCAC, IGES, RIFS, RICARDO
+            </text>
+            <g transform="translate(35,90)">
+              <rect x="0" y="0" width="310" height="100" rx="8" fill="#25a05b" stroke="#16a34a" strokeWidth="2" />
+              <text x="15" y="22" fontSize="14" fill="#fff">• Co-benefits of emission reduction</text>
+              <text x="15" y="40" fontSize="14" fill="#fff">• Co-control: GHG, SLCF, air pollutants</text>
+              <text x="15" y="58" fontSize="14" fill="#fff">• Air pollution meteorology/climatology</text>
+              <text x="15" y="76" fontSize="14" fill="#fff">• Health and ecosystem impact assessments</text>
+            </g>
+          </motion.g>
+        </g>
 
-        {/* Bottom Right Effects - aligned with AIT: Energy box vertically */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.0, duration: 0.6 }}
-          className="absolute bottom-64 right-48 z-30"
-        >
-          <div className="border border-purple-300 w-72 h-28 rounded-lg shadow-lg flex items-center justify-start pl-3" style={{ backgroundColor: '#a58260' }}>
-            <div className="text-left text-white">
-              <p className="text-lg leading-tight">• Climate intensification of</p>
-              <p className="text-lg leading-tight ml-3">wildfires (extreme events) and</p>
-              <p className="text-lg leading-tight ml-3">health effects</p>
-            </div>
-          </div>
-        </motion.div>
+        {/* ====== Left side box: Institutions & Universities ====== */}
+        <motion.g variants={fade(0.4, 0)} filter="url(#shadow)">
+          <g transform="translate(40,360)">
+            <rect x="0" y="0" width="240" height="80" rx="8" fill="#FEF08A" stroke="#F59E0B" strokeWidth="3" />
+            <text x="120" y="28" textAnchor="middle" fontWeight="700" fontSize="16" fill="#1F2937">
+              CAA, IRD, IIASA, CITEPA
+            </text>
+            <text x="120" y="48" textAnchor="middle" fontWeight="700" fontSize="16" fill="#1F2937">
+              Universities (PKU, CSU,
+            </text>
+            <text x="120" y="68" textAnchor="middle" fontWeight="700" fontSize="16" fill="#1F2937">
+              Emory, Clarkson…)
+            </text>
+          </g>
+        </motion.g>
 
-        {/* Bottom Center Organizations - centered using flex */}
-        <div className="absolute inset-0 z-30 flex items-end justify-center pb-0" style={{ marginBottom: '-50px' }}>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-            className="space-y-2 flex flex-col items-center"
-          >
-            <div className="bg-blue-100 border border-blue-300 w-44 h-20 rounded-lg shadow-lg flex items-center justify-center">
-              <div className="text-center">
-                <p className="font-bold text-blue-700 text-lg leading-tight">AIT: Food & Water:</p>
-                <p className="font-bold text-blue-700 text-lg leading-tight">Crops & Aquaculture</p>
-              </div>
-            </div>
-            <div className="bg-yellow-200 border-2 border-yellow-400 w-96 h-28 rounded-lg text-center shadow-lg flex items-center justify-center">
-              <div className="text-center">
-                <p className="font-bold text-gray-800 text-xl leading-tight">Human: WHO, Canberra, SINICA</p>
-                <p className="font-bold text-gray-800 text-xl  leading-tight">Ecosystem: EANET, York University</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+        {/* ====== AIT: EEM ====== */}
+        <motion.g variants={fade(0.5, 0)} filter="url(#shadow)">
+          <g transform="translate(180,300)">
+            <rect x="0" y="0" width="130" height="46" rx="8" fill="#DBEAFE" stroke="#3B82F6" strokeWidth="2" />
+            <text x="65" y="18" textAnchor="middle" fontWeight="700" fontSize="12" fill="#1D4ED8">
+              AIT: EEM, InterLab,
+            </text>
+            <text x="65" y="34" textAnchor="middle" fontWeight="700" fontSize="12" fill="#1D4ED8">
+              RRC.AP
+            </text>
+          </g>
+        </motion.g>
 
-        {/* Arrow SVG Layer */}
-        <svg className="absolute inset-0 w-full h-full z-25 pointer-events-none">
-          {/* Arrow from top purple box to center intersection */}
+        {/* ====== AIT: Energy ====== */}
+        <motion.g variants={fade(0.6, 0)} filter="url(#shadow)">
+          <g transform="translate(680,300)">
+            <rect x="0" y="0" width="130" height="46" rx="8" fill="#DBEAFE" stroke="#3B82F6" strokeWidth="2" />
+            <text x="65" y="18" textAnchor="middle" fontWeight="700" fontSize="12" fill="#1D4ED8">
+              AIT: Energy
+            </text>
+            <text x="65" y="34" textAnchor="middle" fontWeight="700" fontSize="12" fill="#1D4ED8">
+              Climate Change
+            </text>
+          </g>
+        </motion.g>
+
+        {/* ====== Bottom left effects ====== */}
+        <motion.g variants={fade(0.8, 20)} filter="url(#shadow)">
+          <g transform="translate(170,480)">
+            <rect x="0" y="0" width="195" height="60" rx="8" fill="#8b5cf6" stroke="#D8B4FE" />
+            <text x="8" y="20" fontSize="14" fill="#fff">• Human: Toxic pollutants</text>
+            <text x="8" y="35" fontSize="14" fill="#fff">• Ecosystem: phytotoxic</text>
+            <text x="20" y="50" fontSize="14" fill="#fff">pollutants, acid deposition</text>
+          </g>
+        </motion.g>
+
+        {/* ====== Bottom right effects ====== */}
+        <motion.g variants={fade(1.0, 20)} filter="url(#shadow)">
+          <g transform="translate(640,480)">
+            <rect x="0" y="0" width="195" height="60" rx="8" fill="#a58260" stroke="#d1bfa8" />
+            <text x="8" y="20" fontSize="14" fill="#fff">• Climate intensification of</text>
+            <text x="20" y="35" fontSize="14" fill="#fff">wildfires (extreme events)</text>
+            <text x="20" y="50" fontSize="14" fill="#fff">and health effects</text>
+          </g>
+        </motion.g>
+
+        {/* ====== Bottom center (Food & Water + WHO block) ====== */}
+        <motion.g variants={fade(1.2, 20)} filter="url(#shadow)">
+          <g transform="translate(390,610)">
+            <rect x="45" y="0" width="135" height="46" rx="8" fill="#DBEAFE" stroke="#93C5FD" />
+            <text x="112" y="18" textAnchor="middle" fontWeight="700" fontSize="14" fill="#1D4ED8">
+              AIT: Food &amp; Water:
+            </text>
+            <text x="112" y="36" textAnchor="middle" fontWeight="700" fontSize="14" fill="#1D4ED8">
+              Crops &amp; Aquaculture
+            </text>
+            <g transform="translate(0,60)">
+              <rect x="0" y="0" width="220" height="60" rx="8" fill="#FEF08A" stroke="#F59E0B" strokeWidth="3" />
+              <text x="110" y="28" textAnchor="middle" fontWeight="700" fontSize="16" fill="#1F2937">
+                WHO, SINICA
+              </text>
+              <text x="110" y="47" textAnchor="middle" fontWeight="700" fontSize="16" fill="#1F2937">
+                EANET, CU, York
+              </text>
+            </g>
+          </g>
+        </motion.g>
+
+        {/* ====== Arrows ====== */}
+        <g>
           <motion.path
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 1 }}
-            transition={{ delay: 1.4, duration: 0.8 }}
-            d="M 660 195 L 660 360"
+            variants={{
+              initial: { pathLength: 0, opacity: 0 },
+              animate: { pathLength: 1, opacity: 1, transition: { delay: 1.4, duration: 0.8 } },
+            }}
+            d="M 490 230 L 490 355"
             stroke="#1e7a47"
             strokeWidth="3"
             fill="none"
-            markerEnd="url(#arrowhead1)"
+            markerEnd="url(#arrow1)"
           />
-          
-          {/* Arrow from left purple box to left intersection */}
           <motion.path
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 1 }}
-            transition={{ delay: 1.6, duration: 0.8 }}
-            d="M 420 564 L 590 475"
+            variants={{
+              initial: { pathLength: 0, opacity: 0 },
+              animate: { pathLength: 1, opacity: 1, transition: { delay: 1.6, duration: 0.8 } },
+            }}
+            d="M 360 480 L 460 425"
             stroke="#7c3aed"
             strokeWidth="3"
             fill="none"
-            markerEnd="url(#arrowhead2)"
+            markerEnd="url(#arrow2)"
           />
-          
-          {/* Arrow from right purple box to right intersection */}
           <motion.path
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 1 }}
-            transition={{ delay: 1.8, duration: 0.8 }}
-            d="M 840 536 L 720 485"
+            variants={{
+              initial: { pathLength: 0, opacity: 0 },
+              animate: { pathLength: 1, opacity: 1, transition: { delay: 1.8, duration: 0.8 } },
+            }}
+            d="M 640 480 L 530 415"
             stroke="#8b6b4a"
             strokeWidth="3"
             fill="none"
-            markerEnd="url(#arrowhead3)"
+            markerEnd="url(#arrow3)"
           />
-          
-          {/* Arrow marker definitions */}
-          <defs>
-            {/* Blue-Green arrow marker (top) */}
-            <marker
-              id="arrowhead1"
-              markerWidth="10"
-              markerHeight="7"
-              refX="9"
-              refY="3.5"
-              orient="auto"
-            >
-              <polygon
-                points="0 0, 10 3.5, 0 7"
-                fill="#1e7a47"
-              />
-            </marker>
-            
-            {/* Red-Blue arrow marker (left) */}
-            <marker
-              id="arrowhead2"
-              markerWidth="10"
-              markerHeight="7"
-              refX="9"
-              refY="3.5"
-              orient="auto"
-            >
-              <polygon
-                points="0 0, 10 3.5, 0 7"
-                fill="#7c3aed"
-              />
-            </marker>
-            
-            {/* Red-Green arrow marker (right) */}
-            <marker
-              id="arrowhead3"
-              markerWidth="10"
-              markerHeight="7"
-              refX="9"
-              refY="3.5"
-              orient="auto"
-            >
-              <polygon
-                points="0 0, 10 3.5, 0 7"
-                fill="#8b6b4a"
-              />
-            </marker>
-          </defs>
-        </svg>
+        </g>
 
-        {/* Legend Sections Positioned Around Diagram */}
-        
-        {/* Top Right: International Organizations */}
-                <motion.div 
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 2.0, duration: 0.8 }}
-          className="absolute z-40 bg-white border-2 border-yellow-400 rounded-lg shadow-lg p-4 max-w-sm"
-          style={{ top: "-50px", right: "-200px" }}
-        >
-          <div className="border-l-4 border-yellow-400 pl-4">
-            <div className="flex flex-col space-y-1 text-base">
-              <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1">WMO</span><span>: World Meteorological</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1"></span><span className="ml-2">Organization</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1">CCAC</span><span>: Climate & Clean Air Coalition</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1">IGES</span><span>: Institute for Global</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1"></span><span className="ml-2">Environmental Strategies</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1">RIFS</span><span>: Research Institute for Sustainability</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-600 w-16 text-left mr-1">RICARDO</span><span>: Global Consultancy</span></div>
-            </div>
-          </div>
-        </motion.div>
+        {/* ====== Legend callouts (no transform conflict) ====== */}
+        {/* Top-right legend (moved slightly inward to avoid clipping) */}
+        <g transform="translate(695,40)">
+          <motion.g variants={fadePos(2.0)} filter="url(#shadow)">
+            <rect x="0" y="0" width="300" height="150" rx="10" fill="#fff" stroke="#F59E0B" strokeWidth="1" />
+            <g transform="translate(12,18)" fontSize="14">
+              <text fontWeight="700" fill="#ca8a04">WMO</text><text x="72" y="0">: World Meteorological</text>
+              <text x="79" y="16">Organization</text>
+              <text y="34" fontWeight="700" fill="#ca8a04">CCAC</text><text x="72" y="34">: Climate &amp; Clean Air Coalition</text>
+              <text y="52" fontWeight="700" fill="#ca8a04">IGES</text><text x="72" y="52">: Institute for Global</text>
+              <text x="79" y="68">Environmental Strategies</text>
+              <text y="86" fontWeight="700" fill="#ca8a04">RIFS</text><text x="72" y="86">: Research Institute for</text>
+              <text x="79" y="102"> Sustainability</text>
+              <text y="118" fontWeight="700" fill="#ca8a04">RICARDO</text><text x="72" y="118">: Global Consultancy</text>
+            </g>
+          </motion.g>
+        </g>
 
-        {/* Top Left: Research Institutions & Universities */}
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 2.2, duration: 0.8 }}
-          className="absolute z-40 bg-white border-2 border-yellow-500 rounded-lg shadow-lg p-4 max-w-sm"
-          style={{ top: "-50px", left: "-220px" }}
-        >
-          <div className="border-l-4 border-yellow-500 pl-4">
-            <div className="flex flex-col space-y-1 text-base">
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">CAA</span><span>: Clean Air Asia</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">IRD</span><span>: Institute of Research for</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1"></span><span className="ml-2">Development (France)</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">IIASA</span><span>: International Institute for Applied</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1"></span><span className="ml-2">Systems Analysis (Austria)</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">Clarkson</span><span>: Clarkson University</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1"></span><span className="ml-2">(New York, USA)</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">PKU</span><span>: Peking University (China)</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">Colorado</span><span>: Colorado University</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1"></span><span className="ml-2">(Colorado, USA)</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">Emory</span><span>: Emory University (Atlanta, USA)</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1"></span><span className="ml-2"></span></div>
+        {/* Top-left legend */}
+        <g transform="translate(3,90)">
+          <motion.g variants={fadePos(2.2)} filter="url(#shadow)">
+            <rect x="0" y="0" width="285" height="170" rx="10" fill="#fff" stroke="#F59E0B" strokeWidth="1" />
+            <g transform="translate(12,18)" fontSize="14">
+              <text fontWeight="700" fill="#a16207">CAA</text><text x="50" y="0">: Clean Air Asia</text>
+              <text y="18" fontWeight="700" fill="#a16207">IRD</text><text x="50" y="18">: Institute of Research for</text>
+              <text x="57" y="34">Development (France)</text>
+              <text y="52" fontWeight="700" fill="#a16207">IIASA</text><text x="50" y="52">: International Institute for Applied</text>
+              <text x="57" y="68">Systems Analysis (Austria)</text>
+              <text y="86" fontWeight="700" fill="#a16207">CITEPA</text><text x="50" y="86">: Centre Interprofessionnel</text>
+              <text x="57" y="102">Technique d’Études de la Pollution</text>
+              <text x="57" y="118">Atmosphérique</text>
+              <text y="134" fontWeight="700" fill="#a16207">PKU</text><text x="50" y="134">: Peking University (China)</text>
+            </g>
+          </motion.g>
+        </g>
 
-
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Bottom Left: Health & Environment Organizations */}
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }} 
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 2.4, duration: 0.8 }}
-          className="absolute z-40 bg-white border-2 border-yellow-500 rounded-lg shadow-lg p-4 max-w-sm"
-          style={{ bottom: "-50px", left: "-220px" }}
-        >
-          <div className="border-l-4 border-yellow-500 pl-4">
-            <div className="flex flex-col space-y-1 text-base">
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">WHO</span><span>: World Health Organization</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">Canberra</span><span>: University of Canberra (Australia)</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">SINICA</span><span>: Academia Sinica, Taiwan’s National</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1"></span><span className="ml-2">Academic Institution (Taiwan)</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">EANET</span><span>: Acid Deposition Monitoring</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1"></span><span className="ml-2">Network in East Asia</span></div>
-              <div className="flex"><span className="font-semibold text-yellow-700 w-16 text-left mr-1">York</span><span>: York University (Canada)</span></div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Bottom Right: Asian Institute of Technology (AIT) & Technical Terms */}
-        <motion.div 
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 2.6, duration: 0.8 }}
-          className="absolute z-40 bg-white border-2 border-blue-400 rounded-lg shadow-lg p-4 max-w-sm"
-          style={{ bottom: "-50px", right: "-200px" }}
-        >
-          <div className="border-l-4 border-blue-400 pl-4">
-            <div className="flex flex-col space-y-1 text-base mb-3">
-              <div className="flex"><span className="font-semibold text-blue-600 w-16 text-left mr-1">AIT</span><span>: Asian Institute of Technology</span></div>
-              <div className="flex"><span className="font-semibold text-blue-600 w-16 text-left mr-1">EEM</span><span>: Environmental Engineering &</span></div>
-              <div className="flex"><span className="font-semibold text-blue-600 w-16 text-left mr-1"></span><span className="ml-2">Management</span></div>
-              <div className="flex"><span className="font-semibold text-blue-600 w-16 text-left mr-1">RRC.AP</span><span>: Regional Resource Centre for Asia</span></div>
-              <div className="flex"><span className="font-semibold text-blue-600 w-16 text-left mr-1"></span><span className="ml-2">and the Pacific</span></div>
-            </div>
-            
-            <div className="border-t border-green-200 pt-3">
-              <div className="flex flex-col space-y-1 text-base">
-                <div className="flex"><span className="font-semibold text-green-600 w-16 text-left mr-1">GHG</span><span>: Greenhouse Gases</span></div>
-                <div className="flex"><span className="font-semibold text-green-600 w-16 text-left mr-1">SLCF</span><span>: Short-Lived Climate Forcers</span></div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        </div>
-      </div>
+        {/* Bottom-right legend */}
+        <g transform="translate(630,640)">
+          <motion.g variants={fadePos(2.4)} filter="url(#shadow)">
+            <rect x="0" y="0" width="280" height="120" rx="10" fill="#fff" stroke="#F59E0B" strokeWidth="1" />
+            <g transform="translate(12,18)" fontSize="14">
+              <text fontWeight="700" fill="#a16207">WHO</text><text x="50" y="0">: World Health Organization</text>
+              <text y="18" fontWeight="700" fill="#a16207">UC</text><text x="50" y="18">: University of Canberra (Australia)</text>
+              <text y="36" fontWeight="700" fill="#a16207">SINICA</text><text x="50" y="36">: Academia Sinica (Taiwan)</text>
+              <text y="54" fontWeight="700" fill="#a16207">EANET</text><text x="50" y="54">: Acid Deposition Monitoring</text>
+              <text x="57" y="70">Network in East Asia</text>
+              <text y="88" fontWeight="700" fill="#a16207">York</text><text x="50" y="88">: York University (Canada)</text>
+            </g>
+          </motion.g>
+        </g>
+      </motion.svg>
     </div>
   );
 };
 
-export default ScopeCooperationDiagram;
+export default ScopeCooperationDiagramSVG;

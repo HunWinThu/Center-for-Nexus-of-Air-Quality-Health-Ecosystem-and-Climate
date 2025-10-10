@@ -96,7 +96,7 @@ const advisoryCommittee = [
   },
   {
     id: 10,
-    name: "Dr. Tong Zhu",
+    name: "Prof. Tong Zhu",
     role: "Advisory Member",
     department: "College of Environmental Sciences and Engineering, Peking University",
     bio: "Boya Chair Professor",
@@ -333,15 +333,6 @@ const Committee = () => {
                           <h3 className="text-xl font-semibold text-primary mb-1">{member.name}</h3>
                         )}
                         
-                        <motion.p 
-                          className="text-base text-muted-foreground font-medium"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ delay: 0.6 }}
-                        >
-                          {member.role}
-                        </motion.p>
-                        
                         {member.department && (
                           <motion.p 
                             className="text-base text-muted-foreground mt-1"
@@ -422,15 +413,6 @@ const Committee = () => {
                         ) : (
                           <h3 className="text-xl font-semibold text-primary mb-1">{member.name}</h3>
                         )}
-                        
-                        <motion.p 
-                          className="text-base text-muted-foreground font-medium"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ delay: 0.6 }}
-                        >
-                          {member.role}
-                        </motion.p>
                         
                         {member.department && (
                           <motion.p 

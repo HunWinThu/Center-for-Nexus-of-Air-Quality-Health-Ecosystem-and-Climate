@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import logo from '@/assets/AQN2.png';
+import logo from '@/assets/AirQC2.png';
 import aitLogo from '@/assets/AIT.png';
 
 const Header = () => {
@@ -65,21 +65,28 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-0.5">
           {/* Logos */}
-          <Link to="/" className="flex items-center gap-0 md:gap-1">
+          <Link to="/" className="flex items-center flex-shrink-0">
             <img
               src={aitLogo}
               alt="AIT"
-              className="h-32 w-32 object-contain"
+              className="h-24 w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 object-contain"
             />
-            <img
-              src={logo}
-              alt="Air Quality Nexus"
-              className="h-32 w-32 object-contain"
-            />
+            <div className="flex items-center -ml-2">
+              <img
+                src={logo}
+                alt="Air Quality Center"
+                className="h-24 w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 object-contain"
+              />
+              <div className="hidden sm:block ml-2">
+                <h1 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 leading-tight">
+                  Air Quality Nexus<br />Center
+                </h1>
+              </div>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-7">
+          <nav className="hidden xl:flex items-center space-x-7 flex-shrink-0">
             {navigation.map((item) => {
               if (item.name === 'About Us') {
                 return (
@@ -149,7 +156,7 @@ const Header = () => {
           </nav>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="xl:hidden flex-shrink-0">
             <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </Button>
@@ -166,21 +173,28 @@ const Header = () => {
             />
             
             {/* Mobile menu positioned from top of screen */}
-            <div className="fixed top-0 left-0 right-0 z-50 md:hidden">
+            <div className="fixed top-0 left-0 right-0 z-50 xl:hidden">
               {/* Header space replica to maintain logo visibility */}
               <div className="bg-white border-b border-border px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center py-0.5">
-                  <Link to="/" className="flex items-center gap-0 md:gap-1">
+                  <Link to="/" className="flex items-center flex-shrink-0">
                     <img
                       src={aitLogo}
                       alt="AIT"
-                      className="h-32 w-32 object-contain"
+                      className="h-24 w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 object-contain"
                     />
-                    <img
-                      src={logo}
-                      alt="Air Quality Nexus"
-                      className="h-40 w-40 object-contain"
-                    />
+                    <div className="flex items-center -ml-2">
+                      <img
+                        src={logo}
+                        alt="Air Quality Center"
+                        className="h-24 w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 object-contain"
+                      />
+                      <div className="hidden sm:block ml-2">
+                        <h1 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 leading-tight">
+                          Air Quality Nexus<br />Center
+                        </h1>
+                      </div>
+                    </div>
                   </Link>
                   <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(false)}>
                     <X size={24} />
