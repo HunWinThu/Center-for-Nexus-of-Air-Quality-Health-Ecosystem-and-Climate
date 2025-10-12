@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { motion, Variants } from 'framer-motion';
 
 // Team member images
-import kim from '@/assets/prof.Kim.jpeg';
+import kim from '@/assets/Prof.Kim_photo.jpg';
 import huy from '@/assets/dr.huy.jpg';
 import ktoo from '@/assets/Ms. Ktoo.jpg';
 import Huyen from '@/assets/Dr. Truong Thi Huyen.jpg';

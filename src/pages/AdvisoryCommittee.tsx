@@ -99,7 +99,7 @@ const advisoryCommittee = [
     name: "Prof. Tong Zhu",
     role: "Advisory Member",
     department: "College of Environmental Sciences and Engineering, Peking University",
-    bio: "Boya Chair Professor",
+    bio: "Boya Chair Professor, Cheung Kong Chair Professor\nChair of WMO-ARCH working group\nContribution to the Nobel Peace Prize of IPCC group, 2007, WMO/UNEP",
     alignTop: true,
     image: Tong,
     viewprofile: "http://scholar.pku.edu.cn/tongzhu/bio",
@@ -348,6 +348,7 @@ const Committee = () => {
                     
                     <motion.p 
                       className="text-base text-muted-foreground mb-0 pt-3 text-center leading-relaxed flex-1"
+                      style={{ whiteSpace: 'pre-line' }}
                       variants={textVariants}
                     >
                       {member.bio}
@@ -429,6 +430,7 @@ const Committee = () => {
                     
                     <motion.p 
                       className="text-base text-muted-foreground mb-0 pt-3 text-center leading-relaxed flex-1"
+                      style={{ whiteSpace: 'pre-line' }}
                       variants={textVariants}
                     >
                       {member.bio}
