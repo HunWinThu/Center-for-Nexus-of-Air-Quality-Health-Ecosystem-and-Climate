@@ -162,34 +162,9 @@ const Index = () => {
             >
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">Our Vision</h2>
               <div className="text-lg sm:text-xl text-gray-700 space-y-4 sm:space-y-6">
-                <p className="leading-relaxed text-justify">
-                  The Air Quality Nexus Center is envisioned as a leading institution dedicated to
-                  application-oriented research that addresses complex air pollution challenges. Its vision
-                  extends beyond reducing pollution to creating broader benefits for society through
-                  improving health of human and ecosystem and safeguarding the climate system.
+                <p className="leading-relaxed text-justify font-bold">
+                  Air Quality Nexus is a leading Center in building capacity and implementing research for effective air quality management.
                 </p>
-                <ul className="space-y-3 sm:space-y-4 pl-0">
-                  <li className="flex items-start">
-                    <span className="text-primary mr-2 sm:mr-3 mt-1 text-lg">•</span>
-                    <span className="text-sm sm:text-base lg:text-lg">Lead cutting-edge research and innovative application programs on air quality
-                    engineering and management.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary mr-2 sm:mr-3 mt-1 text-lg">•</span>
-                    <span className="text-sm sm:text-base lg:text-lg">Promote integrated approaches linking air pollution control with climate
-                    protection.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary mr-2 sm:mr-3 mt-1 text-lg">•</span>
-                    <span className="text-sm sm:text-base lg:text-lg">Provide science-based solutions for co-controlling air pollutants and climate
-                    forcers to protect human health and ecosystems.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary mr-2 sm:mr-3 mt-1 text-lg">•</span>
-                    <span className="text-sm sm:text-base lg:text-lg">Place the center as a focal hub for advancing sustainable environmental
-                    management in Asia.</span>
-                  </li>
-                </ul>
               </div>
             </motion.div>
           ) : (
@@ -207,29 +182,29 @@ const Index = () => {
             >
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">Our Missions</h2>
               <div className="text-lg sm:text-xl text-gray-700 space-y-4 sm:space-y-6">
-                <p className="leading-relaxed text-justify">
-                  The Air Quality Nexus Center is committed to advancing science-based
-                  solutions through research and collaboration, with the mission of
-                  transforming knowledge into practical actions that improve air quality,
-                  protect planetary health, and the climate system.
-                </p>
+
                 <ul className="space-y-3 sm:space-y-4 pl-0">
                   <li className="flex items-start">
-                    <span className="text-primary mr-2 sm:mr-3 mt-1 text-lg">•</span>
-                    <span className="text-sm sm:text-base lg:text-lg">Conduct high-quality, real-life applicable research.</span>
+                    <span className="text-primary mr-2 sm:mr-3 text-2xl">•</span>
+                    <span className="text-sm sm:text-base lg:text-lg font-bold">Conduct high-quality research demonstrated by real-life applications for improving air quality;</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-primary mr-2 sm:mr-3 mt-1 text-lg">•</span>
-                    <span className="text-sm sm:text-base lg:text-lg">Promote integrated, multi-pollutant and multi-effect approaches.</span>
+                    <span className="text-primary mr-2 sm:mr-3 text-2xl">•</span>
+                    <span className="text-sm sm:text-base lg:text-lg font-bold">Provide cost-effective solutions to complex air pollution problems by applying integrated multi-pollutant, multi-effect, and
+                      cross-sectoral approaches;</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-primary mr-2 sm:mr-3 mt-1 text-lg">•</span>
-                    <span className="text-sm sm:text-base lg:text-lg">Quantify co-benefits of air quality and climate measures.</span>
+                    <span className="text-primary mr-2 sm:mr-3 text-2xl">•</span>
+                    <span className="text-sm sm:text-base lg:text-lg font-bold">Demonstrate multiple benefits of integrated control strategies to air quality, human health, ecosystem, and climate system;</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-primary mr-2 sm:mr-3 mt-1 text-lg">•</span>
-                    <span className="text-sm sm:text-base lg:text-lg">Strengthening AIT's research and education through collaboration and
-                    partnerships.</span>
+                    <span className="text-primary mr-2 sm:mr-3 text-2xl">•</span>
+                    <span className="text-sm sm:text-base lg:text-lg font-bold">Expand international cooperation in conducting research projects, consultancies, and training;</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 sm:mr-3 text-2xl">•</span>
+                    <span className="text-sm sm:text-base lg:text-lg font-bold">Build capacity and assist governments and development partners in planning, designing, scaling up, and implementing clean air
+                     action plans with multiple benefits.</span>
                   </li>
                 </ul>
               </div>
@@ -888,13 +863,11 @@ const Index = () => {
               Air Quality Nexus
               <span className="block text-primary">Center</span>
             </motion.h2>
-            <motion.p 
-              className="text-lg sm:text-xl text-grey/90 leading-relaxed mb-6 font-medium max-w-6xl mx-auto text-center px-4"
+            <motion.p
+              className="text-lg sm:text-xl text-grey/90 leading-relaxed mb-6 font-medium max-w-6xl mx-auto text-justify px-4"
               variants={fadeUpVariants}
             >
-              Center for Nexus of Air Quality Health, Ecosystem, and Climate has a goal to serve as a focal point to build capacity and conduct cutting-edge 
-              research in atmospheric sciences for effective improvement of air quality in Asia and beyond. The Center will be an institution-wide Center, cooperating with multidisciplinary and cutting-edge research 
-              areas of the schools and other AIT Centers to foster collaboration and strengthen AIT research and education capacity.
+              Air pollution kills millions of people in the world annually. Effective strategies for improving air quality are urgently needed which must be holistic and cross-sectoral, requiring collaboration and integrated policies across different domains. Air Quality Nexus Center explores the interconnections between air quality with various sectors and systems to best realize multiple benefits from air pollution reduction strategies, focusing on Public Health, Ecosystem, and Climate. The Center's goal is to serve as a focal point to build capacity and conduct cutting-edge research in atmospheric sciences for sustainable development in Asia and beyond. As an institution-wide unit, the Air Quality Nexus center aims to foster cooperation between multidisciplinary and transdisciplinary research activities across the AIT thematic areas, academic schools, and centers for strengthening the institute research and education capacity.
             </motion.p>
           </motion.div>
         </div>

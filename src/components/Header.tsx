@@ -75,7 +75,7 @@ const Header = () => {
               <img
                 src={logo}
                 alt="Air Quality Center"
-                className="h-24 w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 object-contain"
+                className="h-28 w-28 sm:h-32 sm:w-32 lg:h-36 lg:w-36 object-contain"
               />
               <div className="hidden sm:block ml-2">
                 <h1 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 leading-tight">
@@ -187,7 +187,7 @@ const Header = () => {
                       <img
                         src={logo}
                         alt="Air Quality Center"
-                        className="h-24 w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 object-contain"
+                        className="h-28 w-28 sm:h-32 sm:w-32 lg:h-36 lg:w-36 object-contain"
                       />
                       <div className="hidden sm:block ml-2">
                         <h1 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 leading-tight">

@@ -200,8 +200,7 @@ const gallery = [
               Venue: Room B108, AIT Conference Center <br/>July 10, 2024
             </p>
             <p className="text-justify md:text-balance text-xl max-w-8xl mx-auto">
-              On July 10, 2024, the Center for Nexus of Air Quality, Health, Ecosystem, and Climate known as the Air Quality Nexus Center hosted its official launching ceremony. Led by Distinguished Professor Nguyen Thi Kim Oanh as a Director, the Center aims to advance capacity building and cutting-edge research in atmospheric sciences, fostering multidisciplinary collaboration within the Center and with global partners. The Center focuses on tackling the urgent challenge of air pollution, particularly fine particulate matter (PM<sub>2.5</sub>), which poses serious health risks across Asia. It emphasizes integrated, multi-pollutant and multi-effect approaches to develop cost-effective solutions and support governments in implementing clean air policies.
-The launch event featured insights from prominent experts and stakeholders, highlighting the Center’s commitment to driving impactful research and policy engagement to improve air quality, public health, ecosystems, and climate resilience in the region.
+              On July 10, 2024, the Air Quality Nexus Center hosted its official launch ceremony. Led by Distinguished Professor Nguyen Thi Kim Oanh as the Director, the Center aims to advance capacity building and cutting-edge research in atmospheric sciences, fostering multidisciplinary collaboration within AIT and with international partners. The Center focuses on tackling the urgent challenge of air pollution, which poses serious health, ecosystem, and climate risks across Asia. It emphasizes integrated multi-pollutant, multi-effect, and cross-sectional approaches to develop cost-effective solutions and support governments in implementing clean air policies. The launch event featured insights from prominent experts and stakeholders, highlighting the Center’s commitment to driving impactful research and policy engagement to improve air quality, public health, ecosystems, and climate resilience in the region.
             </p>
           </div>
 
@@ -209,7 +208,7 @@ The launch event featured insights from prominent experts and stakeholders, high
             className="flex flex-col gap-12 md:gap-16"
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.25 }}
+            viewport={{ once: true, amount: 0.25 }}       
             variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } } }}
           >
             {quotes.map((quote, index) => {
