@@ -372,9 +372,9 @@ const Publications = () => {
             variants={fadeUpVariants}
             className="mt-20"
           >
-            <div className="bg-gradient-to-br from-accent/30 to-background rounded-lg p-8 text-center">
+            <div className="rounded-lg p-8 text-center">
               <h2 className="text-3xl font-bold text-foreground mb-6">
-                Find More Research on ResearchGate
+                Find More Previous Research Publications on ResearchGate
               </h2>
               <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Connect with our researchers and explore additional publications on their ResearchGate profiles.

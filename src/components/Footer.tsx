@@ -6,11 +6,11 @@ const Footer = () => {
   return (
     <footer className="bg-earth-green text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Quick Links */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <h3 className="text-xl sm:text-2xl font-semibold">Quick Links</h3>
-            <nav className="flex flex-col space-y-2">
+            <nav className="flex flex-col space-y-1.5">
               <Link to="/about" className="text-sm sm:text-base opacity-90 hover:opacity-100 transition-opacity">About Us</Link>
               <Link to="/projects" className="text-sm sm:text-base opacity-90 hover:opacity-100 transition-opacity">Projects</Link>
               <Link to="/news" className="text-sm sm:text-base opacity-90 hover:opacity-100 transition-opacity">News</Link>
@@ -19,10 +19,10 @@ const Footer = () => {
           </div>
 
           {/* Services */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <h3 className="text-xl sm:text-2xl font-semibold">Our Thematic Areas</h3>
-            <nav className="flex flex-col space-y-2">
-              <div className="flex flex-col gap-2">
+            <nav className="flex flex-col space-y-1.5">
+              <div className="flex flex-col gap-1.5">
                 <span className="text-sm sm:text-base opacity-90">High-Quality Research</span>
                 <span className="text-sm sm:text-base opacity-90">Multi-Pollutant Approach</span>
                 <span className="text-sm sm:text-base opacity-90">Co-Benefits Assessment</span>
@@ -34,9 +34,9 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-4 sm:col-span-2 lg:col-span-1">
+          <div className="space-y-3 sm:col-span-2 lg:col-span-1">
             <h3 className="text-xl sm:text-2xl font-semibold">Contact Info</h3>
-            <div className="space-y-3">
+            <div className="space-y-2">
               <div className="flex items-start space-x-2">
                 <Mail size={16} className="opacity-70 mt-0.5 flex-shrink-0" />
                 <span className="text-sm sm:text-base opacity-90 break-all">airqualitynexus@ait.ac.th</span>
@@ -60,8 +60,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-8 pt-8">
-          <div className="flex flex-col items-center space-y-4">
+        <div className="border-t border-white/20 mt-6 pt-2">
+          <div className="flex flex-col items-center space-y-2">
             {/* Logo and Name */}
             <div className="flex flex-col items-center space-y-2 sm:flex-row sm:space-y-0 sm:space-x-3">
               <img 

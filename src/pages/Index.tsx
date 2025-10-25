@@ -26,6 +26,7 @@ import pm25Image from '@/assets/pm2.5.png';
 import riceStrawBurningImage from '@/assets/rice-straw-burning.jpg';
 import { Target, Eye } from 'lucide-react';
 import Airparif from '@/assets/collaborators/Airparif.png';
+import scopeDiagramImage from '@/assets/scope_diagram.png';
 import worldBank from '@/assets/world-bank.jpg';
 import bktp from '@/assets/collaborators/bktp.png';
 import citepa from '@/assets/collaborators/citepa-logo.jpg';
@@ -44,6 +45,12 @@ import unep from '@/assets/collaborators/United_Nations_Environment_Programme_Lo
 import vanlang from '@/assets/collaborators/vanlang.png';
 import vnu from '@/assets/collaborators/VNU-USSH (1).jpg';
 import bg_3 from '@/assets/AIT_uni_2.png';
+import thematic1 from '@/assets/Our_Thematics/slide01_img06.png';
+import thematic2 from '@/assets/Our_Thematics/slide01_img02.png';
+import thematic3 from '@/assets/Our_Thematics/Slide01_img03.png';
+import thematic4 from '@/assets/Our_Thematics/slide01_img05.png';
+import thematic5 from '@/assets/Our_Thematics/slide01_img01.png';
+import thematic6 from '@/assets/Our_Thematics/slide01_img03.png';
 import React, { lazy, Suspense, useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
@@ -94,7 +101,7 @@ const Index = () => {
   // SEO setup
   usePageSEO(
     'Air Quality Nexus Center - Leading Air Quality Research',
-    'A leading Center in conducting and implementing application research with the aim to gain multiple benefits from reducing air pollution through improvement of health of human and ecosystem, and protection of the climate system.',
+    'Air pollution kills millions of people and causes millions of tons of agricultural crop yield loss in the world every year. Effective strategies for improving air quality are urgently needed, which must be holistic and cross-sectoral, requiring collaboration and integrated policies across different domains. Air Quality Nexus Center explores the interconnections between air quality with various sectors and systems to best realize multiple benefits from air pollution reduction strategies, focusing on Public Health, Ecosystem, and Climate. The Center\'s goal is to serve as a focal point to build capacity and conduct cutting-edge research in atmospheric sciences for sustainable development in Asia and beyond. As an AIT institution-wide unit, the Air Quality Nexus Center aims to foster cooperation between multidisciplinary and transdisciplinary research activities across the AIT thematic areas, academic schools, and centers for strengthening the institute\'s research and education capacity.',
     'https://hunwinthu.github.io/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate/HOME.jpg'
   );
 
@@ -160,9 +167,9 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
             >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">Our Vision</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4" style={{ color: '#3f6433' }}>Our Vision</h2>
               <div className="text-lg sm:text-xl text-gray-700 space-y-4 sm:space-y-6">
-                <p className="leading-relaxed text-justify font-bold">
+                <p className="leading-relaxed text-justify ">
                   Air Quality Nexus is a leading Center in building capacity and implementing research for effective air quality management.
                 </p>
               </div>
@@ -180,30 +187,30 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
             >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">Our Missions</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4" style={{ color: '#3f6433' }}>Our Missions</h2>
               <div className="text-lg sm:text-xl text-gray-700 space-y-4 sm:space-y-6">
 
                 <ul className="space-y-3 sm:space-y-4 pl-0">
                   <li className="flex items-start">
                     <span className="text-primary mr-2 sm:mr-3 text-2xl">•</span>
-                    <span className="text-sm sm:text-base lg:text-lg font-bold">Conduct high-quality research demonstrated by real-life applications for improving air quality;</span>
+                    <span className="text-sm sm:text-base lg:text-lg ">Conduct high-quality research demonstrated by real-life applications for improving air quality;</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary mr-2 sm:mr-3 text-2xl">•</span>
-                    <span className="text-sm sm:text-base lg:text-lg font-bold">Provide cost-effective solutions to complex air pollution problems by applying integrated multi-pollutant, multi-effect, and
+                    <span className="text-sm sm:text-base lg:text-lg ">Provide cost-effective solutions to complex air pollution problems by applying integrated multi-pollutant, multi-effect, and
                       cross-sectoral approaches;</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary mr-2 sm:mr-3 text-2xl">•</span>
-                    <span className="text-sm sm:text-base lg:text-lg font-bold">Demonstrate multiple benefits of integrated control strategies to air quality, human health, ecosystem, and climate system;</span>
+                    <span className="text-sm sm:text-base lg:text-lg ">Demonstrate multiple benefits of integrated control strategies to air quality, human health, ecosystem, and climate system;</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary mr-2 sm:mr-3 text-2xl">•</span>
-                    <span className="text-sm sm:text-base lg:text-lg font-bold">Expand international cooperation in conducting research projects, consultancies, and training;</span>
+                    <span className="text-sm sm:text-base lg:text-lg ">Expand international cooperation in conducting research projects, consultancies, and training;</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary mr-2 sm:mr-3 text-2xl">•</span>
-                    <span className="text-sm sm:text-base lg:text-lg font-bold">Build capacity and assist governments and development partners in planning, designing, scaling up, and implementing clean air
+                    <span className="text-sm sm:text-base lg:text-lg ">Build capacity and assist governments and development partners in planning, designing, scaling up, and implementing clean air
                      action plans with multiple benefits.</span>
                   </li>
                 </ul>
@@ -376,15 +383,20 @@ const Index = () => {
               >
                 <Link 
                   to={getThematicRoute(feature.title)}
-                  className="block"
+                  className="block h-full"
                 >
                   <Card 
-                    className="group hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-background to-accent/50 aspect-square cursor-pointer hover:scale-105"
+                    className="group hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-[1.02] overflow-hidden h-full flex flex-col"
                   >
-                    <CardContent className="h-full p-4 sm:p-6 flex flex-col items-center justify-center text-center">
-                      <feature.icon className="mx-auto mb-3 sm:mb-4 text-primary group-hover:scale-110 transition-transform" size={60} />
-                      <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-foreground mb-2 sm:mb-3 leading-tight">{feature.title}</h3>
-                      <p className="text-muted-foreground text-sm">{feature.description}</p>
+                    <div className="relative aspect-video overflow-hidden bg-gray-100">
+                      <img 
+                        src={feature.image}
+                        alt={feature.title}
+                        className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <CardContent className="p-4 sm:p-6 text-center flex-1 flex items-center justify-center">
+                      <h3 className="text-base sm:text-lg font-semibold text-foreground leading-tight">{feature.title}</h3>
                     </CardContent>
                   </Card>
                 </Link>
@@ -620,27 +632,24 @@ const Index = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <Card className="bg-white border-primary/10">
-              <CardContent className="p-12 text-center">
-                <Leaf className="mx-auto mb-6 text-primary" size={64} />
-                <h2 className="text-3xl font-bold text-foreground mb-4">Join Our Mission</h2>
-                <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                  Whether you're a researcher, community member, or organization, there are many ways 
-                  to contribute to cleaner air and healthier communities.
-                </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link to="/contact" aria-label="Go to Partners Page">
-                      <Button 
-                        size="lg" 
-                        className="px-8 py-4 text-lg bg-background/80 text-foreground backdrop-blur-md border border-white/30 shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-2xl"
-                      >
-                        Partner With Us
-                        <ArrowRight className="ml-2" size={20} />
-                      </Button>
-                    </Link>
-                  </div>
-              </CardContent>
-            </Card>
+            <div className="text-center mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">Join and Collaborate with Us</h2>
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
+                Whether you're a researcher, community member, or organization, there are many ways to contribute to
+                cleaner air and healthier communities.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact" aria-label="Go to Partners Page">
+                <Button 
+                  size="lg" 
+                  className="px-8 py-2 text-lg bg-primary hover:bg-primary/90 text-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-2xl"
+                >
+                  Partner With Us
+                  <ArrowRight className="ml-2" size={20} />
+                </Button>
+              </Link>
+            </div>
           </motion.div>
         ) : (
           <CardSkeleton className="h-80" />
@@ -679,33 +688,39 @@ const Index = () => {
   const features = [
     {
       icon: Activity, // Represents monitoring and analysis activities
-      title: 'AQ Monitoring, Chemical Analysis, SA',
-      description: ''
+      title: 'Air quality Monitoring, Chemical Components Analysis, and Source Apportionment Study',
+      description: '',
+      image: thematic1
     },
     {
       icon: Database, // Represents data collection and inventory
-      title: 'Emission Inventory and Emission Projection',
-      description: ''
+      title: 'Emission Inventories Development and Emissions Projection',
+      description: '',
+      image: thematic2
     },
     {
       icon: Wind, // Represents air flow and dispersion
-      title: 'Dispersion Modeling',
-      description: ''
+      title: 'Performance and Evaluation of Meteorological and Chemical Transport Modeling Systems',
+      description: '',
+      image: thematic3
     },
     {
       icon: Settings, // Represents integrated control systems
       title: 'Integrated Air Pollution Control: Demonstration',
-      description: ''
+      description: '',
+      image: thematic4
     },
     {
       icon: Cloud, // Represents weather and climate
-      title: 'Meteorology and Climate Science',
-      description: ''
+      title: 'Meteorology and Science of Climate Change',
+      description: '',
+      image: thematic5
     },
     {
       icon: Heart, // Represents health and well-being
-      title: 'Impact Assessment: Health and Ecosystem',
-      description: ''
+      title: 'Impacts Assessment: Health, Ecosystem, and Climate Systems',
+      description: '',
+      image: thematic6
     }
   ];
 
@@ -805,27 +820,30 @@ const Index = () => {
         
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-16 h-full flex items-center justify-center">
           <motion.div 
-            className="max-w-4xl mx-auto text-center text-white px-4"
+            className="max-w-5xl mx-auto text-center px-4"
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.h1 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-white-700 via-white-700 to-white-900 bg-clip-text leading-tight"
+            <motion.div 
+              className="bg-white/90 p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl border border-gray-200 shadow-xl mb-6 sm:mb-8 max-w-5xl mx-auto"
               variants={fadeUpVariants}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              Air Quality Nexus Center
-            </motion.h1>
-            <motion.p 
-              className="text-center text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-white max-w-5xl mx-auto bg-green-700/85 rounded-2xl sm:rounded-full px-4 sm:px-6 md:px-12 py-3 sm:py-3 md:py-4 shadow leading-relaxed"
-              variants={fadeUpVariants}
-              transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
-            >
-              A leading Center in conducting and implementing application research with the aim to gain multiple 
-              benefits from reducing air pollution through improvement of health of human and ecosystem, and 
-              protection of the climate system.
-            </motion.p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-center" style={{ color: '#3f6433' }}>About Air Quality Nexus Center</h2>
+              <div className="text-lg sm:text-xl text-gray-700 space-y-4 sm:space-y-6">
+                <p className="leading-relaxed text-justify">
+                  <span className="font-bold italic">A</span>ir pollution kills millions of people and causes millions of tons of agricultural crop yield loss in the world every year. Effective strategies for improving air quality are urgently needed, which must be holistic and cross-sectoral, requiring collaboration and integrated policies across different domains.
+                </p>
+
+                <p className="leading-relaxed text-justify">
+                  <span className="font-bold italic">A</span>ir Quality Nexus Center explores the interconnections between air quality with various sectors and systems to best realize multiple benefits from air pollution reduction strategies, focusing on Public Health, Ecosystem, and Climate. The Center's goal is to serve as a focal point to build capacity and conduct cutting-edge research in atmospheric sciences for sustainable development in Asia and beyond.
+                </p>
+                <p className="leading-relaxed text-justify">
+                  <span className="font-bold italic">A</span>s an AIT institution-wide unit, the Air Quality Nexus Center aims to foster cooperation between multidisciplinary and transdisciplinary research activities across the AIT thematic areas, academic schools, and centers for strengthening the institute’s research and education capacity.
+                </p>
+              </div>
+            </motion.div>
             <motion.div 
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
               variants={fadeUpVariants}
@@ -845,35 +863,35 @@ const Index = () => {
       {/* Section Separator */}
       <div className="border-t border-gray-200"></div>
 
-      {/* About Our Center Card */}
-      <section className="py-24 bg-white">
+      {/* Air Quality Nexus — Scope & Cooperation Diagram */}
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-16"
-            initial="hidden"
-            whileInView="visible"
+          <div className="text-center mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Air Quality Nexus — Scope & Cooperation
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Our collaborative approach integrating air quality, climate, and planetary health
+            </p>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            variants={fadeUpVariants}
-            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="flex justify-center"
           >
-            <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight"
-              variants={fadeUpVariants}
-            >
-              Air Quality Nexus
-              <span className="block text-primary">Center</span>
-            </motion.h2>
-            <motion.p
-              className="text-lg sm:text-xl text-grey/90 leading-relaxed mb-6 font-medium max-w-6xl mx-auto text-justify px-4"
-              variants={fadeUpVariants}
-            >
-              Air pollution kills millions of people in the world annually. Effective strategies for improving air quality are urgently needed which must be holistic and cross-sectoral, requiring collaboration and integrated policies across different domains. Air Quality Nexus Center explores the interconnections between air quality with various sectors and systems to best realize multiple benefits from air pollution reduction strategies, focusing on Public Health, Ecosystem, and Climate. The Center's goal is to serve as a focal point to build capacity and conduct cutting-edge research in atmospheric sciences for sustainable development in Asia and beyond. As an institution-wide unit, the Air Quality Nexus center aims to foster cooperation between multidisciplinary and transdisciplinary research activities across the AIT thematic areas, academic schools, and centers for strengthening the institute research and education capacity.
-            </motion.p>
+            <img
+              src={scopeDiagramImage}
+              alt="Air Quality Nexus Scope & Cooperation Diagram"
+              className="w-full h-auto"
+            />
           </motion.div>
         </div>
       </section>
 
-
+      {/* Section Separator */}
+      <div className="border-t border-gray-200"></div>
 
       {/* Our Missions (glass blur) */}
       <section className="relative py-24 overflow-hidden">
@@ -892,14 +910,14 @@ const Index = () => {
       <div className="border-t border-gray-200"></div>
 
       {/* Recent Research & News */}
-      <section id="news-events" className="py-24 bg-white">
+      <section id="news-events" className="py-12 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 sm:mb-20"> 
+          <div className="text-center mb-12"> 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6">News & Events</h2>
           </div>      
           
           {/* Latest News Section */}
-          <div className="mb-20">
+          <div className="mb-12">
             <div className="flex items-center justify-center gap-3 mb-8">
               <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent flex-1"></div>
               <h3 className="text-2xl font-bold">Latest News</h3>
@@ -911,7 +929,7 @@ const Index = () => {
           </div>
 
           {/* Navigation Button */}
-          <div className="text-center mt-16">
+          <div className="text-center mt-12">
             <div className="inline-flex flex-col items-center gap-4">
               <p className="text-muted-foreground">Discover more events and news</p>
               <Link to="/news" aria-label="Go to News & Events">
@@ -957,13 +975,13 @@ const Index = () => {
       <div className="border-t border-gray-200"></div>
 
       {/* Features Section */}
-        <section id="research-areas" className="py-20 bg-white">
+        <section id="research-areas" className="py-12 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">Our Core Research Areas</h2>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-                From cutting-edge research to community engagement, we tackle air quality challenges 
-                through multiple integrated approaches.
+                From cutting-edge research to community engagement, we tackle air quality challenges through integrated
+                multi-pollutant, multi-effect, and cross-sectoral approaches.
               </p>
             </div>
                   
@@ -978,12 +996,13 @@ const Index = () => {
         <div className="border-t border-gray-200"></div>
 
       {/* Strategic Partners Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">Strategic Partners</h2>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-              Collaborating with leading organizations to advance air quality research and policy worldwide.
+              Collaborating with globally leading organizations for strengthening
+              research and capacity-building worldwide
             </p>
           </div>
           
@@ -997,12 +1016,12 @@ const Index = () => {
       <div className="border-t border-gray-200"></div>
 
        {/* International partners and collaborators */}
-       <section className="py-20 bg-white">
+       <section className="py-12 bg-white">
          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
            <div className="text-center mb-8 sm:mb-12">
              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">International Partners and Collaborators</h2>
-             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-               Key international organizations and universities we collaborate with.
+             <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto px-4">
+               Current key international organizations and universities we collaborate with
              </p>
            </div>
             <Suspense fallback={<div className="flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>}>
@@ -1015,7 +1034,7 @@ const Index = () => {
        <div className="border-t border-gray-200"></div>
 
       {/* Call to Action */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Suspense fallback={<div className="flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>}>
             <CallToActionCard />

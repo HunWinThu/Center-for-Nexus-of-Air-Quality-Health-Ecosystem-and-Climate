@@ -44,10 +44,38 @@ const About = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
+      <section className="relative py-12 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight text-center">
+              Air Quality Nexus Center
+            </h1>
+            <div className="prose prose-lg max-w-none text-muted-foreground space-y-8">
+              <p className="text-justify text-xl leading-relaxed">
+                Air Quality Nexus Center is a leading center in conducting and implementing application research with the
+                aim to gain multiple benefits from reducing air pollution through improvement of health of human and
+                ecosystem, and protection of the climate system. The Center explores the interconnections between air quality
+                with various sectors and systems to best realize multiple benefits from air pollution reduction strategies,
+                focusing on Public Health, Ecosystem, and Climate. The Center's goal is to serve as a focal point to build
+                capacity and conduct cutting-edge research in atmospheric sciences for sustainable development in Asia and
+                beyond.
+              </p>
+              <p className="text-justify text-xl leading-relaxed">
+                As an AIT institution-wide unit, the Air Quality Nexus Center aims to foster cooperation between multidisciplinary and transdisciplinary research activities across the AIT thematic areas, academic schools, and centers for strengthening the institute's research and education capacity.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Separator */}
+      <div className="border-t border-white-200"></div>
+
+      {/* Photo Gallery Section */}
+      <section className="relative py-16 overflow-hidden bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Carousel 
-            className="w-full max-h-screen"
+            className="w-full"
             plugins={[
               Autoplay({
                 delay: 2500,
@@ -55,17 +83,17 @@ const About = () => {
             ]}
             opts={{
               loop: true,
-              align: "center" // Ensures images are centered
+              align: "center"
             }}
           >
-            <CarouselContent className="w-full h-full">
+            <CarouselContent className="w-full">
               {[sliding1, sliding2, sliding3, sliding4].map((img, index) => (
                 <CarouselItem key={index} className="flex justify-center items-center">
-                  <div className="relative w-auto h-auto max-w-full max-h-[80vh]">
+                  <div className="relative w-auto h-auto max-w-full">
                     <img 
                       src={img} 
                       alt={`Slide ${index + 1}`}
-                      className={`object-contain max-h-[80vh] ${
+                      className={`object-contain max-h-[70vh] ${
                         index === 0 ? 'max-w-[60vw]' : 'max-w-full'
                       }`}
                       style={{
@@ -77,20 +105,9 @@ const About = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-20" />
-            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20" />
+            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2" />
+            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2" />
           </Carousel>
-          <div className="absolute inset-0 bg-black/40 z-10"></div>
-        </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-center">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
-              Air Quality Nexus Center
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed bg-black/20 p-6 rounded-lg backdrop-blur-sm">
-              A leading Center in conducting and implementing application research with the aim to gain multiple benefits from reducing air pollution through improvement of health of human and ecosystem, and protection of the climate system.
-            </p>
-          </div>
         </div>
       </section>
 

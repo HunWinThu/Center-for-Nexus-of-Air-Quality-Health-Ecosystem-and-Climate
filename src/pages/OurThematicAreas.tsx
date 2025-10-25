@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { HexagonGrid } from '@/components/thematic/HexagonGrid';
-import ScopeCooperationDiagram from '@/components/diagrams/ScopeCooperationDiagram';
+import scopeDiagramImage from '@/assets/scope_diagram.png';
 
 import cooperationImg from '@/assets/cooperation.jpg';
 import capacityImg from '@/assets/capacity.jpg';
@@ -157,7 +157,13 @@ const sections = [
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Air Quality Nexus — Scope & Cooperation</h2>
         <p className="text-lg text-muted-foreground">Our collaborative approach integrating air quality, climate, and planetary health</p>
       </div>
-      <ScopeCooperationDiagram />
+      <div className="flex justify-center">
+        <img
+          src={scopeDiagramImage}
+          alt="Air Quality Nexus Scope & Cooperation Diagram"
+          className="w-full h-auto"
+        />
+      </div>
     </motion.div>
   </div>
 </section>
