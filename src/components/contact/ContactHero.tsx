@@ -30,7 +30,7 @@ export function ContactHero() {
           <motion.div variants={fadeUpVariants}>
           </motion.div>
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold text-foreground mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6"
             variants={fadeUpVariants}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           >
