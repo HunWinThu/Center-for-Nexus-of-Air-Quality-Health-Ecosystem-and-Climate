@@ -99,10 +99,10 @@ export const HexagonGrid = () => {
   const getGradient = (position: string) => {
     const gradients = {
       center: { from: "#1e3a8a", via: "#3b82f6", to: "#1e3a8a" },
-      top: { from: "#15803d", via: "#22c55e", to: "#15803d" },
+      top: { from: "#3f6433", via: "#5a8f4a", to: "#3f6433" },
       bottom: { from: "#1d4ed8", via: "#60a5fa", to: "#1d4ed8" },
       topLeft: { from: "#0d9488", via: "#2dd4bf", to: "#0d9488" },
-      topRight: { from: "#047857", via: "#34d399", to: "#047857" },
+      topRight: { from: "#3f6433", via: "#5a8f4a", to: "#3f6433" },
       bottomLeft: { from: "#1e40af", via: "#3b82f6", to: "#1e40af" },
       bottomRight: { from: "#0369a1", via: "#38bdf8", to: "#0369a1" },
     };

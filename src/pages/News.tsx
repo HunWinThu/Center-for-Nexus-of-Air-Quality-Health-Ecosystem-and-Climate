@@ -649,11 +649,11 @@ const resources: NewsItem[] = [
             variants={staggerContainer}
           >
             <motion.h1 
-              className="text-4xl md:text-6xl font-bold text-foreground mb-6"
+              className="text-4xl md:text-6xl font-bold text-primary mb-6"
               variants={fadeUpVariants}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              News & Events
+              Events & Media
             </motion.h1>
             <motion.p 
               className="text-xl text-muted-foreground"

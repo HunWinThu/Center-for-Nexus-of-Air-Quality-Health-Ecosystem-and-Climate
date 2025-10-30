@@ -71,6 +71,7 @@ const coreTeam = [
     Expertise: 'Research Assistant_Air pollution monitoring',
     specialties: ['Emission Inventory', 'Air Quality Management'],
     alignTop: true,
+    imageScale: 1.35,
     image: Dang,
     viewprofile: 'https://www.linkedin.com/in/kim-oanh/',
 
@@ -144,23 +145,13 @@ const Team = () => {
   };
 
   const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 60, scale: 0.9 },
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
       y: 0,
-      scale: 1,
       transition: {
-        duration: 0.8,
-        ease: [0.25, 0.1, 0.25, 1] as const
-      }
-    },
-    hover: {
-      y: -8,
-      scale: 1.03,
-      rotateY: 3,
-      transition: {
-        duration: 0.4,
-        ease: "easeInOut"
+        duration: 0.6,
+        ease: "easeOut"
       }
     }
   };
@@ -170,28 +161,19 @@ const Team = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.5,
-        delayChildren: 0.7
+        staggerChildren: 0.15,
+        delayChildren: 0.2
       }
     }
   };
 
   const imageVariants: Variants = {
-    hidden: { scale: 1.3, opacity: 0 },
+    hidden: { opacity: 0 },
     visible: { 
-      scale: 1, 
       opacity: 1,
       transition: {
-        duration: 1.0,
-        ease: [0.25, 0.1, 0.25, 1] as const,
-        delay: 0.3
-      }
-    },
-    hover: {
-      scale: 1.08,
-      transition: {
-        duration: 0.5,
-        ease: "easeInOut"
+        duration: 0.6,
+        ease: "easeOut"
       }
     }
   };
@@ -240,7 +222,7 @@ const Team = () => {
             animate="visible"
           >
             <motion.h1 
-              className="text-4xl md:text-6xl font-bold text-foreground mb-6"
+              className="text-4xl md:text-6xl font-bold text-primary mb-6"
               variants={titleVariants}
             >
               Our Team
@@ -271,30 +253,26 @@ const Team = () => {
             viewport={{ once: true, margin: "-150px" }}
           >
             {coreTeam.slice(0, 2).map((member) => (
-              <motion.div key={member.id} variants={cardVariants} whileHover="hover" style={{ transformStyle: "preserve-3d" }}>
-                <Card className="group hover:shadow-2xl transition-all duration-700 bg-background border border-border relative overflow-hidden">
+              <motion.div key={member.id} variants={cardVariants}>
+                <Card className="group transition-all duration-700 bg-background border border-border relative overflow-hidden">
                   <CardContent className="p-6 relative z-10">
                     <div className="text-center mb-4">
                       <motion.div
                         className="relative overflow-hidden mb-4 mx-auto"
                         style={{ width: 224, height: 288 }}
                         variants={imageVariants}
-                        whileHover="hover"
                       >
                         <motion.img
                           src={member.image || teamPlaceholder}
                           alt={`${member.name} - ${member.role}`}
                           loading="lazy"
                           className={`w-full h-full border border-border bg-background object-cover ${member.alignTop ? 'object-top' : ''}`}
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.4 }}
+                          style={member.imageScale ? { transform: `scale(${member.imageScale})` } : undefined}
                         />
                       </motion.div>
                       <Link to={`/team/${slugify(member.name)}`} state={{ member }} className="hover:underline">
                         <motion.h3 
                           className="text-xl font-semibold text-primary mb-1"
-                          whileHover={{ scale: 1.02 }}
-                          transition={{ duration: 0.3 }}
                         >
                           {member.name}
                         </motion.h3>
@@ -333,30 +311,26 @@ const Team = () => {
             viewport={{ once: true, margin: "-150px" }}
           >
             {coreTeam.slice(2).map((member) => (
-              <motion.div key={member.id} variants={cardVariants} whileHover="hover" style={{ transformStyle: "preserve-3d" }}>
-                <Card className="group hover:shadow-2xl transition-all duration-700 bg-background border border-border relative overflow-hidden">
+              <motion.div key={member.id} variants={cardVariants}>
+                <Card className="group transition-all duration-700 bg-background border border-border relative overflow-hidden">
                   <CardContent className="p-6 relative z-10">
                     <div className="text-center mb-4">
                       <motion.div
                         className="relative overflow-hidden mb-4 mx-auto"
                         style={{ width: 224, height: 288 }}
                         variants={imageVariants}
-                        whileHover="hover"
                       >
                         <motion.img
                           src={member.image || teamPlaceholder}
                           alt={`${member.name} - ${member.role}`}
                           loading="lazy"
                           className={`w-full h-full border border-border bg-background object-cover ${member.alignTop ? 'object-top' : ''}`}
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.4 }}
+                          style={member.imageScale ? { transform: `scale(${member.imageScale})` } : undefined}
                         />
                       </motion.div>
                       <Link to={`/team/${slugify(member.name)}`} state={{ member }} className="hover:underline">
                         <motion.h3 
                           className="text-xl font-semibold text-primary mb-1"
-                          whileHover={{ scale: 1.02 }}
-                          transition={{ duration: 0.3 }}
                         >
                           {member.name}
                         </motion.h3>
@@ -402,7 +376,7 @@ const Team = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <motion.h2 
-              className="text-3xl md:text-4xl font-bold text-foreground mb-8 text-center"
+              className="text-3xl md:text-4xl font-bold text-primary mb-8 text-center"
               variants={titleVariants}
             >
               Associated Members and Consultants
@@ -419,14 +393,35 @@ const Team = () => {
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Dr. Vanisa Surapipith</span>, Deputy Director of Hub of Talents on Air Pollution and Climate, Thammasat University, Thailand.
+                    <span className="font-semibold">Assoc. Prof. Binod Pokharel</span>, Tribhuvan University, Nepal.
                   </p>
                 </div>
                 
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Prof. Eri Saikawa</span>, Winship Distinguished Research Professor of Environmental Sciences and Director, Emory Climate Talks, Emory University, GA, US.
+                    <span className="font-semibold">Assoc. Prof. Didin Agustian Permadi</span>, Head of Center for Research and Community Development, National Institute of Technology (ITENAS), Indonesia.
+                  </p>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-lg text-foreground leading-relaxed">
+                    <span className="font-semibold">Assoc. Prof. Ekbordin Winijkul</span>, Head of Department of Water Resources and Environmental Engineering (WREE), AIT, Thailand.
+                  </p>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-lg text-foreground leading-relaxed">
+                    <span className="font-semibold">Prof. Eri Saikawa</span>, Winship Distinguished Research Professor of Environmental Sciences and Director, Emory Climate Talks, Emory University, GA, USA.
+                  </p>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-lg text-foreground leading-relaxed">
+                    <span className="font-semibold">Assoc. Prof. Ha Thanh Dong</span>, Aquaculture and Aquatic Resources Management (AARM), Department of Food, Agriculture, and Natural Resources, AIT, Thailand.
                   </p>
                 </div>
                 
@@ -440,21 +435,7 @@ const Team = () => {
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Assoc. Prof. Didin Agustian Permadi</span>, National Institute of Technology (ITENAS), Indonesia.
-                  </p>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Assoc. Prof. Prapat Pongkiatkul</span>, Environmental Engineering Department, KMUTT, Thailand.
-                  </p>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Assoc. Prof. Binod Pokharel</span>, Tribhuvan University, Nepal.
+                    <span className="font-semibold">Assoc. Prof. Prapat Pongkiatkul</span>, Environmental Engineering Department, King Mongkut's University of Technology Thonburi (KMUTT), Thailand.
                   </p>
                 </div>
                 
@@ -462,6 +443,20 @@ const Team = () => {
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
                     <span className="font-semibold">Prof. Rejina Maskey Byanju</span>, Tribhuvan University, Nepal.
+                  </p>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-lg text-foreground leading-relaxed">
+                    <span className="font-semibold">Assoc. Prof. Salvatore G.P. VIRDIS</span>, Remote Sensing & GIS (RSGIS), Department of Information & Communication Technologies, AIT, Thailand.
+                  </p>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-lg text-foreground leading-relaxed">
+                    <span className="font-semibold">Dr. Vanisa Surapipith</span>, Head of Air Pollution Cluster, Regional Resource Centre for Asia and the Pacific, Asian Institute of Technology (AIT RRC.AP), Thailand.
                   </p>
                 </div>
               </div>

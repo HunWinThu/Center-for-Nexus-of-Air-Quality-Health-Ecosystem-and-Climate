@@ -268,7 +268,7 @@ const Publications = () => {
             <motion.div variants={fadeUpVariants}>
             </motion.div>
             <motion.h1 
-              className="text-4xl md:text-6xl font-bold text-foreground mb-6"
+              className="text-4xl md:text-6xl font-bold text-primary mb-6"
               variants={fadeUpVariants}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
@@ -349,7 +349,7 @@ const Publications = () => {
                             <div className="flex-1 min-w-0">
                               <Link to={pub.doi} target="_blank" rel="noopener noreferrer" className="block mb-2">
                                 <h3 
-                                  className="text-xl font-semibold text-green-600 underline leading-tight hover:text-green-700 transition-colors"
+                                  className="text-xl font-semibold text-primary underline leading-tight hover:text-primary/80 transition-colors"
                                   dangerouslySetInnerHTML={{ __html: pub.title }}
                                 />
                               </Link>
@@ -394,7 +394,7 @@ const Publications = () => {
                                     className="flex-shrink-0"
                                     onClick={() => handleCopy(pub.cite, index)}
                                   >
-                                    {copiedIndex === index ? <Check className="text-green-500" size={20} /> : <Copy className="text-primary" size={20} />}
+                                    {copiedIndex === index ? <Check className="text-primary" size={20} /> : <Copy className="text-primary" size={20} />}
                                   </Button>
                                 </div>
                               </div>

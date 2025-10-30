@@ -165,34 +165,16 @@ const Committee = () => {
         ease: [0.23, 1, 0.32, 1],
         type: "tween"
       }
-    },
-    hover: {
-      y: -5,
-      scale: 1.02,
-      rotateY: 2,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
-      }
     }
   };
 
   const imageVariants: Variants = {
-    hidden: { scale: 1.2, opacity: 0 },
+    hidden: { opacity: 0 },
     visible: { 
-      scale: 1, 
       opacity: 1,
       transition: {
-        duration: 1.2,
-        ease: "easeOut",
-        delay: 0.2
-      }
-    },
-    hover: {
-      scale: 1.05,
-      transition: {
-        duration: 0.4,
-        ease: "easeInOut"
+        duration: 0.6,
+        ease: "easeOut"
       }
     }
   };
@@ -243,7 +225,7 @@ const Committee = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h1 
-              className="text-4xl md:text-6xl font-bold text-foreground mb-6"
+              className="text-4xl md:text-6xl font-bold text-primary mb-6"
               variants={fadeInUp}
               initial="hidden"
               animate="visible"
@@ -289,18 +271,15 @@ const Committee = () => {
               <motion.div
                 key={member.id}
                 variants={cardVariants}
-                whileHover="hover"
-                style={{ transformStyle: "preserve-3d" }}
                 className="w-full max-w-sm"
               >
-                <Card className="group hover:shadow-2xl transition-all duration-500 bg-background border border-border relative overflow-hidden h-full flex flex-col">
+                <Card className="group transition-all duration-500 bg-background border border-border relative overflow-hidden h-full flex flex-col">
                   <CardContent className="p-6 relative z-10 flex-1 flex flex-col">
                     <div className="text-center mb-4">
                       <motion.div
                         className="relative overflow-hidden rounded-lg mb-4 mx-auto"
                         style={{ width: 224, height: 288 }}
                         variants={imageVariants}
-                        whileHover="hover"
                       >
                         <motion.img
                           src={member.image || teamPlaceholder}
@@ -317,18 +296,16 @@ const Committee = () => {
                         variants={textVariants}
                       >
                         {member.viewprofile && member.viewprofile !== '' ? (
-                          <motion.a
+                          <a
                             href={member.viewprofile}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hover:underline"
-                            whileHover={{ scale: 1.01 }}
-                            transition={{ duration: 0.2 }}
                           >
                             <h3 className="text-xl font-semibold text-primary mb-1 transition-colors">
                               {member.name}
                             </h3>
-                          </motion.a>
+                          </a>
                         ) : (
                           <h3 className="text-xl font-semibold text-primary mb-1">{member.name}</h3>
                         )}
@@ -371,18 +348,15 @@ const Committee = () => {
               <motion.div
                 key={member.id}
                 variants={cardVariants}
-                whileHover="hover"
-                style={{ transformStyle: "preserve-3d" }}
                 className="w-full max-w-sm"
               >
-                <Card className="group hover:shadow-2xl transition-all duration-500 bg-background border border-border relative overflow-hidden h-full flex flex-col">
+                <Card className="group transition-all duration-500 bg-background border border-border relative overflow-hidden h-full flex flex-col">
                   <CardContent className="p-6 relative z-10 flex-1 flex flex-col">
                     <div className="text-center mb-4">
                       <motion.div
                         className="relative overflow-hidden rounded-lg mb-4 mx-auto"
                         style={{ width: 224, height: 288 }}
                         variants={imageVariants}
-                        whileHover="hover"
                       >
                         <motion.img
                           src={member.image || teamPlaceholder}
@@ -399,18 +373,16 @@ const Committee = () => {
                         variants={textVariants}
                       >
                         {member.viewprofile && member.viewprofile !== '' ? (
-                          <motion.a
+                          <a
                             href={member.viewprofile}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hover:underline"
-                            whileHover={{ scale: 1.01 }}
-                            transition={{ duration: 0.2 }}
                           >
                             <h3 className="text-xl font-semibold text-primary mb-1 transition-colors">
                               {member.name}
                             </h3>
-                          </motion.a>
+                          </a>
                         ) : (
                           <h3 className="text-xl font-semibold text-primary mb-1">{member.name}</h3>
                         )}

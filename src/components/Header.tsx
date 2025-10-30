@@ -40,7 +40,7 @@ const Header = () => {
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
     { name: 'Projects', href: '/projects' },
-    { name: 'News', href: '/news' },
+    // { name: 'Events & Media', href: '/news' }, // Temporarily hidden while updating content
     { name: 'Publications', href: '/publications' },
     { name: 'Resources', href: '/resources' },
     { name: 'Contact Us', href: '/contact' },
@@ -78,7 +78,7 @@ const Header = () => {
                 className="h-28 w-28 sm:h-32 sm:w-32 lg:h-36 lg:w-36 object-contain"
               />
               <div className="hidden sm:block ml-2">
-                <h1 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 leading-tight">
+                <h1 className="text-base sm:text-lg lg:text-xl font-bold text-primary leading-tight">
                   Air Quality Nexus<br />Center
                 </h1>
               </div>
@@ -94,9 +94,9 @@ const Header = () => {
                     <Link
                       to="/about"
                       onClick={handleNavClick}
-                      className={`text-xl font-semibold tracking-wide border-b-2 pb-1 transition-colors hover:text-primary ${
+                      className={`text-xl font-semibold tracking-wide border-b-2 pb-1 transition-colors hover:text-[#3f6433] ${
                         isActive('/about') || isActive('/launching-event') || isActive('/our-thematic-areas') || isActive('/team') || isActive('/committee')
-                          ? 'text-primary border-primary'
+                          ? 'text-[#3f6433] border-[#3f6433]'
                           : 'text-black border-transparent'
                       }`}
                     >
@@ -108,28 +108,28 @@ const Header = () => {
                         <Link 
                           to="/launching-event" 
                           onClick={handleNavClick}
-                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-primary transition-colors"
+                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-[#3f6433] transition-colors"
                         >
                           Launching Event
                         </Link>
                         <Link 
                           to="/our-thematic-areas" 
                           onClick={handleNavClick}
-                          className="block rounded-lg px-4 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-primary transition-colors"
+                          className="block rounded-lg px-4 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-[#3f6433] transition-colors"
                         >
                           Our Core Research Areas
                         </Link>
                         <Link 
                           to="/team" 
                           onClick={handleNavClick}
-                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-primary transition-colors"
+                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-[#3f6433] transition-colors"
                         >
                           Our Team
                         </Link>
                         <Link 
                           to="/committee" 
                           onClick={handleNavClick}
-                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-primary transition-colors"
+                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-[#3f6433] transition-colors"
                         >
                           Advisory Committee
                         </Link>
@@ -143,9 +143,9 @@ const Header = () => {
                   key={item.name}
                   to={item.href}
                   onClick={handleNavClick}
-                  className={`text-xl font-semibold tracking-wide border-b-2 pb-1 transition-colors hover:text-primary ${
+                  className={`text-xl font-semibold tracking-wide border-b-2 pb-1 transition-colors hover:text-[#3f6433] ${
                     isActive(item.href)
-                      ? 'text-primary border-primary'
+                      ? 'text-[#3f6433] border-[#3f6433]'
                       : 'text-black border-transparent'
                   }`}
                 >

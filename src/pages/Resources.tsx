@@ -62,7 +62,7 @@ const Resources = () => {
       type: "Technical Report",
       format: "PDF",
       image: nepalReportCover,
-      downloadUrl: "#", // Replace with actual download link
+      downloadUrl: "https://zenodo.org/records/13335444/files/State%20of%20Air%20in%20Nepal%20final%20report.pdf?download=1",
       icon: FileText
     },
   ];
@@ -153,7 +153,7 @@ const Resources = () => {
       >
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
               Resources & Tools
             </h1>
             <p className="text-xl text-muted-foreground">

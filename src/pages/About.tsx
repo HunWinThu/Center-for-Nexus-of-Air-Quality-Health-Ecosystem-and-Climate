@@ -47,7 +47,7 @@ const About = () => {
       <section className="relative py-12 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-6 leading-tight text-center">
               Air Quality Nexus Center
             </h1>
             <div className="prose prose-lg max-w-none text-muted-foreground space-y-8">

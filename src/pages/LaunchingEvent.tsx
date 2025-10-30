@@ -80,7 +80,7 @@ const LaunchingEvent = () => {
   const quotes = [
     {
       quote:
-        'This Center is a catalyst for interdisciplinary collaboration—driving evidence-based solutions that protect both planetary and human well-being',
+        'At the nexus of air pollution, climate science, ecosystems, and public health, this Center is a catalyst for interdisciplinary collaboration—driving evidence-based solutions that protect both planetary and human well-being.',
       name: 'Prof. Bindu N. Lohani',
       position:
         'Chancellor of University of Nepal<br/>Chair, Board of Clean Air Asia<br/>Member of AIT Board of Trustee',
@@ -88,7 +88,7 @@ const LaunchingEvent = () => {
     },
     {
       quote:
-        'Thank you for sharing the good news. It is a timely (actually much overdue) initiative. I hope Air Quality Nexus Center can serve a pivotal role in Asia and beyond in fostering a holistic nexus approach in understanding air pollution in the region and in designing evidence – informed policies to address air pollution and related issues.',
+        'It is a timely (actually much overdue) initiative. I hope Air Quality Nexus Center can serve a pivotal role in Asia and beyond in fostering a holistic nexus approach in understanding air pollution in the region and in designing evidence–informed policies to address air pollution and related issues.',
       name: 'Dr. Maheswar Rupakheti',
       position:
         'Research Group Leader, Research Institute for Sustainability Helmholtz Centre Potsdam (RIFS), Germany<br/>Vice Chair, WG-I, Intergovernmental Panel on Climate Change (IPCC)',
@@ -96,7 +96,7 @@ const LaunchingEvent = () => {
     },
     {
       quote:
-        'It is becoming ever more important to improve air quality across Asia - not only to protect human health but also to protect from damage to crop yields and nutrition since current air pollution concentrations, particularly of ground level ozone, are likely to be reducing crop yields by up to as much as 10% in polluted regions. Given the continued challenges around ensuring food security across Asia, cleaner air would encourage higher crop yields enhancing food supply, an important component of food security',
+        'It is becoming ever more important to improve air quality across Asia – not only to protect human health but also to protect from damage to crop yields and nutrition since current air pollution concentrations, particularly of ground level ozone, are likely to be reducing crop yields by up to as much as 10% in polluted regions. Given the continued challenges around ensuring food security across Asia, cleaner air would encourage higher crop yields enhancing food supply, an important component of food security.',
       name: 'Prof. Lisa Emberson',
       position:
         'Centre Director of the York office at the Stockholm Environment Institute (SEI)<br/>Professor of Environmental Science in the Environment & Geography Dept., University of York, UK',
@@ -112,7 +112,7 @@ const LaunchingEvent = () => {
     },
     {
       quote:
-        'What Wonderful Recognition, Congratulations! Air Quality Nexus Center will be fantastic to have such a resource in Southeast Asia, under Prof. Kim Oanh’s Leadership!',
+        'Wonderful Recognition, Congratulations! Air Quality Nexus Center will be fantastic to have such a resource in Southeast Asia, under Prof. Kim Oanh’s Leadership!',  
       name: 'Prof. Tami C. Bond',
       position:
         'Scott Presidential Chair in Energy, Environment and Health<br/>Professor, Mechanical Engineering; Joint Professor, Civil & Environmental Engineering; Affiliate; Systems Colorado University, Fort Collins, CO USA',
@@ -178,25 +178,25 @@ const gallery = [
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      <section className="relative h-96 md:min-h-screen flex items-center overflow-hidden bg-white">
+        <div className="absolute inset-0 z-0 flex items-center justify-center md:block">
           <img
             src={teamGroupPhoto}
             alt="Air Quality Nexus team group photo"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain md:object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 hidden md:block"></div>
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="pt-4 pb-12 md:pt-12 md:pb-20 bg-white">
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10">
-          <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-green-800 via-green-400 to-sky-blue-600 bg-clip-text text-transparent">
+          <div className="text-center mb-8 md:mb-16">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 pb-1 bg-gradient-to-r from-green-800 via-green-400 to-sky-blue-600 bg-clip-text text-transparent">
               Launching Event
             </h1>
 
-              <p className="text-2xl md:text-2xl font-bold mb-6 bg-gradient-to-r from-cyan-700 via-green-400 to-sky-800 bg-clip-text text-transparent">
+              <p className="text-2xl md:text-2xl font-bold mb-6 pb-1 bg-gradient-to-r from-cyan-700 via-green-400 to-sky-800 bg-clip-text text-transparent">
               Venue: Room B108, AIT Conference Center <br/>July 10, 2024
             </p>
             <p className="text-justify md:text-balance text-xl max-w-8xl mx-auto">
@@ -230,12 +230,12 @@ const gallery = [
                         <img
                           src={quote.image}
                           alt={`${quote.name} - Launching Event testimonial`}
-                          className="w-full md:w-80 lg:w-96 h-56 md:h-64 lg:h-72 object-cover rounded-xl shadow-lg transform group-hover:scale-[1.02] transition-transform duration-500"
+                          className="w-full md:w-80 lg:w-96 h-auto md:h-64 lg:h-72 object-contain md:object-cover rounded-xl shadow-lg transform group-hover:scale-[1.02] transition-transform duration-500"
                         />
                         <div className={isEven ? 'text-left' : 'text-left md:text-right'}>
-                          <p className="text-xl md:text-2xl text-foreground mb-4 italic opacity-90 animate-fade-in">“{quote.quote}”</p>
+                          <p className="text-xl md:text-2xl text-foreground mb-4 italic opacity-90 animate-fade-in">"{quote.quote}"</p>
                           <div className="mt-2">
-                            <h3 className="text-lg== md:text-xl font-semibold text-foreground">{quote.name}</h3>
+                            <h3 className="text-lg md:text-xl font-semibold" style={{ color: '#3f6433' }}>{quote.name}</h3>
                             <p
                               className="text-sm text-muted-foreground"
                               dangerouslySetInnerHTML={{ __html: quote.position }}
@@ -252,7 +252,7 @@ const gallery = [
 
           <section aria-labelledby="gallery-heading" className="mt-16">
             <header className="text-center mb-6">
-              <h2 id="gallery-heading" className="text-5xl md:text-5xl font-bold text-foreground">Launching Event Gallery</h2>
+              <h2 id="gallery-heading" className="text-5xl md:text-5xl font-bold text-primary">Launching Event Gallery</h2>
             </header>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
               {gallery.map((item, idx) => (

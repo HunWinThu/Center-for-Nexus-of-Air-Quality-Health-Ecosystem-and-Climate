@@ -124,7 +124,7 @@ const sections = [
       variants={staggerContainer}
     >
       <motion.h1 
-        className="text-4xl md:text-5xl font-bold text-foreground mb-4"
+        className="text-4xl md:text-5xl font-bold text-primary mb-4"
         variants={fadeUpVariants}
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
       >
@@ -154,8 +154,10 @@ const sections = [
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
     >
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Air Quality Nexus — Scope & Cooperation</h2>
-        <p className="text-lg text-muted-foreground">Our collaborative approach integrating air quality, climate, and planetary health</p>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Air Quality Nexus — Scope & Cooperation</h2>
+          <p className="text-xl text-muted-foreground mb-8 max-w-4xl"></p>
+        </div>
       </div>
       <div className="flex justify-center">
         <img
@@ -199,7 +201,7 @@ const sections = [
       transition={{ duration: 0.8, delay: 0.4 }}
     >
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Core Activities</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Core Activities</h2>
         <p className="text-lg text-muted-foreground">Our key focus areas for improving air quality</p>
       </div>
       <HexagonGrid />

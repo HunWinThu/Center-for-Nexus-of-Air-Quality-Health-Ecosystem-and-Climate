@@ -28,11 +28,10 @@ import { Target, Eye } from 'lucide-react';
 import Airparif from '@/assets/collaborators/Airparif.png';
 import scopeDiagramImage from '@/assets/scope_diagram.png';
 import worldBank from '@/assets/world-bank.jpg';
-import bktp from '@/assets/collaborators/bktp.png';
 import citepa from '@/assets/collaborators/citepa-logo.jpg';
 import hanoiUniversity from '@/assets/collaborators/Đại_học_Bách_khoa_Hà_Nội_(logo).png';
 import eanet from '@/assets/collaborators/EANET-avatar.png';
-import pcd from '@/assets/collaborators/Emblem_of_the_Pollution_Control_Department.svg.png';
+import pcd from '@/assets/collaborators/Emblem_of_the_Pollution_Control_Department.png';
 import emory from '@/assets/collaborators/EmoryUniversity.png';
 import fmi from '@/assets/collaborators/fmi.png';
 import iges from '@/assets/collaborators/IGES_1.png';
@@ -41,9 +40,17 @@ import ird from '@/assets/collaborators/IRD.png';
 import liveLearn from '@/assets/collaborators/Live&Learn.png';
 import rifs from '@/assets/collaborators/Logo_RIFS_2023.jpg';
 import particlesPlus from '@/assets/collaborators/Particles-Plus-Logo-Opaque.jpg';
-import unep from '@/assets/collaborators/United_Nations_Environment_Programme_Logo.svg.png';
+import unep from '@/assets/collaborators/United_Nations_Environment_Programme_Logo.png';
 import vanlang from '@/assets/collaborators/vanlang.png';
 import vnu from '@/assets/collaborators/VNU-USSH (1).jpg';
+import cmu from '@/assets/collaborators/CMU.png';
+import mahidol from '@/assets/collaborators/Mahidol_U.png';
+import uoyork from '@/assets/collaborators/UOYork.png';
+import clarkson from '@/assets/collaborators/clarkson.png';
+import ccac from '@/assets/collaborators/climate_and_clean_air_coalition_logo.png';
+import colorado from '@/assets/collaborators/Colorado-State-University.png';
+import ricardo from '@/assets/collaborators/ricardo.png';
+import suez from '@/assets/collaborators/suez.png';
 import bg_3 from '@/assets/AIT_uni_2.png';
 import thematic1 from '@/assets/Our_Thematics/slide01_img06.png';
 import thematic2 from '@/assets/Our_Thematics/slide01_img02.png';
@@ -162,14 +169,14 @@ const Index = () => {
         <div ref={visionRef}>
           {visionVisible ? (
             <motion.div
-              className="bg-white/90 p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl border border-gray-200 shadow-xl"
+              className="bg-white/90 p-4 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl border border-gray-200 shadow-xl"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
             >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4" style={{ color: '#3f6433' }}>Our Vision</h2>
-              <div className="text-lg sm:text-xl text-gray-700 space-y-4 sm:space-y-6">
-                <p className="leading-relaxed text-justify ">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4" style={{ color: '#3f6433' }}>Our Vision</h2>
+              <div className="text-base sm:text-xl text-gray-700 space-y-3 sm:space-y-6">
+                <p className="leading-relaxed text-justify tracking-normal">
                   Air Quality Nexus is a leading Center in building capacity and implementing research for effective air quality management.
                 </p>
               </div>
@@ -414,169 +421,7 @@ const Index = () => {
     );
   };
 
-  // Strategic Partners Cards Component
-  const StrategicPartnersCards = () => {
-    const [partnersRef, partnersVisible] = useIntersectionObserver(0.01);
-
-    return (
-      <div ref={partnersRef}>
-        {partnersVisible ? (
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex flex-col items-center text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ ...SMOOTH_TRANSITIONS.default, delay: 0.2 }}
-                className="w-full flex flex-col items-center"
-              >
-                <a href="https://cleanairasia.org/" target="_blank" rel="noopener noreferrer" className="w-full">
-                  <Card className="group hover:shadow-lg transition-all duration-300 bg-white rounded-3xl h-44 w-full flex items-center justify-center">
-                    <CardContent className="p-6 h-full w-full flex items-center justify-center">
-                      <img 
-                        src={partner1}
-                        alt="Clean Air Asia logo"
-                        className="max-h-full max-w-full object-contain"
-                        loading="lazy"
-                      />
-                    </CardContent>
-                  </Card>
-                </a>
-                <h3 className="mt-3 text-base font-medium text-foreground">Clean Air Asia</h3>
-              </motion.div>
-            </div>
-            
-            <div className="flex flex-col items-center text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ ...SMOOTH_TRANSITIONS.default, delay: 0.05 }}
-                className="w-full flex flex-col items-center"
-              >
-                <a href="https://www.fhi360.org/" target="_blank" rel="noopener noreferrer" className="w-full">
-                  <Card className="group hover:shadow-lg transition-all duration-300 bg-white rounded-3xl h-44 w-full flex items-center justify-center">
-                    <CardContent className="p-6 h-full w-full flex items-center justify-center">
-                      <img 
-                        src={partner2}
-                        alt="FHI 360 logo"
-                        className="max-h-full max-w-full object-contain"
-                        loading="lazy"
-                      />
-                    </CardContent>
-                  </Card>
-                </a>
-                <h3 className="mt-3 text-base font-medium text-foreground">Family Health International (FHI 360)</h3>
-              </motion.div>
-            </div>
-
-            <div className="flex flex-col items-center text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ ...SMOOTH_TRANSITIONS.default, delay: 0.1 }}
-                className="w-full flex flex-col items-center"
-              >
-                <a href="https://www.canberra.edu.au/faculties/health/heal" target="_blank" rel="noopener noreferrer" className="w-full">
-                  <Card className="group hover:shadow-lg transition-all duration-300 bg-white rounded-3xl h-44 w-full flex items-center justify-center">
-                    <CardContent className="p-6 h-full w-full flex items-center justify-center">
-                      <img 
-                        src={partner3}
-                        alt="HEAL Global Research Centre logo"
-                        className="max-h-full max-w-full object-contain"
-                        loading="lazy"
-                      />
-                    </CardContent>
-                  </Card>
-                </a>
-                <h3 className="mt-3 text-base font-medium text-foreground">Healthy Environments and Lives (HEAL) Global Research Centre</h3>
-              </motion.div>
-            </div>
-            
-            <div className="flex flex-col items-center text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ ...SMOOTH_TRANSITIONS.default, delay: 0.15 }}
-                className="w-full flex flex-col items-center"
-              >
-                <a href="https://www.sinica.edu.tw/en" target="_blank" rel="noopener noreferrer" className="w-full">
-                  <Card className="group hover:shadow-lg transition-all duration-300 bg-white rounded-3xl h-44 w-full flex items-center justify-center">
-                    <CardContent className="p-6 h-full w-full flex items-center justify-center">
-                      <img 
-                        src={partner4}
-                        alt="Academia Sinica logo"
-                        className="max-h-full max-w-full object-contain"
-                        loading="lazy"
-                      />
-                    </CardContent>
-                  </Card>
-                </a>
-                <h3 className="mt-3 text-base font-medium text-foreground">Academia Sinica</h3>
-              </motion.div>
-            </div>
-            
-            <div className="flex flex-col items-center text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ ...SMOOTH_TRANSITIONS.default, delay: 0.2 }}
-                className="w-full flex flex-col items-center"
-              >
-                <a href="https://www.egis-group.com/" target="_blank" rel="noopener noreferrer" className="w-full">
-                  <Card className="group hover:shadow-lg transition-all duration-300 bg-white rounded-3xl h-44 w-full flex items-center justify-center">
-                    <CardContent className="p-6 h-full w-full flex items-center justify-center">
-                      <img 
-                        src={partner5}
-                        alt="egis logo"
-                        className="max-h-full max-w-full object-contain"
-                        loading="lazy"
-                      />
-                    </CardContent>
-                  </Card>
-                </a>
-                <h3 className="mt-3 text-base font-medium text-foreground">egis</h3>
-              </motion.div>
-            </div>
-            
-            <div className="flex flex-col items-center text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ ...SMOOTH_TRANSITIONS.default, delay: 0.25 }}
-                className="w-full flex flex-col items-center"
-              >
-                <a href="https://www.canberra.edu.au/" target="_blank" rel="noopener noreferrer" className="w-full">
-                  <Card className="group hover:shadow-lg transition-all duration-300 bg-white rounded-3xl h-44 w-full flex items-center justify-center">
-                    <CardContent className="p-6 h-full w-full flex items-center justify-center">
-                      <img 
-                        src={partner6}
-                        alt="University of Canberra logo"
-                        className="max-h-full max-w-full object-contain"
-                        loading="lazy"
-                      />
-                    </CardContent>
-                  </Card>
-                </a>
-                <h3 className="mt-3 text-base font-medium text-foreground">University of Canberra</h3>
-              </motion.div>
-            </div>
-          </motion.div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
-            {[...Array(6)].map((_, i) => (
-              <CardSkeleton key={i} className="h-56" />
-            ))}
-          </div>
-        )}
-      </div>
-    );
-  };
-
-  // International Collaborators Cards Component
+  // International Partners and Collaborators Cards Component
   const InternationalCollaboratorsCards = () => {
     const [collabRef, collabVisible] = useIntersectionObserver(0.01);
 
@@ -611,7 +456,7 @@ const Index = () => {
           </motion.div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {[...Array(21)].map((_, i) => (
+            {[...Array(20)].map((_, i) => (
               <CardSkeleton key={i} className="h-48" />
             ))}
           </div>
@@ -633,20 +478,20 @@ const Index = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <div className="text-center mb-6">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">Join and Collaborate with Us</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 sm:mb-6">Join and Collaborate with Us</h2>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
                 Whether you're a researcher, community member, or organization, there are many ways to contribute to
                 cleaner air and healthier communities.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link to="/contact" aria-label="Go to Partners Page">
                 <Button 
                   size="lg" 
-                  className="px-8 py-2 text-lg bg-primary hover:bg-primary/90 text-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-2xl"
+                  className="group px-8 py-4 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
                 >
                   Partner With Us
-                  <ArrowRight className="ml-2" size={20} />
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
                 </Button>
               </Link>
             </div>
@@ -751,36 +596,39 @@ const Index = () => {
       category: 'Policy'
     }
   ];
-  const internationalPartners = [
-    { name: 'Clean Air Asia', href: 'https://cleanairasia.org/', logo: partner1 },
-    { name: 'FHI 360', href: 'https://www.fhi360.org/', logo: partner2 },
-    { name: 'HEAL Global Research Centre', href: 'https://www.canberra.edu.au/faculties/health/heal', logo: partner3 },
-    { name: 'Academia Sinica', href: 'https://www.sinica.edu.tw/en', logo: partner4 },
-    { name: 'egis', href: 'https://www.egis-group.com/', logo: partner5 },
-    { name: 'University of Canberra', href: 'https://www.canberra.edu.au/', logo: partner6 },
-    { name: 'Pollution Control Department, Thailand', href: 'https://www.pcd.go.th/', logo: pcdLogo },
-  ];
-
+  // Combined International Partners and Collaborators - sorted alphabetically with full names
   const collaborators = [
-    { name: 'World Bank', href: 'https://www.worldbank.org/ext/en/home', logo: worldBank },
-    { name: 'Airparif', href: 'https://www.airparif.fr/', logo: Airparif },
-    { name: 'BKTP', href: 'https://hcmut.edu.vn/', logo: bktp },
-    { name: 'Citepa', href: 'https://www.citepa.org/', logo: citepa },
-    { name: 'Clean Air Asia', href: 'https://cleanairasia.org/', logo: partner1 },
-    { name: 'FHI 360', href: 'https://www.fhi360.org/', logo: partner2 },
-    { name: 'HEAL', href: 'https://www.canberra.edu.au/faculties/health/heal', logo: partner3 },
     { name: 'Academia Sinica', href: 'https://www.sinica.edu.tw/en', logo: partner4 },
-    { name: 'EANET', href: 'https://www.eanet.asia/', logo: eanet },
-    { name: 'Pollution Control Department', href: 'https://www.pcd.go.th/', logo: pcd },
+    { name: 'Acid Deposition Monitoring Network in East Asia (EANET)', href: 'https://www.eanet.asia/', logo: eanet },
+    { name: 'Airparif - Association de Surveillance de la Qualité de l\'Air en Île-de-France', href: 'https://www.airparif.fr/', logo: Airparif },
+    { name: 'Centre Interprofessionnel Technique d\'Études de la Pollution Atmosphérique (CITEPA)', href: 'https://www.citepa.org/', logo: citepa },
+    { name: 'Chiang Mai University', href: 'https://www.cmu.ac.th/en/', logo: cmu },
+    { name: 'Clarkson University', href: 'https://www.clarkson.edu/', logo: clarkson },
+    { name: 'Clean Air Asia', href: 'https://cleanairasia.org/', logo: partner1 },
+    { name: 'Climate and Clean Air Coalition (CCAC)', href: 'https://www.ccacoalition.org/', logo: ccac },
+    { name: 'Colorado State University', href: 'https://www.colostate.edu/', logo: colorado },
+    { name: 'egis Group', href: 'https://www.egis-group.com/', logo: partner5 },
     { name: 'Emory University', href: 'https://www.emory.edu/home/index.html', logo: emory },
-    { name: 'FMI', href: 'https://en.ilmatieteenlaitos.fi/', logo: fmi },
-    { name: 'IGES', href: 'https://www.iges.or.jp/en', logo: iges },
-    { name: 'IIASA', href: 'https://iiasa.ac.at/', logo: iiasa },
-    { name: 'IRD', href: 'https://en.ird.fr/', logo: ird },
-    { name: 'Live & Learn', href: 'https://livelearn.org/', logo: liveLearn },
-    { name: 'RIFS', href: 'https://www.rifs-potsdam.de/en', logo: rifs },
+    { name: 'Family Health International 360 (FHI 360)', href: 'https://www.fhi360.org/', logo: partner2 },
+    { name: 'Finnish Meteorological Institute (FMI)', href: 'https://en.ilmatieteenlaitos.fi/', logo: fmi },
+    { name: 'Hanoi University of Science and Technology', href: 'https://www.hust.edu.vn/en/', logo: hanoiUniversity },
+    { name: 'Healthy Environments and Lives (HEAL) Global Research Centre', href: 'https://www.canberra.edu.au/faculties/health/heal', logo: partner3 },
+    { name: 'Institute for Global Environmental Strategies (IGES)', href: 'https://www.iges.or.jp/en', logo: iges },
+    { name: 'International Institute for Applied Systems Analysis (IIASA)', href: 'https://iiasa.ac.at/', logo: iiasa },
+    { name: 'Institut de Recherche pour le Développement (IRD)', href: 'https://en.ird.fr/', logo: ird },
+    { name: 'Live & Learn Environmental Education', href: 'https://livelearn.org/', logo: liveLearn },
+    { name: 'Mahidol University', href: 'https://mahidol.ac.th/en/', logo: mahidol },
     { name: 'Particles Plus', href: 'https://particlesplus.com/', logo: particlesPlus },
-    { name: 'UNEP', href: 'https://www.unep.org/', logo: unep },
+    { name: 'Pollution Control Department, Thailand', href: 'https://www.pcd.go.th/', logo: pcd },
+    { name: 'Research Institute for Sustainability (RIFS) - Helmholtz Centre Potsdam', href: 'https://www.rifs-potsdam.de/en', logo: rifs },
+    { name: 'Ricardo', href: 'https://ricardo.com/', logo: ricardo },
+    { name: 'SUEZ', href: 'https://www.suez.com/', logo: suez },
+    { name: 'The World Bank', href: 'https://www.worldbank.org/ext/en/home', logo: worldBank },
+    { name: 'United Nations Environment Programme (UNEP)', href: 'https://www.unep.org/', logo: unep },
+    { name: 'University of Canberra', href: 'https://www.canberra.edu.au/', logo: partner6 },
+    { name: 'University of York', href: 'https://www.york.ac.uk/', logo: uoyork },
+    { name: 'Van Lang University', href: 'https://vlu.edu.vn/en', logo: vanlang },
+    { name: 'Vietnam National University, Hanoi - University of Social Sciences and Humanities', href: 'https://ussh.vnu.edu.vn/en/', logo: vnu },
   ];
 
   return (
@@ -796,7 +644,7 @@ const Index = () => {
       />
       
       {/* Hero Section */}
-      <section className="relative h-screen overflow-hidden">
+      <section className="relative min-h-screen overflow-hidden py-12 sm:py-0">
         {/* Mobile Background */}
         <div className="absolute inset-0 sm:hidden">
           <img 
@@ -818,7 +666,7 @@ const Index = () => {
         >
         </div>
         
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-16 h-full flex items-center justify-center">
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-16 min-h-screen flex items-center justify-center">
           <motion.div 
             className="max-w-5xl mx-auto text-center px-4"
             initial="hidden"
@@ -849,10 +697,10 @@ const Index = () => {
               variants={fadeUpVariants}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.4 }}
             >
-              <Link to="/projects" aria-label="Go to Projects" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg bg-background/80 text-foreground backdrop-blur-md border border-white/30 shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-2xl">
+              <Link to="/projects" aria-label="Go to Projects">
+                <Button size="lg" className="group px-8 py-4 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                   Explore Our Research
-                  <ArrowRight className="ml-2" size={18} />
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
                 </Button>
               </Link>
             </motion.div>
@@ -866,7 +714,7 @@ const Index = () => {
       {/* Air Quality Nexus — Scope & Cooperation Diagram */}
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-4">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Air Quality Nexus — Scope & Cooperation
             </h2>
@@ -913,7 +761,7 @@ const Index = () => {
       <section id="news-events" className="py-12 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12"> 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6">News & Events</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-6">News & Events</h2>
           </div>      
           
           {/* Latest News Section */}
@@ -937,7 +785,7 @@ const Index = () => {
                   size="lg"
                   className="group px-8 py-4 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  View All News & Events
+                  Events & Media
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
                 </Button>
               </Link>
@@ -962,10 +810,10 @@ const Index = () => {
           <Link to="/launching-event" aria-label="Go to Launching Event">
             <Button
               size="lg"
-              className="px-8 py-4 text-lg bg-background/80 text-foreground backdrop-blur-md border border-white/30 shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-2xl"
+              className="group px-8 py-4 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
             >
               Launching Event
-              <ArrowRight className="ml-2" size={20} />
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
             </Button>
           </Link>
         </div>
@@ -977,8 +825,8 @@ const Index = () => {
       {/* Features Section */}
         <section id="research-areas" className="py-12 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">Our Core Research Areas</h2>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4">Our Core Research Areas</h2>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
                 From cutting-edge research to community engagement, we tackle air quality challenges through integrated
                 multi-pollutant, multi-effect, and cross-sectoral approaches.
@@ -995,33 +843,13 @@ const Index = () => {
         {/* Section Separator */}
         <div className="border-t border-gray-200"></div>
 
-      {/* Strategic Partners Section */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">Strategic Partners</h2>
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-              Collaborating with globally leading organizations for strengthening
-              research and capacity-building worldwide
-            </p>
-          </div>
-          
-          <Suspense fallback={<div className="flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>}>
-            <StrategicPartnersCards />
-          </Suspense>
-        </div>
-      </section>
-
-      {/* Section Separator */}
-      <div className="border-t border-gray-200"></div>
-
-       {/* International partners and collaborators */}
+       {/* International Partners and Collaborators */}
        <section className="py-12 bg-white">
          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="text-center mb-8 sm:mb-12">
-             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">International Partners and Collaborators</h2>
+           <div className="text-center mb-12">
+             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4">International Partners and Collaborators</h2>
              <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto px-4">
-               Current key international organizations and universities we collaborate with
+               Key international organizations and universities we collaborate with
              </p>
            </div>
             <Suspense fallback={<div className="flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>}>

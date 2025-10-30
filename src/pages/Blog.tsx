@@ -274,7 +274,7 @@ const Blog = () => {
             variants={staggerContainer}
           >
             <motion.h1 
-              className="text-4xl md:text-6xl font-bold text-foreground mb-6"
+              className="text-4xl md:text-6xl font-bold text-primary mb-6"
               variants={fadeUpVariants}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
@@ -291,19 +291,19 @@ const Blog = () => {
             <TabsList className="grid w-full grid-cols-3 bg-accent/50 p-2 rounded-lg mb-8">
               <TabsTrigger 
                 value="ongoing" 
-                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
+                className="text-xs sm:text-sm md:text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground px-2 sm:px-4"
               >
                 On-going Projects
               </TabsTrigger>
               <TabsTrigger 
                 value="completed" 
-                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
+                className="text-xs sm:text-sm md:text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground px-2 sm:px-4"
               >
                 Completed Projects
               </TabsTrigger>
               <TabsTrigger 
                 value="upcoming" 
-                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
+                className="text-xs sm:text-sm md:text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground px-2 sm:px-4"
               >
                 Upcoming Projects
               </TabsTrigger>

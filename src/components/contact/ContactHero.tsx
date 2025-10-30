@@ -29,13 +29,14 @@ export function ContactHero() {
         >
           <motion.div variants={fadeUpVariants}>
           </motion.div>
-          <motion.h1 
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6"
-            variants={fadeUpVariants}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          >
-            Contact Us
-          </motion.h1>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <h1 
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-6"
+              style={{ marginBottom: '1.5rem' }}
+            >
+              Get in Touch
+            </h1>
+          </motion.div>
           <motion.p 
             className="text-xl text-muted-foreground max-w-2xl mx-auto"
             variants={fadeUpVariants}

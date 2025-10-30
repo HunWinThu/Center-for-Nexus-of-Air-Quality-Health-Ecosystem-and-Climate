@@ -129,7 +129,7 @@
 }
 
 .top .hexagon {
-  background: linear-gradient(45deg, #15803d, #22c55e, #15803d);
+  background: linear-gradient(45deg, #3f6433, #5a8f4a, #3f6433);
 }
 
 .bottom .hexagon {
@@ -141,7 +141,7 @@
 }
 
 .topRight .hexagon {
-  background: linear-gradient(45deg, #047857, #34d399, #047857);
+  background: linear-gradient(45deg, #3f6433, #5a8f4a, #3f6433);
 }
 
 .bottomLeft .hexagon {
