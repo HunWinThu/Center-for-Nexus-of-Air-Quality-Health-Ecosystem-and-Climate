@@ -217,7 +217,7 @@ const Committee = () => {
     <>
       {/* Hero Section with Enhanced Animations */}
       <motion.section 
-        className="py-10 bg-white overflow-hidden"
+        className="pt-20 pb-4 bg-white overflow-hidden"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
@@ -254,7 +254,7 @@ const Committee = () => {
       </motion.section>
 
       {/* Advisory Committee Members with Modern Grid Animation */}
-      <section className="py-10 bg-white overflow-hidden">
+      <section className="pt-4 pb-10 bg-white overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Title Animation */}
 

@@ -257,7 +257,7 @@ const Publications = () => {
   return (
     <>
       {/* Hero Section - matching website style */}
-      <section className="py-20 bg-white">
+      <section className="pt-20 pb-4 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial="hidden"
@@ -286,7 +286,7 @@ const Publications = () => {
       </section>
 
       {/* Publications Content */}
-      <section className="py-20">
+      <section className="pt-4 pb-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
             <TabsList className="grid w-full grid-cols-4 bg-accent/50 p-2 rounded-lg mb-8">

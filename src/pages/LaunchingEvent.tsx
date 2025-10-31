@@ -192,14 +192,14 @@ const gallery = [
       <section className="pt-4 pb-12 md:pt-12 md:pb-20 bg-white">
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="text-center mb-8 md:mb-16">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 pb-1 bg-gradient-to-r from-green-800 via-green-400 to-sky-blue-600 bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4">
               Launching Event
             </h1>
 
-              <p className="text-2xl md:text-2xl font-bold mb-6 pb-1 bg-gradient-to-r from-cyan-700 via-green-400 to-sky-800 bg-clip-text text-transparent">
-              Venue: Room B108, AIT Conference Center <br/>July 10, 2024
+              <p className="text-xl md:text-2xl font-semibold text-muted-foreground mb-6">
+              July 10, 2024
             </p>
-            <p className="text-justify md:text-balance text-xl max-w-8xl mx-auto">
+            <p className="text-justify md:text-balance text-xl leading-relaxed">
               On July 10, 2024, the Air Quality Nexus Center hosted its official launch ceremony. Led by Distinguished Professor Nguyen Thi Kim Oanh as the Director, the Center aims to advance capacity building and cutting-edge research in atmospheric sciences, fostering multidisciplinary collaboration within AIT and with international partners. The Center focuses on tackling the urgent challenge of air pollution, which poses serious health, ecosystem, and climate risks across Asia. It emphasizes integrated multi-pollutant, multi-effect, and cross-sectional approaches to develop cost-effective solutions and support governments in implementing clean air policies. The launch event featured insights from prominent experts and stakeholders, highlighting the Center’s commitment to driving impactful research and policy engagement to improve air quality, public health, ecosystems, and climate resilience in the region.
             </p>
           </div>
@@ -237,7 +237,8 @@ const gallery = [
                           <div className="mt-2">
                             <h3 className="text-lg md:text-xl font-semibold" style={{ color: '#3f6433' }}>{quote.name}</h3>
                             <p
-                              className="text-sm text-muted-foreground"
+                              className="text-sm"
+                              style={{ color: '#3f6433' }}
                               dangerouslySetInnerHTML={{ __html: quote.position }}
                             />
                           </div>
@@ -252,7 +253,7 @@ const gallery = [
 
           <section aria-labelledby="gallery-heading" className="mt-16">
             <header className="text-center mb-6">
-              <h2 id="gallery-heading" className="text-5xl md:text-5xl font-bold text-primary">Launching Event Gallery</h2>
+              <h2 id="gallery-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4">Gallery</h2>
             </header>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
               {gallery.map((item, idx) => (

@@ -144,7 +144,7 @@ const Resources = () => {
     <>
       {/* Hero Section */}
       <motion.section 
-        className="py-20 bg-white"
+        className="pt-20 pb-4 bg-white"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
@@ -168,7 +168,7 @@ const Resources = () => {
       <div className="border-t border-gray-200"></div>
 
       {/* Main Content - Tabbed Interface */}
-      <section className="py-20">
+      <section className="pt-4 pb-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Reports & Guidelines Section - No Tabs */}
           <motion.div 

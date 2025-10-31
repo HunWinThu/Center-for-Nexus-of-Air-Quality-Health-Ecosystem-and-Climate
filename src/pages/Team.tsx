@@ -213,7 +213,7 @@ const Team = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-20 bg-white">
+      <section className="pt-20 pb-4 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="max-w-4xl mx-auto text-center"
@@ -232,17 +232,14 @@ const Team = () => {
               variants={fadeUpVariants}
               transition={{ delay: 0.2 }}
             >
-              Meet the dedicated researchers and professionals at AIT working to improve air quality and environmental health.
+              Meet the dedicated researchers and professionals at AirQC working to improve air quality and environmental health.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* Section Separator */}
-      <div className="border-t border-gray-200"></div>
-
       {/* Team Directory (Tabs) */}
-      <section className="py-20 bg-white">
+      <section className="pt-4 pb-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* First Row - Top 2 Members */}
           <motion.div 
@@ -254,7 +251,7 @@ const Team = () => {
           >
             {coreTeam.slice(0, 2).map((member) => (
               <motion.div key={member.id} variants={cardVariants}>
-                <Card className="group transition-all duration-700 bg-background border border-border relative overflow-hidden">
+                <Card className="group hover:shadow-lg transition-all duration-300 bg-background border border-border relative overflow-hidden">
                   <CardContent className="p-6 relative z-10">
                     <div className="text-center mb-4">
                       <motion.div
@@ -312,7 +309,7 @@ const Team = () => {
           >
             {coreTeam.slice(2).map((member) => (
               <motion.div key={member.id} variants={cardVariants}>
-                <Card className="group transition-all duration-700 bg-background border border-border relative overflow-hidden">
+                <Card className="group hover:shadow-lg transition-all duration-300 bg-background border border-border relative overflow-hidden">
                   <CardContent className="p-6 relative z-10">
                     <div className="text-center mb-4">
                       <motion.div

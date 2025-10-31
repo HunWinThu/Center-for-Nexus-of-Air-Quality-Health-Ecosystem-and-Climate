@@ -640,7 +640,7 @@ const resources: NewsItem[] = [
   return (
     <>
       {/* Hero Section */}
-      <section className="py-20 bg-white overflow-hidden">
+      <section className="pt-20 pb-4 bg-white overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="max-w-4xl mx-auto text-center"
@@ -667,7 +667,7 @@ const resources: NewsItem[] = [
       </section>
 
       {/* Tabbed Content Section */}
-      <section className="py-20">
+      <section className="pt-4 pb-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
             <TabsList className="grid w-full grid-cols-3 bg-accent/50 p-2 rounded-lg mb-8">

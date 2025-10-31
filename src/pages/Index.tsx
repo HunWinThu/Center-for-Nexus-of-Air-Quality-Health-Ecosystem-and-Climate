@@ -757,68 +757,6 @@ const Index = () => {
       {/* Section Separator */}
       <div className="border-t border-gray-200"></div>
 
-      {/* Recent Research & News */}
-      <section id="news-events" className="py-12 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12"> 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-6">News & Events</h2>
-          </div>      
-          
-          {/* Latest News Section */}
-          <div className="mb-12">
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent flex-1"></div>
-              <h3 className="text-2xl font-bold">Latest News</h3>
-              <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent flex-1"></div>
-            </div>
-            <Suspense fallback={<div className="flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>}>
-              <LatestNewsCards />
-            </Suspense>
-          </div>
-
-          {/* Navigation Button */}
-          <div className="text-center mt-12">
-            <div className="inline-flex flex-col items-center gap-4">
-              <p className="text-muted-foreground">Discover more events and news</p>
-              <Link to="/news" aria-label="Go to News & Events">
-                <Button
-                  size="lg"
-                  className="group px-8 py-4 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
-                >
-                  Events & Media
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      {/* Team Photo Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={teamGroupPhoto} 
-            alt="Research team collaboration" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30"></div>
-        </div>
-        {/* Overlay CTA Buttons */}
-        <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-4">
-          <Link to="/launching-event" aria-label="Go to Launching Event">
-            <Button
-              size="lg"
-              className="group px-8 py-4 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
-            >
-              Launching Event
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
-            </Button>
-          </Link>
-        </div>
-      </section>
-
       {/* Section Separator */}
       <div className="border-t border-gray-200"></div>
 
@@ -857,6 +795,70 @@ const Index = () => {
             </Suspense>
          </div>
        </section>
+
+       {/* Section Separator */}
+       <div className="border-t border-gray-200"></div>
+
+      {/* Recent Research & News */}
+      <section id="news-events" className="py-12 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12"> 
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-6">News & Events</h2>
+          </div>      
+          
+          {/* Latest News Section */}
+          <div className="mb-12">
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent flex-1"></div>
+              <h3 className="text-2xl font-bold">Latest News</h3>
+              <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent flex-1"></div>
+            </div>
+            <Suspense fallback={<div className="flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>}>
+              <LatestNewsCards />
+            </Suspense>
+          </div>
+
+          {/* Navigation Button */}
+          <div className="text-center mt-12">
+            <div className="inline-flex flex-col items-center gap-4">
+              <p className="text-muted-foreground">Discover more events and news</p>
+              <Link to="/news" aria-label="Go to News & Events">
+                <Button
+                  size="lg"
+                  className="group px-8 py-4 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  Events & Media
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+            {/* Team Photo Section */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={teamGroupPhoto} 
+            alt="Research team collaboration" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30"></div>
+        </div>
+        {/* Overlay CTA Buttons */}
+        <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-4">
+          <Link to="/launching-event" aria-label="Go to Launching Event">
+            <Button
+              size="lg"
+              className="group px-8 py-4 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+            >
+              Launching Event
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
+            </Button>
+          </Link>
+        </div>
+      </section>
 
        {/* Section Separator */}
        <div className="border-t border-gray-200"></div>
