@@ -225,12 +225,12 @@ const gallery = [
                   viewport={{ once: true, amount: 0.35 }}
                   transition={{ ...SMOOTH_TRANSITIONS.card }}
                 >
-                  <Card className="group hover:shadow-lg transition-all duration-500 bg-grey/80 backdrop-blur-md border-/20 text-white transform hover:scale-105 will-change-transform" aria-label={`Quote from ${quote.name}`}>                    <CardContent className="p-6 md:p-8">
+                  <Card className="group hover:shadow-lg transition-all duration-300 bg-grey/80 backdrop-blur-md border-/20 text-white will-change-transform" aria-label={`Quote from ${quote.name}`}>                    <CardContent className="p-6 md:p-8">
                       <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-6 md:gap-10`}>
                         <img
                           src={quote.image}
                           alt={`${quote.name} - Launching Event testimonial`}
-                          className="w-full md:w-80 lg:w-96 h-auto md:h-64 lg:h-72 object-contain md:object-cover rounded-xl shadow-lg transform group-hover:scale-[1.02] transition-transform duration-500"
+                          className="w-full md:w-80 lg:w-96 h-auto md:h-64 lg:h-72 object-contain md:object-cover rounded-xl shadow-lg transition-transform duration-300"
                         />
                         <div className={isEven ? 'text-left' : 'text-left md:text-right'}>
                           <p className="text-xl md:text-2xl text-foreground mb-4 italic opacity-90 animate-fade-in">"{quote.quote}"</p>
@@ -256,8 +256,8 @@ const gallery = [
             </header>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
               {gallery.map((item, idx) => (
-                <figure key={idx} className="group rounded-xl overflow-hidden shadow bg-background/80 backdrop-blur-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover-scale animate-enter">
-                  <img src={item.src} loading="lazy" className="w-full h-56 md:h-64 object-cover transform transition-transform duration-300 group-hover:scale-[1.03]" />
+                <figure key={idx} className="group rounded-xl overflow-hidden shadow bg-background/80 backdrop-blur-md transition-all duration-300 hover:shadow-lg animate-enter">
+                  <img src={item.src} loading="lazy" className="w-full h-56 md:h-64 object-cover transition-transform duration-300" />
                   {/* <figcaption className="p-3 text-sm text-muted-foreground">{item.alt}</figcaption> */}
                 </figure>
               ))}

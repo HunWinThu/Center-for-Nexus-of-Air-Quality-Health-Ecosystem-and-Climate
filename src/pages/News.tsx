@@ -730,7 +730,7 @@ const resources: NewsItem[] = [
                               <img 
                                 src={event.image || '/placeholder.svg'} 
                                 alt={event.title}
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 min-h-[300px] lg:min-h-[350px]"
+                                className="w-full h-full object-cover transition-transform duration-300 min-h-[300px] lg:min-h-[350px]"
                               />
                               
                               {/* Professional Date Badge */}
@@ -844,7 +844,7 @@ const resources: NewsItem[] = [
                     variants={cardVariants}
                     transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
                   >
-                    <Card className="overflow-hidden hover:shadow-lg hover:scale-[1.02] transition-all duration-300 ease-in-out">
+                    <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 ease-in-out">
                       <div className="flex flex-col md:flex-row">
                         <div className="md:w-1/3 overflow-hidden">
                           <motion.img 
@@ -905,7 +905,7 @@ const resources: NewsItem[] = [
                     variants={cardVariants}
                     transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
                   >
-                    <Card className="overflow-hidden hover:shadow-lg hover:scale-[1.02] transition-all duration-300 ease-in-out">
+                    <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 ease-in-out">
                       <div className="flex flex-col md:flex-row">
                         <div className="md:w-1/3 overflow-hidden">
                           <motion.img 

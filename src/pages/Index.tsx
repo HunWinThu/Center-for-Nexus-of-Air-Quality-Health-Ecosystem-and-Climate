@@ -52,7 +52,7 @@ import colorado from '@/assets/collaborators/Colorado-State-University.png';
 import ricardo from '@/assets/collaborators/ricardo.png';
 import suez from '@/assets/collaborators/suez.png';
 import bg_3 from '@/assets/AIT_uni_2.png';
-import thematic1 from '@/assets/Our_Thematics/slide01_img06.png';
+import thematic1 from '@/assets/sliding/2.jpg';
 import thematic2 from '@/assets/Our_Thematics/slide01_img02.png';
 import thematic3 from '@/assets/Our_Thematics/Slide01_img03.png';
 import thematic4 from '@/assets/Our_Thematics/slide01_img05.png';
@@ -295,13 +295,13 @@ const Index = () => {
                 transition={{ duration: 0.8, delay: idx * 0.2 }}
               >
                 <Link to="/news" className="block">
-                  <Card className="group relative overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-0 rounded-2xl h-[420px] cursor-pointer flex flex-col">
+                  <Card className="group relative overflow-hidden bg-white hover:shadow-lg transition-all duration-300 border-0 rounded-2xl h-[420px] cursor-pointer flex flex-col">
                     {/* News Image */}
                     <div className="relative overflow-hidden">
                       <img 
                         src={news.image || '/placeholder.svg'} 
                         alt={news.title}
-                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-700"
+                        className="w-full h-48 object-cover transition-transform duration-300"
                       />
                       
                       {/* Date Badge */}
@@ -393,13 +393,13 @@ const Index = () => {
                   className="block h-full"
                 >
                   <Card 
-                    className="group hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-[1.02] overflow-hidden h-full flex flex-col"
+                    className="group hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden h-full flex flex-col"
                   >
                     <div className="relative aspect-video overflow-hidden bg-gray-100">
                       <img 
                         src={feature.image}
                         alt={feature.title}
-                        className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                        className="w-full h-full object-contain transition-transform duration-300"
                       />
                     </div>
                     <CardContent className="p-4 sm:p-6 text-center flex-1 flex items-center justify-center">
@@ -715,7 +715,7 @@ const Index = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
               Air Quality Nexus — Scope & Cooperation
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">

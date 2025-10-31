@@ -253,7 +253,7 @@ const Blog = () => {
         <Button 
           variant="default" 
           size="lg"
-          className="w-full md:w-auto self-start px-8 py-3 text-lg font-semibold shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105"
+          className="w-full md:w-auto self-start px-8 py-3 text-lg font-semibold shadow-md hover:shadow-lg transition-all duration-200"
           onClick={() => navigate(`/project/${project.id}`)}
         >
           View Project Details

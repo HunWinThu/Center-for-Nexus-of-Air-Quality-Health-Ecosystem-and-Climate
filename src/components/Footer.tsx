@@ -80,7 +80,7 @@ const Footer = () => {
                 href="https://facebook.com/airqualitynexus" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
+                className="text-white/70 hover:text-white transition-all duration-200"
                 aria-label="Facebook"
               >
                 <Facebook size={24} className="sm:w-8 sm:h-8" />
@@ -89,7 +89,7 @@ const Footer = () => {
                 href="https://linkedin.com/company/airqualitynexus" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
+                className="text-white/70 hover:text-white transition-all duration-200"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={24} className="sm:w-8 sm:h-8" />
@@ -98,7 +98,7 @@ const Footer = () => {
                 href="https://instagram.com/airqualitynexus" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
+                className="text-white/70 hover:text-white transition-all duration-200"
                 aria-label="Instagram"
               >
                 <Instagram size={20} className="sm:w-7 sm:h-7" />

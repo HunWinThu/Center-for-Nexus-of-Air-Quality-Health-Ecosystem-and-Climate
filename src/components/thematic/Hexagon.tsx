@@ -24,7 +24,7 @@ export const Hexagon: React.FC<HexagonProps> = ({
     <div
       className={`
         relative w-32 h-32 ${bgColor || 'bg-gradient-to-br from-primary/80 to-primary'}
-        cursor-pointer hover:scale-105 hover:shadow-lg transform transition-all duration-300
+        cursor-pointer hover:shadow-lg transform transition-all duration-300
         ${isCenter ? 'w-40 h-40' : ''}
         ${className}
       `}

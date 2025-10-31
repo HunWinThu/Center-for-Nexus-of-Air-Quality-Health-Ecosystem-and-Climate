@@ -78,7 +78,7 @@ const Header = () => {
                 className="h-28 w-28 sm:h-32 sm:w-32 lg:h-36 lg:w-36 object-contain"
               />
               <div className="hidden sm:block ml-2">
-                <h1 className="text-base sm:text-lg lg:text-xl font-bold text-primary leading-tight">
+                <h1 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 leading-tight">
                   Air Quality Nexus<br />Center
                 </h1>
               </div>
@@ -94,7 +94,7 @@ const Header = () => {
                     <Link
                       to="/about"
                       onClick={handleNavClick}
-                      className={`text-xl font-semibold tracking-wide border-b-2 pb-1 transition-colors hover:text-[#3f6433] ${
+                      className={`text-lg font-semibold tracking-wide border-b-2 pb-1 transition-colors hover:text-[#3f6433] ${
                         isActive('/about') || isActive('/launching-event') || isActive('/our-thematic-areas') || isActive('/team') || isActive('/committee')
                           ? 'text-[#3f6433] border-[#3f6433]'
                           : 'text-black border-transparent'
@@ -108,28 +108,28 @@ const Header = () => {
                         <Link 
                           to="/launching-event" 
                           onClick={handleNavClick}
-                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-[#3f6433] transition-colors"
+                          className="block rounded-lg px-3 py-2 text-base font-medium text-gray-900 hover:bg-white/50 hover:text-[#3f6433] transition-colors"
                         >
                           Launching Event
                         </Link>
                         <Link 
                           to="/our-thematic-areas" 
                           onClick={handleNavClick}
-                          className="block rounded-lg px-4 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-[#3f6433] transition-colors"
+                          className="block rounded-lg px-4 py-2 text-base font-medium text-gray-900 hover:bg-white/50 hover:text-[#3f6433] transition-colors"
                         >
                           Our Core Research Areas
                         </Link>
                         <Link 
                           to="/team" 
                           onClick={handleNavClick}
-                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-[#3f6433] transition-colors"
+                          className="block rounded-lg px-3 py-2 text-base font-medium text-gray-900 hover:bg-white/50 hover:text-[#3f6433] transition-colors"
                         >
                           Our Team
                         </Link>
                         <Link 
                           to="/committee" 
                           onClick={handleNavClick}
-                          className="block rounded-lg px-3 py-2 text-lg font-medium text-gray-900 hover:bg-white/50 hover:text-[#3f6433] transition-colors"
+                          className="block rounded-lg px-3 py-2 text-base font-medium text-gray-900 hover:bg-white/50 hover:text-[#3f6433] transition-colors"
                         >
                           Advisory Committee
                         </Link>
@@ -143,7 +143,7 @@ const Header = () => {
                   key={item.name}
                   to={item.href}
                   onClick={handleNavClick}
-                  className={`text-xl font-semibold tracking-wide border-b-2 pb-1 transition-colors hover:text-[#3f6433] ${
+                  className={`text-lg font-semibold tracking-wide border-b-2 pb-1 transition-colors hover:text-[#3f6433] ${
                     isActive(item.href)
                       ? 'text-[#3f6433] border-[#3f6433]'
                       : 'text-black border-transparent'
@@ -190,7 +190,7 @@ const Header = () => {
                         className="h-28 w-28 sm:h-32 sm:w-32 lg:h-36 lg:w-36 object-contain"
                       />
                       <div className="hidden sm:block ml-2">
-                        <h1 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 leading-tight">
+                        <h1 className="text-base sm:text-lg lg:text-xl font-bold text-primary leading-tight">
                           Air Quality Nexus<br />Center
                         </h1>
                       </div>
@@ -209,7 +209,7 @@ const Header = () => {
                     <div key={item.name}>
                       <Link
                         to={item.href}
-                        className={`block px-3 py-3 text-lg font-medium rounded-md transition-colors ${
+                        className={`block px-3 py-3 text-base font-medium rounded-md transition-colors ${
                           isActive(item.href)
                             ? 'text-gray-900 bg-blue-50'
                             : 'text-gray-800 hover:text-gray-900 hover:bg-blue-50'
@@ -221,28 +221,28 @@ const Header = () => {
                       <div className="ml-4 bg-gray-50 rounded-md p-2 space-y-1">
                         <Link
                           to="/launching-event"
-                          className="block px-3 py-2 text-base rounded-md text-gray-700 hover:text-gray-900 hover:bg-white"
+                          className="block px-3 py-2 text-sm rounded-md text-gray-700 hover:text-gray-900 hover:bg-white"
                           onClick={handleMobileNavClick}
                         >
                           Launching Event
                         </Link>
                         <Link
                           to="/our-thematic-areas"
-                          className="block px-3 py-2 text-base rounded-md text-gray-700 hover:text-gray-900 hover:bg-white"
+                          className="block px-3 py-2 text-sm rounded-md text-gray-700 hover:text-gray-900 hover:bg-white"
                           onClick={handleMobileNavClick}
                         >
                           Our Thematic Areas
                         </Link>
                         <Link
                           to="/team"
-                          className="block px-3 py-2 text-base rounded-md text-gray-700 hover:text-gray-900 hover:bg-white"
+                          className="block px-3 py-2 text-sm rounded-md text-gray-700 hover:text-gray-900 hover:bg-white"
                           onClick={handleMobileNavClick}
                         >
                           Our Team
                         </Link>
                         <Link
                           to="/committee"
-                          className="block px-3 py-2 text-base rounded-md text-gray-700 hover:text-gray-900 hover:bg-white"
+                          className="block px-3 py-2 text-sm rounded-md text-gray-700 hover:text-gray-900 hover:bg-white"
                           onClick={handleMobileNavClick}
                         >
                           Advisory Committee
@@ -253,7 +253,7 @@ const Header = () => {
                     <Link
                       key={item.name}
                       to={item.href}
-                      className={`block px-3 py-3 text-lg font-medium rounded-md transition-colors ${
+                      className={`block px-3 py-3 text-base font-medium rounded-md transition-colors ${
                         isActive(item.href)
                           ? 'text-gray-900 bg-blue-50'
                           : 'text-gray-800 hover:text-gray-900 hover:bg-blue-50'
