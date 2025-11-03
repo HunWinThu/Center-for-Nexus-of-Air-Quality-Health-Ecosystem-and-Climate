@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { HexagonGrid } from '@/components/thematic/HexagonGrid';
+import { Link } from 'react-router-dom';
 import scopeDiagramImage from '@/assets/scope_diagram.png';
 
 import cooperationImg from '@/assets/cooperation.jpg';
@@ -11,6 +13,13 @@ import missionsHero from '@/assets/hig-quality.jpg';
 import multidisciplinaryImage from '@/assets/multi.png';
 import governmentImage from '@/assets/government.jpg';
 import climateImage from '@/assets/co-benefits.png';
+
+import thematic1 from '@/assets/sliding/2.jpg';
+import thematic2 from '@/assets/Our_Thematics/slide01_img02.png';
+import thematic3 from '@/assets/Our_Thematics/Slide01_img03.png';
+import thematic4 from '@/assets/Our_Thematics/slide01_img05.png';
+import thematic5 from '@/assets/Our_Thematics/slide01_img01.png';
+import thematic6 from '@/assets/Our_Thematics/slide01_img03.png';
 
 const OurThematicAreas = () => {
   // Animation variants
@@ -73,6 +82,88 @@ const OurThematicAreas = () => {
       }, 100);
     }
   }, []);
+
+  // Features data for Core Research Areas cards
+  const features = [
+    {
+      title: 'Air quality Monitoring, Chemical Components Analysis, and Source Apportionment Study',
+      image: thematic1
+    },
+    {
+      title: 'Emission Inventories Development and Emissions Projection',
+      image: thematic2
+    },
+    {
+      title: 'Performance and Evaluation of Meteorological and Chemical Transport Modeling Systems',
+      image: thematic3
+    },
+    {
+      title: 'Integrated Air Pollution Control: Demonstration',
+      image: thematic4
+    },
+    {
+      title: 'Meteorology and Science of Climate Change',
+      image: thematic5
+    },
+    {
+      title: 'Impacts Assessment: Health, Ecosystem, and Climate Systems',
+      image: thematic6
+    }
+  ];
+
+  // Map feature titles to their respective thematic area routes
+  const getThematicRoute = (title: string) => {
+    const routeMap: { [key: string]: string } = {
+      'Air quality Monitoring, Chemical Components Analysis, and Source Apportionment Study': '/thematic/monitoring-analysis',
+      'Emission Inventories Development and Emissions Projection': '/thematic/emission-inventory',
+      'Performance and Evaluation of Meteorological and Chemical Transport Modeling Systems': '/thematic/dispersion-modeling',
+      'Integrated Air Pollution Control: Demonstration': '/thematic/pollution-control',
+      'Meteorology and Science of Climate Change': '/thematic/meteorology-climate',
+      'Impacts Assessment: Health, Ecosystem, and Climate Systems': '/thematic/impact-assessment'
+    };
+    return routeMap[title] || '/our-thematic-areas#core-activities';
+  };
+
+  // Thematic Areas Cards Component
+  const ThematicAreasCards = () => {
+    return (
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        {features.map((feature, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <Link 
+              to={getThematicRoute(feature.title)}
+              className="block h-full"
+            >
+              <Card 
+                className="group hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden h-full flex flex-col"
+              >
+                <div className="relative aspect-video overflow-hidden bg-gray-100">
+                  <img 
+                    src={feature.image}
+                    alt={feature.title}
+                    className="w-full h-full object-contain transition-transform duration-300"
+                  />
+                </div>
+                <CardContent className="p-4 sm:p-6 text-center flex-1 flex items-center justify-center">
+                  <h3 className="text-base sm:text-lg font-semibold text-foreground leading-tight">{feature.title}</h3>
+                </CardContent>
+              </Card>
+            </Link>
+          </motion.div>
+        ))}
+      </motion.div>
+    );
+  };
 
 const sections = [
   {
@@ -212,41 +303,19 @@ const sections = [
 {/* Section Separator */}
 <div className="border-t border-gray-200"></div>
 
-{/* Sections - alternating layout */}
-<section className="py-16">
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-    {sections.map((s, i) => (
-      <motion.article 
-        key={i} 
-        id={s.title.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}
-        className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-center ${i % 2 === 1 ? 'md:[&>div:first-child]:order-2' : ''}`}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={cardVariants}
-        transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-      >
-        <motion.div
-          variants={imageVariants}
-          transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
-          whileHover={{ scale: 1.05 }}
-        >
-          <img
-            src={s.img}
-            alt={s.alt}
-            loading="lazy"
-            className="w-full h-72 md:h-80 object-cover rounded-2xl shadow-md"
-          />
-        </motion.div>
-        <motion.div variants={fadeUpVariants}>
-          <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">{s.title}</h2>
-          <p className="text-muted-foreground mb-6">{s.text}</p>
-          <a href="/air-quality-nexus-center/contact" className="inline-block">
-            <Button>Learn More</Button>
-          </a>
-        </motion.div>
-      </motion.article>
-    ))}
+{/* Our Core Research Areas Section */}
+<section id="research-areas" className="py-12 bg-white">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4">Our Core Research Areas</h2>
+      <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
+        From cutting-edge research to community engagement, we tackle air quality challenges through integrated
+        multi-pollutant, multi-effect, and cross-sectoral approaches.
+      </p>
+    </div>
+          
+    {/* Modified grid layout - 3 columns × 2 rows */}
+    <ThematicAreasCards />
   </div>
 </section>
 
