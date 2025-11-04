@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, DollarSign, Clock, Users, Target, Activity, Trophy } from 'lucide-react';
@@ -32,6 +32,15 @@ import c7 from '@/assets/project_detail/c7.png';
 import c8 from '@/assets/project_detail/c8.png'; 
 import c9 from '@/assets/project_detail/c9.png'; 
 import c10 from '@/assets/project_detail/c10.png'; 
+import p1_1 from '@/assets/project_detail/p1.jpg'; 
+import p1_2 from '@/assets/project_detail/p2.jpg'; 
+import p1_3 from '@/assets/project_detail/p3.jpg';
+import p1_4 from '@/assets/project_detail/p4.jpg'; 
+import p1_5 from '@/assets/project_detail/p5.jpg'; 
+import p1_6 from '@/assets/project_detail/p6.jpg'; 
+
+
+
 
 
 
@@ -851,6 +860,64 @@ const ProjectDetails = () => {
                     ) : (
                       <p className="text-muted-foreground text-lg leading-relaxed">{project.activities}</p>
                     )}
+                  </div>
+                </motion.section>
+              )}
+
+              {/* Publications Section (for project 1 only) */}
+              {project.id === 1 && (
+                <motion.section variants={itemVariants} className="space-y-4">
+                  <h2 className="text-2xl font-bold text-foreground border-b-2 border-primary pb-2">Publications</h2>
+                  <div className="p-6">
+                    <ul className="space-y-4">
+                      <li className="text-lg leading-relaxed flex items-start gap-3">
+                        <div className="w-2 h-2 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+                        <Link to="/resources#aqip-sources-report" className="font-semibold text-foreground hover:text-primary transition-colors">
+                          Air Quality Improvement Program in Thailand: Sources of Air Pollution in Chiang Mai in 2022 - Main Sources and Measures to Mitigate Air Pollution
+                        </Link>
+                      </li>
+                      <li className="text-lg leading-relaxed flex items-start gap-3">
+                        <div className="w-2 h-2 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+                        <Link to="/resources#aqip-inventory-report" className="font-semibold text-foreground hover:text-primary transition-colors">
+                          Air Quality Improvement Program in Thailand (AQIP): Comprehensive Inventory Methodology Report for Chiang Mai Province, Thailand (2022)
+                        </Link>
+                      </li>
+                      <li className="text-lg leading-relaxed flex items-start gap-3">
+                        <div className="w-2 h-2 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+                        <Link to="/resources#aqip-roadmap-report" className="font-semibold text-foreground hover:text-primary transition-colors">
+                          Air Quality Improvement Program in Thailand (AQIP): Roadmap Emission Sources and Policies Report - Sources of Air Pollution in Chiang Mai in 2022: Main Sources and Measures to Mitigate Air Pollution
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </motion.section>
+              )}
+
+              {/* Gallery Section (for project 1 only) */}
+              {project.id === 1 && (
+                <motion.section variants={itemVariants} className="space-y-4">
+                  <h2 className="text-2xl font-bold text-foreground border-b-2 border-primary pb-2">Gallery</h2>
+                  <div className="p-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <img src={p1_1} alt="Gallery Image 1" className="w-full h-64 object-cover" />
+                      </div>
+                      <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <img src={p1_2} alt="Gallery Image 2" className="w-full h-64 object-cover" />
+                      </div>
+                      <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <img src={p1_3} alt="Gallery Image 3" className="w-full h-64 object-cover" />
+                      </div>
+                      <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <img src={p1_4} alt="Gallery Image 4" className="w-full h-64 object-cover" />
+                      </div>
+                      <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <img src={p1_5} alt="Gallery Image 5" className="w-full h-64 object-cover" />
+                      </div>
+                      <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <img src={p1_6} alt="Gallery Image 6" className="w-full h-64 object-cover" />
+                      </div>
+                    </div>
                   </div>
                 </motion.section>
               )}
