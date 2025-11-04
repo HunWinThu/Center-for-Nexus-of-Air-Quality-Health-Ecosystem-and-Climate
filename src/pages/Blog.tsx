@@ -116,13 +116,7 @@ const Blog = () => {
         image: capacityImg
       }
     ],
-    upcoming: [
-      {
-        id: 2,
-        title: 'Climate Change Adaptation to Smoke Haze for Improved Child Health in Southeast Asia',
-        image: ""
-      },
-    ]
+    upcoming: []
   };
 
 
