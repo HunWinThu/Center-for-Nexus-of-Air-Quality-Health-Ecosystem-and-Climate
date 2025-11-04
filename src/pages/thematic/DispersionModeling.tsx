@@ -26,7 +26,7 @@ const DispersionModeling = () => {
               Back to Research Areas
             </Link>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Dispersion Modeling
+              Performance and Evaluation of Meteorological and Chemical Transport Modeling Systems
             </h1>
             <p className="text-xl text-purple-100 max-w-3xl">
               Advanced atmospheric modeling for air quality prediction and assessment
@@ -54,14 +54,6 @@ const DispersionModeling = () => {
                   These models help predict air quality impacts of proposed developments, evaluate the effectiveness of emission control strategies, and support emergency response planning. Our modeling work combines meteorological data, emission inventories, and advanced numerical techniques to provide accurate air quality forecasts and scenario assessments.
                 </p>
               </div>
-              
-              <div className="mt-8">
-                <Link to="/contact">
-                  <Button size="lg" className="bg-purple-700 hover:bg-purple-800">
-                    Learn More About Our Work
-                  </Button>
-                </Link>
-              </div>
             </motion.div>
 
             {/* Images */}
@@ -87,33 +79,6 @@ const DispersionModeling = () => {
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* Key Features Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Key Capabilities</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center p-6 bg-white rounded-xl shadow-lg">
-                <h3 className="text-xl font-semibold text-purple-700 mb-3">Multi-Scale Modeling</h3>
-                <p className="text-gray-700">Local-scale dispersion for industrial sources and regional-scale transport modeling</p>
-              </div>
-              <div className="text-center p-6 bg-white rounded-xl shadow-lg">
-                <h3 className="text-xl font-semibold text-purple-700 mb-3">Impact Prediction</h3>
-                <p className="text-gray-700">Predicting air quality impacts of proposed developments and policy scenarios</p>
-              </div>
-              <div className="text-center p-6 bg-white rounded-xl shadow-lg">
-                <h3 className="text-xl font-semibold text-purple-700 mb-3">Emergency Response</h3>
-                <p className="text-gray-700">Supporting emergency response planning and real-time air quality forecasting</p>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
     </main>

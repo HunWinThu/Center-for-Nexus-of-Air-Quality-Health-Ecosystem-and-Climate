@@ -43,6 +43,7 @@ import particlesPlus from '@/assets/collaborators/Particles-Plus-Logo-Opaque.jpg
 import unep from '@/assets/collaborators/United_Nations_Environment_Programme_Logo.png';
 import vanlang from '@/assets/collaborators/vanlang.png';
 import vnu from '@/assets/collaborators/VNU-USSH (1).jpg';
+import vnu2 from '@/assets/collaborators/vnu.png';
 import cmu from '@/assets/collaborators/CMU.png';
 import mahidol from '@/assets/collaborators/Mahidol_U.png';
 import uoyork from '@/assets/collaborators/UOYork.png';
@@ -362,12 +363,12 @@ const Index = () => {
     // Map feature titles to their respective thematic area routes
     const getThematicRoute = (title: string) => {
       const routeMap: { [key: string]: string } = {
-        'AQ Monitoring, Chemical Analysis, SA': '/thematic/monitoring-analysis',
-        'Emission Inventory and Emission Projection': '/thematic/emission-inventory',
-        'Dispersion Modeling': '/thematic/dispersion-modeling',
+        'Air quality Monitoring, Chemical Components Analysis, and Source Apportionment Study': '/thematic/monitoring-analysis',
+        'Emission Inventories Development and Emissions Projection': '/thematic/emission-inventory',
+        'Performance and Evaluation of Meteorological and Chemical Transport Modeling Systems': '/thematic/dispersion-modeling',
         'Integrated Air Pollution Control: Demonstration': '/thematic/pollution-control',
-        'Meteorology and Climate Science': '/thematic/meteorology-climate',
-        'Impact Assessment: Health and Ecosystem': '/thematic/impact-assessment'
+        'Meteorology and Science of Climate Change': '/thematic/meteorology-climate',
+        'Impacts Assessment: Health, Ecosystem, and Climate Systems': '/thematic/impact-assessment'
       };
       return routeMap[title] || '/our-thematic-areas#core-activities';
     };
@@ -628,7 +629,8 @@ const Index = () => {
     { name: 'University of Canberra', href: 'https://www.canberra.edu.au/', logo: partner6 },
     { name: 'University of York', href: 'https://www.york.ac.uk/', logo: uoyork },
     { name: 'Van Lang University', href: 'https://vlu.edu.vn/en', logo: vanlang },
-    { name: 'Vietnam National University, Hanoi - University of Social Sciences and Humanities', href: 'https://ussh.vnu.edu.vn/en/', logo: vnu },
+    { name: 'University of Social Sciences and Humanities', href: 'https://ussh.vnu.edu.vn/en/', logo: vnu },
+    { name: 'Vietnam National University, Hanoi', href: 'https://en.vnu.edu.vn/', logo: vnu2 },
   ];
 
   return (

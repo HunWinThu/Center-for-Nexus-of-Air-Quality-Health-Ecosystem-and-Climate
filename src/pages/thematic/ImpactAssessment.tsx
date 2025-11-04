@@ -25,7 +25,7 @@ const ImpactAssessment = () => {
               Back to Research Areas
             </Link>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Impact Assessment: Health and Ecosystem
+              Impacts Assessment: Health, Ecosystem, and Climate Systems
             </h1>
             <p className="text-xl text-indigo-100 max-w-3xl">
               Quantifying the effects of air pollution on human health and ecosystem services
@@ -53,14 +53,6 @@ const ImpactAssessment = () => {
                   Our ecosystem research examines how air pollutants affect agricultural productivity, forest health, and biodiversity. Through advanced modeling and field studies, we provide evidence-based assessments that inform policy makers about the true costs of air pollution and the benefits of clean air initiatives.
                 </p>
               </div>
-              
-              <div className="mt-8">
-                <Link to="/contact">
-                  <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700">
-                    Learn More About Our Work
-                  </Button>
-                </Link>
-              </div>
             </motion.div>
 
             {/* Images */}
@@ -79,33 +71,6 @@ const ImpactAssessment = () => {
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* Key Features Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Key Capabilities</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center p-6 bg-white rounded-xl shadow-lg">
-                <h3 className="text-xl font-semibold text-indigo-600 mb-3">Health Studies</h3>
-                <p className="text-gray-700">Epidemiological research on air quality impacts on respiratory and cardiovascular health</p>
-              </div>
-              <div className="text-center p-6 bg-white rounded-xl shadow-lg">
-                <h3 className="text-xl font-semibold text-indigo-600 mb-3">Ecosystem Research</h3>
-                <p className="text-gray-700">Examining effects on agricultural productivity, forest health, and biodiversity</p>
-              </div>
-              <div className="text-center p-6 bg-white rounded-xl shadow-lg">
-                <h3 className="text-xl font-semibold text-indigo-600 mb-3">Policy Evidence</h3>
-                <p className="text-gray-700">Providing evidence-based assessments for informed policy decisions</p>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
     </main>

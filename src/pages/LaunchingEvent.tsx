@@ -157,7 +157,7 @@ const LaunchingEvent = () => {
 
     {
       quote:'Bringing air quality and climate research agenda under one umbrella is timely and essential to address the current and emerging local and regional challenges. Creating new opportunities for collaboration within the region will surely lead to more efficient use of resources, broader understanding of solutions and last but not least might enable more effective communication with the policy community. The Air Quality Nexus Center could support policy makers to co-design and recognize the benefits of regional actions.',
-      name: 'Mr. Zbigniew Klimont',
+      name: 'Dr. Zbigniew Klimont',
       position: 'Research Group Leader and Principal Research Scholar<br/> Pollution Management Research Group<br/> Energy, Climate, and Environment Program<br/>International Institute for Applied Systems Analysis (IIASA)',
       image: kilmont,
     },
