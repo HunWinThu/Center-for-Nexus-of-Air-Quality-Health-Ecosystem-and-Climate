@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import teamPlaceholder from '@/assets/team-placeholder.jpg';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import researchgateIcon from '@/assets/icons/researchgate.svg';
 
 // Team member images
@@ -197,12 +197,27 @@ export default function TeamMember() {
           <div className="grid gap-10 md:gap-12 md:grid-cols-5">
             {/* Profile image */}
             <aside className="md:col-span-2">
-              <img
-                src={member.image || teamPlaceholder}
-                alt={`${member.name} - ${member.role || 'Team Member'}`}
-                loading="lazy"
-                className="w-full max-w-md mx-auto aspect-[3/4] object-cover border border-border bg-background shadow"
-              />
+              {member.image ? (
+                <img
+                  src={member.image}
+                  alt={`${member.name} - ${member.role || 'Team Member'}`}
+                  loading="lazy"
+                  className="w-full max-w-md mx-auto aspect-[3/4] object-cover border border-border bg-background shadow"
+                />
+              ) : (
+                <div className="w-full max-w-md mx-auto">
+                  <Avatar className="w-full h-auto aspect-[3/4] border border-border">
+                    <AvatarFallback className="text-3xl">
+                      {member.name
+                        .split(/\s+/)
+                        .map((n) => n[0])
+                        .join('')
+                        .slice(0, 2)
+                        .toUpperCase()}
+                    </AvatarFallback>
+                  </Avatar>
+                </div>
+              )}
             </aside>
 
             {/* Profile details */}

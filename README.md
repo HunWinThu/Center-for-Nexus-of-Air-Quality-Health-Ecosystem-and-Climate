@@ -1,220 +1,172 @@
 # Center for Nexus of Air Quality, Health, Ecosystem, and Climate
 
 <div align="center">
-  <img src="./public/AQC_logo.ico" alt="Air Quality Nexus Center Logo" width="100" height="100">
-  
-  **Official Website for the Air Quality Nexus Center at Asian Institute of Technology (AIT)**
-  
-  [![Live Site](https://img.shields.io/badge/Live%20Site-Visit-blue)](https://hunwinthu.github.io/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate/)
-  [![React](https://img.shields.io/badge/React-18.3.1-blue)](https://reactjs.org/)
-  [![TypeScript](https://img.shields.io/badge/TypeScript-5.5.3-blue)](https://www.typescriptlang.org/)
-  [![Vite](https://img.shields.io/badge/Vite-5.4.19-646CFF)](https://vitejs.dev/)
-  [![License](https://img.shields.io/badge/License-Private-red)]()
+   <img src="./public/AQC_logo.ico" alt="Air Quality Nexus Center Logo" width="100" height="100">
+
+   <strong>Official website for the Air Quality Nexus Center at the Asian Institute of Technology (AIT)</strong>
+
+   <br/>
+   <a href="https://hunwinthu.github.io/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate/">
+      <img alt="Live Site" src="https://img.shields.io/badge/Live%20Site-Visit-blue"/>
+   </a>
+   <a href="https://react.dev/">
+      <img alt="React 18" src="https://img.shields.io/badge/React-18.3.1-61DAFB"/>
+   </a>
+   <a href="https://www.typescriptlang.org/">
+      <img alt="TypeScript 5" src="https://img.shields.io/badge/TypeScript-5.5.3-3178C6"/>
+   </a>
+   <a href="https://vitejs.dev/">
+      <img alt="Vite 5" src="https://img.shields.io/badge/Vite-5.4.19-646CFF"/>
+   </a>
 </div>
 
-## 🌍 About the Center
+## About the website
 
-The **Center for Nexus of Air Quality, Health, Ecosystem, and Climate** (Air Quality Nexus Center) is a leading research institute at the Asian Institute of Technology dedicated to conducting and implementing application research with the aim to gain multiple benefits from reducing air pollution through improvement of health of human and ecosystem, and protection of the climate system.
+This site showcases research, projects, resources, publications, news, and collaborations led by the Center for Nexus of Air Quality, Health, Ecosystem, and Climate. It’s a modern, responsive React app with smooth animations, deep-linking between sections, and developer-friendly tooling.
 
-## ✨ Project Overview
+Live site: https://hunwinthu.github.io/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate/
 
-This is a modern, professional website built for the Air Quality Nexus Center, showcasing the center's research, team, publications, news, and international collaborations. The site features cutting-edge web technologies, responsive design, and comprehensive content management.
+## Highlights at a glance
 
-## 🚀 Key Features
+- Projects with rich detail pages, including Publications and a visual Gallery
+- Resources with deep links to specific reports (anchor navigation) and a Read More / Read Less toggle for long summaries
+- News & Events with images and shared data utilities
+- Team directory and detailed member profiles
+- Thematic Areas displayed in an interactive hexagon grid
+- Contact page with email integration
 
-### 📋 Content Management
-- **Dynamic News & Events System** - Real-time updates from Supabase database
-- **Team Directory** - Comprehensive profiles for researchers and staff
-- **Publications Showcase** - Research papers, reports, and academic contributions
-- **Interactive Thematic Areas** - Hexagonal grid visualization of research focus areas
+## Navigation overview (matches the website)
 
-### 🎨 User Experience
-- **Responsive Design** - Optimized for all devices (mobile, tablet, desktop)
-- **Smooth Animations** - Framer Motion powered transitions and micro-interactions
-- **Lazy Loading** - Performance-optimized image and component loading
-- **SEO Optimized** - Structured data, meta tags, and semantic HTML
+- Home (landing) — mission, vision, featured content
+- Projects — list of ongoing, completed, and upcoming projects
+   - Project Details — includes Publications (links to Resources) and Gallery
+- Resources — technical reports and downloadable materials with anchor IDs for direct links:
+   - #nepal-report
+   - #aqip-sources-report
+   - #aqip-inventory-report
+   - #aqip-roadmap-report
+- Publications — key outputs and links
+- News & Events — announcements and event highlights
+- Our Thematic Areas — interactive research themes
+- Team — members and profiles
+- Contact — email form
 
-### 🔧 Modern Architecture
-- **Component-Based Design** - Reusable UI components with shadcn/ui
-- **Type Safety** - Full TypeScript implementation
-- **State Management** - Zustand for global state, React Query for server state
-- **Error Handling** - Comprehensive error boundaries and loading states
+## Key features explained
 
-### 🌐 Integrations
-- **Supabase Backend** - Database, authentication, and file storage
-- **EmailJS** - Contact form submissions and email notifications
-- **GitHub Pages** - Automated deployment and hosting
+- Anchor-based deep linking from Publications on Project Details to specific Resources reports, with smooth scrolling and header offset handling
+- Read More / Read Less toggle for long report summaries to keep pages scannable
+- Project 1 Gallery with 6 curated images (p1.jpg – p6.jpg)
+- Reusable UI built with shadcn/ui + Tailwind, animated with Framer Motion, icons via lucide-react
 
-## 🛠️ Technologies Used
+## Tech stack
 
-### Frontend Stack
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **React** | 18.3.1 | Core UI framework |
-| **TypeScript** | 5.5.3 | Type safety and developer experience |
-| **Vite** | 5.4.19 | Build tool and development server |
-| **Tailwind CSS** | 3.4.11 | Utility-first CSS framework |
-| **Framer Motion** | 12.23.12 | Animation and transitions |
+- React 18 + TypeScript, Vite 5
+- Tailwind CSS + shadcn/ui (Radix primitives)
+- Framer Motion for animations
+- React Router for routing and hash navigation
+- Zustand (light state) and TanStack Query (if/when server state is used)
+- Supabase client ready (for data, auth, storage) — optional per page
 
-### UI Components
-- **shadcn/ui** - Modern component library built on Radix UI
-- **Lucide React** - Beautiful, customizable icons
-- **Embla Carousel** - Touch-friendly carousels
-- **React Hook Form** - Efficient form handling
-
-### Backend & Data
-- **Supabase** - Backend-as-a-Service for database and authentication
-- **React Query** - Server state management and caching
-- **Zustand** - Lightweight state management
-
-### Development Tools
-- **ESLint** - Code linting and formatting
-- **PostCSS** - CSS processing
-- **Autoprefixer** - CSS vendor prefixing
-
-## 📁 Project Structure
+## Project structure
 
 ```
 src/
-├── assets/                 # Images, logos, and static files
-│   ├── partners/          # Partner organization logos
-│   ├── News&Events/       # Event and news images
-│   └── ...
-├── components/            # Reusable React components
-│   ├── ui/               # shadcn/ui components
-│   ├── common/           # Shared components (ErrorBoundary, LoadingProvider)
-│   ├── layout/           # Layout components (Header, Footer, MainLayout)
-│   └── thematic/         # Specialized components for thematic areas
-├── data/                 # Static data files
-│   ├── allSharedNewsData.ts  # News and events data
-│   └── newsData.ts       # Detailed news information
-├── hooks/                # Custom React hooks
-├── lib/                  # Utility functions and configurations
-├── pages/                # Page components
-├── services/             # API services and external integrations
-├── store/                # State management
-└── types/                # TypeScript type definitions
+   assets/                # Images and static assets (projects, partners, events, etc.)
+   components/
+      common/              # ErrorBoundary, LoadingProvider, SEO, etc.
+      layout/              # Header, Footer, MainLayout
+      thematic/            # Hexagon grid & modal
+      ui/                  # shadcn/ui wrappers
+      admin/               # Admin layout shell (future-friendly)
+   data/                  # News & shared data helpers
+   hooks/                 # use-mobile, use-toast, etc.
+   lib/                   # emailjs init, utils
+   pages/                 # About, Projects, Resources, Publications, Team, News, etc.
+   services/              # supabase client and helpers
+   store/                 # app store (zustand)
 ```
 
-## 🚦 Getting Started
+## Getting started
 
-### Prerequisites
-- **Node.js** (version 18 or higher)
-- **npm** or **yarn** package manager
-- **Git** for version control
+Prerequisites: Node.js 18+, npm, Git
 
-### Installation
+1) Install dependencies
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/HunWinThu/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate.git
-   cd Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate
-   ```
+```bash
+npm install
+```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+2) Environment variables (if using Supabase-backed features)
 
-3. **Environment Setup**
-   Create a `.env.local` file in the root directory:
-   ```env
-   VITE_SUPABASE_URL=your_supabase_url
-   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-   ```
+Create a .env.local file at the project root:
 
-4. **Start the development server**
-   ```bash
-   npm run dev
-   ```
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-   The application will be available at `http://localhost:8080`
+3) Run locally
 
-### Available Scripts
+```bash
+npm run dev
+```
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run build:dev` | Build in development mode |
-| `npm run preview` | Preview production build locally |
-| `npm run lint` | Run ESLint |
+Then open the local URL shown in the terminal (Vite dev server).
 
-## 🌐 Deployment
+4) Build & preview
 
-This project is configured for deployment to **GitHub Pages** with automatic builds.
-
-### Production Build
 ```bash
 npm run build
-```
-
-### Preview Build Locally
-```bash
 npm run preview
 ```
 
-The live site is available at: [https://hunwinthu.github.io/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate/](https://hunwinthu.github.io/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate/)
+## Content and integrations
 
-## 📊 Features Overview
+- Supabase
+   - Client configured in `src/services/supabase.ts` (expects VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY)
+   - See `supabase-storage-setup.sql` and `fix-supabase-policies.sql` for storage and policies
+   - `supabase-api-examples.md` includes example queries/patterns
+- Contact form (EmailJS)
+   - Initialization in `src/lib/emailjs.ts`
+   - Configure with your EmailJS public key; optionally externalize as an env var
+- Content integration
+   - See `CONTENT_INTEGRATION.md` for adding/updating page content and assets
+   - Admin scaffolding exists under `src/components/admin` (future-friendly shell)
 
-### 🏠 Homepage
-- Hero section with center mission
-- Vision and mission statements with glass-blur design
-- Latest news and upcoming events
-- Team photo gallery
-- Strategic partners showcase
-- International collaborators
+## Available scripts
 
-### 👥 Team Section
-- Interactive team directory
-- Detailed member profiles with research expertise
-- Professional photos and biographies
-- Contact information and research links
+- `npm run dev` — start the Vite dev server
+- `npm run build` — production build
+- `npm run build:dev` — development-mode build
+- `npm run preview` — preview the production build
+- `npm run lint` — run ESLint
 
-### 📰 News & Events
-- Dynamic content management
-- Event calendar integration
-- Image galleries for events
-- Category-based filtering
+## Deployment
 
-### 🔬 Research Areas
-- Interactive hexagonal grid visualization
-- Detailed descriptions of thematic areas
-- Modal popups with research details
+The site is configured for GitHub Pages deployment (see `homepage` in `package.json`).
 
-### 📚 Publications & Resources
-- Research papers and reports
-- Academic contributions
-- Resource downloads
+- Build locally: `npm run build`
+- The live site is published at:
+   https://hunwinthu.github.io/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate/
 
-## 🤝 Contributing
+## Contributing
 
-This project is maintained by the Air Quality Nexus Center team. For internal contributions:
+Internal workflow:
 
-1. Create a feature branch
-2. Make your changes
-3. Test thoroughly
-4. Submit a pull request
+1) Create a feature branch
+2) Make and test your changes
+3) Open a pull request to `main`
 
-## 📞 Contact & Support
+## Contact
 
-**Air Quality Nexus Center**  
-Asian Institute of Technology (AIT)  
-58 Moo 9, Km. 42, Paholyothin Highway  
-Klong Luang, Pathum Thani 12120, Thailand  
+Air Quality Nexus Center, Asian Institute of Technology (AIT)
 
-- **Email:** airqualitynexus@ait.ac.th
-- **Phone:** +66 9-9797-6360
-- **Website:** [Visit our site](https://hunwinthu.github.io/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate/)
+Address: 58 Moo 9, Km. 42, Paholyothin Highway, Klong Luang, Pathum Thani 12120, Thailand
 
-## 📄 License
-
-This project is private and proprietary to the Air Quality Nexus Center at AIT.
+- Email: airqualitynexus@ait.ac.th
+- Phone: +66 9-9797-6360
+- Live site: https://hunwinthu.github.io/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate/
 
 ---
 
-<div align="center">
-  <p><strong>🌱 Built with care for a cleaner, healthier future 🌍</strong></p>
-  <p><em>Advancing air quality research through technology and collaboration</em></p>
-</div>
+Built to advance air quality research and its co-benefits for health, ecosystems, and climate.

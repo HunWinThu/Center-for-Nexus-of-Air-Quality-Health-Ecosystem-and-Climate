@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, DollarSign, Clock, Users, Target, Activity, Trophy } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 // Import images
 import capacityImg from '@/assets/capacity.jpg';
-import airPollutionResearchImg from '@/assets/air-pollution-research.png';
 import riceStrawBurningImg from '@/assets/rice-straw-burning.jpg';
 import governmentImg from '@/assets/government.jpg';
 import higQualityImg from '@/assets/hig-quality.jpg';
@@ -38,6 +38,13 @@ import p1_3 from '@/assets/project_detail/p3.jpg';
 import p1_4 from '@/assets/project_detail/p4.jpg'; 
 import p1_5 from '@/assets/project_detail/p5.jpg'; 
 import p1_6 from '@/assets/project_detail/p6.jpg'; 
+import ce1 from '@/assets/image8.jpeg'; 
+import ce2 from '@/assets/project_detail/canbreathe_e2.png'; 
+import ce4 from '@/assets/project_detail/canbreathe_e4.png'; 
+import ce5 from '@/assets/project_detail/canbreathe_e5.png'; 
+import ce6 from '@/assets/project_detail/canbreathe_e6.png'; 
+import ce7 from '@/assets/project_detail/canbreathe_e7.jpeg'; 
+
 
 
 
@@ -103,16 +110,6 @@ const ProjectDetails = () => {
           '4.2. Conducting surveys for assessing the composition of the vehicle fleets in Chiang Mai.'
         ],
         image: governmentImg
-      },
-      {
-        id: 2,
-        title: 'Climate Change Adaptation to Smoke Haze for Improved Child Health in Southeast Asia',
-        sponsor: 'e-Asia',
-        partners: 'Australia, Thailand, Indonesia, Cambodia, and Laos',
-        duration: '2024-2027',
-        objectives: 'To strengthen research and development capabilities towards resolution of shared challenges across the region.',
-        activities: 'Assess the effectiveness of climate change adaptation interventions for strengthening community resilience to smoke haze in SEA',
-        image: airPollutionResearchImg
       },
       {
         id: 3,
@@ -280,6 +277,147 @@ const ProjectDetails = () => {
     );
   }
 
+  // Event Card (similar to Resources format, with Read More / Read Less)
+  interface EventItem {
+    id: string;
+    title: string;
+    description: string;
+    image?: string;
+  }
+
+  const EventCard = ({ item, compactImages = false }: { item: EventItem; compactImages?: boolean }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const maxLength = 300;
+    const shouldTruncate = item.description.length > maxLength;
+    const displayText = isExpanded || !shouldTruncate
+      ? item.description
+      : item.description.substring(0, maxLength) + '...';
+
+    // Align image styling with Launching Event gallery: fixed heights and object-cover
+    const imgHeightClass = compactImages ? 'h-56 md:h-60' : 'h-56 md:h-64';
+
+    return (
+      <Card className="hover:shadow-lg transition-shadow overflow-hidden">
+        <div className="flex flex-col md:flex-row">
+          {item.image && (
+            <div className="w-full md:w-[320px] lg:w-[360px] flex-shrink-0">
+              <figure className="rounded-xl overflow-hidden shadow bg-background/80 backdrop-blur-md">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  loading="lazy"
+                  decoding="async"
+                  className={`w-full ${imgHeightClass} object-cover transition-transform duration-300`}
+                />
+              </figure>
+            </div>
+          )}
+          <div className={`${item.image ? 'flex-1' : 'w-full'} flex flex-col`}>
+            <CardHeader>
+              <CardTitle className="text-xl mb-2">{item.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <p className="text-muted-foreground leading-relaxed">{displayText}</p>
+              {shouldTruncate && (
+                <button
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  className="text-primary hover:underline font-medium mt-2 text-sm"
+                >
+                  {isExpanded ? 'Read Less' : 'Read More'}
+                </button>
+              )}
+            </CardContent>
+          </div>
+        </div>
+      </Card>
+    );
+  };
+
+  // Placeholder events for projects with Events section (you can update title, text, image later)
+  const events: EventItem[] =
+    project.id === 7
+      ? [
+          {
+            id: 'ev-1',
+            title: 'Regional Policy Dialogue Workshop in Vientiane, Lao PDR',
+            description:
+              'On 26th June 2025, Prof. Kim Oanh and Dr. Lai Nguyen Huy, participated in a high-level regional policy dialogue in Vientiane, Lao PDR, which was co-hosted by the University of Canberra (Australia), National University of Laos, and and the University of Health Sciences Laos. The workshop brought together over 40 delegates to introduce two projects for which the Air Quality Nexus Center is the key partner: Climate change adaptation to smoke haze for improved child health in Southeast Asia (HEAL-HAZE) and Climate Attribution of Wildfire Smoke Impacts on Priority Population Health in Southeast Asia and Australia (CANBREATHE). The workshop provided key opportunities to understand the social, political and economic barriers to mitigation which empowered the health sector to deal with smoke-haze from biomass open burning.',
+            image: ce1,
+          },
+          {
+            id: 'ev-2',
+            title: 'Policy Dialogue Workshop on Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia in Bangkok, Thailand',
+            description:
+              'Policy dialogue is an important work package of HEAL-HAZE and CANBREATHE. The AirQC team (Prof. Kim Oanh and Dr. Lai Nguyen Huy) participated in the policy dialogue workshop on “Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia” held in Bangkok, Thailand on 17th June 2025. This joint workshop aimed to engage policymakers and other stakeholders to prioritize solutions against haze pollution for affected communities and schools, co-create a platform for policy dialogue and knowledge exchange, and identify opportunities for regional cooperation on tackling the health impacts of air pollution and climate change. Prof. Kim Oanh, Center Director, delivered a keynote presentation on “Overview of Smoke Haze Pollution from Wildfires and Agricultural Burning in Southeast Asia”. The AirQC team actively participated in the discussion groups which aimed systematically mapRegional Policy Workshop “Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia” existing interventions and policies; engage multi-sectoral stakeholders to prioritize adaptation solutions; Identify implementation challenges, barriers, and enablers; co-design adaptation interventions tailored to regional needs; Empower health sector to deal with smoke haze; and understand the social, political and economic barriers to mitigation.',
+            image: ce2,
+          },
+          {
+            id: 'ev-3',
+            title: 'Regional Policy Workshop “Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia”',
+            description:
+              'The AirQC team participated in the Regional Policy Workshop “Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia”, organized by the HEAL-HAZE and CANBREATHE projects. The event aims to engage policymakers and other stakeholders to prioritize solutions against haze pollution for affected communities and schools, co-create a platform for policy dialogue and knowledge exchange, and identify opportunities for regional cooperation on tackling the health impacts of air pollution and climate change. In her role as a panelist, Prof. Kim Oanh provided insights in the section of “Regional cooperation on tackling health effects of forest fire”. She shared on the need for regional collaboration to reduce the biomass open burning and associated transboundary air haze phenomena.',
+            image: ce4,
+          },
+          {
+            id: 'ev-4',
+            title: 'Public Seminar “ENVIFAIR 2025 X RCCC UI” at the University of Indonesia, 25th September 2025',
+            description:
+              'The Faculty of Public Health (FPH) Universitas Indonesia (UI), in collaboration with the Research Center for Climate Change (RCCC) UI, held the International Environmental Health Seminar Envifair 2025 X RCCC UI at the Universitas Indonesia Convention Hall, Depok. Carrying the theme “Breathing Clean, Living Green: Achieving Net-Zero Emissions Towards Different Sectors,” the seminar served as an important forum to seek solutions for Indonesia’s ongoing air quality crisis. The AirQC team participated in the Public Seminar “ENVIFAIR 2025 X RCCC UI”, which was organized by the Research Center for Climate Change (RCCC) and Faculty of Public Health, Universitas Indonesia, Depok, as a part of the HEAL-HAZE (link) and CANBREATHE (link) projects. Prof. Kim Oanh and Dr. Huy also provided insights in the interviews conducted by the university student union, highlighting the needs for science-based information for policy making and the AirQC activities within these two projects.',
+            image: ce4,
+          },
+          {
+            id: 'ev-5',
+            title: 'Field visit and Participation in the Public Seminar at Universitas Sriwijaya, in Palembang, Indonesia',
+            description:
+              'The AirQC team (Prof. Kim Oanh and Dr. Lai Ngyen Huy) joined the international partners of Climate change adaptation to smoke haze for improved child health in Southeast Asia (HEAL-HAZE) and Climate Attribution of Wildfire Smoke Impacts on Priority Population Health in Southeast Asia and Australia (CANBREATHE) in the field visits to SD Muhammadiyah1 School, Bappeda Litbang, Silaberanti Community in Palembang, Indonesia to select appropriate sites for implementing the Clean Air Room Interventions. The international team of the project conducted a public seminar at Universitas Sriwijaya.',
+            image: ce5,
+          },
+          {
+            id: 'ev-6',
+            title: 'Invited Speaker at the 5th International Forum on Transboundary Air Pollution in Commemoration of the International Day of Clean Air for Blue Skies, 8th September 2025',
+            description:
+              'Prof. Kim Oanh, Center Director, delivered an online presentation titled “Wildfire emissions in Southeast Asia: multiple effects on regional air quality, ecosystem and health” at this event, which was organized by the Ministry of Foreign Affairs (MOFA), Republic of Korea. Her presentation highlighted the need for an airshed management approach to deal with the transboundary air pollution in the region. She also briefly mentioned about the research of the center within the framework of HEAL-HAZE (Climate change adaptation to smoke haze for improved child health in Southeast Asia (HEAL-HAZE) – HEAL Network) and CANBREATHE (Climate Attribution of Wildfire Smoke Impacts on Priority Population Health in Southeast Asia and Australia (CANBREATHE) – HEAL Network) projects.',
+            image: ce6,
+            
+          },
+          {
+            id: 'ev-7',
+            title: 'Public Seminar on ‘Wildfire Smoke: Health Impacts and Adaptation in Southeast Asia and Australia’',
+            description:
+              'June 2025, the Air Quality Nexus Center (AirQC) hosted the public seminar on “Wildfire Smoke: Health Impacts and Adaptation in Southeast Asia and Australia”. This hybrid event brought together 28 person and 50 online participants from regional and international experts to discuss health risks from wildfire smoke and haze under climate change. The event is within the framework of CANBREATHE and HEAL-HAZE projects. Before the public seminar happened, Dr. Lai Nguyen Huy presented an overview of the AirQC, highlighting its key research areas and projects. The event focused on climate attribution, health assessments, and adaptation for vulnerable groups. Key presentations covered early warning systems, health effects, and interventions like clean air rooms. The seminar also promoted policy dialogue and science-based regional planning. Prof. Kim Oanh, Center Director, was also the panelist of the event, sharing her valuable insight on the situation of wildfire in Southeast Asia and its effects. On the same date, AirQC hosted the guests to a guided laboratory tour of AIT’s research facilities, including the Environmental Engineering and Management (EEM) Ambient Laboratory, Air Quality Modeling Laboratory, and the EEM Main Laboratory.',
+            image: ce7,
+            
+          },
+        ]
+      : project.id === 5
+      ? [
+          {
+            id: 'ev-1',
+            title: 'Update this title (Event 1)',
+            description:
+              'Brief description of USAID Clean Air event. Replace this placeholder text with your actual content.',
+            image: c7,
+          },
+          {
+            id: 'ev-2',
+            title: 'Update this title (Event 2)',
+            description:
+              'Another event entry for the Events list. You can adjust images and text anytime.',
+            image: c1,
+          },
+        ]
+      : project.id === 4
+      ? [
+          {
+            id: 'ev-1',
+            title: 'Update this title (Event 1)',
+            description:
+              'Brief description for the open waste burning training program event. Replace with details.',
+            image: p1_3,
+          },
+        ]
+      : [];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -331,7 +469,7 @@ const ProjectDetails = () => {
         {/* Hero Section with Title and Image */}
         <section className="bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div className="max-w-5xl mx-auto">
+            <div className="max-w-6xl mx-auto">
               {/* Project Title */}
               <motion.h1 
                 className="text-2xl md:text-3xl font-bold text-foreground mb-2 text-center"
@@ -385,7 +523,7 @@ const ProjectDetails = () => {
 
         {/* Content Section */}
         <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-2">
-          <div className="max-w-5xl mx-auto space-y-2">
+          <div className="max-w-6xl mx-auto space-y-2">
             {/* Key Info List */}
             <motion.div 
               className="p-6 rounded-lg"
@@ -818,6 +956,29 @@ const ProjectDetails = () => {
                       className="max-w-full h-auto rounded-lg"
                     />
                   </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-foreground mb-4">Core Activities of AirQC:</h3>
+                    <ul className="space-y-3">
+                      <li className="text-muted-foreground text-lg leading-relaxed">
+                        1. Providing technical guidance to assess and strengthen existing air quality data management and sharing systems in Kathmandu Valley (KV)/Nepal;
+                      </li>
+                      <li className="text-muted-foreground text-lg leading-relaxed">
+                        2. Supporting data compilation and analysis on air pollution in program areas to inform program priorities and interventions;
+                      </li>
+                      <li className="text-muted-foreground text-lg leading-relaxed">
+                        3. Develop a workable emissions inventory (EI) calculator, provide EI data, and build air quality modeling capacity;
+                      </li>
+                      <li className="text-muted-foreground text-lg leading-relaxed">
+                        4. Potentially using existing data from outside KV/Nepal to account for transboundary air pollution (some key sources of air pollution could be from outside of the KV);
+                      </li>
+                      <li className="text-muted-foreground text-lg leading-relaxed">
+                        5. Supporting the establishment of a consortium of scientists, researchers, and policymakers focused on atmospheric research in Nepal;
+                      </li>
+                      <li className="text-muted-foreground text-lg leading-relaxed">
+                        6. Holding workshops/training to address identified capacity gaps, particularly for enabling improved and quality evidence generation and use.
+                      </li>
+                    </ul>
+                  </div>
                 </motion.section>
               )}
               
@@ -834,11 +995,11 @@ const ProjectDetails = () => {
                 </motion.section>
               )}
 
-              {/* Key Activities */}
-              {project.id !== 3 && (
+              {/* Key Activities -> Events (skip for HEAL-HAZE id=8 and USAID Clean Air id=5 to avoid duplicate Events heading) */}
+              {project.id !== 3 && project.id !== 8 && project.id !== 5 && (
                 <motion.section variants={itemVariants} className="space-y-4">
                   <h2 className="text-2xl font-bold text-foreground border-b-2 border-primary pb-2">
-                    {project.id === 5 ? 'Core Activities of AirQC' : 'Key Activities'}
+                    {project.id === 4 || project.id === 5 || project.id === 7 ? 'Events' : 'Key Activities'}
                   </h2>
                   <div className="p-6">
                     {Array.isArray(project.activities) ? (
@@ -861,6 +1022,15 @@ const ProjectDetails = () => {
                       <p className="text-muted-foreground text-lg leading-relaxed">{project.activities}</p>
                     )}
                   </div>
+
+                  {/* Events list styled like Resources (only for projects using Events) */}
+                  {(project.id === 4 || project.id === 5 || project.id === 7) && events.length > 0 && (
+                    <div className="p-6 space-y-6">
+                      {events.map((item) => (
+                        <EventCard key={item.id} item={item} compactImages={project.id === 7} />)
+                      )}
+                    </div>
+                  )}
                 </motion.section>
               )}
 
@@ -895,28 +1065,28 @@ const ProjectDetails = () => {
 
               {/* Gallery Section (for project 1 only) */}
               {project.id === 1 && (
-                <motion.section variants={itemVariants} className="space-y-4">
+                <motion.section variants={itemVariants} className="space-y-2 -mt-2 -mb-2">
                   <h2 className="text-2xl font-bold text-foreground border-b-2 border-primary pb-2">Gallery</h2>
-                  <div className="p-6">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                        <img src={p1_1} alt="Gallery Image 1" className="w-full h-64 object-cover" />
-                      </div>
-                      <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                        <img src={p1_2} alt="Gallery Image 2" className="w-full h-64 object-cover" />
-                      </div>
-                      <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                        <img src={p1_3} alt="Gallery Image 3" className="w-full h-64 object-cover" />
-                      </div>
-                      <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                        <img src={p1_4} alt="Gallery Image 4" className="w-full h-64 object-cover" />
-                      </div>
-                      <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                        <img src={p1_5} alt="Gallery Image 5" className="w-full h-64 object-cover" />
-                      </div>
-                      <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                        <img src={p1_6} alt="Gallery Image 6" className="w-full h-64 object-cover" />
-                      </div>
+                  <div className="p-3 md:p-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+                      <figure className="group rounded-xl overflow-hidden shadow bg-background/80 backdrop-blur-md transition-all duration-300 hover:shadow-lg animate-enter">
+                        <img src={p1_1} alt="Gallery Image 1" className="w-full h-56 md:h-64 object-cover transition-transform duration-300" />
+                      </figure>
+                      <figure className="group rounded-xl overflow-hidden shadow bg-background/80 backdrop-blur-md transition-all duration-300 hover:shadow-lg animate-enter">
+                        <img src={p1_2} alt="Gallery Image 2" className="w-full h-56 md:h-64 object-cover transition-transform duration-300" />
+                      </figure>
+                      <figure className="group rounded-xl overflow-hidden shadow bg-background/80 backdrop-blur-md transition-all duration-300 hover:shadow-lg animate-enter">
+                        <img src={p1_3} alt="Gallery Image 3" className="w-full h-56 md:h-64 object-cover transition-transform duration-300" />
+                      </figure>
+                      <figure className="group rounded-xl overflow-hidden shadow bg-background/80 backdrop-blur-md transition-all duration-300 hover:shadow-lg animate-enter">
+                        <img src={p1_4} alt="Gallery Image 4" className="w-full h-56 md:h-64 object-cover object-left transition-transform duration-300" />
+                      </figure>
+                      <figure className="group rounded-xl overflow-hidden shadow bg-background/80 backdrop-blur-md transition-all duration-300 hover:shadow-lg animate-enter">
+                        <img src={p1_5} alt="Gallery Image 5" className="w-full h-56 md:h-64 object-cover transition-transform duration-300" />
+                      </figure>
+                      <figure className="group rounded-xl overflow-hidden shadow bg-background/80 backdrop-blur-md transition-all duration-300 hover:shadow-lg animate-enter">
+                        <img src={p1_6} alt="Gallery Image 6" className="w-full h-56 md:h-64 object-cover transition-transform duration-300" />
+                      </figure>
                     </div>
                   </div>
                 </motion.section>
@@ -940,10 +1110,10 @@ const ProjectDetails = () => {
                 </motion.section>
               )}
 
-              {/* Event Section (for project 5 only) */}
+              {/* Events Section (for project 5 only) */}
               {project.id === 5 && (
                 <motion.section variants={itemVariants} className="space-y-4">
-                  <h2 className="text-2xl font-bold text-foreground border-b-2 border-primary pb-2">Event</h2>
+                  <h2 className="text-2xl font-bold text-foreground border-b-2 border-primary pb-2">Events</h2>
                   <div className="p-6 space-y-6">
                     {/* Consortium for Atmospheric Research of Nepal (CARN) Subtitle */}
                     <div>

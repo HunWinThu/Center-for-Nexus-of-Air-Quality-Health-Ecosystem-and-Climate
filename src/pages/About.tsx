@@ -12,12 +12,10 @@ import sliding1 from '@/assets/sliding/1.jpg';
 import sliding2 from '@/assets/sliding/2.jpg';
 import sliding3 from '@/assets/sliding/3.png';
 import sliding4 from '@/assets/sliding/4.jpg';
-import sliding5 from '@/assets/sliding/5.jpg';
-import sliding6 from '@/assets/sliding/6.jpg';
+
 import sliding7 from '@/assets/sliding/7.jpg';
-import sliding8 from '@/assets/sliding/8.jpg';
-import sliding9 from '@/assets/sliding/9.jpg';
-import sliding10 from '@/assets/sliding/10.jpg';
+
+
 import { motion } from 'framer-motion';
 const About = () => {
   // Animation variants
@@ -90,7 +88,7 @@ const About = () => {
             }}
           >
             <CarouselContent className="w-full">
-              {[sliding1, sliding2, sliding3, sliding4, sliding5, sliding6, sliding7, sliding8, sliding9, sliding10].map((img, index) => (
+              {[sliding1, sliding2, sliding3, sliding4, sliding7].map((img, index) => (
                 <CarouselItem key={index} className="flex justify-center items-center">
                   <div className="relative w-auto h-auto max-w-full">
                     <img 

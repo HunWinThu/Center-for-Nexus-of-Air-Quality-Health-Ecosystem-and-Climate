@@ -18,7 +18,7 @@ import Hun from '@/assets/Hun Win Thu.jpg';
 import May from '@/assets/May.jpg';
 import Pant from '@/assets/Ms. Keishu Pant.jpg';
 
-import teamPlaceholder from '@/assets/team-placeholder.jpg';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
@@ -131,6 +131,13 @@ const coreTeam = [
 ];
 
 const Team = () => {
+  const getInitials = (name: string) =>
+    name
+      .split(/\s+/)
+      .map((n) => n[0])
+      .join('')
+      .slice(0, 2)
+      .toUpperCase();
   // Enhanced animation variants with elegant lazy loading
   const fadeUpVariants: Variants = {
     hidden: { opacity: 0, y: 80 },
@@ -259,13 +266,19 @@ const Team = () => {
                         style={{ width: 224, height: 288 }}
                         variants={imageVariants}
                       >
-                        <motion.img
-                          src={member.image || teamPlaceholder}
-                          alt={`${member.name} - ${member.role}`}
-                          loading="lazy"
-                          className={`w-full h-full border border-border bg-background object-cover ${member.alignTop ? 'object-top' : ''}`}
-                          style={member.imageScale ? { transform: `scale(${member.imageScale})` } : undefined}
-                        />
+                        {member.image ? (
+                          <motion.img
+                            src={member.image}
+                            alt={`${member.name} - ${member.role}`}
+                            loading="lazy"
+                            className={`w-full h-full border border-border bg-background object-cover ${member.alignTop ? 'object-top' : ''}`}
+                            style={member.imageScale ? { transform: `scale(${member.imageScale})` } : undefined}
+                          />
+                        ) : (
+                          <Avatar className="w-[224px] h-[288px] text-xl border border-border">
+                            <AvatarFallback>{getInitials(member.name)}</AvatarFallback>
+                          </Avatar>
+                        )}
                       </motion.div>
                       <Link to={`/team/${slugify(member.name)}`} state={{ member }} className="hover:underline">
                         <motion.h3 
@@ -317,13 +330,19 @@ const Team = () => {
                         style={{ width: 224, height: 288 }}
                         variants={imageVariants}
                       >
-                        <motion.img
-                          src={member.image || teamPlaceholder}
-                          alt={`${member.name} - ${member.role}`}
-                          loading="lazy"
-                          className={`w-full h-full border border-border bg-background object-cover ${member.alignTop ? 'object-top' : ''}`}
-                          style={member.imageScale ? { transform: `scale(${member.imageScale})` } : undefined}
-                        />
+                        {member.image ? (
+                          <motion.img
+                            src={member.image}
+                            alt={`${member.name} - ${member.role}`}
+                            loading="lazy"
+                            className={`w-full h-full border border-border bg-background object-cover ${member.alignTop ? 'object-top' : ''}`}
+                            style={member.imageScale ? { transform: `scale(${member.imageScale})` } : undefined}
+                          />
+                        ) : (
+                          <Avatar className="w-[224px] h-[288px] text-xl border border-border">
+                            <AvatarFallback>{getInitials(member.name)}</AvatarFallback>
+                          </Avatar>
+                        )}
                       </motion.div>
                       <Link to={`/team/${slugify(member.name)}`} state={{ member }} className="hover:underline">
                         <motion.h3 

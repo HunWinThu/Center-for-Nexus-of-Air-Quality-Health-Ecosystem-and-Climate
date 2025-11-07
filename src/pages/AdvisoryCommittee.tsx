@@ -23,7 +23,7 @@ import Mari from '@/assets/Advisory/Dr. Xavier Mari.jpeg';
 import Casanova from '@/assets/Advisory/Ms. Dang Espita Casanova.jpeg';
 import Tong from '@/assets/Advisory/Prof.TongZhu.png';
 
-import teamPlaceholder from '@/assets/team-placeholder.jpg';
+
 
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
@@ -282,7 +282,7 @@ const Committee = () => {
                         variants={imageVariants}
                       >
                         <motion.img
-                          src={member.image || teamPlaceholder}
+                          src={member.image}
                           alt={`${member.name} - ${member.role}`}
                           loading="lazy"
                           className={`w-full h-full border border-border bg-background object-cover ${member.alignTop ? 'object-top' : ''}`}
@@ -359,7 +359,7 @@ const Committee = () => {
                         variants={imageVariants}
                       >
                         <motion.img
-                          src={member.image || teamPlaceholder}
+                          src={member.image}
                           alt={`${member.name} - ${member.role}`}
                           loading="lazy"
                           className={`w-full h-full border border-border bg-background object-cover ${member.alignTop ? 'object-top' : ''}`}

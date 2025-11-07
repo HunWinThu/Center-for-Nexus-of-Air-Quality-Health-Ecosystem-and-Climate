@@ -23,12 +23,10 @@ const Footer = () => {
             <h3 className="text-xl sm:text-2xl font-semibold">Our Thematic Areas</h3>
             <nav className="flex flex-col space-y-1.5">
               <div className="flex flex-col gap-1.5">
-                <span className="text-sm sm:text-base opacity-90">High-Quality Research</span>
-                <span className="text-sm sm:text-base opacity-90">Multi-Pollutant Approach</span>
-                <span className="text-sm sm:text-base opacity-90">Co-Benefits Assessment</span>
+                <span className="text-sm sm:text-base opacity-90">High-quality interdisciplinary research</span>
                 <span className="text-sm sm:text-base opacity-90">International Collaboration</span>
                 <span className="text-sm sm:text-base opacity-90">Government Assistance</span>
-                <span className="text-sm sm:text-base opacity-90">Capacity Building & Training</span>
+                <span className="text-sm sm:text-base opacity-90">Capacity Building</span>
               </div>
             </nav>
           </div>
