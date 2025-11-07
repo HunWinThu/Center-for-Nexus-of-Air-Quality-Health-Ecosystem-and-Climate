@@ -1,6 +1,5 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
 
 interface HexagonItem {
   title: string;
@@ -13,7 +12,6 @@ interface HexagonItem {
     | "bottomLeft"
     | "bottomRight";
   bgColor?: string;
-  route?: string; // Route to navigate to
   x: number; // SVG x coordinate
   y: number; // SVG y coordinate
   size: "normal" | "large"; // Size variant
@@ -22,7 +20,6 @@ interface HexagonItem {
 export const HexagonGrid = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const navigate = useNavigate();
 
   const items: HexagonItem[] = [
     {
@@ -30,14 +27,13 @@ export const HexagonGrid = () => {
       position: "center",
       bgColor: "",
       x: 450,
-      y: 400, // Moved down from 350 to 400
-      size: "large", // Center of 900x1000 viewBox
+      y: 400,
+      size: "large",
     },
     {
       title: "AQ Monitoring, Chemical Analysis, SA",
       position: "top",
       bgColor: "bg-conic-180 from-indigo-600 via-indigo-50 to-indigo-600",
-      route: "/thematic/monitoring-analysis",
       x: 450,
       y: 140, 
       size: "normal",
@@ -46,7 +42,6 @@ export const HexagonGrid = () => {
       title: "Integrated Air Pollution Control: Demonstration",
       position: "bottom",
       bgColor: "bg-conic-180 from-blue-700 via-blue-50 to-blue-700",
-      route: "/thematic/pollution-control",
       x: 450,
       y: 660, 
       size: "normal",
@@ -55,7 +50,6 @@ export const HexagonGrid = () => {
       title: "Impact Assessment: Health and Ecosystem",
       position: "topLeft",
       bgColor: "bg-conic-180 from-indigo-600 via-indigo-50 to-indigo-600",
-      route: "/thematic/impact-assessment",
       x: 220,
       y: 270, 
       size: "normal",
@@ -64,36 +58,27 @@ export const HexagonGrid = () => {
       title: "Emission Inventory and Emission Projection",
       position: "topRight",
       bgColor: "bg-conic-180 from-indigo-700 via-indigo-50 to-indigo-700",
-      route: "/thematic/emission-inventory",
       x: 680,
-      y: 270, // Moved down from 275 to 325
+      y: 270,
       size: "normal",
     },
     {
       title: "Meteorology and Climate Science",
       position: "bottomLeft",
       bgColor: "bg-conic-180 from-purple-600 via-purple-50 to-purple-600",
-      route: "/thematic/meteorology-climate",
       x: 220,
-      y: 530, // Moved down from 425 to 475
+      y: 530,
       size: "normal",
     },
     {
       title: "Dispersion Modeling",
       position: "bottomRight",
       bgColor: "bg-conic-180 from-purple-700 via-purple-50 to-purple-700",
-      route: "/thematic/dispersion-modeling",
       x: 680,
-      y: 530, // Moved down from 425 to 475
+      y: 530,
       size: "normal",
     },
   ];
-
-  const handleClick = (item: HexagonItem) => {
-    if (item.position !== "center" && item.route) {
-      navigate(item.route);
-    }
-  };
 
   // Gradients for SVG <defs>
   const getGradient = (position: string) => {
@@ -187,22 +172,12 @@ export const HexagonGrid = () => {
                         : {}
                     }
                     transition={{
-                      duration: 0.6, // Same speed as hover animation
+                      duration: 0.6,
                     }}
-                    onClick={() => handleClick(item)}
                     style={{
-                      cursor: item.position !== "center" ? "pointer" : "default",
                       transformBox: "fill-box",
                       transformOrigin: "50% 50%",
                     }}
-                    whileHover={
-                      item.position !== "center"
-                        ? {
-                            rotate: 360,
-                            transition: { duration: 0.6 },
-                          }
-                        : {}
-                    }
                   >
                     {/* Hexagon polygon */}
                     <polygon points={hexPoints} fill={`url(#${item.position}Gradient)`} />
@@ -222,10 +197,6 @@ export const HexagonGrid = () => {
                       duration: 0.8,
                       delay: index * 0.2,
                       ease: "easeOut",
-                    }}
-                    onClick={() => handleClick(item)}
-                    style={{
-                      cursor: item.position !== "center" ? "pointer" : "default",
                     }}
                   >
                     <foreignObject

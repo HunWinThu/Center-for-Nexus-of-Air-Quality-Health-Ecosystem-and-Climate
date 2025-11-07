@@ -140,25 +140,20 @@ const OurThematicAreas = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <Link 
-              to={getThematicRoute(feature.title)}
-              className="block h-full"
+            <Card 
+              className="overflow-hidden h-full flex flex-col shadow-md"
             >
-              <Card 
-                className="group hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden h-full flex flex-col"
-              >
-                <div className="relative aspect-video overflow-hidden bg-gray-100">
-                  <img 
-                    src={feature.image}
-                    alt={feature.title}
-                    className="w-full h-full object-contain transition-transform duration-300"
-                  />
-                </div>
-                <CardContent className="p-4 sm:p-6 text-center flex-1 flex items-center justify-center">
-                  <h3 className="text-base sm:text-lg font-semibold text-foreground leading-tight">{feature.title}</h3>
-                </CardContent>
-              </Card>
-            </Link>
+              <div className="relative aspect-video overflow-hidden">
+                <img 
+                  src={feature.image}
+                  alt={feature.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <CardContent className="p-4 sm:p-6 text-center flex-1 flex items-center justify-center">
+                <h3 className="text-base sm:text-lg font-semibold text-foreground leading-tight">{feature.title}</h3>
+              </CardContent>
+            </Card>
           </motion.div>
         ))}
       </motion.div>
