@@ -40,7 +40,7 @@ const Header = () => {
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
     { name: 'Projects', href: '/projects' },
-    // { name: 'Events & Media', href: '/news' }, // Temporarily hidden while updating content
+    { name: 'Events & Media', href: '/news' },
     { name: 'Publications', href: '/publications' },
     { name: 'Resources', href: '/resources' },
     { name: 'Contact Us', href: '/contact' },

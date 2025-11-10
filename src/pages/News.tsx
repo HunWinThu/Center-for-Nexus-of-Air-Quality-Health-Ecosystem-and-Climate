@@ -1,958 +1,152 @@
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Calendar, Clock, ExternalLink, Globe, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { Calendar, ChevronDown, ChevronUp } from 'lucide-react';
+import { getSortedNewsItems } from '@/data/allSharedNewsData';
+import { useState } from 'react';
 
-// Import images
-import capacityImg from '@/assets/capacity.jpg';
-import airPollutionResearchImg from '@/assets/air-pollution-research.png';
-import riceStrawBurningImg from '@/assets/rice-straw-burning.jpg';
-import governmentImg from '@/assets/government.jpg';
-import higQualityImg from '@/assets/hig-quality.jpg';
-import coBenefitsImg from '@/assets/co-benefits.png';
-// News event images
-import image1 from '@/assets/image1.jpeg';
-import image2 from '@/assets/image2.png';
-import image3 from '@/assets/image3.jpeg';
-import image4 from '@/assets/image4.jpeg';
-import image5 from '@/assets/image5.jpg';
-import image6 from '@/assets/image6.jpeg';
-import image7 from '@/assets/image7.jpeg';
-import image8 from '@/assets/image8.jpeg';
-import image9 from '@/assets/image9.jpeg';
-import image10 from '@/assets/image10.jpeg';
-import image11 from '@/assets/image11.jpeg';
-import image12 from '@/assets/image12.jpeg';
-import image13 from '@/assets/image13.jpeg';
-import image14 from '@/assets/image14.jpeg';
-import image15 from '@/assets/image15.jpeg';
-import image16 from '@/assets/image16.jpeg';
-import image17 from '@/assets/image17.jpeg';
-import image18 from '@/assets/image18.jpeg';
-import image19 from '@/assets/image19.jpeg';
-import image20 from '@/assets/image20.jpeg';
-import image21 from '@/assets/image21.png';
-import image22 from '@/assets/image22.jpeg';
-import image23 from '@/assets/image23.png';
-import image24 from '@/assets/News&Events/image24.png';
-import image25 from '@/assets/News&Events/image25.jpeg';
-import image26 from '@/assets/News&Events/image26.jpeg';
-import image27 from '@/assets/News&Events/image27.jpg';
-import image28 from '@/assets/News&Events/image28.jpg';
-import image29 from '@/assets/News&Events/image29.jpg'
-interface NewsItem {
+const fadeUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.4 }
+};
+
+interface NewsCardProps {
   id: number;
   title: string;
   excerpt: string;
   category: string;
   date: string;
-  image: string;
-  link: string;
+  image: string | string[];
 }
 
-interface SupabaseEvent {
-  id: string;
-  title: string;
-  description: string;
-  event_date: string;
-  event_time: string;
-  location: string;
-  image_url?: string;
-  is_active: boolean;
-}
+const NewsCard = ({ title, excerpt, date, image }: NewsCardProps) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const shouldTruncate = excerpt.length > 200;
+  const displayText = isExpanded || !shouldTruncate ? excerpt : excerpt.slice(0, 200) + '...';
 
-interface Event {
-  id: number;
-  title: string;
-  date: string;
-  time: string;
-  location: string;
-  description: string;
-  image: string;
-}
-
-const News = () => {
-  const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [supabaseEvents, setSupabaseEvents] = useState<SupabaseEvent[]>([]);
-  const [loadingEvents, setLoadingEvents] = useState(true);
-  
-  // Get active tab from URL, default to 'news'
-  const activeTab = searchParams.get('tab') || 'news';
-  
-  // Function to handle tab changes and update URL
-  const handleTabChange = (tabValue: string) => {
-    setSearchParams({ tab: tabValue });
-  };
-  
-  // Animation variants - balanced timing for elegant loading
-  const fadeUpVariants = {
-    hidden: { opacity: 0, y: 80 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.9,
-        ease: [0.25, 0.1, 0.25, 1] as const
-      }
-    }
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.5,
-        delayChildren: 0.7
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 60, scale: 0.9 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      scale: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 0.1, 0.25, 1] as const
-      }
-    }
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 1.2 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: {
-        duration: 0.7,
-        ease: [0.25, 0.1, 0.25, 1] as const
-      }
-    }
-  };  // Load events from Supabase
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const { supabase } = await import('@/services/supabase');
-        const { data, error } = await supabase
-          .from('upcoming_events')
-          .select('*')
-          .eq('is_active', true)
-          .order('event_date', { ascending: true });
-
-        if (error) {
-          console.error('Error fetching events:', error);
-        } else {
-          console.log('Fetched events from database:', data);
-          setSupabaseEvents(data || []);
-        }
-      } catch (err) {
-        console.error('Error loading events:', err);
-      } finally {
-        setLoadingEvents(false);
-      }
-    };
-
-    fetchEvents();
-  }, []);
-
-const upcomingEvents: Event[] = supabaseEvents
-  .filter(event => {
-    let eventDateTime;
-    
-    // Check if event_date already includes time (ISO format)
-    if (event.event_date.includes('T')) {
-      // Date is already in ISO format, use it directly
-      eventDateTime = new Date(event.event_date);
-    } else {
-      // Date is just date, combine with time
-      eventDateTime = new Date(`${event.event_date}T${event.event_time || '00:00'}`);
-    }
-    
-    const currentDateTime = new Date();
-    
-    console.log(`Event: ${event.title}`);
-    console.log(`Raw event_date: ${event.event_date}`);
-    console.log(`Raw event_time: ${event.event_time}`);
-    console.log(`Parsed Event DateTime: ${eventDateTime}`);
-    console.log(`Current DateTime: ${currentDateTime}`);
-    console.log(`Is Future Event: ${eventDateTime > currentDateTime}`);
-    console.log('---');
-    
-    return eventDateTime > currentDateTime;
-  })
-  .map(event => ({
-    id: parseInt(event.id.substring(0, 8), 16),
-    title: event.title,
-    date: event.event_date,
-    time: event.event_time || '00:00',
-    location: event.location || 'TBA',
-    description: event.description || '',
-    image: event.image_url || '/placeholder.svg'
-  }));
-
-console.log('Total events from DB:', supabaseEvents.length);
-console.log('Upcoming events after filter:', upcomingEvents.length);
-
-const newsItems: NewsItem[] = [
-  {
-    id: 1,
-    title: "Networking Meeting with IRD",
-    excerpt:
-      "The team met Dr. Xavier Mari (Representative of IRD in Thailand) on Jun 14 to prepare a proposal on “Integrated approaches to climate mitigation and air quality improvement in Southeast Asia (SEACAI)” onsite at AIT. The team discussed with Dr. Xavier about all the proposed work packages (WPs) and agreed that the WP on the Data Management System will be led by AirQC. A discussion on the organization of the next IRD SOOT-SEA meeting at AIT on Oct 4, 2024.",
-    category: "News",
-    date: "14 June 2024",
-    image: "",
-    link: "#",
-  },
-  {
-    id: 2,
-    title: "Joined the Kick-off meeting",
-    excerpt:
-      "Joined the Kick-off meeting of e-Asia HEAL-HAZE project, July 02. Prof. Kim Oanh, Director of the Center, presented the planned activities of modeling (WP3) and early warning (WP5) which are led by the Center, and also discussed with partners on other WPs.",
-    category: "News",
-    date: "02 July, 2024",
-    image: "",
-    link: "#",
-  },
-  {
-    id: 3,
-    title: "Networking and research collaboration meeting with of EANET and ACAP",
-    excerpt:
-      "On 27 August 2024, the EANET National Committee and Secretariat, and Asia Center for Air Pollution Research (ACAP) (Figure 1) visited AirQC. A hybrid meeting was organized with onsite participants at AIT campus. The agenda included the introduction by ACAP, EANET, followed by a presentation from the AirQC regarding the key research activities with a focus on acid deposition monitoring and modeling. The participants engaged in discussions about potential collaboration opportunities. AirQC hosted a visit to the Air Quality modeling lab and the Environmental Engineering and Management (EEM) laboratory. The meeting featured distinguished guests, including Mr. Bert Fabian (Coordinator of the Secretariat for EANET; joined online), Prof. Fan Meng (Deputy Director General of ACAP), Dr. Ken Yamashita (Head of the Asia Center for Air Pollution Research, ACAP), Dr. Meihua Zhu (Chief Senior Researcher, ACAP), and Dr. Junichi Kurokawa (Head of the Data Management Department, ACAP).",
-    category: "News",
-    date: "27 August 2024",
-    image: image1,
-    link: "#",
-  },
-  {
-    id: 4,
-    title: "Networking Meeting with Ricardo Plc",
-    excerpt:
-      "On 15 October 2024, Dr. Mark Broomfield, Technical Director at Ricardo Plc (Figure 4) visited the center. The meeting was to explore the air quality expertise and experience of both the AirQC and Ricardo to identify potential collaboration opportunities.",
-    category: "News",
-    date: "15 October 2024",
-    image: image2,
-    link: "#",
-  },
-  {
-    id: 5,
-    title: "Networking Meeting with the Delegation from the University of Surrey, UK",
-    excerpt:
-      "On 16 October 2024, AirQC had the honor of hosting a delegation from the University of Surrey, UK, comprising distinguished members including Prof. GQ Max Lu (President and Vice Chancellor), Mr. Patrick Degg (Vice President, Global), Prof. Bob Nichol (Pro-Vice Chancellor and Executive Dean of the Faculty of Engineering and Physical Sciences), Prof. Adam Amara (Head of the School of Mathematics and Physics), Mr. Tom Windle (Director of International Partnerships), and Dr. Lian Liu (Chemical Engineer and Reader from the School of Chemistry and Chemical Engineering), Figure 5. The purpose of their visit was a courtesy meeting with the AIT President and management team to explore potential collaborative activities between AIT and the University of Surrey. The delegation participated in discussions with the AirQC and other centers at AIT, and with AIT President, marking a significant step towards fostering international partnerships in research and education. Representative of EEM also joined the meeting.",
-    category: "News",
-    date: "16 October 2024",
-    image: image3,
-    link: "#",
-  },
-  {
-    id: 6,
-    title: "Keynote & Invited Talks: UNEP Regional Workshop on Developing National Air Pollutant Emissions Inventory",
-    excerpt:
-      "On 23 September 2024, Prof. Kim Oanh (Center director) was a guest speaker and presented the initial findings of the AIT-EANET project on “Emissions Inventory and Source Apportionment Stocktaking” at the “Regional workshop on national air pollutant emissions inventory\", a Pre-Event to the Fifth Ministerial Meeting of the Regional Forum on Health and Environment of Asia Pacific organized by UNEP in Jakarta, Indonesia. This workshop aimed to support countries in the Asia-Pacific region by enhancing their capacity and facilitating the exchange of best practices related to the development of air pollutant emissions inventories. The focus was on fostering effective air quality policies and conducting assessments of the health impacts associated with air pollution. The presentation highlighted the work of the AIT-EANET EI project, emphasizing key methodologies and frameworks that can aid countries in creating robust emissions inventories to inform future policy-making and public health initiatives.",
-    category: "News",
-    date: "23 September 2024",
-    image: "",
-    link: "#",
-  },
-  {
-    id: 7,
-    title: "Panelist and invited speaker at “Regional Dialogue on Climate and Health”",
-    excerpt:
-      "On 2-3 October 2024, Prof. Kim Oanh was a Speaker and Panelist at the “Climate and Health Regional Dialogue” organized by the Embassy of France to Thailand, at Mahidol University. This gathering brought together experts, researchers, and stakeholders to discuss the critical intersection of climate change and public health. The dialogue aimed to strengthen partnerships and enhance the collective capacity to address the health implications of climate change, paving the way for more resilient and adaptive health systems in the face of a changing climate. Prof. Kim Oanh engaged in meaningful discussions about the Co-control of emission sources for multiple benefits to air quality, health and climate, exchanging insights and exploring collaborative approaches to promote the co-controlling efforts.",
-    category: "News",
-    date: "2 October 2024",
-    image: image28,
-    link: "#",
-  },
-  {
-    id: 8,
-    title: "Panelist at a side event of “Eighth Session of the Committee on Environment and Development (CED-8)”",
-    excerpt:
-      "On 17-18 October 2024, Prof. Kim Oanh and Dr. Lai Nguyen Huy participated the “Eighth Session of the Committee on Environment and Development (CED-8)” at UNCC in Bangkok (Figure 6). Prof. Kim Oanh was a Panelist at the Side Event “Towards Clean Air: Air Quality Status and Actions in the Asia-Pacific”. Prof. Kim Oanh emphasized the importance of getting science- and evidence-based information to foster regional cooperation in dealing with the air pollution challenge, along with the needs for capacity building. This side event was organized by The Ministry of the Environment of Japan (MOEJ) in collaboration with UNESCAP and several international institutions, including ROK, MOE, and ADPC. This event aimed to provide a comprehensive overview of the current status and trends in air pollutant emissions and air quality across Asia and the Pacific, facilitating informed collective action among diverse stakeholders in support of the Regional Action Plan for Air Pollution (RAPAP). Key outcomes included heightened awareness of air quality trends relating to aerosols (PM) and trace gases, a better understanding of transboundary air pollution impacts and sources, and the identification of strategies to enhance regional efforts in tackling air pollution. The panel discussion focused on assessing air pollution trends in the region and exploring opportunities for strengthening collaborative actions to address these critical challenges.",
-    category: "News",
-    date: "17 October 2024",
-    image: image4,
-    link: "#",
-  },
-  {
-    id: 9,
-    title: "Invited speaker at “Identifying Air Pollution Sources Through Emission Inventory Event”",
-    excerpt:
-      "On 22 October 2024, Prof. Kim Oanh (Center director) was a guest speaker “Development of emission inventory for integrated air quality management: SEA regional perspectives”. Invited speaker at “Identifying Air Pollution Sources Through Emission Inventory Event” organized by the World Resources Institute (22 October 2024)”. This hybrid workshop organized by the World Resources Institute (WRI) Indonesia, titled \"Regional Workshop on Developing National Air Pollutant Emissions Inventory.\" The workshop facilitated discussions on best practices and innovative strategies for developing comprehensive emissions inventories, aiming to empower Southeast Asian countries to tackle air pollution challenges and improve public health outcomes.",
-    category: "News",
-    date: "22 October 2024",
-    image: image5,
-    link: "#",
-  },
-  {
-    id: 10,
-    title: "Panelist at the Beijing Forum",
-    excerpt:
-      "On November 1-2, 2024. Prof. Kim Oanh, Director of AirQC participated as a panelist in Session 3 titled “AiR, Climate and Health” at the “Sustainable Development and Environmental Health” of the Beijing Forum 2024. She shared her perspectives on improving air quality in Southeast Asia, highlighting the multiple benefits associated with these improvements in a talk “Perspectives of Improving Air Quality with Multiple Benefits in Southeast Asia”.",
-    category: "News",
-    date: "November 1, 2024",
-    image: "",
-    link: "#",
-  },
-  {
-    id: 11,
-    title: "Workshop Participation: Advanced Institute on Health Investigation and Air Sensing for Asian Pollution (AI on Hi-ASAP) workshop",
-    excerpt:
-      "On 5-8th September 2024, Dr. Lai Nguyen Huy and Dr. Truong Thi Huyen (AirQC members) attended this event organized by Universiti Putra Malaysia (UPM) together with Integrated Research on Disaster Risk, International Centre of Excellence Taipei (IRDR ICoE - Taipei) and Universiti Kebangsaan Malaysia (UKM) in Malaysia. This workshop aims to provide young to mid-career practitioners and researchers interested in air pollution and health research in Asia with knowledge, experience, and hands-on practice in the techniques and methodologies required to conduct research with the aim of reducing the health risks of air pollution.",
-    category: "News",
-    date: "5 September 2024",
-    image: "",
-    link: "#",
-  },
-  {
-    id: 12,
-    title: "Networking Meeting for Research Collaboration with Mahidol University",
-    excerpt:
-      "On 9 October 2024, the center held a meeting with a visitor team from Mahidol University (MU), led by Associate Prof. Kraichat Tantrakarnapa, Deputy Dean. The discussion was on planning forthcoming projects of HEAL-HAZE and CANBREATHE and the Hi-ASAP collaborative research using LCS (AS-LUNG sensors) for air quality monitoring. The Hi-ASAP Project is coordinated by the Research Center for Environmental Changes at Academia Sinica, Taiwan, and both MU and AIT are active participants.",
-    category: "News",
-    date: "9 October 2024",
-    image: image6,
-    link: "#",
-  },
-  {
-    id: 13,
-    title: "Networking Meeting: Visit of Ms. Yumi Yasuda, Ministry of Environment, Japan",
-    excerpt:
-      "The Center hosted Ms. Yumi Yasuda, Section Chief from the Ministry of Environment, Japan. The visit provided an opportunity for networking and exploring potential avenues for research collaboration, strengthening ties between the Center and Japan’s Ministry of Environment.",
-    category: "News",
-    date: "22 Apr, 2025",
-    image: "",
-    link: "#",
-  },
-  {
-    id: 14,
-    title: "Networking Meeting with Ricardo",
-    excerpt:
-      "The Center held an online meeting with researchers from Ricardo Plc’s Environmental Evidence and Data Practice. Discussions focused on air quality management in the Greater Mekong Subregion, fostering knowledge exchange and potential collaboration.",
-    category: "News",
-    date: "2 June 2025",
-    image: "",
-    link: "#",
-  },
-  {
-    id: 15,
-    title: "Institutional Collaboration and Partnership Development: MoU with RCEC-AS (Taiwan)",
-    excerpt:
-      "On 29 April, AirQC endorsed a Memorandum of Understanding (MoU) between AirQC and the Research Center for Environmental Changes, Academia Sinica (RCEC-AS), Taiwan. The agreement aims to advance collaborative research on air pollution, exposure profiling, and health impacts in Asia, thereby strengthening long-term regional cooperation.",
-    category: "News",
-    date: "29 April, 2025",
-    image: "",
-    link: "#",
-  },
-  {
-    id: 16,
-    title: "Panelist: Combating Air Pollution and Improving Air Quality in Viet Nam",
-    excerpt:
-      "On 25 April 2025, the Center participated in the Conference on ‘Combating Air Pollution and Improving Air Quality in Viet Nam,’ organized by the Ministry of Agriculture and Environment, Ministry of Health, UNDP, and WHO. Prof. Kim Oanh, Director delivered a talk on ‘Integrated Air Quality Management – with Focus on Technical Tools’ and contributed as a panelist.”",
-    category: "News",
-    date: "25 April 2025",
-    image: "",
-    link: "#",
-  },
-  {
-    id: 17,
-    title: "Lectures, Panels, and Keynote Participation",
-    excerpt:
-      "Prof. Kim Oanh, Center Director, delivered lectures at two training pre-events of the conference: ‘Air Quality Data for Effective Air Quality Management – Best Practice in Asia and Lessons for Vietnam’ on 22 April.",
-    category: "News",
-    date: "22 April, 2025",
-    image: "",
-    link: "#",
-  },
-  {
-    id: 18,
-    title: "Lectures, Panels, and Keynote Participation",
-    excerpt:
-      "On 23 May, Prof. Kim Oanh delivered a lecture at the training pre-event ‘Opportunities to Strengthen Air Quality and Its Management in Vietnam,’ sharing insights on improving air quality management and fostering regional knowledge exchange.",
-    category: "News",
-    date: "23 May, 2025",
-    image: "",
-    link: "#",
-  },
-  {
-    id: 19,
-    title: "Interviewed by the National TV",
-    excerpt:
-      "Prof. Kim Oanh was interviewed by National TV (VTV1) to discuss the importance of accurate emission source data for effective emission control",
-    category: "News",
-    date: "22 April, 2025",
-    image: image24,
-    link: "#",
-  },
-  {
-    id: 20,
-    title: "Policy Dialogue Workshop on Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia",
-    excerpt:
-      "Prof. Kim Oanh, Center Director, delivered the keynote presentation on “Overview of Smoke Haze Pollution from Wildfires and Agricultural Burning in Southeast Asia” at the regional policy dialogue workshop in Bangkok, co-organized by Mahidol University and the University of Canberra. The workshop provided a platform for cross-sectoral engagement on haze pollution mitigation.",
-    category: "News",
-    date: "17 June 2025",
-    image: image7,
-    link: "#",
-  },
-  {
-    id: 21,
-    title: "Regional Policy Dialogue Workshop in Vientiane, Laos",
-    excerpt:
-      "AirQC participated in a high-level regional policy dialogue in Vientiane, co-hosted by the University of Canberra, NUOL, and the University of Health Sciences Laos. The workshop brought together over 40 delegates to discuss cross-sectoral strategies for addressing haze pollution in the region.",
-    category: "News",
-    date: "26 June 2025",
-    image: image8,
-    link: "#",
-  },
-  {
-    id: 22,
-    title: "Roundtable Discussion on Sustainable Last Mile Delivery, Manila, Philippines",
-    excerpt:
-      "AirQC attended the Sustainable Last Mile Delivery workshop organized by ICSC in Manila. The team presented key findings from a Thailand case study and actively contributed to discussions for the regional report, promoting sustainable logistics practices.",
-    category: "News",
-    date: "25 July 2025",
-    image: "",
-    link: "#",
-  },
-  {
-    id: 23,
-    title: "Training Session and Institutional Visit to the Institute of Technology of Cambodia (ITC)",
-    excerpt:
-      "Prof. Kim Oanh and Dr. Lai Nguyen Huy represented AirQC at the HEAL-HAZE and CANBREATHE training session in Phnom Penh, delivering lectures on air quality modeling and demonstrating the HYSPLIT model. The session enhanced regional technical capacity in air quality management.",
-    category: "News",
-    date: "11 June 2025",
-    image: image9,
-    link: "#",
-  },
-  {
-    id: 24,
-    title: "Laboratory Visit, Training, and Community Engagement in Vientiane, Laos",
-    excerpt:
-      "At NUOL’s Faculty of Engineering, AirQC co-delivered technical training on air quality modeling, early warning systems, and HYSPLIT. The afternoon included visits to four nurseries, promoting dialogue on child air-health risks and protective measures in early childhood care environments.",
-    category: "News",
-    date: "25 June 2025",
-    image: image10,
-    link: "#",
-  },
-  {
-    id: 25,
-    title: "Field Visits to Childcare Centers and Haze-Affected Areas in Chiang Mai, Thailand",
-    excerpt:
-      "AirQC team members visited three Child Development Centers in Hangdong and Doi Saket Districts, followed by Doi Suthep and Doi Pui mountains. The visits assessed haze exposure among children and explored practical indoor air protection measures and localized monitoring approaches.",
-    category: "News",
-    date: "20 June 2025",
-    image: image11,
-    link: "#",
-  },
-  {
-    id: 26,
-    title: "Institutional Visit to Chiang Mai University, Thailand",
-    excerpt:
-      "Prof. Kim Oanh and Dr. Lai Nguyen Huy visited the Research Institute for Health Sciences (RIHES) at Chiang Mai University as part of HEAL-HAZE and CANBREATHE. Prof. Kim delivered a technical presentation on air quality modeling and early warning systems, followed by a lab tour and collaborative discussions on joint air-health research.",
-    category: "News",
-    date: "19 June 2025",
-    image: image25,
-    link: "#",
-  },
-  {
-    id: 27,
-    title: "Field Visits to Early Childhood Centers in Luang Prabang, Lao PDR",
-    excerpt:
-      "AirQC participated in field campaigns visiting five nursery schools to evaluate environmental health challenges. The team emphasized community-based interventions and shared expertise on low-cost air sensing to protect children from air pollution.",
-    category: "News",
-    date: "24 June 2025",
-    image: image12,
-    link: "#",
-  },
-  {
-    id: 28,
-    title: "Air Sensors International Conference (ASIC) Participation",
-    excerpt:
-      "From 19 to 22 May 2025, Prof. Kim Oanh participated in the Air Sensors International Conference (ASIC) in Bangkok, organized by the UC Davis Air Quality Research Center, USA. She served as a member of the technical planning committee, delivered an oral presentation titled ‘Evaluation of Low-Cost Sensors in the Monitoring of Surface Ozone,’ and co-chaired a conference session, contributing to the advancement of sensor-based air quality monitoring research.",
-    category: "News",
-    date: "19 May 2025",
-    image: "",
-    link: "#",
-  },
-  {
-    id: 29,
-    title: "Delivered Expert talk :Regional Workshop on Mitigation Potential of GHG Emissions from Open Waste Burning",
-    excerpt:
-      "On August 1, 2025, Prof. Kim Oanh, Center Director, virtually participated as an invited expert in the regional workshop titled “Mitigation Potential of GHG Emissions from Open Waste Burning under Present and Future Scenarios: Cases of South Asian Countries – Nepal and Bangladesh,” held in Kathmandu, Nepal. The workshop was jointly organized by the Center of Research for Environment, Energy and Water (CREEW), Nepal; the University of Dhaka, Bangladesh; and Kobe City University of Foreign Studies, Japan, with support from the Asia-Pacific Network for Global Change Research (APN). Prof. Oanh delivered a brief talk and provided comments, contributing expertise on the air quality and climate implications of waste burning while supporting dialogue on policy development and regional cooperation.",
-    category: "News",
-    date: "1 August 2025",
-    image: image27,
-    link: "#",
-  },
-  {
-    id: 30,
-    title: "Networking Meeting with ENVEA-APAQ",
-    excerpt:
-      "The Center hosted a networking meeting with Dr. Joseph Deng Mao, Head of Business Development at ENVEA–APAQ Group. ENVEA, a global leader in environmental monitoring solutions, acquired APAQ Group on August 6, 2025, expanding its advanced technologies and services across Southeast Asia. Established in Singapore in 2013, APAQ Group provides comprehensive air quality solutions, including consultancy, dispersion modeling, monitoring instrumentation, and training, delivering compliance-grade systems tailored to regional needs. The meeting provided an excellent opportunity to explore regional collaboration on air quality monitoring and data-driven environmental solutions.",
-    category: "News",
-    date: "6 August 2025",
-    image: image26,
-    link: "#",
-  },
-];
-
-// Function to parse date strings to Date objects for proper sorting
-const parseDate = (dateString: string): Date => {
-  // Handle various date formats in the data
-  const cleanDate = dateString.replace(/,/g, '').trim();
-  
-  // Try different date formats
-  const formats = [
-    // "25 July 2025", "22 April 2025"
-    /^(\d{1,2})\s+(\w+)\s+(\d{4})$/,
-    // "02 July, 2024"
-    /^(\d{1,2})\s+(\w+),?\s+(\d{4})$/,
-    // "27 August 2024"
-    /^(\d{1,2})\s+(\w+)\s+(\d{4})$/,
-    // "November 1, 2024"
-    /^(\w+)\s+(\d{1,2}),?\s+(\d{4})$/,
-    // "5 September 2024"
-    /^(\d{1,2})\s+(\w+)\s+(\d{4})$/
-  ];
-
-  for (const format of formats) {
-    const match = cleanDate.match(format);
-    if (match) {
-      try {
-        return new Date(cleanDate);
-      } catch {
-        continue;
-      }
-    }
-  }
-  
-  // Fallback: try direct parsing
-  try {
-    return new Date(cleanDate);
-  } catch {
-    return new Date(0); // Return epoch if parsing fails
-  }
+  return (
+    <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+      <CardHeader>
+        <div className="flex items-start justify-between gap-4">
+          <CardTitle className="text-xl font-bold text-gray-900 flex-1">
+            {title}
+          </CardTitle>
+          <div className="flex items-center gap-2 text-sm text-gray-500 whitespace-nowrap">
+            <Calendar className="w-4 h-4" />
+            <span>{date}</span>
+          </div>
+        </div>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="flex gap-6">
+          {image && (
+            <div className="flex-shrink-0 w-80 space-y-4">
+              {Array.isArray(image) ? (
+                image.map((img, index) => (
+                  <img
+                    key={index}
+                    src={img}
+                    alt={`${title} - ${index + 1}`}
+                    className="w-full h-auto rounded-lg object-cover"
+                  />
+                ))
+              ) : (
+                <img
+                  src={image}
+                  alt={title}
+                  className="w-full h-auto rounded-lg object-cover"
+                />
+              )}
+            </div>
+          )}
+          <div className="flex-1 space-y-4">
+            <p 
+              className="text-gray-700 leading-relaxed "
+              dangerouslySetInnerHTML={{ __html: displayText }}
+            />
+            {shouldTruncate && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="text-primary hover:text-primary/80 p-0 h-auto font-medium"
+              >
+                {isExpanded ? (
+                  <>
+                    Read Less <ChevronUp className="w-4 h-4 ml-1" />
+                  </>
+                ) : (
+                  <>
+                    Read More <ChevronDown className="w-4 h-4 ml-1" />
+                  </>
+                )}
+              </Button>
+            )}
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
 };
 
-// Sort newsItems by date (latest first)
-const sortedNewsItems = [...newsItems].sort((a, b) => {
-  const dateA = parseDate(a.date);
-  const dateB = parseDate(b.date);
-  return dateB.getTime() - dateA.getTime();
-});
+const News = () => {
+  const allNews = getSortedNewsItems();
+  const events = allNews.filter(item => item.category === 'Event');
+  const media = allNews.filter(item => item.category === 'Media');
 
-// Convert past Supabase events to events format (for Events tab)
-const pastEventsAsEvents: NewsItem[] = supabaseEvents
-  .filter(event => {
-    let eventDateTime;
-    
-    // Check if event_date already includes time (ISO format)
-    if (event.event_date.includes('T')) {
-      // Date is already in ISO format, use it directly
-      eventDateTime = new Date(event.event_date);
-    } else {
-      // Date is just date, combine with time
-      eventDateTime = new Date(`${event.event_date}T${event.event_time || '00:00'}`);
-    }
-    
-    const currentDateTime = new Date();
-    return eventDateTime <= currentDateTime;
-  })
-  .map(event => ({
-    id: parseInt(event.id.substring(0, 8), 16),
-    title: event.title,
-    excerpt: event.description || 'Event completed',
-    category: "Event",
-    date: new Date(event.event_date).toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    }),
-    image: event.image_url || '',
-    link: "#"
-  }));
-
-// Only news items for All News tab (no past events)
-const allNewsItems = [...newsItems].sort((a, b) => {
-  const dateA = parseDate(a.date);
-  const dateB = parseDate(b.date);
-  return dateB.getTime() - dateA.getTime();
-});
-
-// Events data (combine static events with past Supabase events)
-const eventsData: NewsItem[] = [
-  {
-    id: 1,
-    title: "Launching Ceremony",
-    excerpt: "On July 10, 2024, the Center for Nexus of Air Quality, Health, Ecosystem, and Climate known as the Air Quality Nexus Center hosted its official launching ceremony. Led by Distinguished Professor Nguyen Thi Kim Oanh as a Director, the Center aims to advance capacity building and cutting-edge research in atmospheric sciences, fostering multidisciplinary collaboration within the Center and with global partners. The Center focuses on tackling the urgent challenge of air pollution, particularly fine particulate matter (PM2.5), which poses serious health risks across Asia. It emphasizes integrated, multi-pollutant and multi-effect approaches to develop cost-effective solutions and support governments in implementing clean air policies. The launch event featured insights from prominent experts and stakeholders, highlighting the Center’s commitment to driving impactful research and policy engagement to improve air quality, public health, ecosystems, and climate resilience in the region.",
-    category: "Event",
-    date: "10 July 2024",
-    image: image14,
-    link: "#",
-  },
-  {
-    id: 2,
-    title: "International workshop of project “SOOT-SEA – Atmospheric Activities”", 
-    excerpt: "On 4 October 2024, AirQC successfully organized the international workshop for the project “SOOT-SEA – Atmospheric Activities” at AITCC, with participation from the French and ASEAN colleagues (Figure 7). SOOT-SEA is an international network focused on understanding the impact of black carbon in Southeast Asia, funded by IRD, France. This project includes key partners from Thailand (AIT and Chiang Mai University), Vietnam (Hanoi University and Ho Chi Minh City University of Science), as well as several universities in Cambodia and Laos. The workshop provided an invaluable platform to promote and structure research and capacity-building efforts regarding black carbon and air pollution challenges within the region. It aimed to foster North-South and South-South collaborations and set the groundwork for future co-funding opportunities from national and international organizations. <br>The international participants of the project “SOOT-SEA – Atmospheric Activities” also visited the EEM Ambient Laboratory, Air quality modeling laboratory, and EEM Main Laboratory (Figure 2). This project is a collaborative effort for exchange of ideas among international researchers in the field of monitoring and emissions inventory of black carbon, a strong short-lived climate pollutant, in SEA.",
-    category: "Event",
-    date: "4 October 2024",
-    image: image16,
-    link: "#",
-  },
-  {
-    id: 3,
-    title: "Organized a Public Seminar: ‘Wildfire Smoke: Health Impacts and Adaptation in Southeast Asia and Australia’",
-    excerpt: "Organized a Public Seminar: ‘Wildfire Smoke: Health Impacts and Adaptation in Southeast Asia and Australia, paragraph On 18 June 2025, the AirQC Center hosted a public seminar on “Wildfire Smoke: Health Impacts and Adaptation in Southeast Asia and Australia,” bringing together regional and international experts to discuss health risks from wildfire smoke and haze under climate change. Part of the CANBREATHE and HEAL-HAZE projects, the event focused on climate attribution, health assessments, and adaptation for vulnerable groups. Key presentations covered early warning systems, health effects, and interventions like clean air rooms. The seminar also promoted policy dialogue and science-based regional planning. Following the seminar, experts were invited to a guided laboratory tour of AIT’s research facilities, including the EEM Ambient Laboratory, Air Quality Modeling Laboratory, and the EEM Main Environmental Laboratory",
-    category: "Event",
-    date: "18 June 2025",
-    image: image29,
-    link: "#",
-  },
-];
-
-// Sort eventsData by date (latest first) and combine with past events
-const sortedEventsData = [...eventsData, ...pastEventsAsEvents].sort((a, b) => {
-  const dateA = parseDate(a.date);
-  const dateB = parseDate(b.date);
-  return dateB.getTime() - dateA.getTime();
-});
-
-const resources: NewsItem[] = [
-  {
-    id: 1,
-    title: "Technical Report\nState of Air for Nepal with the focus in Kathmandu Valley",
-    excerpt:
-      "A technical report “State of Air for Nepal with the focus in Kathmandu Valley”, SoAR, led by the AIT team was published online. This is an activity of AIT partner (in the consortium of 5 partners) of the 5-year USAID-funded USAID Clean Air project. The SoAR provides an assessment of the current air pollution situation with the aim of providing science-based evidence for Nepal to tackle air pollution problems through appropriate clean air measures. The report was prepared based on information extracted and scrutinized from multiple data sources covering ground-based and satellite monitoring, emissions inventories, model simulated, and reanalysis data, with a focus on PM2.5. The report was reviewed by recognized experts inside, including the Department of Environment, and outside Nepal.",
-    category: "Resource",
-    date: "2024",
-    image: "",
-    link: "#",
-  },
-];
   return (
-    <>
-      {/* Hero Section */}
-      <section className="pt-20 pb-4 bg-white overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="max-w-4xl mx-auto text-center"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.h1 
-              className="text-4xl md:text-6xl font-bold text-primary mb-6"
-              variants={fadeUpVariants}
-              transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-6xl">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Events & Media
+          </h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Stay updated with our latest events and media coverage
+          </p>
+        </motion.div>
+
+        <Tabs defaultValue="events" className="w-full">
+          <TabsList className="grid w-full grid-cols-2 bg-accent/50 p-2 rounded-lg mb-8">
+            <TabsTrigger value="events" className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground">
+              Events
+            </TabsTrigger>
+            <TabsTrigger value="media" className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground">
+              Media
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="events">
+            <motion.div
+              {...fadeUp}
+              className="space-y-6"
             >
-              Events & Media
-            </motion.h1>
-            <motion.p 
-              className="text-xl text-muted-foreground"
-              variants={fadeUpVariants}
-              transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
+              {events.map((item) => (
+                <NewsCard key={item.id} {...item} />
+              ))}
+            </motion.div>
+          </TabsContent>
+
+          <TabsContent value="media">
+            <motion.div
+              {...fadeUp}
+              className="space-y-6"
             >
-              Stay updated with our latest research, events, and developments in air quality science
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Tabbed Content Section */}
-      <section className="pt-4 pb-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 bg-accent/50 p-2 rounded-lg mb-8">
-              <TabsTrigger 
-                value="upcoming" 
-                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
-              >
-                <Calendar className="mr-2" size={16} />
-                Upcoming Events
-              </TabsTrigger>
-              <TabsTrigger 
-                value="news" 
-                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
-              >
-                All News
-              </TabsTrigger>
-              <TabsTrigger 
-                value="events" 
-                className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
-              >
-                Events
-              </TabsTrigger>
-            </TabsList>
-
-            {/* Upcoming Events Content */}
-            <TabsContent value="upcoming" className="mt-8">
-              <motion.div 
-                className="max-w-4xl mx-auto"
-                variants={staggerContainer}
-                initial="hidden"
-                animate="visible"
-              >
-                {loadingEvents ? (
-                  <div className="text-center py-12">
-                    <div className="animate-spin w-8 h-8 border-2 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
-                    <p className="text-muted-foreground">Loading upcoming events...</p>
-                  </div>
-                ) : upcomingEvents.length === 0 ? (
-                  <div className="text-center py-12">
-                    <Calendar className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
-                    <h3 className="text-xl font-semibold mb-2">No Upcoming Events</h3>
-                    <p className="text-muted-foreground">Stay tuned for future events and announcements.</p>
-                  </div>
-                ) : (
-                  <div className="space-y-8">
-                    {upcomingEvents.map((event) => (
-                      <motion.div
-                        key={event.id}
-                        variants={cardVariants}
-                        transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-                      >
-                        <Card className="group relative overflow-hidden bg-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-3 border-0 rounded-3xl">
-                          {/* Professional Event Banner */}
-                          <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary via-primary/80 to-primary/60"></div>
-                          
-                          {/* Full-width Hero Section */}
-                          <div className="grid lg:grid-cols-2 gap-0 min-h-[350px]">
-                            {/* Hero Image Section */}
-                            <div className="relative overflow-hidden lg:order-1">
-                              <img 
-                                src={event.image || '/placeholder.svg'} 
-                                alt={event.title}
-                                className="w-full h-full object-cover transition-transform duration-300 min-h-[300px] lg:min-h-[350px]"
-                              />
-                              
-                              {/* Professional Date Badge */}
-                              <div className="absolute top-6 right-6">
-                                <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl">
-                                  <div className="text-center">
-                                    <div className="text-3xl font-bold text-primary">
-                                      {new Date(event.date).getDate()}
-                                    </div>
-                                    <div className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-                                      {new Date(event.date).toLocaleDateString('en-US', { month: 'short' })}
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-
-                              {/* Event Type Badge */}
-                              <div className="absolute top-6 left-6">
-                                <Badge className="bg-gradient-to-r from-primary to-primary/80 text-white px-4 py-2 text-sm font-semibold rounded-full shadow-xl">
-                                  UPCOMING EVENT
-                                </Badge>
-                              </div>
-
-                              {/* Gradient Overlay */}
-                              <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent lg:from-transparent lg:via-transparent lg:to-black/20"></div>
-                            </div>
-
-                            {/* Content Section */}
-                            <div className="p-6 lg:p-8 flex flex-col justify-center lg:order-2">
-                              {/* Title Section */}
-                              <div className="mb-6">
-                                <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-4 group-hover:text-primary transition-colors duration-300">
-                                  {event.title}
-                                </h3>
-                                
-                                {/* Professional Event Details */}
-                                <div className="space-y-3 mb-4">
-                                  {/* Time Info */}
-                                  <div className="flex items-center gap-3 text-gray-600">
-                                    <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                                      <Clock className="w-4 h-4 text-primary" />
-                                    </div>
-                                    <div>
-                                      <p className="font-semibold text-gray-900 text-sm">Time</p>
-                                      <p className="text-xs">{event.time || 'Time TBA'}</p>
-                                    </div>
-                                  </div>
-
-                                  {/* Location Info */}
-                                  {event.location && (
-                                    <div className="flex items-center gap-3 text-gray-600">
-                                      <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                                        <Globe className="w-4 h-4 text-primary" />
-                                      </div>
-                                      <div>
-                                        <p className="font-semibold text-gray-900 text-sm">Location</p>
-                                        <p className="text-xs">{event.location}</p>
-                                      </div>
-                                    </div>
-                                  )}
-                                </div>
-                              </div>
-
-                              {/* Description Section */}
-                              <div className="mb-6">
-                                <p className="text-gray-600 leading-relaxed text-base">
-                                  {event.description || 'Join us for this upcoming event.'}
-                                </p>
-                              </div>
-
-                              {/* Professional CTA Section */}
-                              <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                                <div className="flex items-center gap-3">
-                                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                                    <Calendar className="w-5 h-5 text-primary" />
-                                  </div>
-                                  <div>
-                                    <p className="font-semibold text-gray-900 text-sm">Save the Date</p>
-                                    <p className="text-xs text-gray-500">Add to your calendar</p>
-                                  </div>
-                                </div>
-                                
-                                <Button 
-                                  className="group/btn bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white px-6 py-2.5 rounded-full font-semibold text-base shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
-                                >
-                                  <span>Register Now</span>
-                                  <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                                </Button>
-                              </div>
-                            </div>
-                          </div>
-                        </Card>
-                      </motion.div>
-                    ))}
-                  </div>
-                )}
-              </motion.div>
-            </TabsContent>
-
-            {/* All News Content */}
-            <TabsContent value="news" className="mt-8">
-              <motion.div 
-                className="space-y-6"
-                variants={staggerContainer}
-                initial="hidden"
-                animate="visible"
-              >
-                {allNewsItems.map((news) => (
-                  <motion.div
-                    key={news.id}
-                    variants={cardVariants}
-                    transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-                  >
-                    <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 ease-in-out">
-                      <div className="flex flex-col md:flex-row">
-                        <div className="md:w-1/3 overflow-hidden">
-                          <motion.img 
-                            src={news.image} 
-                            alt={news.title}
-                            className="w-full h-48 md:h-full object-cover"
-                            variants={imageVariants}
-                            transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
-                          />
-                        </div>
-                        <div className="md:w-2/3 p-6">
-                          <motion.div 
-                            className="flex items-center gap-2 mb-2"
-                            variants={fadeUpVariants}
-                          >
-                            <span className="text-sm text-muted-foreground">
-                              {new Date(news.date).toLocaleDateString('en-US', { 
-                                year: 'numeric', 
-                                month: 'long', 
-                                day: 'numeric' 
-                              })}
-                            </span>
-                            {news.category === "Event" && (
-                              <Badge variant="secondary">Past Event</Badge>
-                            )}
-                          </motion.div>
-                          <motion.h3 
-                            className="text-xl font-semibold mb-3 leading-tight"
-                            variants={fadeUpVariants}
-                          >
-                            {news.title}
-                          </motion.h3>
-                          <motion.p 
-                            className="text-muted-foreground"
-                            variants={fadeUpVariants}
-                          >
-                            {news.excerpt}
-                          </motion.p>
-                        </div>
-                      </div>
-                    </Card>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </TabsContent>
-
-            {/* Events Content */}
-            <TabsContent value="events" className="mt-8">
-              <motion.div 
-                className="space-y-6"
-                variants={staggerContainer}
-                initial="hidden"
-                animate="visible"
-              >
-                {sortedEventsData.map((event) => (
-                  <motion.div
-                    key={event.id}
-                    variants={cardVariants}
-                    transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-                  >
-                    <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 ease-in-out">
-                      <div className="flex flex-col md:flex-row">
-                        <div className="md:w-1/3 overflow-hidden">
-                          <motion.img 
-                            src={event.image} 
-                            alt={event.title}
-                            className="w-full h-48 md:h-full object-cover"
-                            variants={imageVariants}
-                            transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
-                          />
-                        </div>
-                        <div className="md:w-2/3 p-6">
-                          <motion.div 
-                            className="flex items-center gap-2 mb-2"
-                            variants={fadeUpVariants}
-                          >
-                            <span className="text-sm text-muted-foreground">
-                              {new Date(event.date).toLocaleDateString('en-US', { 
-                                year: 'numeric', 
-                                month: 'long', 
-                                day: 'numeric' 
-                              })}
-                            </span>
-                          </motion.div>
-                          <motion.h3 
-                            className="text-xl font-semibold mb-3 leading-tight"
-                            variants={fadeUpVariants}
-                          >
-                            {event.title}
-                          </motion.h3>
-                          <motion.p 
-                            className="text-muted-foreground"
-                            variants={fadeUpVariants}
-                          >
-                            {event.excerpt}
-                          </motion.p>
-                        </div>
-                      </div>
-                    </Card>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </TabsContent>
-          </Tabs>
-        </div>
-      </section>
-
-    </>
+              {media.map((item) => (
+                <NewsCard key={item.id} {...item} />
+              ))}
+            </motion.div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </div>
   );
 };
 
