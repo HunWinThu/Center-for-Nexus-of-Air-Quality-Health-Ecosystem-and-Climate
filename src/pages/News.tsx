@@ -62,8 +62,8 @@ const NewsCard = ({ title, excerpt, date, image }: NewsCardProps) => {
             </div>
           )}
           <div className="flex-1 space-y-4">
-            <p 
-              className="text-gray-700 leading-relaxed "
+            <div 
+              className="text-gray-700 leading-relaxed [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:my-4 [&_li]:mb-2"
               dangerouslySetInnerHTML={{ __html: displayText }}
             />
             {shouldTruncate && (
@@ -105,7 +105,7 @@ const News = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
             Events & Media
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
