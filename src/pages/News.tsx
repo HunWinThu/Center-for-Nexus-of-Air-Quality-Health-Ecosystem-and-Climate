@@ -25,6 +25,11 @@ const NewsCard = ({ title, excerpt, date, image }: NewsCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const shouldTruncate = excerpt.length > 200;
   const displayText = isExpanded || !shouldTruncate ? excerpt : excerpt.slice(0, 200) + '...';
+  
+  // Get first image for thumbnail and remaining images
+  const images = Array.isArray(image) ? image : [image];
+  const firstImage = images[0];
+  const remainingImages = images.slice(1);
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
@@ -40,52 +45,55 @@ const NewsCard = ({ title, excerpt, date, image }: NewsCardProps) => {
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="flex gap-6">
-          {image && (
-            <div className="flex-shrink-0 w-80 space-y-4">
-              {Array.isArray(image) ? (
-                image.map((img, index) => (
-                  <img
-                    key={index}
-                    src={img}
-                    alt={`${title} - ${index + 1}`}
-                    className="w-full h-auto rounded-lg object-cover"
-                  />
-                ))
+        {firstImage && (
+          <img
+            src={firstImage}
+            alt={title}
+            className="float-left w-80 mr-6 mb-4 rounded-lg object-cover"
+          />
+        )}
+        
+        <div className="space-y-4">
+          <div 
+            className="text-gray-700 leading-relaxed [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:my-4 [&_li]:mb-2"
+            dangerouslySetInnerHTML={{ __html: displayText }}
+          />
+          
+          {shouldTruncate && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="text-primary hover:text-primary/80 p-0 h-auto font-medium"
+            >
+              {isExpanded ? (
+                <>
+                  Read Less <ChevronUp className="w-4 h-4 ml-1" />
+                </>
               ) : (
-                <img
-                  src={image}
-                  alt={title}
-                  className="w-full h-auto rounded-lg object-cover"
-                />
+                <>
+                  Read More <ChevronDown className="w-4 h-4 ml-1" />
+                </>
               )}
-            </div>
+            </Button>
           )}
-          <div className="flex-1 space-y-4">
-            <div 
-              className="text-gray-700 leading-relaxed [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:my-4 [&_li]:mb-2"
-              dangerouslySetInnerHTML={{ __html: displayText }}
-            />
-            {shouldTruncate && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsExpanded(!isExpanded)}
-                className="text-primary hover:text-primary/80 p-0 h-auto font-medium"
-              >
-                {isExpanded ? (
-                  <>
-                    Read Less <ChevronUp className="w-4 h-4 ml-1" />
-                  </>
-                ) : (
-                  <>
-                    Read More <ChevronDown className="w-4 h-4 ml-1" />
-                  </>
-                )}
-              </Button>
-            )}
-          </div>
         </div>
+        
+        <div className="clear-both"></div>
+        
+        {/* Show remaining images after text when expanded */}
+        {isExpanded && remainingImages.length > 0 && (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+            {remainingImages.map((img, index) => (
+              <img
+                key={index}
+                src={img}
+                alt={`${title} - ${index + 2}`}
+                className="w-full h-auto rounded-lg object-cover"
+              />
+            ))}
+          </div>
+        )}
       </CardContent>
     </Card>
   );

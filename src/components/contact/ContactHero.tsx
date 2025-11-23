@@ -34,7 +34,7 @@ export function ContactHero() {
               className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-6"
               style={{ marginBottom: '1.5rem' }}
             >
-              Get in Touch
+              Contact Us
             </h1>
           </motion.div>
           <motion.p 

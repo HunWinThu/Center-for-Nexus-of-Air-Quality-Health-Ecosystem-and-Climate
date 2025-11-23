@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, DollarSign, Clock, Users, Target, Activity, Trophy } from 'lucide-react';
+import { ArrowLeft, DollarSign, Clock, Users, Target, Activity, Trophy, ChevronUp, ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -44,6 +44,8 @@ import ce4 from '@/assets/project_detail/canbreathe_e4.png';
 import ce5 from '@/assets/project_detail/canbreathe_e5.png'; 
 import ce6 from '@/assets/project_detail/canbreathe_e6.png'; 
 import ce7 from '@/assets/project_detail/canbreathe_e7.jpeg'; 
+import m2  from '@/assets/Event/m2.png';
+import m22 from '@/assets/Event/m22.png';
 
 
 
@@ -293,42 +295,51 @@ const ProjectDetails = () => {
       ? item.description
       : item.description.substring(0, maxLength) + '...';
 
-    // Align image styling with Launching Event gallery: fixed heights and object-cover
-    const imgHeightClass = compactImages ? 'h-56 md:h-60' : 'h-56 md:h-64';
-
     return (
-      <Card className="hover:shadow-lg transition-shadow overflow-hidden">
-        <div className="flex flex-col md:flex-row">
+      <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        <CardHeader>
+          <CardTitle 
+            className="text-xl font-bold text-gray-900"
+            dangerouslySetInnerHTML={{ __html: item.title }}
+          />
+        </CardHeader>
+        <CardContent className="space-y-4">
           {item.image && (
-            <div className="w-full md:w-[320px] lg:w-[360px] flex-shrink-0">
-              <figure className="rounded-xl overflow-hidden shadow bg-background/80 backdrop-blur-md">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                  decoding="async"
-                  className={`w-full ${imgHeightClass} object-cover transition-transform duration-300`}
-                />
-              </figure>
-            </div>
+            <img
+              src={item.image}
+              alt={item.title}
+              className="float-left w-80 mr-6 mb-4 rounded-lg object-cover"
+            />
           )}
-          <div className={`${item.image ? 'flex-1' : 'w-full'} flex flex-col`}>
-            <CardHeader>
-              <CardTitle className="text-xl mb-2">{item.title}</CardTitle>
-            </CardHeader>
-            <CardContent className="pt-0">
-              <p className="text-muted-foreground leading-relaxed">{displayText}</p>
-              {shouldTruncate && (
-                <button
-                  onClick={() => setIsExpanded(!isExpanded)}
-                  className="text-primary hover:underline font-medium mt-2 text-sm"
-                >
-                  {isExpanded ? 'Read Less' : 'Read More'}
-                </button>
-              )}
-            </CardContent>
+          
+          <div className="space-y-4">
+            <div 
+              className="text-gray-700 leading-relaxed [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:my-4 [&_li]:mb-2"
+              dangerouslySetInnerHTML={{ __html: displayText }}
+            />
+            
+            {shouldTruncate && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="text-primary hover:text-primary/80 p-0 h-auto font-medium"
+              >
+                {isExpanded ? (
+                  <>
+                    Read Less <ChevronUp className="w-4 h-4 ml-1" />
+                  </>
+                ) : (
+                  <>
+                    Read More <ChevronDown className="w-4 h-4 ml-1" />
+                  </>
+                )}
+              </Button>
+            )}
           </div>
-        </div>
+          
+          <div className="clear-both"></div>
+        </CardContent>
       </Card>
     );
   };
@@ -341,52 +352,104 @@ const ProjectDetails = () => {
             id: 'ev-1',
             title: 'Regional Policy Dialogue Workshop in Vientiane, Lao PDR',
             description:
-              'On 26th June 2025, Prof. Kim Oanh and Dr. Lai Nguyen Huy, participated in a high-level regional policy dialogue in Vientiane, Lao PDR, which was co-hosted by the University of Canberra (Australia), National University of Laos, and and the University of Health Sciences Laos. The workshop brought together over 40 delegates to introduce two projects for which the Air Quality Nexus Center is the key partner: Climate change adaptation to smoke haze for improved child health in Southeast Asia (HEAL-HAZE) and Climate Attribution of Wildfire Smoke Impacts on Priority Population Health in Southeast Asia and Australia (CANBREATHE). The workshop provided key opportunities to understand the social, political and economic barriers to mitigation which empowered the health sector to deal with smoke-haze from biomass open burning.',
+              `On 26<sup>th</sup> June 2025, Prof. Kim Oanh and Dr. Lai Nguyen Huy, representatives of AirQC participated in the high-level regional policy dialogue in Vientiane, Lao PDR, which was co-hosted by the University of Canberra (Australia), National University of Laos, and the University of Health Sciences Laos. <br></br>The workshop brought together over 40 delegates to introduce two projects for which the AirQC is the key partner: Climate change adaptation to smoke haze for improved child health in Southeast Asia (<a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a>) and Climate Attribution of Wildfire Smoke Impacts on Priority Population Health in Southeast Asia and Australia (<a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a>). The workshop provided key opportunities to understand the social, political and economic barriers to mitigation which empowered the health sector to deal with smoke-haze from biomass open burning.`,
             image: ce1,
           },
           {
             id: 'ev-2',
             title: 'Policy Dialogue Workshop on Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia in Bangkok, Thailand',
             description:
-              'Policy dialogue is an important work package of HEAL-HAZE and CANBREATHE. The AirQC team (Prof. Kim Oanh and Dr. Lai Nguyen Huy) participated in the policy dialogue workshop on “Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia” held in Bangkok, Thailand on 17th June 2025. This joint workshop aimed to engage policymakers and other stakeholders to prioritize solutions against haze pollution for affected communities and schools, co-create a platform for policy dialogue and knowledge exchange, and identify opportunities for regional cooperation on tackling the health impacts of air pollution and climate change. Prof. Kim Oanh, Center Director, delivered a keynote presentation on “Overview of Smoke Haze Pollution from Wildfires and Agricultural Burning in Southeast Asia”. The AirQC team actively participated in the discussion groups which aimed systematically mapRegional Policy Workshop “Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia” existing interventions and policies; engage multi-sectoral stakeholders to prioritize adaptation solutions; Identify implementation challenges, barriers, and enablers; co-design adaptation interventions tailored to regional needs; Empower health sector to deal with smoke haze; and understand the social, political and economic barriers to mitigation.',
+              `On 17<sup>th</sup> June 2025, Prof. Kim Oanh and Dr. Lai Nguyen Huy, representatives of AirQC, participated in the policy dialogue workshop on <strong>Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia</strong> held in Bangkok, Thailand. Policy dialogue is an important work package of <a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a> and <a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a>.<br></br>This joint workshop aimed to engage policymakers and other stakeholders to prioritize solutions against haze pollution for affected communities and schools, co-create a platform for policy dialogue and knowledge exchange, and identify opportunities for regional cooperation on tackling the health impacts of air pollution and climate change.<br></br>Prof. Kim Oanh, Director of AirQC, delivered a keynote presentation on <strong>Overview of Smoke Haze Pollution from Wildfires and Agricultural Burning in Southeast Asia.</strong> The AirQC team actively participated in the discussion groups, which aimed to systematically map existing interventions and policies; engage multi-sectoral stakeholders to prioritize adaptation solutions; identify implementation challenges, barriers, and enablers; co-design adaptation interventions tailored to regional needs; empower the health sector to deal with smoke haze; and understand the social, political, and economic barriers to mitigation.`,
             image: ce2,
           },
           {
             id: 'ev-3',
             title: 'Regional Policy Workshop “Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia”',
             description:
-              'The AirQC team participated in the Regional Policy Workshop “Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia”, organized by the HEAL-HAZE and CANBREATHE projects. The event aims to engage policymakers and other stakeholders to prioritize solutions against haze pollution for affected communities and schools, co-create a platform for policy dialogue and knowledge exchange, and identify opportunities for regional cooperation on tackling the health impacts of air pollution and climate change. In her role as a panelist, Prof. Kim Oanh provided insights in the section of “Regional cooperation on tackling health effects of forest fire”. She shared on the need for regional collaboration to reduce the biomass open burning and associated transboundary air haze phenomena.',
-            image: ce4,
+              `On 24<sup>th</sup> September 2025, the Air Quality Nexus Center (AirQC) team participated in the Regional Policy Workshop on Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia, co-organized by the <a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a> and <a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a> projects. The workshop, held in Jakarta and co-hosted by the <strong>HEAL National Research Network at the University of Canberra,</strong> brought together experts, policymakers, and regional partners from across Southeast Asia and Australia, including representatives from the <strong>University of Indonesia, Clean Air Asia, Bicara Udara, NAFAS, Kopernik</strong>, and other key organizations.<br></br>The event aimed to strengthen regional collaboration on addressing the transboundary haze problem and its impacts on climate and public health. It provided a platform for dialogue and knowledge exchange on inclusive approaches to empower vulnerable communities, promote local adaptation strategies, and integrate cross-sectoral policies for emissions reduction and health equity. Key themes of the workshop included community resilience, health impacts of haze pollution, and opportunities for regional cooperation to support evidence-based policymaking for cleaner air in Southeast Asia.<br></br>Prof. Nguyen Thi Kim Oanh, Director of AirQC, served as a panelist in the session on "Regional Cooperation on Tackling Health Effects of Forest Fires." She emphasized the importance of strengthening regional collaboration to reduce biomass open burning and address the associated transboundary haze phenomena. Prof. Kim also underscored the need for coordinated scientific research, shared data, and capacity-building initiatives to support sustainable policy actions across the region. Details of the event can be found at <a href='https://www.linkedin.com/posts/healthy-environments-and-lives-national-research-network_canbreathe-healhaze-airpollution-activity-7377193248529797120-Kzpr/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAA4s_y0BnLpqcLSByHM-1AKn5x8aH4fVXAw' style='color: hsl(105 33% 30%); text-decoration: underline;'>Healthy Environments and Lives National Research Network – LinkedIn</a>.`,
+            image: m2,
           },
           {
             id: 'ev-4',
-            title: 'Public Seminar “ENVIFAIR 2025 X RCCC UI” at the University of Indonesia, 25th September 2025',
+            title: 'Public Seminar “ENVIFAIR 2025 X RCCC UI” at the University of Indonesia, 25<sup>th</sup> September 2025',
             description:
-              'The Faculty of Public Health (FPH) Universitas Indonesia (UI), in collaboration with the Research Center for Climate Change (RCCC) UI, held the International Environmental Health Seminar Envifair 2025 X RCCC UI at the Universitas Indonesia Convention Hall, Depok. Carrying the theme “Breathing Clean, Living Green: Achieving Net-Zero Emissions Towards Different Sectors,” the seminar served as an important forum to seek solutions for Indonesia’s ongoing air quality crisis. The AirQC team participated in the Public Seminar “ENVIFAIR 2025 X RCCC UI”, which was organized by the Research Center for Climate Change (RCCC) and Faculty of Public Health, Universitas Indonesia, Depok, as a part of the HEAL-HAZE (link) and CANBREATHE (link) projects. Prof. Kim Oanh and Dr. Huy also provided insights in the interviews conducted by the university student union, highlighting the needs for science-based information for policy making and the AirQC activities within these two projects.',
+              `The AirQC team participated in the Public Seminar "ENVIFAIR 2025 X RCCC UI", which was organized by the Research Center for Climate Change (RCCC) and Faculty of Public Health, Universitas Indonesia, Depok, as a part of the <a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a> and <a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a> projects.<br></br>Prof. Kim Oanh and Dr. Huy also provided insights in the interviews conducted by the university student union, highlighting the needs for science-based information for policy making and the AirQC activities within these two projects.`,
             image: ce4,
           },
           {
             id: 'ev-5',
             title: 'Field visit and Participation in the Public Seminar at Universitas Sriwijaya, in Palembang, Indonesia',
             description:
-              'The AirQC team (Prof. Kim Oanh and Dr. Lai Ngyen Huy) joined the international partners of Climate change adaptation to smoke haze for improved child health in Southeast Asia (HEAL-HAZE) and Climate Attribution of Wildfire Smoke Impacts on Priority Population Health in Southeast Asia and Australia (CANBREATHE) in the field visits to SD Muhammadiyah1 School, Bappeda Litbang, Silaberanti Community in Palembang, Indonesia to select appropriate sites for implementing the Clean Air Room Interventions. The international team of the project conducted a public seminar at Universitas Sriwijaya.',
+              `On 23<sup>rd</sup> September 2025, Prof. Nguyen Thi Kim Oanh and Dr. Lai Nguyen Huy (AirQC's team) participated in a policy workshop in Jakarta, Indonesia, organized under the <a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a> and <a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a> projects. <br></br>During the workshop, presented the prototype of a DIY air purifier designed for Clean Air Room interventions and organized a panel discussion on "Community Empowerment for Environmental Health and Health Equity," sharing experiences and lessons learned alongside <strong>Bicara Udara, Clean Air Asia, and Nafas</strong>.<br></br>The workshop aimed to promote multi-country collaboration and strengthen regional actions to improve community health resilience against air pollution. It served as a platform for dialogue among partners from <strong>Australia, Thailand, Cambodia, Laos, and Indonesia</strong>, encouraging knowledge exchange and capacity building for practical clean-air solutions.<br></br>Following the workshop, the AirQC team joined international partners in field visits to <strong>SD Muhammadiyah 1 School, Bappeda Litbang</strong>, and the <strong>Silaberanti Community</strong> in Palembang to identify suitable sites for implementing the Clean Air Room interventions.<br></br>The international project team also conducted a <strong>public seminar at Universitas Sriwijaya</strong>, engaging local stakeholders and academic partners to enhance collaboration and ensure the successful implementation of the <a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a> and <a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a> initiatives.`,
             image: ce5,
           },
           {
             id: 'ev-6',
-            title: 'Invited Speaker at the 5th International Forum on Transboundary Air Pollution in Commemoration of the International Day of Clean Air for Blue Skies, 8th September 2025',
+            title: `5<sup>th</sup> International Forum on Transboundary Air Pollution in Commemoration of the International Day of Clean Air for Blue Skies`,
             description:
-              'Prof. Kim Oanh, Center Director, delivered an online presentation titled “Wildfire emissions in Southeast Asia: multiple effects on regional air quality, ecosystem and health” at this event, which was organized by the Ministry of Foreign Affairs (MOFA), Republic of Korea. Her presentation highlighted the need for an airshed management approach to deal with the transboundary air pollution in the region. She also briefly mentioned about the research of the center within the framework of HEAL-HAZE (Climate change adaptation to smoke haze for improved child health in Southeast Asia (HEAL-HAZE) – HEAL Network) and CANBREATHE (Climate Attribution of Wildfire Smoke Impacts on Priority Population Health in Southeast Asia and Australia (CANBREATHE) – HEAL Network) projects.',
+              `On 8<sup>th</sup> September 2025, Prof. Nguyen Thi Kim Oanh, Director of the Air Quality Nexus Center (AirQC), participated in the <em>5<sup>th</sup> International Forum on Transboundary Air Pollution in Commemoration of the International Day of Clean Air for Blue Skies.</em> The event was organized by the <strong>Ministry of Foreign Affairs (MOFA)</strong> of the Republic of Korea, with participation from policymakers, researchers, and representatives of international organizations working on regional air quality and environmental management.<br></br>The forum aimed to strengthen regional cooperation on air pollution mitigation and promote the implementation of integrated policies addressing the environmental and health impacts of transboundary pollution. It provided a platform for dialogue among key stakeholders to exchange knowledge, discuss technical and policy challenges, and identify collaborative strategies to achieve cleaner air in the Asia-Pacific region.<br></br>Prof. Kim Oanh delivered an online presentation titled "Wildfire Emissions in Southeast Asia: Multiple Effects on Regional Air Quality, Ecosystem, and Health." Her talk highlighted the need for an <strong>airshed management approach</strong> to effectively address transboundary air pollution challenges. She also shared insights from the Center's ongoing research under the <a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a> and <a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a> projects, emphasizing their contributions to improving regional understanding of wildfire impacts and promoting evidence-based solutions for cleaner air. Details of the event can be found at <a href='https://www.mofa.go.kr/eng/brd/m_5676/view.do?seq=322958' style='color: hsl(105 33% 30%); text-decoration: underline;'>Ministry of Foreign Affairs, Republic of Korea.</a>`,
             image: ce6,
             
           },
           {
             id: 'ev-7',
-            title: 'Public Seminar on ‘Wildfire Smoke: Health Impacts and Adaptation in Southeast Asia and Australia’',
+            title: "Public Seminar on \"Wildfire Smoke: Health Impacts and Adaptation in Southeast Asia and Australia\"",
             description:
-              'June 2025, the Air Quality Nexus Center (AirQC) hosted the public seminar on “Wildfire Smoke: Health Impacts and Adaptation in Southeast Asia and Australia”. This hybrid event brought together 28 person and 50 online participants from regional and international experts to discuss health risks from wildfire smoke and haze under climate change. The event is within the framework of CANBREATHE and HEAL-HAZE projects. Before the public seminar happened, Dr. Lai Nguyen Huy presented an overview of the AirQC, highlighting its key research areas and projects. The event focused on climate attribution, health assessments, and adaptation for vulnerable groups. Key presentations covered early warning systems, health effects, and interventions like clean air rooms. The seminar also promoted policy dialogue and science-based regional planning. Prof. Kim Oanh, Center Director, was also the panelist of the event, sharing her valuable insight on the situation of wildfire in Southeast Asia and its effects. On the same date, AirQC hosted the guests to a guided laboratory tour of AIT’s research facilities, including the Environmental Engineering and Management (EEM) Ambient Laboratory, Air Quality Modeling Laboratory, and the EEM Main Laboratory.',
-            image: ce7,
+              `On 18<sup>th</sup> June 2025, the AirQC (AirQC) hosted the public seminar on "Wildfire Smoke: Health Impacts and Adaptation in Southeast Asia and Australia". This hybrid event brought together regional and international experts to discuss health risks from wildfire smoke and haze under climate change.<br></br>The event is within the framework of <a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a> and <a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a> projects. Before the public seminar happened, Dr. Lai Nguyen Huy presented an overview of the AirQC, highlighting its key research areas and projects.<br></br>The event focused on climate attribution, health assessments, and adaptation for vulnerable groups. Key presentations covered early warning systems, health effects, and interventions like clean air rooms. The seminar also promoted policy dialogue and science-based regional planning. Prof. Kim Oanh, Director of AirQC, was also the panelist of the event, sharing her valuable insight on the situation of wildfire in Southeast Asia and its effects.<br></br>On the same date, AirQC hosted the guests to a guided laboratory tour of AIT's research facilities, including the Environmental Engineering and Management (EEM) Ambient Laboratory, Air Quality Modeling Laboratory, and the EEM Main Laboratory.<br></br>The details of the public seminar can be found at <br></br><a href='https://ait.ac.th/event/public-seminar-wildfire-smoke-health-impacts-and-adaptation-in-southeast-asia-and-australia/' style='color: hsl(105 33% 30%); text-decoration: underline;'>https://ait.ac.th/event/public-seminar-wildfire-smoke-health-impacts-and-adaptation-in-southeast-asia-and-australia/</a>`,
+            image: m22,
             
+          },
+        ]
+      : project.id === 8
+      ? [
+          {
+            id: 'ev-1',
+            title: 'Regional Policy Dialogue Workshop in Vientiane, Lao PDR',
+            description:
+              `On 26<sup>th</sup> June 2025, Prof. Kim Oanh and Dr. Lai Nguyen Huy, representatives of AirQC participated in the high-level regional policy dialogue in Vientiane, Lao PDR, which was co-hosted by the University of Canberra (Australia), National University of Laos, and the University of Health Sciences Laos. <br></br>The workshop brought together over 40 delegates to introduce two projects for which the AirQC is the key partner: Climate change adaptation to smoke haze for improved child health in Southeast Asia (<a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a>) and Climate Attribution of Wildfire Smoke Impacts on Priority Population Health in Southeast Asia and Australia (<a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a>). The workshop provided key opportunities to understand the social, political and economic barriers to mitigation which empowered the health sector to deal with smoke-haze from biomass open burning.`,
+            image: ce1,
+          },
+          {
+            id: 'ev-2',
+            title: 'Policy Dialogue Workshop on Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia in Bangkok, Thailand',
+            description:
+              `On 17<sup>th</sup> June 2025, Prof. Kim Oanh and Dr. Lai Nguyen Huy, representatives of AirQC, participated in the policy dialogue workshop on <strong>Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia</strong> held in Bangkok, Thailand. Policy dialogue is an important work package of <a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a> and <a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a>.<br></br>This joint workshop aimed to engage policymakers and other stakeholders to prioritize solutions against haze pollution for affected communities and schools, co-create a platform for policy dialogue and knowledge exchange, and identify opportunities for regional cooperation on tackling the health impacts of air pollution and climate change.<br></br>Prof. Kim Oanh, Director of AirQC, delivered a keynote presentation on <strong>Overview of Smoke Haze Pollution from Wildfires and Agricultural Burning in Southeast Asia.</strong> The AirQC team actively participated in the discussion groups, which aimed to systematically map existing interventions and policies; engage multi-sectoral stakeholders to prioritize adaptation solutions; identify implementation challenges, barriers, and enablers; co-design adaptation interventions tailored to regional needs; empower the health sector to deal with smoke haze; and understand the social, political, and economic barriers to mitigation.`,
+            image: ce2,
+          },
+          {
+            id: 'ev-3',
+            title: 'Regional Policy Workshop "Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia"',
+            description:
+              `On 24<sup>th</sup> September 2025, the Air Quality Nexus Center (AirQC) team participated in the Regional Policy Workshop on Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia, co-organized by the <a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a> and <a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a> projects. The workshop, held in Jakarta and co-hosted by the <strong>HEAL National Research Network at the University of Canberra,</strong> brought together experts, policymakers, and regional partners from across Southeast Asia and Australia, including representatives from the <strong>University of Indonesia, Clean Air Asia, Bicara Udara, NAFAS, Kopernik</strong>, and other key organizations.<br></br>The event aimed to strengthen regional collaboration on addressing the transboundary haze problem and its impacts on climate and public health. It provided a platform for dialogue and knowledge exchange on inclusive approaches to empower vulnerable communities, promote local adaptation strategies, and integrate cross-sectoral policies for emissions reduction and health equity. Key themes of the workshop included community resilience, health impacts of haze pollution, and opportunities for regional cooperation to support evidence-based policymaking for cleaner air in Southeast Asia.<br></br>Prof. Nguyen Thi Kim Oanh, Director of AirQC, served as a panelist in the session on "Regional Cooperation on Tackling Health Effects of Forest Fires." She emphasized the importance of strengthening regional collaboration to reduce biomass open burning and address the associated transboundary haze phenomena. Prof. Kim also underscored the need for coordinated scientific research, shared data, and capacity-building initiatives to support sustainable policy actions across the region. Details of the event can be found at <a href='https://www.linkedin.com/posts/healthy-environments-and-lives-national-research-network_canbreathe-healhaze-airpollution-activity-7377193248529797120-Kzpr/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAA4s_y0BnLpqcLSByHM-1AKn5x8aH4fVXAw' style='color: hsl(105 33% 30%); text-decoration: underline;'>Healthy Environments and Lives National Research Network – LinkedIn</a>.`,
+            image: m2,
+          },
+          {
+            id: 'ev-4',
+            title: 'Public Seminar "ENVIFAIR 2025 X RCCC UI" at the University of Indonesia, 25<sup>th</sup> September 2025',
+            description:
+              `The AirQC team participated in the Public Seminar "ENVIFAIR 2025 X RCCC UI", which was organized by the Research Center for Climate Change (RCCC) and Faculty of Public Health, Universitas Indonesia, Depok, as a part of the <a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a> and <a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a> projects.<br></br>Prof. Kim Oanh and Dr. Huy also provided insights in the interviews conducted by the university student union, highlighting the needs for science-based information for policy making and the AirQC activities within these two projects.`,
+            image: ce4,
+          },
+          {
+            id: 'ev-5',
+            title: 'Field visit and Participation in the Public Seminar at Universitas Sriwijaya, in Palembang, Indonesia',
+            description:
+              `On 23<sup>rd</sup> September 2025, Prof. Nguyen Thi Kim Oanh and Dr. Lai Nguyen Huy (AirQC's team) participated in a policy workshop in Jakarta, Indonesia, organized under the <a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a> and <a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a> projects. <br></br>During the workshop, presented the prototype of a DIY air purifier designed for Clean Air Room interventions and organized a panel discussion on "Community Empowerment for Environmental Health and Health Equity," sharing experiences and lessons learned alongside <strong>Bicara Udara, Clean Air Asia, and Nafas</strong>.<br></br>The workshop aimed to promote multi-country collaboration and strengthen regional actions to improve community health resilience against air pollution. It served as a platform for dialogue among partners from <strong>Australia, Thailand, Cambodia, Laos, and Indonesia</strong>, encouraging knowledge exchange and capacity building for practical clean-air solutions.<br></br>Following the workshop, the AirQC team joined international partners in field visits to <strong>SD Muhammadiyah 1 School, Bappeda Litbang</strong>, and the <strong>Silaberanti Community</strong> in Palembang to identify suitable sites for implementing the Clean Air Room interventions.<br></br>The international project team also conducted a <strong>public seminar at Universitas Sriwijaya</strong>, engaging local stakeholders and academic partners to enhance collaboration and ensure the successful implementation of the <a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a> and <a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a> initiatives.`,
+            image: ce5,
+          },
+          {
+            id: 'ev-6',
+            title: `5<sup>th</sup> International Forum on Transboundary Air Pollution in Commemoration of the International Day of Clean Air for Blue Skies`,
+            description:
+              `On 8<sup>th</sup> September 2025, Prof. Nguyen Thi Kim Oanh, Director of the Air Quality Nexus Center (AirQC), participated in the <em>5<sup>th</sup> International Forum on Transboundary Air Pollution in Commemoration of the International Day of Clean Air for Blue Skies.</em> The event was organized by the <strong>Ministry of Foreign Affairs (MOFA)</strong> of the Republic of Korea, with participation from policymakers, researchers, and representatives of international organizations working on regional air quality and environmental management.<br></br>The forum aimed to strengthen regional cooperation on air pollution mitigation and promote the implementation of integrated policies addressing the environmental and health impacts of transboundary pollution. It provided a platform for dialogue among key stakeholders to exchange knowledge, discuss technical and policy challenges, and identify collaborative strategies to achieve cleaner air in the Asia-Pacific region.<br></br>Prof. Kim Oanh delivered an online presentation titled "Wildfire Emissions in Southeast Asia: Multiple Effects on Regional Air Quality, Ecosystem, and Health." Her talk highlighted the need for an <strong>airshed management approach</strong> to effectively address transboundary air pollution challenges. She also shared insights from the Center's ongoing research under the <a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a> and <a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a> projects, emphasizing their contributions to improving regional understanding of wildfire impacts and promoting evidence-based solutions for cleaner air. Details of the event can be found at <a href='https://www.mofa.go.kr/eng/brd/m_5676/view.do?seq=322958' style='color: hsl(105 33% 30%); text-decoration: underline;'>Ministry of Foreign Affairs, Republic of Korea.</a>`,
+            image: ce6,
+          },
+          {
+            id: 'ev-7',
+            title: "Public Seminar on \"Wildfire Smoke: Health Impacts and Adaptation in Southeast Asia and Australia\"",
+            description:
+              `On 18<sup>th</sup> June 2025, the AirQC (AirQC) hosted the public seminar on "Wildfire Smoke: Health Impacts and Adaptation in Southeast Asia and Australia". This hybrid event brought together regional and international experts to discuss health risks from wildfire smoke and haze under climate change.<br></br>The event is within the framework of <a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a> and <a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a> projects. Before the public seminar happened, Dr. Lai Nguyen Huy presented an overview of the AirQC, highlighting its key research areas and projects.<br></br>The event focused on climate attribution, health assessments, and adaptation for vulnerable groups. Key presentations covered early warning systems, health effects, and interventions like clean air rooms. The seminar also promoted policy dialogue and science-based regional planning. Prof. Kim Oanh, Director of AirQC, was also the panelist of the event, sharing her valuable insight on the situation of wildfire in Southeast Asia and its effects.<br></br>On the same date, AirQC hosted the guests to a guided laboratory tour of AIT's research facilities, including the Environmental Engineering and Management (EEM) Ambient Laboratory, Air Quality Modeling Laboratory, and the EEM Main Laboratory.<br></br>The details of the public seminar can be found at <br></br><a href='https://ait.ac.th/event/public-seminar-wildfire-smoke-health-impacts-and-adaptation-in-southeast-asia-and-australia/' style='color: hsl(105 33% 30%); text-decoration: underline;'>https://ait.ac.th/event/public-seminar-wildfire-smoke-health-impacts-and-adaptation-in-southeast-asia-and-australia/</a>`,
+            image: m22,
           },
         ]
       : project.id === 5
@@ -995,11 +1058,11 @@ const ProjectDetails = () => {
                 </motion.section>
               )}
 
-              {/* Key Activities -> Events (skip for HEAL-HAZE id=8 and USAID Clean Air id=5 to avoid duplicate Events heading) */}
-              {project.id !== 3 && project.id !== 8 && project.id !== 5 && (
+              {/* Key Activities -> Events (skip for USAID Clean Air id=5 to avoid duplicate Events heading) */}
+              {project.id !== 3 && project.id !== 5 && (
                 <motion.section variants={itemVariants} className="space-y-4">
                   <h2 className="text-2xl font-bold text-foreground border-b-2 border-primary pb-2">
-                    {project.id === 4 || project.id === 5 || project.id === 7 ? 'Events' : 'Key Activities'}
+                    {project.id === 4 || project.id === 5 || project.id === 7 || project.id === 8 ? 'Events' : 'Key Activities'}
                   </h2>
                   <div className="p-6">
                     {Array.isArray(project.activities) ? (
@@ -1024,10 +1087,10 @@ const ProjectDetails = () => {
                   </div>
 
                   {/* Events list styled like Resources (only for projects using Events) */}
-                  {(project.id === 4 || project.id === 5 || project.id === 7) && events.length > 0 && (
+                  {(project.id === 4 || project.id === 5 || project.id === 7 || project.id === 8) && events.length > 0 && (
                     <div className="p-6 space-y-6">
                       {events.map((item) => (
-                        <EventCard key={item.id} item={item} compactImages={project.id === 7} />)
+                        <EventCard key={item.id} item={item} compactImages={project.id === 7 || project.id === 8} />)
                       )}
                     </div>
                   )}
