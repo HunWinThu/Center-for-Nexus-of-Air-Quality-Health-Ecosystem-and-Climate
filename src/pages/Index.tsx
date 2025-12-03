@@ -593,7 +593,7 @@ const Index = () => {
     { name: 'Acid Deposition Monitoring Network in East Asia (EANET)', href: 'https://www.eanet.asia/', logo: eanet },
     { name: 'Airparif - Association de Surveillance de la Qualité de l\'Air en Île-de-France', href: 'https://www.airparif.fr/', logo: Airparif },
     { name: 'Centre Interprofessionnel Technique d\'Études de la Pollution Atmosphérique (CITEPA)', href: 'https://www.citepa.org/', logo: citepa },
-    { name: 'Chiang Mai University', href: 'https://www.cmu.ac.th/en/', logo: cmu },
+    { name: 'Chiang Mai University', href: 'https://www.cmu.ac.th/', logo: cmu },
     { name: 'Clarkson University', href: 'https://www.clarkson.edu/', logo: clarkson },
     { name: 'Clean Air Asia', href: 'https://cleanairasia.org/', logo: partner1 },
     { name: 'Climate and Clean Air Coalition (CCAC)', href: 'https://www.ccacoalition.org/', logo: ccac },
