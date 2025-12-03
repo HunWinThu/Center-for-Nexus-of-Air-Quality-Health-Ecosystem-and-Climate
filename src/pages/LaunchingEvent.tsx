@@ -80,7 +80,7 @@ const LaunchingEvent = () => {
   const quotes = [
     {
       quote:
-        'At the nexus of air pollution, climate science, ecosystems, and public health, this Center is a catalyst for interdisciplinary collaboration—driving evidence-based solutions that protect both planetary and human well-being.',
+        '...This Air Quality Nexus center is a catalyst for interdisciplinary collaboration—driving evidence-based solutions that protect both planetary and human well-being.',
       name: 'Prof. Bindu N. Lohani',
       position:
         'Chancellor of University of Nepal<br/>Chair, Board of Clean Air Asia<br/>Member of AIT Board of Trustee',

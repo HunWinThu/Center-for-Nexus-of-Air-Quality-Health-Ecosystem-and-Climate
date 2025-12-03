@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { Calendar, ChevronDown, ChevronUp } from 'lucide-react';
@@ -30,14 +29,17 @@ const NewsCard = ({ title, excerpt, date, image }: NewsCardProps) => {
   const images = Array.isArray(image) ? image : [image];
   const firstImage = images[0];
   const remainingImages = images.slice(1);
+  // Strip HTML for alt text
+  const plainTitle = title.replace(/<[^>]*>/g, '');
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
       <CardHeader>
         <div className="flex items-start justify-between gap-4">
-          <CardTitle className="text-xl font-bold text-gray-900 flex-1">
-            {title}
-          </CardTitle>
+          <CardTitle 
+            className="text-xl font-bold text-gray-900 flex-1"
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
           <div className="flex items-center gap-2 text-sm text-gray-500 whitespace-nowrap">
             <Calendar className="w-4 h-4" />
             <span>{date}</span>
@@ -48,7 +50,7 @@ const NewsCard = ({ title, excerpt, date, image }: NewsCardProps) => {
         {firstImage && (
           <img
             src={firstImage}
-            alt={title}
+            alt={plainTitle}
             className="float-left w-80 mr-6 mb-4 rounded-lg object-cover"
           />
         )}
@@ -101,8 +103,18 @@ const NewsCard = ({ title, excerpt, date, image }: NewsCardProps) => {
 
 const News = () => {
   const allNews = getSortedNewsItems();
-  const events = allNews.filter(item => item.category === 'Event');
-  const media = allNews.filter(item => item.category === 'Media');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+  
+  const totalPages = Math.ceil(allNews.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems = allNews.slice(startIndex, endIndex);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -114,45 +126,58 @@ const News = () => {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-            Events & Media
+            Outreach Activities
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Stay updated with our latest events and media coverage
-          </p>
         </motion.div>
 
-        <Tabs defaultValue="events" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 bg-accent/50 p-2 rounded-lg mb-8">
-            <TabsTrigger value="events" className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground">
-              Events
-            </TabsTrigger>
-            <TabsTrigger value="media" className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground">
-              Media
-            </TabsTrigger>
-          </TabsList>
+        <motion.div
+          {...fadeUp}
+          className="space-y-6"
+        >
+          {currentItems.map((item) => (
+            <NewsCard key={item.id} {...item} />
+          ))}
+        </motion.div>
 
-          <TabsContent value="events">
-            <motion.div
-              {...fadeUp}
-              className="space-y-6"
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center gap-2 mt-12">
+            <Button
+              variant="outline"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="px-4 py-2"
             >
-              {events.map((item) => (
-                <NewsCard key={item.id} {...item} />
+              Previous
+            </Button>
+            
+            <div className="flex gap-2">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <Button
+                  key={page}
+                  variant={currentPage === page ? "default" : "outline"}
+                  onClick={() => handlePageChange(page)}
+                  className={`w-10 h-10 ${
+                    currentPage === page 
+                      ? "bg-primary text-white" 
+                      : "hover:bg-gray-100"
+                  }`}
+                >
+                  {page}
+                </Button>
               ))}
-            </motion.div>
-          </TabsContent>
-
-          <TabsContent value="media">
-            <motion.div
-              {...fadeUp}
-              className="space-y-6"
+            </div>
+            
+            <Button
+              variant="outline"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2"
             >
-              {media.map((item) => (
-                <NewsCard key={item.id} {...item} />
-              ))}
-            </motion.div>
-          </TabsContent>
-        </Tabs>
+              Next
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -469,16 +469,6 @@ const ProjectDetails = () => {
             image: c1,
           },
         ]
-      : project.id === 4
-      ? [
-          {
-            id: 'ev-1',
-            title: 'Update this title (Event 1)',
-            description:
-              'Brief description for the open waste burning training program event. Replace with details.',
-            image: p1_3,
-          },
-        ]
       : [];
 
   const containerVariants = {
@@ -1062,7 +1052,7 @@ const ProjectDetails = () => {
               {project.id !== 3 && project.id !== 5 && (
                 <motion.section variants={itemVariants} className="space-y-4">
                   <h2 className="text-2xl font-bold text-foreground border-b-2 border-primary pb-2">
-                    {project.id === 4 || project.id === 5 || project.id === 7 || project.id === 8 ? 'Events' : 'Key Activities'}
+                    {project.id === 5 || project.id === 7 || project.id === 8 ? 'Events' : 'Key Activities'}
                   </h2>
                   <div className="p-6">
                     {Array.isArray(project.activities) ? (
@@ -1087,7 +1077,7 @@ const ProjectDetails = () => {
                   </div>
 
                   {/* Events list styled like Resources (only for projects using Events) */}
-                  {(project.id === 4 || project.id === 5 || project.id === 7 || project.id === 8) && events.length > 0 && (
+                  {(project.id === 5 || project.id === 7 || project.id === 8) && events.length > 0 && (
                     <div className="p-6 space-y-6">
                       {events.map((item) => (
                         <EventCard key={item.id} item={item} compactImages={project.id === 7 || project.id === 8} />)

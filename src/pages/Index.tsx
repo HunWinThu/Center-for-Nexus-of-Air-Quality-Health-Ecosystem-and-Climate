@@ -288,62 +288,70 @@ const Index = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
           >
-            {getLatestNews(3).map((news, idx) => (
-              <motion.div
-                key={news.id}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: idx * 0.2 }}
-              >
-                <Link to="/news" className="block">
-                  <Card className="group relative overflow-hidden bg-white hover:shadow-lg transition-all duration-300 border-0 rounded-2xl h-[420px] cursor-pointer flex flex-col">
-                    {/* News Image */}
-                    <div className="relative overflow-hidden">
-                      <img 
-                        src={news.image || '/placeholder.svg'} 
-                        alt={news.title}
-                        className="w-full h-48 object-cover transition-transform duration-300"
-                      />
-                      
-                      {/* Date Badge */}
-                      <div className="absolute top-4 right-4">
-                        <div className="bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-lg">
-                          <div className="text-center">
-                            <div className="text-lg font-bold text-primary">
-                              {new Date(news.date).getDate()}
-                            </div>
-                            <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                              {new Date(news.date).toLocaleDateString('en-US', { month: 'short' })}
+            {getLatestNews(3).map((news, idx) => {
+              const firstImage = Array.isArray(news.image) ? news.image[0] : news.image;
+              // Strip HTML tags for excerpt preview and alt text
+              const plainTextExcerpt = news.excerpt.replace(/<[^>]*>/g, '');
+              const plainTitle = news.title.replace(/<[^>]*>/g, '');
+              
+              return (
+                <motion.div
+                  key={news.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: idx * 0.2 }}
+                >
+                  <Link to="/news" className="block">
+                    <Card className="group relative overflow-hidden bg-white hover:shadow-lg transition-all duration-300 border-0 rounded-2xl h-[420px] cursor-pointer flex flex-col">
+                      {/* News Image */}
+                      <div className="relative overflow-hidden">
+                        <img 
+                          src={firstImage || '/placeholder.svg'} 
+                          alt={plainTitle}
+                          className="w-full h-48 object-cover transition-transform duration-300"
+                        />
+                        
+                        {/* Date Badge */}
+                        <div className="absolute top-4 right-4">
+                          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-lg">
+                            <div className="text-center">
+                              <div className="text-lg font-bold text-primary">
+                                {new Date(news.date).getDate()}
+                              </div>
+                              <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                                {new Date(news.date).toLocaleDateString('en-US', { month: 'short' })}
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Content */}
-                    <CardContent className="p-6 flex-1 flex flex-col justify-between">
-                      <div className="flex-1">
-                        <h3 className="text-lg font-bold text-gray-900 leading-tight mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-2">
-                          {news.title}
-                        </h3>
-                        
-                        <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
-                          {news.excerpt.slice(0, 120) + '...'}
-                        </p>
-                      </div>
-
-                      {/* Footer */}
-                      <div className="flex items-center justify-end pt-4 border-t border-gray-100 mt-auto">
-                        <div className="text-primary hover:text-primary hover:bg-primary/10 px-3 py-1 rounded-lg font-medium text-sm transition-all duration-300 flex items-center gap-1">
-                          Read More
-                          <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
+                      {/* Content */}
+                      <CardContent className="p-6 flex-1 flex flex-col justify-between">
+                        <div className="flex-1">
+                          <div 
+                            className="text-lg font-bold text-gray-900 leading-tight mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-2"
+                            dangerouslySetInnerHTML={{ __html: news.title }}
+                          />
+                          
+                          <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                            {plainTextExcerpt.slice(0, 120) + '...'}
+                          </p>
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              </motion.div>
-            ))}
+
+                        {/* Footer */}
+                        <div className="flex items-center justify-end pt-4 border-t border-gray-100 mt-auto">
+                          <div className="text-primary hover:text-primary hover:bg-primary/10 px-3 py-1 rounded-lg font-medium text-sm transition-all duration-300 flex items-center gap-1">
+                            Read More
+                            <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </motion.div>
+              );
+            })}
           </motion.div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
