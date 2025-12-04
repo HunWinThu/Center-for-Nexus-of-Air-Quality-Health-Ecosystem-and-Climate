@@ -5,10 +5,10 @@ import logo from '@/assets/AirQC2.png';
 const Footer = () => {
   return (
     <footer className="bg-earth-green text-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="w-full px-4 sm:px-6 lg:px-8 py-12">
+        <div className="flex flex-col md:flex-row gap-y-6 md:gap-x-12 items-start justify-center mx-auto max-w-4xl pr-6 md:pr-12">
           {/* Quick Links */}
-          <div className="space-y-3">
+          <div className="space-y-3 text-center md:text-left flex-1">
             <h3 className="text-xl sm:text-2xl font-semibold">Quick Links</h3>
             <nav className="flex flex-col space-y-1.5">
               <Link to="/about" className="text-sm sm:text-base opacity-90 hover:opacity-100 transition-opacity">About Us</Link>
@@ -19,21 +19,10 @@ const Footer = () => {
           </div>
 
           {/* Services */}
-          <div className="space-y-3">
-            <h3 className="text-xl sm:text-2xl font-semibold">Our Thematic Areas</h3>
-            <nav className="flex flex-col space-y-1.5">
-              <div className="flex flex-col gap-1.5">
-                <span className="text-sm sm:text-base opacity-90">High-quality interdisciplinary research</span>
-                <span className="text-sm sm:text-base opacity-90">International Collaboration</span>
-                <span className="text-sm sm:text-base opacity-90">Government Assistance</span>
-                <span className="text-sm sm:text-base opacity-90">Capacity Building</span>
-              </div>
-            </nav>
-          </div>
 
           {/* Contact Info */}
-          <div className="space-y-3 sm:col-span-2 lg:col-span-1">
-            <h3 className="text-xl sm:text-2xl font-semibold">Contact Info</h3>
+          <div className="space-y-3 text-center md:text-left flex-1 md:ml-12">
+            <h3 className=" text-xl sm:text-2xl font-semibold">Contact Info</h3>
             <div className="space-y-2">
               <div className="flex items-start space-x-2">
                 <Mail size={16} className="opacity-70 mt-0.5 flex-shrink-0" />
@@ -41,7 +30,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Phone size={16} className="opacity-70 flex-shrink-0" />
-                <span className="text-sm sm:text-base opacity-90">+66 9-9797-6360</span>
+                <span className="text-sm sm:text-base opacity-90">(66-2) 524-5641</span>
               </div>
               <div className="flex items-start space-x-2">
                 <MapPin size={16} className="opacity-70 mt-0.5 flex-shrink-0" />

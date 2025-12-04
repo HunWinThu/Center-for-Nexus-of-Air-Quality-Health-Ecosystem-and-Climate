@@ -23,7 +23,6 @@ import Team from "./pages/Team";
 import TeamMember from "./pages/TeamMember";
 import Contact from "./pages/Contact";
 import LaunchingEvent from "./pages/LaunchingEvent";
-import OurThematicAreas from "./pages/OurThematicAreas";
 import Committee from "./pages/AdvisoryCommittee";
 import NotFound from "./pages/NotFound";
 
@@ -92,7 +91,6 @@ const App = () => (
                   <Route path={ROUTES.RESOURCES} element={<Resources />} />
                   <Route path={ROUTES.TEAM} element={<Team />} />
                   <Route path="/team/:slug" element={<TeamMember />} />
-                  <Route path={ROUTES.OUR_THEMATIC_AREAS} element={<OurThematicAreas />} />
                   <Route path={ROUTES.CONTACT} element={<Contact />} />
                   <Route path={ROUTES.LAUNCHING_EVENT} element={<LaunchingEvent />} />
                   <Route path={ROUTES.COMMITTEE} element={<Committee />} />

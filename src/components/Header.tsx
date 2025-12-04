@@ -75,7 +75,7 @@ const Header = () => {
               <img
                 src={logo}
                 alt="Air Quality Center"
-                className="h-28 w-28 sm:h-32 sm:w-32 lg:h-36 lg:w-36 object-contain"
+                className="h-24 w-24 sm:h-28 sm:w-28 lg:h-28 lg:w-28 object-contain"
               />
               <div className="hidden sm:block ml-2">
                 <h1 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 leading-tight">
@@ -95,7 +95,7 @@ const Header = () => {
                       to="/about"
                       onClick={handleNavClick}
                       className={`text-lg font-semibold tracking-wide border-b-2 pb-1 transition-colors hover:text-[#3f6433] ${
-                        isActive('/about') || isActive('/launching-event') || isActive('/our-thematic-areas') || isActive('/team') || isActive('/committee')
+                        isActive('/about') || isActive('/launching-event') || isActive('/team') || isActive('/committee')
                           ? 'text-[#3f6433] border-[#3f6433]'
                           : 'text-black border-transparent'
                       }`}
@@ -105,20 +105,6 @@ const Header = () => {
                     <div className="absolute top-full left-0 mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform translate-y-[-10px] group-hover:translate-y-0 z-50">
                       {/* Firefox-compatible blur effect matching header */}
                       <div className="min-w-[280px] rounded-xl bg-white/50 backdrop-blur-md border border-white/40 shadow-2xl p-2">
-                        <Link 
-                          to="/launching-event" 
-                          onClick={handleNavClick}
-                          className="block rounded-lg px-3 py-2 text-base font-medium text-gray-900 hover:bg-white/50 hover:text-[#3f6433] transition-colors"
-                        >
-                          Launching Event
-                        </Link>
-                        <Link 
-                          to="/our-thematic-areas" 
-                          onClick={handleNavClick}
-                          className="block rounded-lg px-4 py-2 text-base font-medium text-gray-900 hover:bg-white/50 hover:text-[#3f6433] transition-colors"
-                        >
-                          Our Core Research Areas
-                        </Link>
                         <Link 
                           to="/team" 
                           onClick={handleNavClick}
@@ -132,6 +118,13 @@ const Header = () => {
                           className="block rounded-lg px-3 py-2 text-base font-medium text-gray-900 hover:bg-white/50 hover:text-[#3f6433] transition-colors"
                         >
                           Advisory Committee
+                        </Link>
+                        <Link 
+                          to="/launching-event" 
+                          onClick={handleNavClick}
+                          className="block rounded-lg px-3 py-2 text-base font-medium text-gray-900 hover:bg-white/50 hover:text-[#3f6433] transition-colors"
+                        >
+                          Launching Event
                         </Link>
                       </div>
                     </div>
@@ -187,7 +180,7 @@ const Header = () => {
                       <img
                         src={logo}
                         alt="Air Quality Center"
-                        className="h-28 w-28 sm:h-32 sm:w-32 lg:h-36 lg:w-36 object-contain"
+                        className="h-24 w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 object-contain"
                       />
                       <div className="hidden sm:block ml-2">
                         <h1 className="text-base sm:text-lg lg:text-xl font-bold text-primary leading-tight">
@@ -220,20 +213,6 @@ const Header = () => {
                       </Link>
                       <div className="ml-4 bg-gray-50 rounded-md p-2 space-y-1">
                         <Link
-                          to="/launching-event"
-                          className="block px-3 py-2 text-sm rounded-md text-gray-700 hover:text-gray-900 hover:bg-white"
-                          onClick={handleMobileNavClick}
-                        >
-                          Launching Event
-                        </Link>
-                        <Link
-                          to="/our-thematic-areas"
-                          className="block px-3 py-2 text-sm rounded-md text-gray-700 hover:text-gray-900 hover:bg-white"
-                          onClick={handleMobileNavClick}
-                        >
-                          Our Thematic Areas
-                        </Link>
-                        <Link
                           to="/team"
                           className="block px-3 py-2 text-sm rounded-md text-gray-700 hover:text-gray-900 hover:bg-white"
                           onClick={handleMobileNavClick}
@@ -246,6 +225,13 @@ const Header = () => {
                           onClick={handleMobileNavClick}
                         >
                           Advisory Committee
+                        </Link>
+                        <Link
+                          to="/launching-event"
+                          className="block px-3 py-2 text-sm rounded-md text-gray-700 hover:text-gray-900 hover:bg-white"
+                          onClick={handleMobileNavClick}
+                        >
+                          Launching Event
                         </Link>                      
                       </div>
                     </div>

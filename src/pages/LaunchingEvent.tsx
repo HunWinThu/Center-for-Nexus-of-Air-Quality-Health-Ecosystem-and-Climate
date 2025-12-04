@@ -83,7 +83,7 @@ const LaunchingEvent = () => {
         '...This Air Quality Nexus center is a catalyst for interdisciplinary collaboration—driving evidence-based solutions that protect both planetary and human well-being.',
       name: 'Prof. Bindu N. Lohani',
       position:
-        'Chancellor of University of Nepal<br/>Chair, Board of Clean Air Asia<br/>Member of AIT Board of Trustee',
+        'Chancellor of University of Nepal<br/>Chair, Board of Clean Air Asia<br/>Member of AIT Board of Trustees',
       image: Lohani,
     },
     {
@@ -91,7 +91,7 @@ const LaunchingEvent = () => {
         'It is a timely (actually much overdue) initiative. I hope Air Quality Nexus Center can serve a pivotal role in Asia and beyond in fostering a holistic nexus approach in understanding air pollution in the region and in designing evidence–informed policies to address air pollution and related issues.',
       name: 'Dr. Maheswar Rupakheti',
       position:
-        'Research Group Leader, Research Institute for Sustainability Helmholtz Centre Potsdam (RIFS), Germany<br/>Vice Chair, WG-I, Intergovernmental Panel on Climate Change (IPCC)',
+        'Research Institute for Sustainability Helmholtz Centre Potsdam (RIFS), Germany<br/>Vice Chair, WG-I, Intergovernmental Panel on Climate Change (IPCC)',
       image: Rupakheti,
     },
     {

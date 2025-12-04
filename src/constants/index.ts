@@ -68,7 +68,6 @@ export const SMOOTH_TRANSITIONS = {
 export const ROUTES = {
   HOME: '/',
   ABOUT: '/about',
-  OUR_THEMATIC_AREAS: '/our-thematic-areas',
   PROJECTS: '/projects',
   NEWS: '/news',
   PUBLICATIONS: '/publications',
