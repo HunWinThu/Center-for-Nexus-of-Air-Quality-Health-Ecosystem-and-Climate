@@ -31,7 +31,7 @@ const coreTeam = [
     Expertise: 'Air pollution monitoring; Dispersion modeling and receptor modeling; Emission inventory and projection; Emission control; Exposure assessment; Effects of air pollution on ecosystem; Meteorology and climate science; Climate co-benefits assessment; Industrial environmental management',
     specialties: ['Air Quality', 'Emission Inventory', 'Environmental Health'],
     image: kim,
-    viewprofile: 'kim.oanh@ait.ac.th',
+    viewprofile: 'kimoanh@ait.asia',
     researchgate: 'https://www.researchgate.net/profile/Nguyen-Thi-Oanh',
   },
   {  id: 2,
