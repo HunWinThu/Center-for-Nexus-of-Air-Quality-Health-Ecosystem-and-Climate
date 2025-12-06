@@ -20,7 +20,6 @@ import NewsDetails from "./pages/NewsDetails";
 import Publications from "./pages/Publications";
 import Resources from "./pages/Resources";
 import Team from "./pages/Team";
-import TeamMember from "./pages/TeamMember";
 import Contact from "./pages/Contact";
 import LaunchingEvent from "./pages/LaunchingEvent";
 import Committee from "./pages/AdvisoryCommittee";
@@ -90,7 +89,6 @@ const App = () => (
                   <Route path={ROUTES.PUBLICATIONS} element={<Publications />} />
                   <Route path={ROUTES.RESOURCES} element={<Resources />} />
                   <Route path={ROUTES.TEAM} element={<Team />} />
-                  <Route path="/team/:slug" element={<TeamMember />} />
                   <Route path={ROUTES.CONTACT} element={<Contact />} />
                   <Route path={ROUTES.LAUNCHING_EVENT} element={<LaunchingEvent />} />
                   <Route path={ROUTES.COMMITTEE} element={<Committee />} />

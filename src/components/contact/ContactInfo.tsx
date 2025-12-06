@@ -28,7 +28,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: 'Call Us',
-    content: '+66 9-9797-6360',
+    content: '(66-2) 524-5641',
     description: ''
   },
   {

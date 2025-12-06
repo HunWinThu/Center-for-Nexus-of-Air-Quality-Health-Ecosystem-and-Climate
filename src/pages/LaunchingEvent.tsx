@@ -91,74 +91,74 @@ const LaunchingEvent = () => {
         'It is a timely (actually much overdue) initiative. I hope Air Quality Nexus Center can serve a pivotal role in Asia and beyond in fostering a holistic nexus approach in understanding air pollution in the region and in designing evidence–informed policies to address air pollution and related issues.',
       name: 'Dr. Maheswar Rupakheti',
       position:
-        'Research Institute for Sustainability Helmholtz Centre Potsdam (RIFS), Germany<br/>Vice Chair, WG-I, Intergovernmental Panel on Climate Change (IPCC)',
+        'Research Group Leader, Research Institute for Sustainability Helmholtz Centre Potsdam (RIFS), Germany<br/> Vice Chair, WG-I, IPCC',
       image: Rupakheti,
     },
     {
       quote:
-        'It is becoming ever more important to improve air quality across Asia – not only to protect human health but also to protect from damage to crop yields and nutrition since current air pollution concentrations, particularly of ground level ozone, are likely to be reducing crop yields by up to as much as 10% in polluted regions. Given the continued challenges around ensuring food security across Asia, cleaner air would encourage higher crop yields enhancing food supply, an important component of food security.',
+        'Current air pollution concentrations, particularly of ground level ozone, are likely to reduce crop yields by up to 10% in polluted regions. Given the continued challenges around ensuring food security across Asia, cleaner air would encourage higher crop yields enhancing food supply, an important component of food security. It is therefore becoming ever more important to improve air quality across Asia — not only to protect human health but also protect the ecosystems.',
       name: 'Prof. Lisa Emberson',
       position:
-        'Centre Director of the York office at the Stockholm Environment Institute (SEI)<br/>Professor of Environmental Science in the Environment & Geography Dept., University of York, UK',
+        'Centre Director of the York (SEI)<br/>Professor, Environmental Science, University of York, UK',
       image: Emberson,
     },
     {
       quote:
-        'The Air Quality Nexus Center at AIT is a timely and much needed initiative aiming to address the pressing challenges climate change and air pollution are posing on human health and ecosystems in the Asia-Pacific region and globally. Australian environmental health research, policy and practice will benefit from this international collaboration.',
+        'The Air Quality Nexus center at AIT is a timely and much needed initiative aiming to address the pressing challenges climate change and air pollution are posing on human health and ecosystems in the Asia-Pacific region and globally. Australian environmental health research, policy and practice will benefit from this international collaboration.',
       name: 'Prof. Sotiris Vardoulakis',
       position:
-        'Director, NHMRC Healthy Environments and Lives (HEAL) National Research Network<br/>Professor of Environmental Public Health, University of Canberra, Australia',
+        'Director, NHMRC (HEAL)<br/>Professor, Environmental Public Health, University of Canberra, Australia',
       image: Vardoulakis,
     },
     {
       quote:
-        'Wonderful Recognition, Congratulations! Air Quality Nexus Center will be fantastic to have such a resource in Southeast Asia, under Prof. Kim Oanh’s Leadership!',  
+        'Congratulations on the establishment of the Air Quality Nexus center! It is fantastic to have such a resource center in Southeast Asia, under this prominent leadership!',  
       name: 'Prof. Tami C. Bond',
       position:
-        'Scott Presidential Chair in Energy, Environment and Health<br/>Professor, Mechanical Engineering; Joint Professor, Civil & Environmental Engineering; Affiliate; Systems Colorado University, Fort Collins, CO USA',
+        'Scott Presidential Chair in Energy, Environment and Health<br/>Professor, Mechanical Engineering, Colorado University, USA',
       image: Bond,
     },
 
     {
       quote:
-        'Emory Climate Hub is excited to partner with the Center for Nexus of Air Quality, Health, Ecosystem and Climate, as we are interested in finding evidence-based solutions through an interdisciplinary framework. The center emphasizes an integrated approach necessary for a complicated problem that involves climate change, air quality, and human/ecosystem health.',
+        'Emory Climate Hub is excited to partner with the Air Quality Nexus center, as we are interested in finding evidence—based solutions through an interdisciplinary framework. The center emphasizes an integrated approach necessary for a complicated problem that involves climate change, air quality, and human/ecosystem health.',
       name: 'Dr. Eri Saikawa',
-      position: 'Winship Distinguished Research Professor, SAIKAWA LAB<br/>Professor, Emory University, USA',
+      position: 'Winship Distinguished Research Professor, Environmental Sciences, Emory University, USA',
       image: Saikawa,
     },
     {
       quote:
-        'The Air Quality Nexus Center at AIT plays a pivotal role in Southeast Asia as an essential structure for addressing the region’s air pollution challenges. By adopting a holistic, multi-stakeholder approach, it fosters the dismantling of scientific and institutional silos — a necessary step to understand and mitigate the deeply intertwined and interdependent health, climate, economic, and social impacts of this critical issue.',
+        'The Air Quality Nexus center at AIT plays a pivotal role in Southeast Asia as an essential structure for addressing the region’s air pollution challenges. By adopting a holistic, multi-stakeholder approach, it fosters the dismantling of scientific and institutional silos — a necessary step to understand and mitigate the deeply intertwined and interdependent health, climate, economic, and social impacts of this critical issue.',
       name: 'Dr. Xavier Mari',
-      position: 'IRD Representative, Thailand (Bangladesh-India-Myanmar-Nepal)',
+      position: 'IRD Representative (Bangladesh-India-Myanmar-Nepal), Thailand',
       image: Mari,
     },
     {
       quote:
-        'We at Ricardo have really appreciated the informed input from the Air Quality Nexus team in support of our work developing clean air solutions for Thailand and the Greater Mekong region. Your expertise across air quality, health, ecosystems and climate resilience has never been more important. We hope to continue working with the Center team in the future',
+        'We at Ricardo have really appreciated the informed input from the Air Quality Nexus team in support of our work developing clean air solutions for Thailand and the Greater Mekong region. Your expertise across air quality, health, ecosystems and climate resilience has never been more important. We hope to continue working with the team in the future.',
       name: 'Dr. Mark Broomfield',
-      position: 'Technical Director, Air quality specialist<br/><a href="https://www.ricardo.com/en" target="_blank" rel="noopener noreferrer" className="hover:underline">Ricardo</a>, Leading environmental and engineering consultancy<br/>Ricardo was recently reappointed as the lead organisation on the collection and analysis for the UK government’s world leading emissions inventory, helping to improve air quality across the country.',
+      position: 'Technical Director and Air Quality Specialist, Ricardo, UK',
       image: Broomfield,
     },
 
     {
-      quote:'Breathing clean air is a fundamental human right. We hold high expectations that this center will contribute to scientific breakthroughs and promote timely, effective actions to improve air quality across Asia',
+      quote:'Breathing clean air is a fundamental human right. We hold high expectations that this center will contribute to scientific breakthroughs and promote timely, effective actions to improve air quality across Asia.',
       name: 'Dr. Shih-Chun Candice Lung',
-      position: 'Deputy Director, Research Center for Environmental Changes (RCEC)<br/>Academia Sinica, Taiwan',
+      position: 'Deputy Director, Research Center for Environmental Changes (RCEC), Academia Sinica, Taiwan',
       image: Lung,
     },
     {
-      quote:'The newly established Center for Nexus of Air Quality, Health, Ecosystem and Climate at AIT will play a pivotal role in advancing integrated research and policy solutions that address the interconnected challenges of climate change, air quality, and public health in Southeast Asia and beyond. By fostering cross-sectoral collaboration and data-driven innovation, the Center is uniquely positioned to make changes in the air and on the ground.',
+      quote:'The newly established Air Quality Nexus center at AIT will play a pivotal role in advancing integrated research and policy solutions that address the interconnected challenges of climate change, air quality, and public health in Southeast Asia and beyond. By fostering cross-sectoral collaboration and data-driven innovation, the center is uniquely positioned to make changes in the air and on the ground.',
       name: 'Dr. Eric Zusman',
-      position: 'Research Director Center for Sustainability Governance <br/>Institute for Global Environmental Strategies (IGES), Japan',
+      position: 'Research Director, Center for Sustainability Governance, Institute for Global Environmental Strategies (IGES), Japan',
       image: Zusman,
     },
 
 
     {
-      quote:'Bringing air quality and climate research agenda under one umbrella is timely and essential to address the current and emerging local and regional challenges. Creating new opportunities for collaboration within the region will surely lead to more efficient use of resources, broader understanding of solutions and last but not least might enable more effective communication with the policy community. The Air Quality Nexus Center could support policy makers to co-design and recognize the benefits of regional actions.',
+      quote:'Bringing air quality and climate research agenda under one umbrella is timely and essential to address the current and emerging local and regional challenges. Creating new opportunities for collaboration within the region will surely lead to more efficient use of resources, broader understanding of solutions and last but not least might enable more effective communication with the policy community. The center could support policy makers to co-design and recognize the benefits of regional actions.',
       name: 'Dr. Zbigniew Klimont',
-      position: 'Research Group Leader and Principal Research Scholar<br/> Pollution Management Research Group<br/> Energy, Climate, and Environment Program<br/>International Institute for Applied Systems Analysis (IIASA)',
+      position: 'Research Group Leader, International Institute for Applied Systems Analysis (IIASA), Austria',
       image: kilmont,
     },
   ];

@@ -32,8 +32,8 @@ const advisoryCommittee = [
     id: 5,
     name: "Prof. Lisa Emberson",
     role: "Advisory Member",
-    department: "Stockholm Environment Institute (SEI), University of York",
-    bio: "Centre Director of the York office at the Stockholm Environment Institute (SEI). Professor of Environmental Science in the Environment & Geography Dept., University of York, UK",
+    department: "University of York",
+    bio: "Centre Director of the York (SEI). Professor of Environmental Science, University of York, UK",
     alignTop: true,
     image: Emberson,
     viewprofile: "https://www.york.ac.uk/environment-geography/people/lisa-emberson/",
@@ -44,7 +44,7 @@ const advisoryCommittee = [
     name: "Prof. Philip Hopke",
     role: "Advisory Member",
     department: "Clarkson University, University of Rochester",
-    bio: "Co-Editor-in-Chief, Science of the Total Environment, Bayard D. Clarkson Distinguished Professor Emeritus, Clarkson University. Adjunct Professor, Departments of Public Health Sciences and Environmental Medicine, University of Rochester School of Medicine and Dentistry, NY, USA",
+    bio: "Distinguished Professor Emeritus, Clarkson University\n Adjunct Professor, University of Rochester, NY, USA",
     alignTop: false,
     image: Hopke,
     viewprofile: "https://www.clarkson.edu/people/philip-hopke",
@@ -54,7 +54,7 @@ const advisoryCommittee = [
     id: 8,
     name: "Dr. Shih-Chun Candice Lung",
     role: "Advisory Member",
-    department: "Academia Sinica, Taiwan",
+    department: "Academia Sinica",
     bio: "Deputy Director, Research Center for Environmental Changes (RCEC), Academia Sinica, Taiwan",
     alignTop: true,
     image: Lung,
@@ -65,8 +65,8 @@ const advisoryCommittee = [
     id: 4,
     name: "Dr. Maheswar Rupakheti",
     role: "Advisory Member",
-    department: "Research Institute for Sustainability Helmholtz Centre Potsdam (RIFS), IPCC",
-    bio: "Research Group Leader, Research Institute for Sustainability Helmholtz Centre Potsdam (RIFS), Germany. Vice Chair, WG-I, Intergovernmental Panel on Climate Change (IPCC)",
+    department: "Research Institute for Sustainability Helmholtz Centre Potsdam (RIFS)",
+    bio: "Research Group Leader, (RIFS), Germany\nVice Chair, WG-I, IPCC",
     alignTop: true,
     image: Rupakheti,
     viewprofile: "https://www.rifs-potsdam.de/en/people/maheswar-rupakheti",
@@ -77,8 +77,7 @@ const advisoryCommittee = [
     name: "Prof. Ram Shrestha",
     role: "Advisory Member",
     department: "Asian Institute of Technology (AIT)",
-    bio: "Emeritus Professor, Sustainable Energy Transition Program, Department of Energy and Climate Change, AIT. Editor of Energy-The International Journal and Energy Economics, and is a member of the Editorial Advisory Board of International Energy Journal",
-    alignTop: true,
+    bio: "Emeritus Professor, Sustainable Energy Transition Program, AIT Editor of Energy-The International Journal and Energy Economics",
     image: Shrestha,
     viewprofile: "https://ait.ac.th/people/prof-ram-shrestha/",
     linkedin: "https://www.linkedin.com/in/ram-m-shrestha-3a6a8a40/?originalSubdomain=np"
@@ -87,8 +86,8 @@ const advisoryCommittee = [
     id: 6,
     name: "Prof. Sotiris Vardoulakis",
     role: "Advisory Member",
-    department: "University of Canberra, NHMRC HEAL Network",
-    bio: "Director, NHMRC Healthy Environments and Lives (HEAL) National Research Network. Professor of Environmental Public Health, University of Canberra, Australia",
+    department: "University of Canberra",
+    bio: "Director, NHMRC (HEAL) Professor,Environmental Public Health, University of Canberra, Australia",
     alignTop: true,
     image: Vardoulakis,
     viewprofile: "https://researchprofiles.canberra.edu.au/en/persons/sotiris-vardoulakis",
@@ -98,8 +97,8 @@ const advisoryCommittee = [
     id: 10,
     name: "Prof. Tong Zhu",
     role: "Advisory Member",
-    department: "College of Environmental Sciences and Engineering, Peking University",
-    bio: "Boya Chair Professor, Cheung Kong Chair Professor\nChair of WMO-ARCH working group\nContribution to the Nobel Peace Prize of IPCC group, 2007, WMO/UNEP",
+    department: "Peking University",
+    bio: "Boya Chair Professor\n Cheung Kong Chair Professor Contributor to the Nobel Peace Prize of IPCC group (2007)\n Chair of WMO GAW-ARCH WG",
     alignTop: true,
     image: Tong,
     viewprofile: "http://scholar.pku.edu.cn/tongzhu/bio",
@@ -110,7 +109,7 @@ const advisoryCommittee = [
     name: "Dr. Eric Zusman",
     role: "Advisory Member",
     department: "Institute for Global Environmental Strategies (IGES), Japan",
-    bio: "Research Director, Center for Sustainability Governance, Institute for Global Environmental Strategies (IGES), Japan",
+    bio: "Research Director, Center for Sustainability Governance\n Institute for Global Environmental Strategies (IGES), Japan",
     alignTop: true,
     image: Zusman,
     viewprofile: "https://www.iges.or.jp/en/about/staff/zusman-eric",
@@ -233,14 +232,6 @@ const Committee = () => {
             >
               International Advisory Committee
             </motion.h1>
-            <motion.p 
-              className="text-xl text-muted-foreground max-w-2xl mx-auto"
-              variants={textVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              Our distinguished advisors bringing global expertise in air quality, climate, and environmental health.
-            </motion.p>
             
             {/* Decorative animated element */}
             <motion.div

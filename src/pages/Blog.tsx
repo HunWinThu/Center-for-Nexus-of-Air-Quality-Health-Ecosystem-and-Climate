@@ -1,6 +1,6 @@
 import { MainLayout } from '@/components/layout/MainLayout';
-import { Card } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+// Removed Card wrapper: projects will be rendered as a simple list
+// Tabs removed: projects will be displayed in a two-column layout
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
@@ -120,28 +120,15 @@ const Blog = () => {
   };
 
 
-  const renderProjectCard = (project: typeof projects.ongoing[0]) => (
-    <Card 
-      key={project.id} 
-      className="hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden"
-      onClick={() => navigate(`/project/${project.id}`)}
-    >
-      {/* Project Image */}
-      <div className="relative overflow-hidden">
-        <img 
-          src={project.image || governmentImg} 
-          alt={project.title}
-          className={`w-full h-64 ${project.image === laos ? 'object-contain bg-gray-50' : 'object-cover'}`}
-        />
-      </div>
-      
-      {/* Project Title */}
-      <div className="p-6">
-        <h3 className="text-lg font-semibold text-foreground hover:text-primary transition-colors">
-          {project.title}
-        </h3>
-      </div>
-    </Card>
+  const renderProjectRow = (project: typeof projects.ongoing[0]) => (
+    <li key={project.id} className="py-2">
+      <button
+        onClick={() => navigate(`/project/${project.id}`)}
+        className="text-base sm:text-lg font-medium text-foreground hover:text-primary transition-colors text-left w-full"
+      >
+        {project.title}
+      </button>
+    </li>
   );
 
   return (
@@ -169,46 +156,21 @@ const Blog = () => {
       {/* Projects Tabs */}
       <section className="pt-4 pb-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Tabs defaultValue="ongoing">
-            <TabsList className="grid w-full grid-cols-3 bg-accent/50 p-2 rounded-lg mb-8">
-              <TabsTrigger 
-                value="ongoing" 
-                className="text-xs sm:text-sm md:text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground px-2 sm:px-4"
-              >
-                On-going Projects
-              </TabsTrigger>
-              <TabsTrigger 
-                value="completed" 
-                className="text-xs sm:text-sm md:text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground px-2 sm:px-4"
-              >
-                Completed Projects
-              </TabsTrigger>
-              <TabsTrigger 
-                value="upcoming" 
-                className="text-xs sm:text-sm md:text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground px-2 sm:px-4"
-              >
-                Upcoming Projects
-              </TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="ongoing" className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projects.ongoing.map(renderProjectCard)}
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="completed" className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projects.completed.map(renderProjectCard)}
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="upcoming" className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projects.upcoming.map(renderProjectCard)}
-              </div>
-            </TabsContent>
-          </Tabs>
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-primary">On-going Projects</h2>
+              <ul className="list-disc pl-6 space-y-2">
+                {projects.ongoing.map(renderProjectRow)}
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-primary">Recently Completed Projects</h2>
+              <ul className="list-disc pl-6 space-y-2">
+                {projects.completed.map(renderProjectRow)}
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 

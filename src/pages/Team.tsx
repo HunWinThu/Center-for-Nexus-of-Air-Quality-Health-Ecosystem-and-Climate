@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 
 
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, Variants } from 'framer-motion';
 
 // Team member images
@@ -17,10 +16,9 @@ import Dang from '@/assets/dang.jpeg';
 import Hun from '@/assets/Hun Win Thu.jpg';
 import May from '@/assets/May.jpg';
 import Pant from '@/assets/Ms. Keishu Pant.jpg';
+import Natawat from '@/assets/Natawat.jpeg';
 
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-
-const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
 const coreTeam = [
   {
@@ -57,7 +55,6 @@ const coreTeam = [
     Expertise: ' 	Administration; Air pollution monitoring',
     specialties: ['Emission Inventory', 'Air Quality Management'],
     image: ktoo,
-    viewprofile: 'https://www.linkedin.com/in/kim-oanh/',
 
   },
 
@@ -70,10 +67,9 @@ const coreTeam = [
     bio: 'Mr. Ha Quang Dang, a Research Assistant at the Asian Institute of Technology (AIT), is an emerging environmental engineer with hands-on experience in air pollution monitoring, source apportionment, and environmental data analysis. He holds a Bachelor of Engineering in Environmental Engineering from Hanoi University of Science and Technology (HUST), Vietnam, graduating in 2024 with a strong academic record. At AIT, he contributes to the Kathmandu Clean Air Program (K-CAP) / USAID Clean Air project, conducting PM₂.₅ monitoring, receptor modeling, and road dust composition analysis for Kathmandu and Nepal. His research background includes developing emission maps for rice straw burning in Vietnam, satellite-based environmental data analysis, and participation in international projects such as the GreenUs Project under the Erasmus+ Programme and the CASA Project. Mr. Dang has also undertaken professional training and internships in Italy, Greece, Poland, Thailand, and Vietnam, enhancing his skills in circular economy, waste management, and environmental engineering solutions. Proficient in Python, Java, and data analysis tools, and fluent in Vietnamese and English with working knowledge of Japanese, he brings technical expertise, adaptability, and a collaborative spirit to regional environmental research initiatives.\n\nMr. Ha Quang Dang earned his Bachelor of Engineering in Environmental Engineering from the Hanoi University of Science and Technology (HUST), Vietnam in 2024.',
     Expertise: 'Research Assistant_Air pollution monitoring',
     specialties: ['Emission Inventory', 'Air Quality Management'],
-    alignTop: true,
     imageScale: 1.35,
+    imagePosition: '0 20%',
     image: Dang,
-    viewprofile: 'https://www.linkedin.com/in/kim-oanh/',
 
   },
 
@@ -87,57 +83,34 @@ const coreTeam = [
     specialties: ['Emission Inventory', 'Air Quality Management'],
     alignTop: true,
     image: Hun,
-    viewprofile: 'https://www.linkedin.com/in/kim-oanh/',
 
   },
-  {
-    id: 4,
-    name: 'Dr. Nguyen Nhat Ha Chi',
-    role: 'Associate Member',
-    department: 'Doctor of Philosophy in Environmental Technology and Management, AIT',
-    bio: 'Dr. Ha Chi Nguyen Nhat, an Air Quality Specialist, brings advanced expertise in air quality modeling and environmental impact assessment. Her scholarly contributions include modeling PM₂.₅ for health impact assessment, and she has co-authored studies on emission inventories and atmospheric pollutants over urban regions in Southeast Asia. Dr. Ha Chi combines rigorous scientific research with practical application, supporting AIT’s efforts to integrate science-based solutions into air quality policy and protection of human and ecological health. Her contributions continue to strengthen the Center’s analytical capacity and regional leadership in atmospheric science.\n\nDr. Ha Chi earned her Doctor of Philosophy in Environmental Technology and Management from the Asian Institute of Technology, Thailand in 2024. She holds a Master of Engineering in Environmental Technology and Management from the Asian Institute of Technology, Thailand (2018) and a Bachelor of Science in Environmental Science from the University of Natural Science, National University, Ho Chi Minh City, Vietnam (2012).',
-    Expertise: 'Air quality and meteorology modeling; Emission inventory',
-    specialties: ['Emission Inventory', 'Air Quality Management'],
-    image: Nguyen,
-    viewprofile: 'https://www.linkedin.com/in/kim-oanh/',
-    researchgate: 'https://www.researchgate.net/profile/Ha-Chi-Nguyen-Nhat'
-
-
-  },
-
-  {
-  id: 7,
-  name: 'Ms. May Hnin Aye',
-  role: 'Associate Member',
-  department: 'Master of Science in Remote Sensing & GIS',
-  bio: 'Ms. May Hnin Aye, a Geographic Information Systems (GIS) Analyst at the Asian Institute of Technology (AIT), specializes in remote sensing and geospatial analysis for environmental monitoring and land management. At the Center, she provides technical support in developing methodological frameworks to assess primary forest loss due to fires in Laos. Her responsibilities include sourcing, processing, and analyzing satellite data to monitor land-use and land-cover changes, with a particular focus on detecting and quantifying forest and agricultural land cover loss caused by fire events. With a strong foundation in both geography and technology, Ms. May Hnin Aye applies her expertise to produce high-quality geospatial intelligence products that inform research, policy, and conservation strategies. She is proficient in drone mapping, photogrammetry, and geospatial data analysis, and integrates advanced GIS and remote sensing tools to support decision-making processes in environmental and resource management. Her work combines technical precision with a commitment to addressing real-world environmental challenges through innovative spatial analysis approaches. Before joining the Center, she worked as a Program Assistant at the Unified Program of AIT, gaining valuable experience in academic coordination and technical support.\n\nMs. May earned her Master of Science in Remote Sensing and Geographic Information System from the Asian Institute of Technology, Thailand in 2024, a Master of Arts in Physical Geography from the University of Yangon, Myanmar in 2020, and a Bachelor of Arts in Geography from the University of Yangon, Myanmar. Her passion for the intersection of geography, technology, and environmental sustainability continues to drive her professional growth and contributions to the field.',
-  Expertise: 'Remote Sensing and GIS Analyst',
-  specialties: ['Emission Inventory', 'Air Quality Management'],
-  image: May,
-  viewprofile: 'https://www.linkedin.com/in/kim-oanh/',
-},
   {
   id: 8,
   name: 'Ms. Keishu Pant',
-  role: 'PhD Candidate',
+  role: 'TU Student',
   department: 'Student',
   bio: 'Specializes in emission inventory and air quality management.',
   Expertise: 'Research Assistant_Air pollution monitoring',
   specialties: ['Emission Inventory', 'Air Quality Management'],
   alignTop: true,
   image: Pant,
-  viewprofile: 'https://www.linkedin.com/in/kim-oanh/',
+},
+
+  {
+  id: 8,
+  name: 'Mr. Natawat Samranjai',
+  role: 'AIT, Master Student',
+  department: 'Student',
+  bio: '',
+  Expertise: 'Research Assistant_Air pollution monitoring',
+  specialties: ['Emission Inventory', 'Air Quality Management'],
+  alignTop: true,
+  image: Natawat,
 },
 ];
 
 const Team = () => {
-  const getInitials = (name: string) =>
-    name
-      .split(/\s+/)
-      .map((n) => n[0])
-      .join('')
-      .slice(0, 2)
-      .toUpperCase();
   // Enhanced animation variants with elegant lazy loading
   const fadeUpVariants: Variants = {
     hidden: { opacity: 0, y: 80 },
@@ -245,133 +218,193 @@ const Team = () => {
         </div>
       </section>
 
-      {/* Team Directory (Tabs) */}
+      {/* Team Directory - SMARTS Style Layout */}
       <section className="pt-4 pb-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* First Row - Top 2 Members */}
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto"
-            variants={staggeredContainer}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          
+          {/* Leadership Team Section */}
+          <motion.div
+            variants={fadeUpVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-150px" }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="mb-16"
           >
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-8">Leadership Team</h2>
+            
             {coreTeam.slice(0, 2).map((member) => (
-              <motion.div key={member.id} variants={cardVariants}>
-                <Card className="group hover:shadow-lg transition-all duration-300 bg-background border border-border relative overflow-hidden">
-                  <CardContent className="p-6 relative z-10">
-                    <div className="text-center mb-4">
-                      <motion.div
-                        className="relative overflow-hidden mb-4 mx-auto"
-                        style={{ width: 224, height: 288 }}
-                        variants={imageVariants}
-                      >
-                        {member.image ? (
-                          <motion.img
-                            src={member.image}
-                            alt={`${member.name} - ${member.role}`}
-                            loading="lazy"
-                            className={`w-full h-full border border-border bg-background object-cover ${member.alignTop ? 'object-top' : ''}`}
-                            style={member.imageScale ? { transform: `scale(${member.imageScale})` } : undefined}
-                          />
-                        ) : (
-                          <Avatar className="w-[224px] h-[288px] text-xl border border-border">
-                            <AvatarFallback>{getInitials(member.name)}</AvatarFallback>
-                          </Avatar>
-                        )}
-                      </motion.div>
-                      <Link to={`/team/${slugify(member.name)}`} state={{ member }} className="hover:underline">
-                        <motion.h3 
-                          className="text-xl font-semibold text-primary mb-1"
+              <motion.div 
+                key={member.id}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                className="mb-12 last:mb-0"
+              >
+                <div className="flex flex-col md:flex-row gap-8 items-start">
+                  {/* Photo on the left */}
+                  <motion.div
+                    className="flex-shrink-0 w-64 h-80 overflow-hidden"
+                    variants={imageVariants}
+                  >
+                    {member.image ? (
+                      <img
+                        src={member.image}
+                        alt={`${member.name} - ${member.role}`}
+                        loading="lazy"
+                        className={`w-full h-full object-cover border border-border shadow-lg ${member.alignTop ? 'object-top' : ''}`}
+                        style={member.imageScale ? { 
+                          transform: `scale(${member.imageScale})`, 
+                          transformOrigin: member.alignTop ? 'top' : (member.imagePosition || 'center'),
+                          objectPosition: member.imagePosition || undefined
+                        } : (member.imagePosition ? { objectPosition: member.imagePosition } : undefined)}
+                      />
+                    ) : (
+                      <Avatar className="w-64 h-80 text-xl border border-border">
+                        <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}</AvatarFallback>
+                      </Avatar>
+                    )}
+                  </motion.div>
+
+                  {/* Bio content on the right */}
+                  <div className="flex-1">
+                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                      {member.name}
+                    </h3>
+                    <p className="text-xl font-semibold text-primary mb-4">
+                      {member.role}
+                    </p>
+                    
+                    <div className="prose prose-sm max-w-none text-muted-foreground">
+                      {member.bio.split('\n\n').map((paragraph, idx) => (
+                        <p key={idx} className="mb-4 text-justify leading-relaxed">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+
+                    {member.Expertise && (
+                      <div className="mt-4">
+                        <p className="font-semibold text-foreground">Expertise:</p>
+                        <p className="text-sm text-muted-foreground">{member.Expertise}</p>
+                      </div>
+                    )}
+
+                    <div className="mt-6 flex flex-wrap gap-4">
+                      {member.viewprofile && (
+                        <a 
+                          href={member.viewprofile.includes('@') ? `mailto:${member.viewprofile}` : member.viewprofile}
+                          className="text-primary hover:underline text-sm"
                         >
-                          {member.name}
-                        </motion.h3>
-                      </Link>
-                      <motion.p 
-                        className="text-lg font-bold text-muted-foreground"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5, duration: 0.6 }}
-                      >
-                        {member.role}
-                      </motion.p>
-                      {member.department && (
-                        <motion.p 
-                          className="text-sm text-muted-foreground"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ delay: 0.7, duration: 0.6 }}
+                          📧 {member.viewprofile}
+                        </a>
+                      )}
+                      {member.researchgate && (
+                        <a 
+                          href={member.researchgate}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:underline text-sm"
                         >
-                          {member.department}
-                        </motion.p>
+                          🔗 ResearchGate
+                        </a>
                       )}
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Remaining Members - 3 columns */}
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={staggeredContainer}
+          {/* Research Team Section */}
+          <motion.div
+            variants={fadeUpVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-150px" }}
+            viewport={{ once: true, margin: "-100px" }}
           >
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-8">Research Team</h2>
+            
             {coreTeam.slice(2).map((member) => (
-              <motion.div key={member.id} variants={cardVariants}>
-                <Card className="group hover:shadow-lg transition-all duration-300 bg-background border border-border relative overflow-hidden">
-                  <CardContent className="p-6 relative z-10">
-                    <div className="text-center mb-4">
-                      <motion.div
-                        className="relative overflow-hidden mb-4 mx-auto"
-                        style={{ width: 224, height: 288 }}
-                        variants={imageVariants}
-                      >
-                        {member.image ? (
-                          <motion.img
-                            src={member.image}
-                            alt={`${member.name} - ${member.role}`}
-                            loading="lazy"
-                            className={`w-full h-full border border-border bg-background object-cover ${member.alignTop ? 'object-top' : ''}`}
-                            style={member.imageScale ? { transform: `scale(${member.imageScale})` } : undefined}
-                          />
-                        ) : (
-                          <Avatar className="w-[224px] h-[288px] text-xl border border-border">
-                            <AvatarFallback>{getInitials(member.name)}</AvatarFallback>
-                          </Avatar>
-                        )}
-                      </motion.div>
-                      <Link to={`/team/${slugify(member.name)}`} state={{ member }} className="hover:underline">
-                        <motion.h3 
-                          className="text-xl font-semibold text-primary mb-1"
+              <motion.div 
+                key={member.id}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                className="mb-12 last:mb-0"
+              >
+                <div className="flex flex-col md:flex-row gap-8 items-start">
+                  {/* Photo on the left */}
+                  <motion.div
+                    className="flex-shrink-0 w-64 h-80 overflow-hidden"
+                    variants={imageVariants}
+                  >
+                    {member.image ? (
+                      <img
+                        src={member.image}
+                        alt={`${member.name} - ${member.role}`}
+                        loading="lazy"
+                        className={`w-full h-full object-cover border border-border shadow-lg ${member.alignTop ? 'object-top' : ''}`}
+                        style={member.imageScale ? { 
+                          transform: `scale(${member.imageScale})`, 
+                          transformOrigin: member.alignTop ? 'top' : (member.imagePosition || 'center'),
+                          objectPosition: member.imagePosition || undefined
+                        } : (member.imagePosition ? { objectPosition: member.imagePosition } : undefined)}
+                      />
+                    ) : (
+                      <Avatar className="w-64 h-80 text-xl border border-border">
+                        <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}</AvatarFallback>
+                      </Avatar>
+                    )}
+                  </motion.div>
+
+                  {/* Bio content on the right */}
+                  <div className="flex-1">
+                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                      {member.name}
+                    </h3>
+                    <p className="text-xl font-semibold text-primary mb-4">
+                      {member.role}
+                    </p>
+                    
+                    <div className="prose prose-sm max-w-none text-muted-foreground">
+                      {member.bio.split('\n\n').map((paragraph, idx) => (
+                        <p key={idx} className="mb-4 text-justify leading-relaxed">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+
+                    {member.Expertise && (
+                      <div className="mt-4">
+                        <p className="font-semibold text-foreground">Expertise:</p>
+                        <p className="text-sm text-muted-foreground">{member.Expertise}</p>
+                      </div>
+                    )}
+
+                    <div className="mt-6 flex flex-wrap gap-4">
+                      {member.viewprofile && (
+                        <a 
+                          href={member.viewprofile.includes('@') ? `mailto:${member.viewprofile}` : member.viewprofile}
+                          className="text-primary hover:underline text-sm"
                         >
-                          {member.name}
-                        </motion.h3>
-                      </Link>
-                      <motion.p 
-                        className="text-lg font-bold text-muted-foreground"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5, duration: 0.6 }}
-                      >
-                        {member.role}
-                      </motion.p>
-                      {member.department && (
-                        <motion.p 
-                          className="text-sm text-muted-foreground"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ delay: 0.7, duration: 0.6 }}
+                          📧 {member.viewprofile}
+                        </a>
+                      )}
+                      {member.researchgate && (
+                        <a 
+                          href={member.researchgate}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:underline text-sm"
                         >
-                          {member.department}
-                        </motion.p>
+                          🔗 ResearchGate
+                        </a>
                       )}
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -430,6 +463,20 @@ const Team = () => {
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
+                    <span className="font-semibold">Assoc. Prof. Thi Phuoc Lai Nguyen</span>, Development Planning Management and Innovation, Department of Development and Sustainability.
+                  </p>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-lg text-foreground leading-relaxed">
+                    <span className="font-semibold">Dr. Anish Ghimire</span>, Environmental Engineering and Management, WREE, AIT, Thailand.
+                  </p>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-lg text-foreground leading-relaxed">
                     <span className="font-semibold">Prof. Eri Saikawa</span>, Winship Distinguished Research Professor of Environmental Sciences and Director, Emory Climate Talks, Emory University, GA, USA.
                   </p>
                 </div>
@@ -465,7 +512,7 @@ const Team = () => {
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Assoc. Prof. Salvatore G.P. VIRDIS</span>, Remote Sensing & GIS (RSGIS), Department of Information & Communication Technologies, AIT, Thailand.
+                    <span className="font-semibold">Assoc. Prof. Salvatore G.P. Virdis</span>, Remote Sensing & GIS (RSGIS), Department of Information & Communication Technologies, AIT, Thailand.
                   </p>
                 </div>
                 
