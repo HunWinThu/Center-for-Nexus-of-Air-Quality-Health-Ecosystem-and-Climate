@@ -17,6 +17,7 @@ import Hun from '@/assets/Hun Win Thu.jpg';
 import May from '@/assets/May.jpg';
 import Pant from '@/assets/Ms. Keishu Pant.jpg';
 import Natawat from '@/assets/Natawat.jpeg';
+import researchGateLogo from '@/assets/icons/researchgate.svg';
 
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
@@ -37,7 +38,7 @@ const coreTeam = [
     name: 'Dr. Lai Nguyen Huy',
     role: 'Manager',
     department: 'Doctor of Engineering in Environmental Technology and Management, AIT',
-    bio: 'Dr. Lai Nguyen Huy, an Air Quality Specialist and Research Specialist at the Asian Institute of Technology (AIT), has over ten years of professional experience in research, consultancy, and capacity building in atmospheric sciences. He is recognized for his expertise in air pollution data systems, including emission inventories, monitoring, modeling, and source apportionment, with a focus on Southeast Asia. Throughout his career, Dr. Lai has contributed to more than 22 research projects funded by prominent organizations such as UNEP, AFD, USAID, and the World Bank, serving as Co-PI, or key technical expert. His work spans air quality management, climate–air quality interaction, and co-benefit analysis, combining scientific rigor with practical policy applications. Actively engaging with government agencies, international organizations, and research networks, Dr. Lai has played a pivotal role in strengthening regional capacity for evidence-based environmental policy. His contributions have advanced understanding of air pollution issues and informed strategies for protecting human health, ecosystems, and the climate.\n\nDr. Lai Nguyen Huy earned his Doctor of Engineering in Environmental Technology and Management from the Asian Institute of Technology, Thailand in 2021. He holds a Master of Engineering in Environmental Technology and Management from the Asian Institute of Technology, Thailand (2015) and a Bachelor of Engineering in Biotechnology from the International University – Vietnam National University, Ho Chi Minh City, Vietnam (2012).',
+    bio: 'Lai Nguyen Huy obtained his Bachelor of Engineering in Biotechnology (2012) from International University – Vietnam National University in Ho Chi Minh City, Vietnam; Master of Engineering (2015) and Doctor of Engineering (2021) in Environmental Engineering and Management from Asian Institute of Technology, Thailand. He started his work as a technical manager assistant at Intron Life Science, Ltd. Company in Ho Chi Minh City, Vietnam in 2013. He then moved to AIT to pursue his research interests on the environment, focusing on air pollution. He got a number of awards and prizes in scholarships for Bachelor, Master and Doctor’s programs as well as internships, and awards such as ISIAQ Student Conference Support Award winner for the Healthy Buildings 2017 Asia conference, 2015 Student Paper Award at West Coast Section of the Air & Waste Management with the paper titled “Development of national industrial emission inventory for Vietnam” at the Raleigh Convention Center in Raleigh, North Carolina, USA on June 22-25, 2015, and the Robert B. Banks prize for the most outstanding academic performance in the field of Environmental Engineering and Management at AIT. He has extensive experience and professional networking capacity and has been serving as a research specialist and manager of the Air Quality Nexus Center at AIT. He is also the co-leader for various regional collaboration research projects. His research interests lie in the area of using technical tools (monitoring, modeling, and emission inventory) and non-technical tools to help countries in developing adaptable data-driven systems in order to form the appropriate national clean air action plans, implementations, and evaluation, supporting public awareness raising, and enhancing national and international cooperation to beat air pollution in the region.',
     Expertise: 'Air pollution data systems (Inventory, Modelling, Monitoring, Source apportionment) with focus on Southeast Asia countries, Air pollution effect assessment (crops, acid deposition), Climate and air quality interaction, Co-benefit analysis.',
     specialties: ['Air Pollution Modeling', 'Monitoring', 'Data Analysis'],
     image: huy,
@@ -229,9 +230,7 @@ const Team = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             className="mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-8">Leadership Team</h2>
-            
+          >            
             {coreTeam.slice(0, 2).map((member) => (
               <motion.div 
                 key={member.id}
@@ -283,20 +282,13 @@ const Team = () => {
                       ))}
                     </div>
 
-                    {member.Expertise && (
-                      <div className="mt-4">
-                        <p className="font-semibold text-foreground">Expertise:</p>
-                        <p className="text-sm text-muted-foreground">{member.Expertise}</p>
-                      </div>
-                    )}
-
                     <div className="mt-6 flex flex-wrap gap-4">
                       {member.viewprofile && (
                         <a 
                           href={member.viewprofile.includes('@') ? `mailto:${member.viewprofile}` : member.viewprofile}
                           className="text-primary hover:underline text-sm"
                         >
-                          📧 {member.viewprofile}
+                          ✉️ {member.viewprofile}
                         </a>
                       )}
                       {member.researchgate && (
@@ -304,9 +296,10 @@ const Team = () => {
                           href={member.researchgate}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-primary hover:underline text-sm"
+                          className="flex items-center gap-1 hover:opacity-80 transition-opacity"
                         >
-                          🔗 ResearchGate
+                          <img src={researchGateLogo} alt="ResearchGate" className="w-4 h-4" />
+                          <span className="text-sm" style={{ color: '#00D0AF' }}>ResearchGate</span>
                         </a>
                       )}
                     </div>
@@ -322,9 +315,7 @@ const Team = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-8">Research Team</h2>
-            
+          >            
             {coreTeam.slice(2).map((member) => (
               <motion.div 
                 key={member.id}
@@ -376,20 +367,13 @@ const Team = () => {
                       ))}
                     </div>
 
-                    {member.Expertise && (
-                      <div className="mt-4">
-                        <p className="font-semibold text-foreground">Expertise:</p>
-                        <p className="text-sm text-muted-foreground">{member.Expertise}</p>
-                      </div>
-                    )}
-
                     <div className="mt-6 flex flex-wrap gap-4">
                       {member.viewprofile && (
                         <a 
                           href={member.viewprofile.includes('@') ? `mailto:${member.viewprofile}` : member.viewprofile}
                           className="text-primary hover:underline text-sm"
                         >
-                          📧 {member.viewprofile}
+                          ✉️ {member.viewprofile}
                         </a>
                       )}
                       {member.researchgate && (
@@ -397,9 +381,10 @@ const Team = () => {
                           href={member.researchgate}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-primary hover:underline text-sm"
+                          className="flex items-center gap-1 hover:opacity-80 transition-opacity"
                         >
-                          🔗 ResearchGate
+                          <img src={researchGateLogo} alt="ResearchGate" className="w-4 h-4" />
+                          <span className="text-sm" style={{ color: '#00D0AF' }}>ResearchGate</span>
                         </a>
                       )}
                     </div>
