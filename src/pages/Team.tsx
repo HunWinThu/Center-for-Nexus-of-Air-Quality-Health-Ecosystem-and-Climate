@@ -14,6 +14,7 @@ import Huyen from '@/assets/Dr. Truong Thi Huyen.jpg';
 import Nguyen from '@/assets/ms-chi.jpg';
 import Dang from '@/assets/dang.jpeg';
 import Hun from '@/assets/Hun Win Thu.jpg';
+import Taufik from '@/assets/Taufik Rizki Ramadhan.jpg';
 import May from '@/assets/May.jpg';
 import Pant from '@/assets/Ms. Keishu Pant.jpg';
 import Natawat from '@/assets/Natawat.jpeg';
@@ -24,8 +25,8 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 const coreTeam = [
   {
     id: 1,
-    name: 'Prof. Dr. Nguyen Thi Kim Oanh',
-    role: 'Director',
+    name: 'Prof. Nguyen Thi Kim Oanh',
+    role: '',
     department: 'Doctor of Engineering in Environmental Technology and Management, AIT',
     bio: "Prof. Nguyen Thi Kim Oanh, a distinguished emeritus professor at the Asian Institute of Technology (AIT), is the founding director of the Air Quality Nexus Center of AIT. Under her leadership, the center conducts cutting-edge research and implementation projects with a focus on the interconnections between key scientific concerns regionally and globally: Air Quality, Human Health, Ecosystem Health, and Climate. Professor Kim Oanh has over 35 years’ working experience in research, education, consultancy, and capacity building, and is internationally recognized for her work on air pollution and climate in Asia. She has been recognized with a Highly Ranked Scholar - Lifetime in the Environment (Systems) by ScholarGPS (Powering Scholarly Analytics) and being listed in the top 2% globally most cited scientists in the field of “Meteorology and Atmospheric Sciences” in 2020, 2021 & 2022. Her research has a significant impact on environmental policy and public health in the region. Professor Kim Oanh has worked closely with government agencies and international organizations to provide science-based recommendations to improve air quality. She currently serves as a Lead Author for the Intergovernmental Panel on Climate Change (IPCC) 2027 Methodology Report on Inventories for Short-lived Climate Forcers (IPCC-2027-SLCFs), and a member of the WMO GAW-ARCH (World Meteorological Organization, AiR Pollution - Climate Change -Health Effects Nexus) Working Group to support the implementation of Global Atmosphere Watch Science and Implementation Plan (GAW SIP), 2023-2027.",
     Expertise: 'Air pollution monitoring; Dispersion modeling and receptor modeling; Emission inventory and projection; Emission control; Exposure assessment; Effects of air pollution on ecosystem; Meteorology and climate science; Climate co-benefits assessment; Industrial environmental management',
@@ -33,6 +34,7 @@ const coreTeam = [
     image: kim,
     viewprofile: 'kimoanh@ait.asia',
     researchgate: 'https://www.researchgate.net/profile/Nguyen-Thi-Oanh',
+    cv: '/src/assets/CV/Short-CV-5-pages-2025-to-WB.pdf',
   },
   {  id: 2,
     name: 'Dr. Lai Nguyen Huy',
@@ -44,6 +46,7 @@ const coreTeam = [
     image: huy,
     viewprofile: 'lainguyenhuy@ait.asia',
     researchgate: 'https://www.researchgate.net/profile/Lai-Huy-2',
+    cv: '/src/assets/CV/CV-full-Lai_Nguyen_Huy-Dec2025.pdf',
 
   },
 
@@ -87,24 +90,33 @@ const coreTeam = [
 
   },
   {
+    id: 7,
+    name: 'Mr. Taufik Rizki Ramadhan',
+    role: 'Research Assistant',
+    department: 'Bachelor of Engineering in Environmental Engineering, Institut Teknologi Nasional (ITENAS) Bandung, Indonesia',
+    bio: 'Taufik Rizki Ramadhan is an environmental engineer specializing in air quality and atmospheric modeling, with expertise in WRF, CAMx, and AERMOD applications for air pollution assessment. He has contributed to research and consulting projects on ozone formation, particulate emissions, hydrogeology, and environmental sampling at institutions such as LAPI ITB, BRIN, PT SGS WLN Indonesia, and ITENAS. His recent work focuses on evaluating the impacts of open biomass burning and black carbon emissions on urban air quality using integrated model-data approaches. Taufik earned his bachelor\'s degree in Environmental Engineering from Institut Teknologi Nasional (ITENAS) Bandung, Indonesia, where he conducted research on ozone episodes in Jakarta using WRF simulations. His research interests include atmospheric chemistry, emission inventories, air quality-health linkages, and climate-ecosystem interactions.',
+    Expertise: 'Research Assistant_Air pollution modeling',
+    specialties: ['Air Quality Modeling', 'Atmospheric Chemistry', 'Emission Inventory'],
+    image: Taufik,
+
+  },
+  {
   id: 8,
   name: 'Ms. Keishu Pant',
-  role: 'TU Student',
-  department: 'Student',
-  bio: 'Specializes in emission inventory and air quality management.',
+  role: "TU PhD's Student",
+  department: '',
+  bio: '',
   Expertise: 'Research Assistant_Air pollution monitoring',
   specialties: ['Emission Inventory', 'Air Quality Management'],
   alignTop: true,
   image: Pant,
 },
-
   {
-  id: 8,
+  id: 9,
   name: 'Mr. Natawat Samranjai',
   role: 'AIT, Master Student',
-  department: 'Student',
+  department: '',
   bio: '',
-  Expertise: 'Research Assistant_Air pollution monitoring',
   specialties: ['Emission Inventory', 'Air Quality Management'],
   alignTop: true,
   image: Natawat,
@@ -208,13 +220,6 @@ const Team = () => {
             >
               Our Team
             </motion.h1>
-            <motion.p 
-              className="text-xl text-muted-foreground max-w-2xl mx-auto"
-              variants={fadeUpVariants}
-              transition={{ delay: 0.2 }}
-            >
-              Meet the dedicated researchers and professionals at AirQC working to improve air quality and environmental health.
-            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -223,7 +228,18 @@ const Team = () => {
       <section className="pt-4 pb-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           
-          {/* Leadership Team Section */}
+          {/* Director Section Title */}
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold text-primary mb-8 text-center"
+            variants={titleVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            Director
+          </motion.h2>
+          
+          {/* Director Profile */}
           <motion.div
             variants={fadeUpVariants}
             initial="hidden"
@@ -231,7 +247,7 @@ const Team = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="mb-16"
           >            
-            {coreTeam.slice(0, 2).map((member) => (
+            {coreTeam.slice(0, 1).map((member) => (
               <motion.div 
                 key={member.id}
                 variants={cardVariants}
@@ -302,6 +318,16 @@ const Team = () => {
                           <span className="text-sm" style={{ color: '#00D0AF' }}>ResearchGate</span>
                         </a>
                       )}
+                      {member.cv && (
+                        <a 
+                          href={member.cv}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary font-bold hover:underline text-sm"
+                        >
+                          Click here for the full CV
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -309,14 +335,26 @@ const Team = () => {
             ))}
           </motion.div>
 
-          {/* Research Team Section */}
+          {/* Core Members Section Title */}
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold text-primary mb-8 text-center"
+            variants={titleVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            Core Members
+          </motion.h2>
+
+          {/* Core Members Section - Dr. Huy and Team */}
           <motion.div
             variants={fadeUpVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
+            className="mb-16"
           >            
-            {coreTeam.slice(2).map((member) => (
+            {coreTeam.slice(1, 6).map((member) => (
               <motion.div 
                 key={member.id}
                 variants={cardVariants}
@@ -368,6 +406,116 @@ const Team = () => {
                     </div>
 
                     <div className="mt-6 flex flex-wrap gap-4">
+                      {member.viewprofile && (
+                        <a 
+                          href={member.viewprofile.includes('@') ? `mailto:${member.viewprofile}` : member.viewprofile}
+                          className="text-primary hover:underline text-sm"
+                        >
+                          ✉️ {member.viewprofile}
+                        </a>
+                      )}
+                      {member.researchgate && (
+                        <a 
+                          href={member.researchgate}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1 hover:opacity-80 transition-opacity"
+                        >
+                          <img src={researchGateLogo} alt="ResearchGate" className="w-4 h-4" />
+                          <span className="text-sm" style={{ color: '#00D0AF' }}>ResearchGate</span>
+                        </a>
+                      )}
+                      {member.cv && (
+                        <a 
+                          href={member.cv}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary font-bold hover:underline text-sm"
+                        >
+                          Click here for the full CV
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Students Section Title */}
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold text-primary mb-8 text-center"
+            variants={titleVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            Students
+          </motion.h2>
+
+          {/* Students Section */}
+          <motion.div
+            variants={fadeUpVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="mb-16"
+          >            
+            {coreTeam.slice(6).map((member) => (
+              <motion.div 
+                key={member.id}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                className="mb-12 last:mb-0"
+              >
+                <div className="flex flex-col md:flex-row gap-8 items-start">
+                  {/* Photo on the left */}
+                  <motion.div
+                    className="flex-shrink-0 w-64 h-80 overflow-hidden"
+                    variants={imageVariants}
+                  >
+                    {member.image ? (
+                      <img
+                        src={member.image}
+                        alt={`${member.name} - ${member.role}`}
+                        loading="lazy"
+                        className={`w-full h-full object-cover border border-border shadow-lg ${member.alignTop ? 'object-top' : ''}`}
+                        style={member.imageScale ? { 
+                          transform: `scale(${member.imageScale})`, 
+                          transformOrigin: member.alignTop ? 'top' : (member.imagePosition || 'center'),
+                          objectPosition: member.imagePosition || undefined
+                        } : (member.imagePosition ? { objectPosition: member.imagePosition } : undefined)}
+                      />
+                    ) : (
+                      <Avatar className="w-64 h-80 text-xl border border-border">
+                        <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}</AvatarFallback>
+                      </Avatar>
+                    )}
+                  </motion.div>
+
+                  {/* Bio content on the right */}
+                  <div className="flex-1">
+                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                      {member.name}
+                    </h3>
+                    {member.role && (
+                      <p className="text-lg text-primary font-semibold mb-1">
+                        {member.role}
+                      </p>
+                    )}
+                    {member.department && (
+                      <p className="text-sm text-muted-foreground mb-4">
+                        {member.department}
+                      </p>
+                    )}
+                    {member.bio && (
+                      <p className="text-base text-foreground leading-relaxed mb-4 whitespace-pre-line">
+                        {member.bio}
+                      </p>
+                    )}
+                    <div className="flex flex-col gap-2">
                       {member.viewprofile && (
                         <a 
                           href={member.viewprofile.includes('@') ? `mailto:${member.viewprofile}` : member.viewprofile}
