@@ -58,7 +58,7 @@ import thematic2 from '@/assets/Our_Thematics/slide01_img02.png';
 import thematic3 from '@/assets/Our_Thematics/Slide01_img03.png';
 import thematic4 from '@/assets/Our_Thematics/slide01_img05.png';
 import thematic5 from '@/assets/Our_Thematics/slide01_img01.png';
-import thematic6 from '@/assets/Our_Thematics/slide01_img03.png';
+import thematic6 from '@/assets/Our_Thematics/slide_06.jpg';
 import React, { lazy, Suspense, useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';

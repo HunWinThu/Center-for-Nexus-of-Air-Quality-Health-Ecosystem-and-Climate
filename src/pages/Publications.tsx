@@ -279,7 +279,7 @@ const Publications = () => {
               variants={fadeUpVariants}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
             >
-              Explore our extensive library of peer-reviewed articles, showcasing our commitment to advancing air quality research and policy development.
+              Recently Publications
             </motion.p>
           </motion.div>
         </div>

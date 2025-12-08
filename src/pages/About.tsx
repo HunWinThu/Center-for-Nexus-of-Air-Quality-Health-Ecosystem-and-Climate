@@ -56,16 +56,13 @@ const About = () => {
             </h1>
             <div className="prose prose-lg max-w-none text-muted-foreground space-y-8">
               <p className="text-justify text-xl leading-relaxed">
-                Air Quality Nexus Center is a leading center in conducting and implementing application research with the
-                aim to gain multiple benefits from reducing air pollution through improvement of health of human and
-                ecosystem, and protection of the climate system. The Center explores the interconnections between air quality
-                with various sectors and systems to best realize multiple benefits from air pollution reduction strategies,
-                focusing on Public Health, Ecosystem, and Climate. The Center's goal is to serve as a focal point to build
-                capacity and conduct cutting-edge research in atmospheric sciences for sustainable development in Asia and
-                beyond.
+                Air pollution kills millions of people and causes millions of tons of agricultural crop yield loss in the world every year. Effective strategies for improving air quality are urgently needed, which must be holistic and cross-sectoral, requiring collaboration and integrated policies across different domains.
               </p>
               <p className="text-justify text-xl leading-relaxed">
-                As an AIT institution-wide unit, the Air Quality Nexus Center aims to foster cooperation between multidisciplinary and transdisciplinary research activities across the AIT thematic areas, academic schools, and centers for strengthening the institute's research and education capacity.
+                Air Quality Nexus Center explores the interconnections between air quality with various sectors and systems to best realize multiple benefits from air pollution reduction strategies, focusing on Public Health, Ecosystem, and Climate. The Center's goal is to serve as a focal point to build capacity and conduct cutting-edge research in atmospheric sciences for sustainable development in Asia and beyond.
+              </p>
+              <p className="text-justify text-xl leading-relaxed">
+                As an AIT institution-wide unit, the Air Quality Nexus Center aims to foster cooperation between multidisciplinary and transdisciplinary research activities across the AIT thematic areas, academic schools, and centers for strengthening the institute’s research and education capacity.
               </p>
             </div>
           </div>
