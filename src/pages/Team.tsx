@@ -34,7 +34,7 @@ const coreTeam = [
     image: kim,
     viewprofile: 'kimoanh@ait.asia',
     researchgate: 'https://www.researchgate.net/profile/Nguyen-Thi-Oanh',
-    cv: '/src/assets/CV/Short-CV-5-pages-2025-to-WB.pdf',
+    cv: '/CV/CV-full-Prof-Nguyen-Thi-Kim-Oanh.pdf',
   },
   {  id: 2,
     name: 'Dr. Lai Nguyen Huy',
@@ -46,7 +46,7 @@ const coreTeam = [
     image: huy,
     viewprofile: 'lainguyenhuy@ait.asia',
     researchgate: 'https://www.researchgate.net/profile/Lai-Huy-2',
-    cv: '/src/assets/CV/CV-full-Lai_Nguyen_Huy-Dec2025.pdf',
+    cv: '/CV/CV-full-Lai_Nguyen_Huy-Dec2025.pdf',
 
   },
 
