@@ -459,7 +459,7 @@ const Team = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="mb-16"
+            className="mb-8"
           >            
             {coreTeam.slice(6).map((member) => (
               <motion.div 
@@ -548,10 +548,10 @@ const Team = () => {
       <div className="border-t border-gray-200"></div>
 
       {/* Associated Members and Consultants Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
-            className="max-w-4xl mx-auto"
+            className="max-w-5xl mx-auto"
             variants={fadeUpVariants}
             initial="hidden"
             whileInView="visible"
@@ -564,99 +564,99 @@ const Team = () => {
               Associated Members and Consultants
             </motion.h2>
             
-            <motion.div 
-              className="bg-white rounded-lg shadow-lg p-8"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-            >
-              <div className="space-y-6">
+            <div className="space-y-6">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Assoc. Prof. Binod Pokharel</span>, Tribhuvan University, Nepal.
+                    <span className="font-semibold">Anish Ghimire, Assistant Professor</span>, Department of Water Resources and Environmental Engineering, AIT, Thailand.
                   </p>
                 </div>
                 
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Assoc. Prof. Didin Agustian Permadi</span>, Head of Center for Research and Community Development, National Institute of Technology (ITENAS), Indonesia.
+                    <span className="font-semibold">Binod Pokharel, Associate Professor</span>, Tribhuvan University, Nepal.
                   </p>
                 </div>
                 
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Assoc. Prof. Ekbordin Winijkul</span>, Head of Department of Water Resources and Environmental Engineering (WREE), AIT, Thailand.
+                    <span className="font-semibold">Didin Agustian Permadi, Associate Professor</span>, Head of the Center for Research and Community Development at the National Institute of Technology (ITENAS), Indonesia.
                   </p>
                 </div>
                 
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Assoc. Prof. Thi Phuoc Lai Nguyen</span>, Development Planning Management and Innovation, Department of Development and Sustainability.
+                    <span className="font-semibold">Ekbordin Winijkul, Associate Professor</span>, Head of the Department of Water Resources and Environmental Engineering at the Asian Institute of Technology (AIT), Thailand.
                   </p>
                 </div>
                 
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Dr. Anish Ghimire</span>, Environmental Engineering and Management, WREE, AIT, Thailand.
+                    <span className="font-semibold">Eri Saikawa, Winship Distinguished Research Professor</span>, Environmental Sciences, Emory University, USA.
                   </p>
                 </div>
                 
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Prof. Eri Saikawa</span>, Winship Distinguished Research Professor of Environmental Sciences and Director, Emory Climate Talks, Emory University, GA, USA.
+                    <span className="font-semibold">Ha Thanh Dong, Associate Professor</span>, Department of Food, Agriculture, and Natural Resources, AIT, Thailand.
                   </p>
                 </div>
                 
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Assoc. Prof. Ha Thanh Dong</span>, Aquaculture and Aquatic Resources Management (AARM), Department of Food, Agriculture, and Natural Resources, AIT, Thailand.
+                    <span className="font-semibold">Maheswar Rupakheti, Research Group Leader</span>, Research Institute for Sustainability, Helmholtz Centre Potsdam, Germany.
                   </p>
                 </div>
                 
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Dr. Maheswar Rupakheti</span>, Research Group Leader at Research Institute for Sustainability, Helmholtz Centre Potsdam, Germany.
+                    <span className="font-semibold">Prapat Pongkiatkul, Associate Professor</span>, Environmental Engineering Department, King Mongkut's University of Technology Thonburi (KMUTT), Thailand.
                   </p>
                 </div>
                 
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Assoc. Prof. Prapat Pongkiatkul</span>, Environmental Engineering Department, King Mongkut's University of Technology Thonburi (KMUTT), Thailand.
+                    <span className="font-semibold">Rejina Maskey Byanju, Professor</span>, Tribhuvan University, Nepal.
                   </p>
                 </div>
                 
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Prof. Rejina Maskey Byanju</span>, Tribhuvan University, Nepal.
+                    <span className="font-semibold">Salvatore G.P. Virdis, Associate Professor</span>, Department of Information & Communication Technologies, AIT, Thailand.
                   </p>
                 </div>
                 
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Assoc. Prof. Salvatore G.P. Virdis</span>, Remote Sensing & GIS (RSGIS), Department of Information & Communication Technologies, AIT, Thailand.
+                    <span className="font-semibold">Thi Phuoc Lai Nguyen, Associate Professor</span>, Development Planning Management and Innovation, Department of Development and Sustainability, AIT, Thailand.
                   </p>
                 </div>
                 
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-lg text-foreground leading-relaxed">
-                    <span className="font-semibold">Dr. Vanisa Surapipith</span>, Head of Air Pollution Cluster, Regional Resource Centre for Asia and the Pacific, Asian Institute of Technology (AIT RRC.AP), Thailand.
+                    <span className="font-semibold">Vanisa Surapipith, Head of Air Pollution Cluster</span>, Regional Resource Centre for Asia and the Pacific, Asian Institute of Technology (AIT RRC.AP), Thailand.
                   </p>
                 </div>
-              </div>
-            </motion.div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-lg text-foreground leading-relaxed">
+                    <span className="font-semibold">Vilas Nitivattananon, Professor</span>, Department of Development and Sustainability, School of Environment, Resources and Development, AIT, Thailand.
+                  </p>
+                </div>
+
+            </div>
           </motion.div>
         </div>
       </section>

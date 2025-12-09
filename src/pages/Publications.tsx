@@ -26,6 +26,7 @@ import cover2023_5 from '@/assets/Publication _book_cover/2023/2023_5.png';
 import cover2023_6 from '@/assets/Publication _book_cover/2023/2023_6.png';
 
 import cover2022_1 from '@/assets/Publication _book_cover/2022/2022_1.png';
+import cover2022_2 from '@/assets/Publication _book_cover/2022/2022_2.png';
 import cover2022_3 from '@/assets/Publication _book_cover/2022/2022_3.png';
 import cover2022_4 from '@/assets/Publication _book_cover/2022/2022_4.png';
 import cover2022_5 from '@/assets/Publication _book_cover/2022/2022_5.png';
@@ -175,8 +176,9 @@ const publications: Record<string, Publication[]> = {
       title: 'The Airborne and Satellite Investigation of Asian Air Quality (Asia-Aq): An Opportunity for International Collaboration',
       authors: 'Crawford, J. H., Travis, K. R., Judd, L. M., Lefer, B. L., Dibb, J. E., Kim, J., Park, R., Lee, G., Chang, L., Simpas, J. B. B., Cambaliza, M. O. L., Macatangay, R. C., Surapipith, V., Thongboonchoo, N., Oanh, N. T. K., Hien, T. T., Ly, B. T., Salam, A., Ghude, S. D., Latif, M. T., Yu, L. E., Tanimoto, H., & Kanaya, Y.',
       journal: 'IGARSS 2022 – 2022 IEEE International Geoscience and Remote Sensing Symposium.',
-      doi: 'Not available',
-      cite: 'Crawford, J. H., Travis, K. R., Judd, L. M., Lefer, B. L., Dibb, J. E., Kim, J., Park, R., Lee, G., Chang, L., Simpas, J. B. B., Cambaliza, M. O. L., Macatangay, R. C., Surapipith, V., Thongboonchoo, N., Oanh, N. T. K., Hien, T. T., Ly, B. T., Salam, A., Ghude, S. D., Latif, M. T., Yu, L. E., Tanimoto, H., & Kanaya, Y. (2022). The Airborne and Satellite Investigation of Asian Air Quality (Asia-Aq): An Opportunity for International Collaboration. IGARSS 2022 – 2022 IEEE International Geoscience and Remote Sensing Symposium.',
+      doi: 'https://doi.org/10.1109/IGARSS46834.2022.9884827',
+      cite: 'Crawford, J. H., Travis, K. R., Judd, L. M., Lefer, B. L., Dibb, J. E., Kim, J., Park, R., Lee, G., Chang, L., Simpas, J. B. B., Cambaliza, M. O. L., Macatangay, R. C., Surapipith, V., Thongboonchoo, N., Oanh, N. T. K., Hien, T. T., Ly, B. T., Salam, A., Ghude, S. D., Latif, M. T., Yu, L. E., Tanimoto, H., & Kanaya, Y. (2022). The Airborne and Satellite Investigation of Asian Air Quality (Asia-Aq): An Opportunity for International Collaboration. IGARSS 2022 – 2022 IEEE International Geoscience and Remote Sensing Symposium. doi:https://doi.org/10.1109/IGARSS46834.2022.9884827',
+      image: cover2022_2,
     },
     {
       title: 'Large spatio-temporal variations of size-resolved particulate matter and volatile organic compounds in urban area with heavy traffic',
