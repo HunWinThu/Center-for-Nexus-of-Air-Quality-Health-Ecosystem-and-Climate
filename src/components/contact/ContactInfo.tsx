@@ -48,7 +48,7 @@ const contactInfo = [
 export function ContactInfo() {
   return (
     <motion.div 
-      className="grid grid-cols-1 gap-6 mb-16"
+      className="grid grid-cols-1 gap-6 mb-2"
       variants={staggerContainer}
       initial="hidden"
       whileInView="visible"

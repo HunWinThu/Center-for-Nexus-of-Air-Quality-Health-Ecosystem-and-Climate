@@ -224,7 +224,7 @@ const Resources = () => {
     <>
       {/* Hero Section */}
       <motion.section 
-        className="pt-20 pb-4 bg-white"
+        className="pt-12 pb-4 bg-white"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
@@ -236,16 +236,10 @@ const Resources = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
               Resources & Tools
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Access our comprehensive collection of datasets, tools, reports, and resources 
-              for air quality research and policy development.
-            </p>
           </div>
         </div>
       </motion.section>
 
-      {/* Section Separator */}
-      <div className="border-t border-gray-200"></div>
 
       {/* Main Content - Tabbed Interface */}
       <section className="pt-4 pb-20">

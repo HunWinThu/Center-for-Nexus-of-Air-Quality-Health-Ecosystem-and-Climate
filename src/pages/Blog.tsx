@@ -134,7 +134,7 @@ const Blog = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-20 pb-4 bg-white">
+      <section className="pt-12 pb-4 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="max-w-4xl mx-auto text-center"
@@ -143,9 +143,12 @@ const Blog = () => {
             variants={staggerContainer}
           >
             <motion.h1 
-              className="text-4xl md:text-6xl font-bold text-primary mb-6"
+              className="text-3xl md:text-5xl font-bold text-primary mb-4"
+              initial="hidden"
+              viewport={{ once: true, margin: "-50px" }}
+              whileInView="visible"
               variants={fadeUpVariants}
-              transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{ duration: 0.8 }}
             >
               Projects
             </motion.h1>

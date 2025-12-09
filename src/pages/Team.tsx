@@ -116,7 +116,7 @@ const coreTeam = [
   name: 'Mr. Natawat Samranjai',
   role: 'AIT, Master Student',
   department: '',
-  bio: '',
+  bio: "Natawat Samranjai is currently a Master's student at the Asian Institute of Technology (AIT). He specializes in municipal waste management and researching suitable options for waste recycling. His academic background includes hands-on experience in analyzing and optimizing waste streams. Natawat earned his Bachelor of Engineering in Environmental Engineering from Kasetsart University, Thailand, in 2024.",
   specialties: ['Emission Inventory', 'Air Quality Management'],
   alignTop: true,
   image: Natawat,
@@ -206,7 +206,7 @@ const Team = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-20 pb-4 bg-white">
+      <section className="pt-12 pb-4 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="max-w-4xl mx-auto text-center"
@@ -215,7 +215,7 @@ const Team = () => {
             animate="visible"
           >
             <motion.h1 
-              className="text-4xl md:text-6xl font-bold text-primary mb-6"
+              className="text-3xl md:text-5xl font-bold text-primary mb-4"
               variants={titleVariants}
             >
               Our Team

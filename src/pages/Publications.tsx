@@ -1,12 +1,8 @@
-import { MainLayout } from '@/components/layout/MainLayout';
 import { Button } from '@/components/ui/button';
-import { Link, useSearchParams } from 'react-router-dom';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Card, CardContent } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
-import { Book, BookOpen, Users, Calendar, Copy, Check, Quote } from 'lucide-react';
+import { Copy, Check } from 'lucide-react';
 import { toast } from 'sonner';
 import { useState } from 'react';
 
@@ -207,24 +203,15 @@ const publications: Record<string, Publication[]> = {
 };
 
 const Publications = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [copiedIndex, setCopiedIndex] = useState(-1);
-  
-  // Get active tab from URL, default to '2025'
-  const activeTab = searchParams.get('tab') || '2025';
-  
-  // Function to handle tab changes and update URL
-  const handleTabChange = (tabValue: string) => {
-    setSearchParams({ tab: tabValue });
-  };
+  const [copiedIndex, setCopiedIndex] = useState<string>('');
 
-  const handleCopy = (text: string, index: number) => {
+  const handleCopy = (text: string, id: string) => {
     // Strip HTML tags for clipboard
     const plainText = text.replace(/<[^>]*>/g, '');
     navigator.clipboard.writeText(plainText);
     toast.success('Citation copied to clipboard!');
-    setCopiedIndex(index);
-    setTimeout(() => setCopiedIndex(-1), 2000); // Reset after 2 seconds
+    setCopiedIndex(id);
+    setTimeout(() => setCopiedIndex(''), 2000); // Reset after 2 seconds
   };
 
   // Animation variants
@@ -238,20 +225,15 @@ const Publications = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.4
+        staggerChildren: 0.1,
+        delayChildren: 0.2
       }
     }
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 60, scale: 0.9 },
-    visible: { opacity: 1, y: 0, scale: 1 }
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 1.2 },
-    visible: { opacity: 1, scale: 1 }
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 }
   };
 
   return (
@@ -268,178 +250,153 @@ const Publications = () => {
             <motion.div variants={fadeUpVariants}>
             </motion.div>
             <motion.h1 
-              className="text-4xl md:text-6xl font-bold text-primary mb-6"
+              className="text-4xl md:text-5xl font-bold text-primary mb-6"
               variants={fadeUpVariants}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              Publications
-            </motion.h1>
-            <motion.p 
-              className="text-xl text-muted-foreground max-w-2xl mx-auto"
-              variants={fadeUpVariants}
-              transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
-            >
               Recently Publications
-            </motion.p>
+            </motion.h1>
           </motion.div>
         </div>
       </section>
 
       {/* Publications Content */}
       <section className="pt-4 pb-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <TabsList className="grid w-full grid-cols-4 bg-accent/50 p-2 rounded-lg mb-8">
-              {['2025', '2024', '2023', '2022'].map((year) => (
-                <TabsTrigger 
-                  key={year} 
-                  value={year} 
-                  className="text-lg font-semibold data-[state=active]:bg-background data-[state=active]:text-foreground"
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+            className="space-y-12"
+          >
+            {/* Iterate through years in descending order (2025, 2024, 2023, 2022) */}
+            {['2025', '2024', '2023', '2022'].map((year, yearIndex) => (
+              <div key={year}>
+                {/* Separator line between years (not before first year) */}
+                {yearIndex > 0 && <div className="border-t-2 border-primary/20 my-12"></div>}
+                
+                {/* Year heading */}
+                <motion.h2 
+                  variants={cardVariants}
+                  className="text-3xl md:text-4xl font-bold text-primary mb-6"
                 >
-                  <Calendar className="mr-2" size={16} />
                   {year}
-                </TabsTrigger>
-              ))}
-            </TabsList>
+                </motion.h2>
+                
+                {/* Publications for this year */}
+                <div className="space-y-6">
+                  {publications[year].map((pub, index) => {
+                    const pubId = `${year}-${index}`;
+                    return (
+                      <motion.div
+                        key={pubId}
+                        variants={cardVariants}
+                        className="group pb-6 mb-6 border-b border-border last:border-b-0"
+                      >
+                        <div className="flex gap-6">
+                          <div className="flex-shrink-0">
+                            <div className="w-32 md:w-40">
+                              <AspectRatio ratio={3/4} className="rounded-md bg-muted/30 border border-border overflow-hidden">
+                                {(() => {
+                                  const imgSrc = pub.image || coverImages[year]?.[index] || '/placeholder.svg';
+                                  return (
+                                    <img
+                                      src={imgSrc}
+                                      alt={`${pub.title} cover`}
+                                      className="w-full h-full object-cover"
+                                      loading="lazy"
+                                    />
+                                  );
+                                })()}
+                              </AspectRatio>
+                            </div>
+                          </div>
+                          
+                          <div className="flex-1 min-w-0">
+                            <Link to={pub.doi} target="_blank" rel="noopener noreferrer" className="block mb-2">
+                              <h3 
+                                className="text-xl font-semibold text-primary underline leading-tight hover:text-primary/80 transition-colors"
+                                dangerouslySetInnerHTML={{ __html: pub.title }}
+                              />
+                            </Link>
+                            
+                            <div className="text-base text-foreground mb-4">
+                              Publication category: {
+                                /symposium|conference|proceedings|igarss/i.test(pub.journal) 
+                                  ? 'Conference Paper' 
+                                  : /usaid|technical report/i.test(pub.journal) 
+                                  ? 'Technical Report' 
+                                  : 'Journal Article'
+                              }
+                            </div>
 
-            {Object.entries(publications).map(([year, pubs]) => (
-              <TabsContent key={year} value={year} className="mt-8">
-                {pubs.length === 0 && (
-                  <Card className="bg-gradient-to-br from-background to-accent/10 border-dashed border-primary/30">
-                    <CardContent className="p-8 text-center">
-                      <Badge variant="secondary" className="mb-2">Coming soon</Badge>
-                      <h3 className="text-2xl font-semibold mb-2">Publications {year}</h3>
-                      <p className="text-muted-foreground">We will add the {year} publications shortly.</p>
-                    </CardContent>
-                  </Card>
-                )}
-                <motion.div 
-                  variants={staggerContainer}
-                  initial="hidden"
-                  animate="visible"
-                  className="space-y-6"
-                >
-                  {pubs.map((pub, index) => (
-                    <motion.div
-                      key={index}
-                      variants={cardVariants}
-                      className="group"
-                    >
-                      <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 ease-in-out bg-white border border-border">
-                        <CardContent className="p-8">
-                          <div className="flex gap-6">
-                            <div className="flex-shrink-0">
-                              <div className="w-32 md:w-40">
-                                <AspectRatio ratio={3/4} className="rounded-md bg-muted/30 border border-border overflow-hidden">
-                                  {(() => {
-                                    const imgSrc = pub.image || coverImages[year]?.[index] || '/placeholder.svg';
-                                    return (
-                                      <img
-                                        src={imgSrc}
-                                        alt={`${pub.title} cover`}
-                                        className="w-full h-full object-cover"
-                                        loading="lazy"
-                                      />
-                                    );
-                                  })()}
-                                </AspectRatio>
+                            <div className="mb-4">
+                              <div className="text-base text-foreground mb-2">
+                                Published Year: {year}
+                              </div>
+                              <div className="text-base text-foreground mb-2">
+                                Authors: {pub.authors}
+                              </div>
+                              <div className="text-base text-foreground italic mb-2">
+                                <span dangerouslySetInnerHTML={{ __html: `Journal Title, Volume (Issue), Page: ${pub.journal}` }} />
+                              </div>
+                              <div className="text-base text-foreground">
+                                {pub.doi.includes('citepa.org') ? 'Link' : 'DOI'}: <Link to={pub.doi} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{pub.doi}</Link>
                               </div>
                             </div>
-                            
-                            <div className="flex-1 min-w-0">
-                              <Link to={pub.doi} target="_blank" rel="noopener noreferrer" className="block mb-2">
-                                <h3 
-                                  className="text-xl font-semibold text-primary underline leading-tight hover:text-primary/80 transition-colors"
-                                  dangerouslySetInnerHTML={{ __html: pub.title }}
-                                />
-                              </Link>
-                              
-                              <div className="text-base text-foreground mb-4">
-                                Publication category: {
-                                  /symposium|conference|proceedings|igarss/i.test(pub.journal) 
-                                    ? 'Conference Paper' 
-                                    : /usaid|technical report/i.test(pub.journal) 
-                                    ? 'Technical Report' 
-                                    : 'Journal Article'
-                                }
-                              </div>
 
-                              <div className="mb-4">
-                                <div className="text-base text-foreground mb-2">
-                                  Published Year: {year}
+                            <div className="mt-6 pt-4 border-t border-border">
+                              <div className="flex items-start justify-between gap-2">
+                                <div className="flex-1">
+                                  <span className="text-base font-semibold text-foreground">Cite: </span>
+                                  <span 
+                                    className="text-base text-foreground"
+                                    dangerouslySetInnerHTML={{ __html: `'' ${pub.cite}` }}
+                                  />
                                 </div>
-                                <div className="text-base text-foreground mb-2">
-                                  Authors: {pub.authors}
-                                </div>
-                                <div className="text-base text-foreground italic mb-2">
-                                  <span dangerouslySetInnerHTML={{ __html: `Journal Title, Volume (Issue), Page: ${pub.journal}` }} />
-                                </div>
-                                <div className="text-base text-foreground">
-                                  {pub.doi.includes('citepa.org') ? 'Link' : 'DOI'}: <Link to={pub.doi} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{pub.doi}</Link>
-                                </div>
-                              </div>
-
-                              <div className="mt-6 pt-4 border-t border-border">
-                                <div className="flex items-start justify-between gap-2">
-                                  <div className="flex-1">
-                                    <span className="text-base font-semibold text-foreground">Cite: </span>
-                                    <span 
-                                      className="text-base text-foreground"
-                                      dangerouslySetInnerHTML={{ __html: `'' ${pub.cite}` }}
-                                    />
-                                  </div>
-                                  <Button 
-                                    variant="ghost" 
-                                    size="icon" 
-                                    className="flex-shrink-0"
-                                    onClick={() => handleCopy(pub.cite, index)}
-                                  >
-                                    {copiedIndex === index ? <Check className="text-primary" size={20} /> : <Copy className="text-primary" size={20} />}
-                                  </Button>
-                                </div>
+                                <Button 
+                                  variant="ghost" 
+                                  size="icon" 
+                                  className="flex-shrink-0"
+                                  onClick={() => handleCopy(pub.cite, pubId)}
+                                >
+                                  {copiedIndex === pubId ? <Check className="text-primary" size={20} /> : <Copy className="text-primary" size={20} />}
+                                </Button>
                               </div>
                             </div>
                           </div>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </TabsContent>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
             ))}
-          </Tabs>
+          </motion.div>
+
+          {/* Separator line before ResearchGate section */}
+          <div className="border-t-2 border-primary/20 my-12"></div>
 
           {/* ResearchGate Section - matching website style */}
           <motion.div 
             initial="hidden"
             animate="visible"
             variants={fadeUpVariants}
-            className="mt-20"
+            className="mt-8"
           >
-            <div className="rounded-lg p-8 text-center">
-              <h2 className="text-3xl font-bold text-foreground mb-6">
-                Find More Previous Research Publications on ResearchGate
+            <div className="rounded-lg p-4 text-center">
+              <h2 className="text-3xl text-primary mb-4">
+                Find More Previous Research Publications on
+                <br />
+                <Link 
+                  to="https://www.researchgate.net/profile/Nguyen-Thi-Oanh" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary font-bold underline"
+                >
+                  ResearchGate
+                </Link>
               </h2>
-              <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Connect with our researchers and explore additional publications on their ResearchGate profiles.
-              </p>
-              <div className="flex justify-center flex-wrap gap-4">
-                <Button asChild variant="outline" size="lg" className="group">
-                  <Link to="https://www.researchgate.net/profile/Nguyen-Thi-Oanh" target="_blank" rel="noopener noreferrer">
-                    Nguyen Thi Oanh
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="group">
-                  <Link to="https://www.researchgate.net/profile/Lai-Huy-2" target="_blank" rel="noopener noreferrer">
-                    Lai Huy
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="group">
-                  <Link to="https://www.researchgate.net/profile/Ha-Chi-Nguyen-Nhat" target="_blank" rel="noopener noreferrer">
-                    Ha-Chi-Nguyen-Nhat
-                  </Link>
-                </Button>
-              </div>
             </div>
           </motion.div>
         </div>

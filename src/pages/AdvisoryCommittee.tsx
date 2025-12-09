@@ -216,7 +216,7 @@ const Committee = () => {
     <>
       {/* Hero Section with Enhanced Animations */}
       <motion.section 
-        className="pt-20 pb-4 bg-white overflow-hidden"
+        className="pt-12 pb-4 bg-white overflow-hidden"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
@@ -224,7 +224,7 @@ const Committee = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h1 
-              className="text-4xl md:text-6xl font-bold text-primary mb-6"
+              className="text-3xl md:text-5xl font-bold text-primary mb-6"
               variants={fadeInUp}
               initial="hidden"
               animate="visible"

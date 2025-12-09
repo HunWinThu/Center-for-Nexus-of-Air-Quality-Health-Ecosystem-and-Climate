@@ -19,7 +19,7 @@ const staggerContainer = {
 
 export function ContactHero() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           className="max-w-4xl mx-auto text-center"
@@ -37,14 +37,6 @@ export function ContactHero() {
               Contact Us
             </h1>
           </motion.div>
-          <motion.p 
-            className="text-xl text-muted-foreground max-w-2xl mx-auto"
-            variants={fadeUpVariants}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
-          >
-            Have questions about our research, want to collaborate, or need information about air quality in your area? 
-            We'd love to hear from you.
-          </motion.p>
         </motion.div>
       </div>
     </section>
