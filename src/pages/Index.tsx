@@ -536,7 +536,7 @@ const Index = () => {
     },
     {
       icon: Wind, // Represents air flow and dispersion
-      title: 'Performance and Evaluation of Meteorological and Chemical Transport Modeling Systems',
+      title: 'Meteorological and Chemical Transport Modeling Systems',
       description: '',
       image: thematic3
     },
@@ -670,14 +670,16 @@ const Index = () => {
               variants={fadeUpVariants}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-center" style={{ color: '#3f6433' }}>About Air Quality Nexus Center</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-center" style={{ color: '#3f6433' }}>
+                Center for Nexus of Air Quality, Health, Ecosystem, and Climate
+              </h2>
               <div className="text-lg sm:text-xl text-gray-700 space-y-4 sm:space-y-6">
                 <p className="leading-relaxed text-justify">
                   <span className="font-bold italic">A</span>ir pollution kills millions of people and causes millions of tons of agricultural crop yield loss in the world every year. Effective strategies for improving air quality are urgently needed, which must be holistic and cross-sectoral, requiring collaboration and integrated policies across different domains.
                 </p>
 
                 <p className="leading-relaxed text-justify">
-                  <span className="font-bold italic">A</span>ir Quality Nexus Center explores the interconnections between air quality with various sectors and systems to best realize multiple benefits from air pollution reduction strategies, focusing on Public Health, Ecosystem, and Climate. The Center's goal is to serve as a focal point to build capacity and conduct cutting-edge research in atmospheric sciences for sustainable development in Asia and beyond.
+                  <span className="font-bold italic">A</span>ir Quality Nexus Center also known as Center for Nexus of Air Quality, Health, Ecosystem, and Climate(AirQC) explores the interconnections between air quality with various sectors and systems to best realize multiple benefits from air pollution reduction strategies, focusing on Public Health, Ecosystem, and Climate. The Center's goal is to serve as a focal point to build capacity and conduct cutting-edge research in atmospheric sciences for sustainable development in Asia and beyond.
                 </p>
                 <p className="leading-relaxed text-justify">
                   <span className="font-bold italic">A</span>s an AIT institution-wide unit, the Air Quality Nexus Center aims to foster cooperation between multidisciplinary and transdisciplinary research activities across the AIT thematic areas, academic schools, and centers for strengthening the institute’s research and education capacity.
