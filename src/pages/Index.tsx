@@ -679,13 +679,13 @@ const Index = () => {
                 </p>
 
                 <p className="leading-relaxed text-justify">
-                  <span className="font-bold italic">A</span>ir Quality Nexus Center also known as Center for Nexus of Air Quality, Health, Ecosystem, and Climate(AirQC) explores the interconnections between air quality with various sectors and systems to best realize multiple benefits from air pollution reduction strategies, focusing on Public Health, Ecosystem, and Climate. The Center's goal is to serve as a focal point to build capacity and conduct cutting-edge research in atmospheric sciences for sustainable development in Asia and beyond.
+                  <span className="font-bold italic">C</span>enter for Nexus of Air Quality, Health, Ecosystem, and Climate or Air Quality Nexus Center (AirQC) for short, explores the interconnections between air quality with various sectors and systems to best realize multiple benefits from air pollution reduction strategies, focusing on Public Health, Ecosystem, and Climate. The Center's goal is to serve as a focal point to build capacity and conduct cutting-edge research in atmospheric sciences for sustainable development in Asia and beyond.
                 </p>
                 <p className="leading-relaxed text-justify">
                   <span className="font-bold italic">A</span>s an AIT institution-wide unit, the Air Quality Nexus Center aims to foster cooperation between multidisciplinary and transdisciplinary research activities across the AIT thematic areas, academic schools, and centers for strengthening the institute’s research and education capacity.
                 </p>
               </div>
-            </motion.div>
+          </motion.div>oh
             <motion.div 
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
               variants={fadeUpVariants}
