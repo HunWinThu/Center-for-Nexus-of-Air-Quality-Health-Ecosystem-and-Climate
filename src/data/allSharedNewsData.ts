@@ -74,6 +74,15 @@ export const allNewsItems: NewsItem[] = [
   // EVENTS
   {
     id: 1,
+    title: "Turning Waste into Solutions: AIT Maps Southeast Asia's Pollution Challenge",
+    excerpt: "The Air Quality Nexus Center (AirQC) is proud to contribute to AIT's work on mapping Southeast Asia's pollution challenges, highlighting the urgent need to address waste-related air pollution across the region.<br></br><strong>Exposing the hidden cost of open burning:</strong><br></br>Across Southeast Asia, nearly 15% of municipal waste is still burned in open piles. Field experiments conducted by AIT reveal that this practice releases approximately 482 nanograms of dioxins per kilogram of waste, contributing annually to an estimated 5.3 kilograms of highly toxic dioxins and 669,400 kilograms of cancer-linked chemicals across the region.<br></br>These findings provide policymakers with one of the clearest pictures to date of the serious health and environmental impacts of uncontrolled waste burning—and reinforce the need for sustainable waste management solutions.<br></br>Watch the video to learn more: <a href='https://www.eurekalert.org/multimedia/1110991' target='_blank' rel='noopener noreferrer' style='color: hsl(105 33% 30%); text-decoration: underline;'>https://www.eurekalert.org/multimedia/1110991</a>",
+    category: "Media",
+    date: "21 January 2026",
+    image: '',
+    link: "https://www.eurekalert.org/multimedia/1110991",
+  },
+  {
+    id: 2,
     title: "International Conference on 'Current Trends in Natural Product Research', Banaras Hindu University (BHU), Varanasi, India",
     excerpt: "On 10<sup>th</sup> December 2025, the Air Quality Nexus Center (AirQC) participated in the International Conference on \"Current Trends in Natural Product Research\", an international forum that brought together students, researchers, professionals, and industry representatives to exchange knowledge on recent scientific advances and emerging research directions in natural product research.<br></br>The conference aimed to accelerate research and knowledge sharing through high-quality keynote lectures, engaging panel discussions, and oral and poster presentations. The program fostered interdisciplinary dialogue and strengthened understanding of diverse concepts, methodologies, and applications related to natural products, while promoting collaboration between academia, research institutions, and industry.<br></br>During the conference, Nguyen Thi Kim Oanh, Director of AirQC, delivered a presentation titled \"Renewable Energy Transition: Multiple Benefits for Air Quality, Health, Ecosystems, and Climate.\" Her presentation highlighted the co-benefits of transitioning to renewable energy systems, emphasizing evidence-based pathways to simultaneously reduce air pollution, improve public health, protect ecosystems, and mitigate climate change, in line with AirQC's integrated nexus approach.",
     category: "Event",
@@ -82,7 +91,7 @@ export const allNewsItems: NewsItem[] = [
     link: "#",
   },
   {
-    id: 2,
+    id: 3,
     title: "Clean Air Week 2025, Sukosol Hotel, Bangkok",
     excerpt: "The AirQC team participated in Clean Air Week 2025, held at the Sukosol Hotel in Bangkok from 24<sup>th</sup> to 28<sup>th</sup> November 2025. The event gathered policymakers, researchers, international organizations, and regional partners to advance dialogue and action on air quality and climate challenges across the Asia-Pacific region.<br></br>Throughout the week, AirQC researchers contributed to discussions, presented recent findings, and supported the organization of key technical sessions. Clean Air Week 2025 aimed to promote coordinated regional responses to persistent air pollution challenges in Asia, where fine particulate matter (PM2.5) remains among the highest globally.<br></br>In Section 2: Regional Solutions to Address Open Burning of Agricultural Crop Residues, Prof. Nguyen Thi Kim Oanh, Director of AirQC, delivered a presentation titled \"Crop Residue Open Burning vs. Other Landscape Fires in Southeast Asia: Emissions and Effects.\" Her talk addressed major emission sources, the comparative impacts of different fire types, and the urgent need for coordinated airshed-based mitigation strategies.<br></br>For more information about Clean Air Week 2025, please visit: <a href='https://www.unep.org/events/unep-event/clean-air-week' style='color: hsl(105 33% 30%); text-decoration: underline;'>https://www.unep.org/events/unep-event/clean-air-week</a>",
     category: "Event",
@@ -91,7 +100,7 @@ export const allNewsItems: NewsItem[] = [
     link: "https://www.unep.org/events/unep-event/clean-air-week",
   },
   {
-    id: 3,
+    id: 4,
     title: "Participation in the 6th Asian Air Pollution and Climate Change Workshop (AAPC), Tsukuba, Japan",
     excerpt: "From 20<sup>th</sup> to 22<sup>nd</sup> November 2025, the AirQC team participated in the 6th Asian Air Pollution and Climate Change Workshop (AAPC) held in Tsukuba, Japan. Representing AIT and AirQC, Prof. Nguyen Thi Kim Oanh delivered a keynote speech and engaged with researchers and experts from across Asia and Europe.<br></br>The workshop brought together 36 participants from eight countries, creating a dynamic platform for scientific dialogue on the interactions between air pollution, climate change, and ecosystem impacts. Prof. Kim Oanh delivered a keynote presentation titled \"Multiple Benefits of Emission Reduction from Thermal Power Plants in Southeast Asia.\" She highlighted the co-benefits of emission mitigation for air quality improvement, climate protection, and ecosystem preservation.<br></br>The AirQC team also contributed to discussions throughout the workshop, sharing AirQC's research insights and fostering new collaborations with regional and international partners.<br></br>More information about the workshop is available at the AAPC official page: <a href='https://sites.google.com/go.tuat.ac.jp/aapctsukuba/home' style='color: hsl(105 33% 30%); text-decoration: underline;'>https://sites.google.com/go.tuat.ac.jp/aapctsukuba/home</a>",
     category: "Event",
@@ -100,7 +109,7 @@ export const allNewsItems: NewsItem[] = [
     link: "https://sites.google.com/go.tuat.ac.jp/aapctsukuba/home",
   },
   {
-    id: 4,
+    id: 5,
     title: "Visit to the Ministry of the Environment of Japan (MoEJ), Tokyo, Japan",
     excerpt: "On 18<sup>th</sup> November 2025, Prof. Nguyen Thi Kim Oanh and Dr. Lai Nguyen Huy of the AirQC Team conducted an official visit to the Ministry of the Environment of Japan (MoEJ) in Tokyo. The meeting was part of AirQC's ongoing engagement with regional partners to strengthen cooperation on air quality management, science-based policymaking, and joint research initiatives.<br></br>The visit aimed to review progress under existing collaborations and explore new opportunities for joint activities. Discussions focused on enhancing regional air quality monitoring capacity, advancing emissions inventory development, supporting transboundary air pollution research, and expanding cooperation under emerging projects related to air-health resilience and climate co-benefits.<br></br>During the meeting, Prof. Kim Oanh and Dr. Huy shared updates on AirQC's current research programs and highlighted areas where scientific collaboration between AIT and MoEJ can create meaningful regional impact. Both sides expressed strong interest in advancing collaborative research, capacity-building efforts, and policy-oriented initiatives to support cleaner air and healthier communities across Asia.",
     category: "Event",
@@ -109,7 +118,7 @@ export const allNewsItems: NewsItem[] = [
     link: "#",
   },
   {
-    id: 5,
+    id: 6,
     title: "Healthy Environment and Lives (HEAL) 2025 Conference",
     excerpt: "From 3<sup>rd</sup> to 6<sup>th</sup> November 2025, the Air Quality Nexus Center (AirQC) participated in the Healthy Environment and Lives (HEAL) 2025 Conference, a four-day hybrid event focused on the urgent health, climate, and environmental challenges facing Australia, the Asia-Pacific region, and the world.<br></br>The conference theme, \"Weaving Diverse Knowledges into Climate Action for Better Health,\" brought together international experts, policymakers, researchers, and community leaders across multiple hubs and virtual platforms. The event aimed to highlight scientific evidence, community-led initiatives, and integrated policy approaches to address climate-related health impacts.<br></br>On 3<sup>rd</sup> November 2025, Prof. Nguyen Thi Kim Oanh, Director of AirQC, served as a panelist in the session \"Scientific Evidence and Policy on Wildfire Smoke–Related Health Impacts.\" She shared insights on the health risks of wildfire smoke, the need for evidence-based policy frameworks, and the importance of regional collaboration to reduce exposure and strengthen public health resilience.<br></br>The full conference program and details are available here: <a href='https://vepimg.b8cdn.com/uploads/vjfnew/19538/uploads/vjf/content/misc/1762201689HEAL_2025_Conference_Program.pdf' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL 2025 Conference Program</a>",
     category: "Event",
@@ -118,7 +127,7 @@ export const allNewsItems: NewsItem[] = [
     link: "https://vepimg.b8cdn.com/uploads/vjfnew/19538/uploads/vjf/content/misc/1762201689HEAL_2025_Conference_Program.pdf",
   },
   {
-    id: 6,
+    id: 7,
     title: "International Conference and the 14th Croatian Scientific and Professional Meeting 'Air Protection 2025', Hotel Kolovare, Zadar, Croatia",
     excerpt: "From 22<sup>nd</sup> to 25<sup>th</sup> October 2025, Prof. Nguyen Thi Kim Oanh, Director of the AirQC, participated online in the International Conference and the 14th Croatian Scientific and Professional Meeting \"Air Protection 2025.\" The event, held at Hotel Kolovare in Zadar, Croatia, was organized by the Croatian Air Pollution Protection Association (CAPPA) in partnership with the Institute for Medical Research and Occupational Health (IMI), the Croatian Meteorological and Hydrological Service (DHMZ), and the European Federation of Clean Air and Environmental Protection Associations (EFCA).<br></br>The conference was convened under the auspices of the International Union of Air Pollution Prevention and Environmental Protection Associations (IUAPPA) and brought together international experts and practitioners in air quality management.<br></br>On 24<sup>th</sup> October 2025, Prof. Nguyen Thi Kim Oanh delivered an invited lecture titled \"Biomass Open Burning in Southeast Asia: Emissions and Multiple Effects.\" In her lecture, she highlighted the major sources and drivers of biomass burning in the region, its significant impacts on air quality, ecosystems, and human health, and the need for coordinated regional policies to mitigate biomass burning emissions.<br></br>The conference Book of Abstracts is available here: <a href='https://zastitazraka.imi.hr/wp-content/uploads/2025/11/Zbornik_sazetaka-2025_online.pdf' style='color: hsl(105 33% 30%); text-decoration: underline;'>https://zastitazraka.imi.hr/wp-content/uploads/2025/11/Zbornik_sazetaka-2025_online.pdf</a>",
     category: "Event",
@@ -127,7 +136,7 @@ export const allNewsItems: NewsItem[] = [
     link: "https://zastitazraka.imi.hr/wp-content/uploads/2025/11/Zbornik_sazetaka-2025_online.pdf",
   },
   {
-    id: 7,
+    id: 8,
     title: "Second Lead Author Meeting of the Intergovernmental Panel on Climate Change (IPCC) Task Force on National Greenhouse Gas Inventories (TFI), Boğaziçi University Cultural Center, Istanbul, Türkiye",
     excerpt: "From 7<sup>th</sup> to 9<sup>th</sup> October 2025, Prof. Nguyen Thi Kim Oanh, Director of the Air Quality Nexus Center (AirQC), participated online in the Second Lead Author Meeting of the Intergovernmental Panel on Climate Change (IPCC) Task Force on National Greenhouse Gas Inventories (TFI). The meeting, held at the Boğaziçi University Cultural Center, Albert Long Hall in Istanbul, Türkiye, followed an official invitation from the Co-Chairs of the IPCC TFI to contribute to the development of the upcoming methodology report.<br></br>The meeting aimed to advance the preparation of the 2027 IPCC Methodology Report on Inventories for Short-Lived Climate Forcers (SLCFs) by reviewing draft chapters, aligning methodological approaches, and incorporating the latest scientific evidence. It provided a platform for Lead Authors and contributing experts to collaborate on improving accuracy, transparency, and consistency in national SLCF inventory reporting.<br></br>Prof. Kim Oanh contributed online. She is the lead author of Chapter 1, Chapter 3 and Chapter 4 of the report.",
     category: "Event",
@@ -136,7 +145,7 @@ export const allNewsItems: NewsItem[] = [
     link: "#",
   },
   {
-    id: 8,
+    id: 9,
     title: "Roundtable Discussion on Sustainable Last Mile Delivery, Manila, Philippines",
     excerpt: "On 25<sup>th</sup> July 2025, Dr. Lai Nguyen Huy, the Deputy Director, attended the <strong>Roundtable Discussion on Sustainable Last Mile Delivery</strong> organized by the Institute for Climate and Sustainable Cities (ICSC) in Manila, the Philippines.<br></br>Dr. Huy presented the key findings of the background study of last-mile delivery for Thailand's case study. AirQC actively contributed to the regional report which includes four case studies in Southeast Asia, i.e., Indonesia, the Philippines, Thailand, and Vietnam.",
     category: "Event",
@@ -145,7 +154,7 @@ export const allNewsItems: NewsItem[] = [
     link: "#",
   },
   {
-    id: 9,
+    id: 10,
     title: "Regional Policy Dialogue Workshop in Vientiane, Lao PDR",
     excerpt: "On 26<sup>th</sup> June 2025, Prof. Kim Oanh and Dr. Lai Nguyen Huy, representatives of AirQC participated in the high-level regional policy dialogue in Vientiane, Lao PDR, which was co-hosted by the University of Canberra (Australia), National University of Laos, and the University of Health Sciences Laos. <br></br>The workshop brought together over 40 delegates to introduce two projects for which the AirQC is the key partner: Climate change adaptation to smoke haze for improved child health in Southeast Asia (<a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a>) and Climate Attribution of Wildfire Smoke Impacts on Priority Population Health in Southeast Asia and Australia (<a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a>).<br></br>The workshop provided key opportunities to understand the social, political and economic barriers to mitigation which empowered the health sector to deal with smoke-haze from biomass open burning.",
     category: "Event",
@@ -154,7 +163,7 @@ export const allNewsItems: NewsItem[] = [
     link: "#",
   },
   {
-    id: 10,
+    id: 11,
     title: "Policy Dialogue Workshop on Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia in Bangkok, Thailand",
     excerpt: `On 17<sup>th</sup> June 2025, Prof. Kim Oanh and Dr. Lai Nguyen Huy, representatives of AirQC, participated in the policy dialogue workshop on <strong>Tackling the Health Impacts of Haze Pollution in Southeast Asia and Australia</strong> held in Bangkok, Thailand. Policy dialogue is an important work package of <a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a> and <a href='https://healnetwork.org.au/projects/canbreathe/' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a>.<br></br>This joint workshop aimed to engage policymakers and other stakeholders to prioritize solutions against haze pollution for affected communities and schools, co-create a platform for policy dialogue and knowledge exchange, and identify opportunities for regional cooperation on tackling the health impacts of air pollution and climate change.<br></br>Prof. Kim Oanh, Director of AirQC, delivered a keynote presentation on <strong>Overview of Smoke Haze Pollution from Wildfires and Agricultural Burning in Southeast Asia.</strong> The AirQC team actively participated in the discussion groups, which aimed to systematically map existing interventions and policies; engage multi-sectoral stakeholders to prioritize adaptation solutions; identify implementation challenges, barriers, and enablers; co-design adaptation interventions tailored to regional needs; empower the health sector to deal with smoke haze; and understand the social, political, and economic barriers to mitigation.`,
     category: "Event",
@@ -164,7 +173,7 @@ export const allNewsItems: NewsItem[] = [
   },
 
   {
-    id: 11,
+    id: 12,
     title: "Training Workshop on 'Science-Based Tools for Air Quality Management', Hanoi, Vietnam",
     excerpt: `On 23<sup>rd</sup> April 2025, a Training Workshop on “Science-Based Tools for Air Quality Management” was held at the Green One UN House in Hanoi, Viet Nam. The event was co-organized by Clean Air Asia, the World Health Organization (WHO) Viet Nam, and the United Nations Development Programme (UNDP). The workshop gathered policymakers, researchers, and civil society representatives from across the region to strengthen partnerships and enhance understanding of air pollution challenges and their impacts.<br></br>The workshop aimed to promote regional exchange and support integrated approaches that deliver co-benefits for clean air and decarbonization. Participants explored science-based policymaking through the sharing of best practices, analytical tools, and case studies from Viet Nam, China, and Thailand.<br></br>Prof. Nguyen Thi Kim Oanh, Director of AirQC, delivered a lecture on “Air Quality Data for Effective Air Quality Management – Best Practice in Asia and Lessons for Vietnam” during the pre-event training session “Opportunities to Strengthen Air Quality and Its Management in Vietnam.” She shared insights on improving air quality management systems, advancing data-driven policy, and fostering regional cooperation and knowledge exchange.`,
     category: "Event",
@@ -173,7 +182,7 @@ export const allNewsItems: NewsItem[] = [
     link: "#",
   },
   {
-    id: 12,
+    id: 13,
     title: "Regional Dialogue on Climate and Health",
     excerpt: `On 2<sup>nd</sup>–3<sup>rd</sup> October 2024, Prof. Nguyen Thi Kim Oanh, Director of AirQC, participated as a speaker and panelist at the "Regional Dialogue on Climate and Health" organized by the Embassy of France to Thailand at Mahidol University.<br></br>Prof. Kim Oanh delivered the presentation titled "Co-control of Emission Sources for Multiple Benefits." She highlighted the importance of integrated strategies to simultaneously improve air quality, protect public health, and mitigate climate change. During the panel discussion, she emphasized the need for collaborative research and cross-sectoral policy approaches to enhance co-benefits across the environment, health, and climate domains.<br></br>The dialogue brought together experts, researchers, and policymakers to discuss the critical intersection of climate change and public health. The event aimed to strengthen regional partnerships and enhance collective capacity to address health impacts associated with climate change, fostering more resilient and adaptive health systems in the Asia-Pacific region. Details of the event can be found at <a href='https://www.irasec.com/Climate-and-Health-Regional-Dialogue-3612' target='_blank' rel='noopener noreferrer' style='color: hsl(105 33% 30%); text-decoration: underline;'>Climate and Health Regional Dialogue – IRASEC.</a>`,
     category: "Event",
@@ -182,7 +191,7 @@ export const allNewsItems: NewsItem[] = [
     link: "https://www.irasec.com/Climate-and-Health-Regional-Dialogue-3612",
   },
   {
-    id: 13,
+    id: 14,
     title: "Regional Workshop on \"National Air Pollutant Emissions Inventory\"",
     excerpt: `On 23<sup>rd</sup> September 2024, Prof. Nguyen Thi Kim Oanh, Dr. Lai Nguyen Huy, and Dr. Truong Thi Huyen from the AirQC participated online in the Regional Workshop on Developing National Air Pollutant Emissions Inventory, a pre-event to the Fifth Ministerial Meeting of the Regional Forum on Health and Environment of Asia Pacific, held in Jakarta, Indonesia. The workshop was organized by the United Nations Environment Programme (UNEP) to enhance regional capacity and knowledge exchange on emissions inventory development.<br></br>The workshop aimed to support countries in the Asia-Pacific region by strengthening their technical capacity and facilitating the sharing of best practices for developing comprehensive air pollutant emissions inventories. It focused on fostering evidence-based air quality policies and assessing the associated health impacts of air pollution.<br></br>As an invited speaker, Prof. Kim Oanh presented the initial findings of the AIT–EANET project on “Emissions Inventory and Source Apportionment Stocktaking.” Her presentation highlighted key methodologies and frameworks to support countries in developing robust emissions inventories, emphasizing the role of these inventories in informing effective policymaking and advancing public health protection across the region. Details of the event can be found at <a href='https://www.unep.org/events/conference/regional-workshop-developing-national-air-pollutant-emissions-inventory' target='_blank' rel='noopener noreferrer' style='color: hsl(105 33% 30%); text-decoration: underline;'>UNEP – Regional Workshop on Developing National Air Pollutant Emissions Inventory.</a>`,
     category: "Event",
@@ -191,7 +200,7 @@ export const allNewsItems: NewsItem[] = [
     link: "https://www.unep.org/events/conference/regional-workshop-developing-national-air-pollutant-emissions-inventory",
   },
   {
-    id: 14,
+    id: 15,
     title: "Workshop Participation in Advanced Institute on Health Investigation and Air Sensing for Asian Pollution (AI on Hi-ASAP)",
     excerpt: "On 5<sup>th</sup>–8<sup>th</sup> September 2024, Dr. Lai Nguyen Huy and Dr. Truong Thi Huyen (AirQC members) attended the Advanced Institute on Health Investigation and Air Sensing for Asian Pollution (AI on Hi-ASAP) training workshop in Putrajaya, Malaysia. This event was hosted and organized by the IRDR International Centre of Excellence (IRDR ICoE-Taipei) in partnership with the International Science Council (ISC), Future Earth Taipei, International Global Atmospheric Chemistry – Monsoon Asia and Oceania Networking Group (IGAC-MANGO), University of Putra Malaysia, and National University of Malaysia.<br></br>This workshop aims to provide young to mid-career practitioners and researchers interested in air pollution and health research in Asia with knowledge, experience, and hands-on practice in the techniques and methodologies required to conduct research with the aim of reducing the health risks of air pollution. The details of the event can be found at <a href='https://www.ukm.my/talib/news/advanced-institute-on-health-investigation-and-air-sensing-for-asian-pollution-ai-on-hi-asap/' target='_blank' rel='noopener noreferrer' style='color: hsl(105 33% 30%); text-decoration: underline;'>https://www.ukm.my/talib/news/advanced-institute-on-health-investigation-and-air-sensing-for-asian-pollution-ai-on-hi-asap/</a>",
     category: "Event",
