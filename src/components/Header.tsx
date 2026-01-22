@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import logo from '@/assets/AirQC2.png';
-import aitLogo from '@/assets/AIT.png';
+import logo from '@/assets/airQC5.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -63,26 +62,14 @@ const Header = () => {
   return (
     <header className="bg-white border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-0.5">
-          {/* Logos */}
+        <div className="flex justify-between items-center h-24 sm:h-28 lg:h-32">
+          {/* Logo */}
           <Link to="/" className="flex items-center flex-shrink-0">
             <img
-              src={aitLogo}
-              alt="AIT"
-              className="h-24 w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 object-contain"
+              src={logo}
+              alt="Air Quality Center"
+              className="h-48 w-48 sm:h-56 sm:w-56 lg:h-64 lg:w-64 object-contain"
             />
-            <div className="flex items-center -ml-2">
-              <img
-                src={logo}
-                alt="Air Quality Center"
-                className="h-24 w-24 sm:h-28 sm:w-28 lg:h-28 lg:w-28 object-contain"
-              />
-              <div className="hidden sm:block ml-2">
-                <h1 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 leading-tight">
-                  Air Quality Nexus<br />Center
-                </h1>
-              </div>
-            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -169,25 +156,13 @@ const Header = () => {
             <div className="fixed top-0 left-0 right-0 z-50 xl:hidden">
               {/* Header space replica to maintain logo visibility */}
               <div className="bg-white border-b border-border px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center py-0.5">
+                <div className="flex justify-between items-center h-24 sm:h-28 lg:h-32">
                   <Link to="/" className="flex items-center flex-shrink-0">
                     <img
-                      src={aitLogo}
-                      alt="AIT"
-                      className="h-24 w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 object-contain"
+                      src={logo}
+                      alt="Air Quality Center"
+                      className="h-48 w-48 sm:h-56 sm:w-56 lg:h-64 lg:w-64 object-contain"
                     />
-                    <div className="flex items-center -ml-2">
-                      <img
-                        src={logo}
-                        alt="Air Quality Center"
-                        className="h-24 w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 object-contain"
-                      />
-                      <div className="hidden sm:block ml-2">
-                        <h1 className="text-base sm:text-lg lg:text-xl font-bold text-primary leading-tight">
-                          Air Quality Nexus<br />Center
-                        </h1>
-                      </div>
-                    </div>
                   </Link>
                   <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(false)}>
                     <X size={24} />
