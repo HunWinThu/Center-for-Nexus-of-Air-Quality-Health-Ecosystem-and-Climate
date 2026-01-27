@@ -7,6 +7,8 @@ import { toast } from 'sonner';
 import { useState } from 'react';
 
 // Publication cover images by year
+import cover2026_1 from '@/assets/Publication _book_cover/2026/cover2026_1.png';
+
 import cover2025_1 from '@/assets/Publication _book_cover/2025/2025_1.png';
 import cover2025_2 from '@/assets/Publication _book_cover/2025/2025_2.png';
 import cover2025_3 from '@/assets/Publication _book_cover/2025/2025_3.png';
@@ -31,7 +33,9 @@ import cover2022_3 from '@/assets/Publication _book_cover/2022/2022_3.png';
 import cover2022_4 from '@/assets/Publication _book_cover/2022/2022_4.png';
 import cover2022_5 from '@/assets/Publication _book_cover/2022/2022_5.png';
 
+
 const coverImages: Record<string, (string | undefined)[]> = {
+  '2026': [cover2026_1],
   '2025': [cover2025_1, cover2025_2, cover2025_3, cover2025_4],
   '2024': [cover2024_1, cover2024_2, cover2024_3, cover2024_4, cover2024_5],
   '2023': [cover2023_1, cover2023_2, cover2023_3, cover2023_4, cover2023_5, cover2023_6],
@@ -48,6 +52,15 @@ type Publication = {
 };
 
 const publications: Record<string, Publication[]> = {
+  2026: [
+    {
+      title: 'Statistics in Environmental Monitoring and Assessment',
+      authors: 'Kim Oanh, N. T., et al.',
+      journal: 'TBD',
+      doi: 'https://doi.org/10.1201/9781003597216-1',
+      cite: 'Kim Oanh, N. T., et al. (2026). Statistics in Environmental Monitoring and Assessment. doi:10.1201/9781003597216-1',
+    },
+  ],
   2025: [
     {
       title: 'The truth about co-benefits: a multidimensional feasibility assessment for Thailand and beyond',
@@ -271,8 +284,8 @@ const Publications = () => {
             animate="visible"
             className="space-y-12"
           >
-            {/* Iterate through years in descending order (2025, 2024, 2023, 2022) */}
-            {['2025', '2024', '2023', '2022'].map((year, yearIndex) => (
+            {/* Iterate through years in descending order (2026, 2025, 2024, 2023, 2022) */}
+            {['2026', '2025', '2024', '2023', '2022'].map((year, yearIndex) => (
               <div key={year}>
                 {/* Separator line between years (not before first year) */}
                 {yearIndex > 0 && <div className="border-t-2 border-primary/20 my-12"></div>}
