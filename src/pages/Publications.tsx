@@ -55,10 +55,10 @@ const publications: Record<string, Publication[]> = {
   2026: [
     {
       title: 'Statistics in Environmental Monitoring and Assessment',
-      authors: 'Okamoto, S., & Kim Oanh, N. T.',
-      journal: 'Chapman and Hall/CRC (1st Edition)',
-      doi: 'https://doi.org/10.1201/9781003597216-1',
-      cite: 'Okamoto, S., & Kim Oanh, N. T. (2026). Statistics in Environmental Monitoring and Assessment. Chapman and Hall/CRC (1st Edition). doi:10.1201/9781003597216-1',
+      authors: 'Okamoto, S.I., Kim Oanh, N. T.',
+      journal: 'Chapman and Hall/CRC (1st ed.)',
+      doi: 'https://doi.org/10.1201/9781003597216',
+      cite: 'Okamoto, S.I., & Oanh, N.T.K. (2026). Statistics in Environmental Monitoring and Assessment (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781003597216',
     },
   ],
   2025: [

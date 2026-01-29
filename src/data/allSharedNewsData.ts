@@ -57,7 +57,8 @@ import m38 from '@/assets/Event/m38.jpg';
 import m39 from '@/assets/Event/m39.png';
 import m40 from '@/assets/Event/m40.png';
 import m41 from '@/assets/Event/m41.jpg';
-import m42 from '@/assets/Event/m42.png'
+import m42 from '@/assets/Event/m42.png';
+import m43 from '@/assets/Event/m43.png';
 
 export interface NewsItem {
   id: number;
@@ -78,7 +79,7 @@ export const allNewsItems: NewsItem[] = [
     excerpt: "The Air Quality Nexus Center (AirQC) is proud to contribute to AIT's work on mapping Southeast Asia's pollution challenges, highlighting the urgent need to address waste-related air pollution across the region.<br></br><strong>Exposing the hidden cost of open burning:</strong><br></br>Across Southeast Asia, nearly 15% of municipal waste is still burned in open piles. Field experiments conducted by AIT reveal that this practice releases approximately 482 nanograms of dioxins per kilogram of waste, contributing annually to an estimated 5.3 kilograms of highly toxic dioxins and 669,400 kilograms of cancer-linked chemicals across the region.<br></br>These findings provide policymakers with one of the clearest pictures to date of the serious health and environmental impacts of uncontrolled waste burning—and reinforce the need for sustainable waste management solutions.<br></br>Watch the video to learn more: <a href='https://www.eurekalert.org/multimedia/1110991' target='_blank' rel='noopener noreferrer' style='color: hsl(105 33% 30%); text-decoration: underline;'>https://www.eurekalert.org/multimedia/1110991</a>",
     category: "Media",
     date: "21 January 2026",
-    image: '',
+    image: [m43],
     link: "https://www.eurekalert.org/multimedia/1110991",
   },
   {
