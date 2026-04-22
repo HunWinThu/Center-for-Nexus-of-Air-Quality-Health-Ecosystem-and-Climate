@@ -61,12 +61,9 @@ import m42 from '@/assets/Event/m42.png';
 import m43 from '@/assets/Event/m43.png';
 import m44 from '@/assets/Event/m44.jpg';
 import m45 from '@/assets/Event/m45.jpg';
-import m46 from '@/assets/Event/m46.png';
 import m47 from '@/assets/Event/m47.jpg';
 import m48 from '@/assets/Event/m48.jpg';
 import m49 from '@/assets/Event/m49.jpg';
-import m50 from '@/assets/Event/m50.png';
-import m51 from '@/assets/Event/m51.png';
 
 export interface NewsItem {
   id: number;
@@ -89,42 +86,6 @@ export const allNewsItems: NewsItem[] = [
     date: "11 March 2026",
     image: [m48, m47, m49],
     link: "https://cleanairasia.org/baq",
-  },
-  {
-    id: 17,
-    title: "Air Quality Management Lecture (AQML) – Special Talk on Drones and Ground Sensors for Air Quality",
-    excerpt: `On 20<sup>th</sup> February 2026, the Air Quality Nexus Center (AirQC) participated in the Air Quality Management Lecture (AQML), a collaborative lecture series jointly organized by the Indian Institute of Technology Madras (IITM), the Air Quality Management Association (AQMA), the GCRF-Clean Environment and Planetary Health in Asia (CEPHA) Network, and the Indian International Conference on Air Quality Management (IICAQM).<br></br>The lecture featured Dr. Javier Gonzalez-Rocha, Assistant Professor of Applied Mathematics at the University of California, Santa Cruz, who delivered a talk entitled "Sensing the Unseen: How Drones and Ground Sensors Reveal the Hidden Air Quality Impacts of Climate Change." During the session, Prof. Nguyen Thi Kim Oanh (Center Director) and the AirQC team actively participated in the discussion, engaging with emerging approaches in air quality monitoring and their applications in addressing climate-related air pollution challenges.`,
-    category: "Event",
-    date: "20 February 2026",
-    image: [m50],
-    link: "#",
-  },
-  {
-    id: 18,
-    title: "Collaboration Meeting with Geoinformatics Center (GIC)",
-    excerpt: `On 23<sup>rd</sup> January 2026, the AirQC team held a coordination meeting with the GIC team at the GIC meeting room to discuss ongoing activities and identify opportunities for collaboration. The discussion emphasized learning from the work of different centers to realize synergies and plan joint initiatives. The meeting also proposed organizing a joint seminar in January 2026, subject to availability, as a platform for knowledge exchange and collaboration planning.`,
-    category: "Event",
-    date: "23 January 2026",
-    image: [m46],
-    link: "#",
-  },
-  {
-    id: 19,
-    title: "\"CCAC-Cambodia Project\" Online Inception Meeting",
-    excerpt: `On 19<sup>th</sup> January 2026, the Air Quality Nexus Center (AirQC) participated in the online inception meeting of the CCAC-Cambodia project. During the meeting, Prof. Nguyen Thi Kim Oanh (Center Director) delivered a presentation entitled "International best practices on reducing open waste burning and air pollution," providing an overview of proven policy approaches, regulatory measures, and implementation experiences relevant to supporting Cambodia's efforts to reduce open waste burning and improve air quality.`,
-    category: "Event",
-    date: "19 January 2026",
-    image: '',
-    link: "#",
-  },
-  {
-    id: 20,
-    title: "Networking Meeting with the World Meteorological Organization (WMO)",
-    excerpt: `On 19<sup>th</sup> January 2026, the Air Quality Nexus Center (AirQC) held a networking meeting with Mr. Jesbin Baidya, Information Technology and Logistics Officer of the World Meteorological Organization (WMO), to discuss the IPCC SLCF LAM4 meeting and the potential organization of this meeting at the Asian Institute of Technology (AIT). During the meeting, the AirQC team provided an overview of AIT facilities and guided Mr. Baidya in reviewing the available venues and logistical arrangements to support the possible hosting of the meeting.`,
-    category: "Event",
-    date: "19 January 2026",
-    image: '',
-    link: "#",
   },
   {
     id: 1,
