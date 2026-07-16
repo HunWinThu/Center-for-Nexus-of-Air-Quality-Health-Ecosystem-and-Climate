@@ -64,6 +64,19 @@ import m45 from '@/assets/Event/m45.jpg';
 import m47 from '@/assets/Event/m47.jpg';
 import m48 from '@/assets/Event/m48.jpg';
 import m49 from '@/assets/Event/m49.jpg';
+import m52 from '@/assets/Event/m52.jpg';
+import m53 from '@/assets/Event/m53.jpg';
+import m54 from '@/assets/Event/m54.jpg';
+import m55 from '@/assets/Event/m55.jpg';
+import m56 from '@/assets/Event/m56.jpg';
+import m57 from '@/assets/Event/m57.jpg';
+import m58 from '@/assets/Event/m58.jpg';
+import m59 from '@/assets/Event/m59.jpg';
+import m60 from '@/assets/Event/m60.jpg';
+import m61 from '@/assets/Event/m61.jpg';
+import m62 from '@/assets/Event/m62.jpg';
+import m63 from '@/assets/Event/m63.jpg';
+import m64 from '@/assets/Event/m64.jpg';
 
 export interface NewsItem {
   id: number;
@@ -78,6 +91,34 @@ export interface NewsItem {
 // All news items - Events and Media
 export const allNewsItems: NewsItem[] = [
   // EVENTS
+  {
+    id: 23,
+    title: "AirQC Contributes to Regional Workshop on PFAS and Mercury Monitoring in PM2.5",
+    excerpt: `The Air Quality Nexus Center (AirQC) at the Asian Institute of Technology (AIT) participated in The First Asia-Pacific Network Regional Training Workshop on Per- and Polyfluoroalkyl Substances (PFAS) and Mercury Monitoring in PM2.5, held from 21–22 May 2026 at the Faculty of Environment, University of Science, Vietnam National University Ho Chi Minh City (VNUHCM-US), Vietnam.<br></br>Organized under the APN-funded project APN CRRP2025-08MY-To and supported by the Asia-Pacific Network for Global Change Research (APN), the workshop brought together scientists, researchers, and environmental experts from across the Asia-Pacific region, including Vietnam, Japan, the United States, Singapore, Malaysia, Indonesia, Thailand, the Philippines, Taiwan, India, Bangladesh, and Myanmar. The event aimed to strengthen regional capacity and collaboration in monitoring emerging atmospheric contaminants and advancing air quality research.<br></br>The two-day workshop provided a platform for participants to exchange scientific knowledge and discuss recent developments in PFAS and mercury research in the atmospheric environment. Technical sessions covered PM2.5 sampling and monitoring techniques, analytical methods for PFAS detection, emerging contaminant monitoring trends, and experiences in international research collaboration.<br></br>Representing AirQC, Prof. Nguyen Thi Kim Oanh, Director of the Air Quality Nexus Center; Dr. Lai Nguyen Huy, Research Specialist; and Ms. Khing Thwe Oo, Research Associate, actively participated in the workshop's technical sessions and networking activities. Prof. Nguyen Thi Kim Oanh delivered a presentation entitled "Air Quality Management: Technical Tools and ML/AI Applications in Southeast Asia," highlighting integrated air quality management frameworks, technical tools for data generation and analysis, and the potential of machine learning and artificial intelligence applications to support air quality assessment, forecasting, and policy development across Southeast Asia.<br></br>Participants also visited environmental laboratories at the Nguyen Van Cu and Dong Hoa campuses of VNUHCM-US, where they learned about laboratory facilities, air quality monitoring systems, sampling methodologies, and analytical capabilities supporting environmental research and education.<br></br>The workshop underscored the importance of regional cooperation in addressing emerging environmental issues and strengthening scientific capacity in air quality and contaminant monitoring. Through its participation, AirQC continues to contribute to international research collaboration, knowledge exchange, and capacity-building efforts aimed at improving air quality management and environmental sustainability throughout the Asia-Pacific region.<br></br><strong>For more information, please visit:</strong> <a href='https://sites.google.com/hcmus.edu.vn/apn-hg-and-pfas-southeast-asia/project-activites/remark-the-first-apn-workshop-2026' target='_blank' rel='noopener noreferrer' style='color: hsl(105 33% 30%); text-decoration: underline;'>https://sites.google.com/hcmus.edu.vn/apn-hg-and-pfas-southeast-asia/project-activites/remark-the-first-apn-workshop-2026</a>`,
+    category: "Event",
+    date: "22 May 2026",
+    image: [m56,m57,m60,m61,m62,m63,m64,m59],
+    link: "#",
+  },
+
+  {
+    id: 22,
+    title: "AIT–IRD MoU Strengthens International Research Partnerships",
+    excerpt: `The Air Quality Nexus Center (AirQC), Asian Institute of Technology (AIT), welcomed the signing of a Memorandum of Understanding (MoU) between AIT and the Institute of Research for Development (IRD), France, during the Franco-Thai Symposium on Higher Education, Research and Innovation 2026 held in Bangkok on 14 May 2026.<br></br>The MoU marks an important step in strengthening international research collaboration between AIT and French research institutions. Signed by AIT President Prof. Pai-Chi Li and representatives of IRD, the agreement establishes a framework for cooperation through joint research initiatives, academic and scientific exchanges, training and capacity development, consultancy, and knowledge-sharing activities.<br></br>The partnership will focus on interdisciplinary research areas aligned with global sustainability priorities, including climate change and environmental sustainability, smart and resilient communities, integrated food-energy-water systems, and technological innovation to address societal challenges.<br></br>For AirQC, the collaboration provides new opportunities to expand partnerships with IRD researchers and enhance research activities in air quality, climate change, environmental health, and sustainable development. The MoU is expected to facilitate future joint projects, scientific exchanges, and capacity-building initiatives that contribute to evidence-based solutions for environmental challenges in the region.<br></br>Representing AirQC at the signing ceremony were Prof. Nguyen Thi Kim Oanh, Distinguished Emeritus Professor and Director of the Air Quality Nexus Center; Dr. Lai Nguyen Huy, Research Specialist; and Ms. Khing Thwe Oo. The event brought together academic leaders, researchers, and policymakers from Thailand and France to strengthen bilateral cooperation in higher education, research, and innovation.<br></br>The AIT–IRD partnership reflects a shared commitment to advancing scientific excellence and developing innovative solutions to global sustainability challenges through international collaboration.<br></br><strong>For more information, please visit:</strong> <a href='https://ait.ac.th/2026/05/ait-expands-french-research-partnerships-through-ird-mou/' target='_blank' rel='noopener noreferrer' style='color: hsl(105 33% 30%); text-decoration: underline;'>https://ait.ac.th/2026/05/ait-expands-french-research-partnerships-through-ird-mou/</a>`,
+    category: "Event",
+    date: "14 May 2026",
+    image: [m53,m54,m55],
+    link: "#",
+  },
+  {
+    id: 21,
+    title: "Launch of the Climate, Fire and Health Community of Practice (CoP) under CANBREATHE and HEAL-HAZE",
+    excerpt: `On 23<sup>rd</sup> April 2026, AirQC (AIT) participated in the launch of the Climate, Fire and Health Community of Practice (CoP), held online under the CANBREATHE and HEAL-HAZE projects. The session brought together researchers, policymakers, practitioners, and community representatives from Southeast Asia and Australia to strengthen collaboration and knowledge exchange on climate change, wildfire smoke, air pollution, and public health.<br></br>The event aimed to support regional learning, capacity building, and cross-sectoral collaboration to address transboundary haze and climate-health challenges. Dr. Lai Nguyen Huy of AirQC participated as a speaker, sharing experiences on regional air quality management and wildfire smoke issues in Southeast Asia. The activity was supported by the Wellcome Trust and the e-Asia Joint Research Program (e-ASIA JRP), and was part of the <a href='https://healnetwork.org.au/projects/tackling-the-health-impact-of-smoke-haze-in-southeast-asia-heal-haze/' target='_blank' rel='noopener noreferrer' style='color: hsl(105 33% 30%); text-decoration: underline;'>HEAL-HAZE</a> and <a href='https://healnetwork.org.au/projects/canbreathe/' target='_blank' rel='noopener noreferrer' style='color: hsl(105 33% 30%); text-decoration: underline;'>CANBREATHE</a> projects.`,
+    category: "Event",
+    date: "23 April 2026",
+    image: [m52],
+    link: "#",
+  },
   {
     id: 16,
     title: "Better Air Quality (BAQ) Conference 2026, United Nations Conference Centre (UNCC), Bangkok, Thailand",
