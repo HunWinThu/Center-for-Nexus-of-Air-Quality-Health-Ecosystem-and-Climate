@@ -77,6 +77,15 @@ import m61 from '@/assets/Event/m61.jpg';
 import m62 from '@/assets/Event/m62.jpg';
 import m63 from '@/assets/Event/m63.jpg';
 import m64 from '@/assets/Event/m64.jpg';
+import m65 from '@/assets/Event/m65.jpg';
+import m66 from '@/assets/Event/m66.jpg';
+import m67 from '@/assets/Event/m67.jpg';
+import m68 from '@/assets/Event/m68.jpg';
+import m69 from '@/assets/Event/m69.jpg';
+import m70 from '@/assets/Event/m70.png';
+import m71 from '@/assets/Event/m71.jpg';
+import m72 from '@/assets/Event/m72.jpg';
+import m73 from '@/assets/Event/m73.jpg';
 
 export interface NewsItem {
   id: number;
@@ -91,6 +100,44 @@ export interface NewsItem {
 // All news items - Events and Media
 export const allNewsItems: NewsItem[] = [
   // EVENTS
+  {
+  id: 27,
+  title: "2026 Advanced Institute on Health Investigation and Air Sensing for Asian Pollution (AI on Hi-ASAP), Bali, Indonesia",
+  excerpt: `The Air Quality Nexus Center (AirQC), AIT participated in the 2026 Advanced Institute on Health Investigation and Air Sensing for Asian Pollution (AI on Hi-ASAP), held from 20–24 July 2026 in Bali, Indonesia.<br></br>Organized by the IRDR International Centre of Excellence (ICoE–Taipei), c/o Center for Sustainability Science, Academia Sinica, the advanced institute brought together approximately 20–25 young to mid-career researchers, practitioners, and policy professionals from across the Asia-Pacific region. The program aimed to strengthen regional research capacity and foster interdisciplinary collaboration in air pollution, environmental sensing, and public health research through scientific knowledge exchange and hands-on training.<br></br>The five-day institute provided participants with lectures, technical sessions, and practical training on air pollution monitoring, low-cost sensor technologies, environmental data analysis, and health risk assessment. Discussions focused on the application of sensor technologies and scientific methodologies to support disaster risk reduction (DRR), reduce the health impacts of air pollution, and strengthen research capacity across the region.<br></br>Representing AirQC, Mr. Hun Win Thu, Research Assistant and IoT Engineer, participated in the advanced institute and delivered a presentation entitled "Evaluation of Low-Cost Sensors Performance in the Monitoring of PM₂.₅." His presentation highlighted AirQC's experience in evaluating the performance of low-cost PM₂.₅ sensors and their application in supporting reliable, cost-effective air quality monitoring for research and environmental management.<br></br>The advanced institute highlighted the importance of regional collaboration in advancing air pollution and health research while promoting the use of innovative sensing technologies for environmental monitoring. Through its participation, AirQC continues to strengthen international research collaboration, technical capacity, and knowledge exchange in support of improving air quality management and reducing health risks associated with air pollution across the Asia-Pacific region.<br></br><strong>For more information, please visit:</strong> <a href='https://www.css.sinica.edu.tw/en-US/News/AnnouncementDetail?AnnouncementId=N202606220002' target='_blank' rel='noopener noreferrer' style='color: hsl(105 33% 30%); text-decoration: underline;'>https://www.css.sinica.edu.tw/en-US/News/AnnouncementDetail?AnnouncementId=N202606220002</a>`,
+  category: "Event",
+  date: "20–24 July 2026",
+  image: [m68,m66, m67,m65,m69],
+  link: "#",
+},
+  {
+  id: 26,
+  title: "3rd Webinar on Long-range Transport of Air Pollution and Capacity Building for Air Quality Modeling and Forecasting, RRC.AP",
+  excerpt: `On 25 May 2026, the Air Quality Nexus Center (AirQC) participated in the 3rd Webinar on Long-range Transport of Air Pollution and Capacity Building for Air Quality Modeling and Forecasting, organized by the Regional Resource Centre for Asia and the Pacific at the Asian Institute of Technology (AIT RRC.AP) in collaboration with the South Asia Co-operative Environment Programme (SACEP). The webinar was part of the Malé Declaration Webinar Series on Air Quality Management: Science and Investment for Sustainable Development in Malé Declaration Member Countries and focused on the role of air quality modeling and forecasting in understanding long-range and transboundary transport of air pollution. The event brought together 116 participants from academia, government agencies, international organizations, NGOs, the private sector, and research institutions across South and Southeast Asia and other regions to exchange knowledge on advanced tools and methodologies for evidence-based air quality management.<br></br>In the concluding session, Prof. Nguyen Thi Kim Oanh, Distinguished Emeritus Professor at AIT and Director of the Air Quality Nexus Center (AirQC), delivered the concluding remarks, emphasizing the importance of strengthening regional capacity in air quality modeling and forecasting to support transboundary air pollution management. She highlighted that air pollution knows no borders and stressed the critical role of modeling tools in identifying emission sources, tracking pollutant transport, evaluating policy scenarios, and supporting science-based decision-making. She also underscored the growing potential of artificial intelligence, machine learning, satellite observations, and low-cost sensor networks to enhance air quality forecasting, while emphasizing the need for high-quality datasets to ensure reliable applications.`,
+  category: "Event",
+  date: "25 May 2026",
+  image: [m72, m73],
+  link: "#",
+},
+  {
+  id: 25,
+  title: "Intergovernmental Panel on Climate Change (IPCC) Task Force on National Greenhouse Gas Inventories (TFI), Third Lead Author Meeting (LAM3), Rome, Italy",
+  excerpt: `From 21–24 April 2026, Prof. Nguyen Thi Kim Oanh participated, by invitation, in the Third Lead Author Meeting (LAM3) for the preparation of the 2027 IPCC Methodology Report on Inventories for Short-lived Climate Forcers, convened by the Intergovernmental Panel on Climate Change (IPCC) Task Force on National Greenhouse Gas Inventories (TFI) and hosted by the Food and Agriculture Organization of the United Nations (FAO) at its Headquarters in Rome, Italy. The meeting brought together Lead Authors and experts to advance the development of methodologies for preparing national inventories of short-lived climate forcers.<br></br><strong>`,
+  category: "Event",
+  date: "21–24 April 2026",
+  image: [m71],
+  link: "#",
+},
+
+  {
+  id: 24,
+  title: "2026 Symposium of the World Meteorological Organization (WMO) Global Atmosphere Watch (GAW) Programme, Geneva, Switzerland",
+  excerpt: `From 13–17 April 2026, Prof. Nguyen Thi Kim Oanh (Center Director) participated, by invitation, in the 2026 Symposium of the World Meteorological Organization (WMO) Global Atmosphere Watch (GAW) Programme held at the WMO Headquarters in Geneva, Switzerland. As an invited expert in GAW Programme activities, she contributed to discussions on the Programme's scientific priorities, future work plans, capacity building, partnerships, and the development of the 2028–2032 GAW Science and Implementation Plan. During the symposium, Prof. Kim Oanh also presented a poster entitled "Biomass Open Burning in Southeast Asia: Emissions from Forest Fires and Crop Residue," which highlighted a comprehensive emission inventory for Southeast Asia, spatial and temporal emission distributions, key emission characteristics, and the implications of biomass open burning for regional air quality and atmospheric pollution management.<br></br><strong>`,
+  category: "Event",
+  date: "13–17 April 2026",
+  image: [m70],
+  link: "#",
+  },
+
   {
     id: 23,
     title: "AirQC Contributes to Regional Workshop on PFAS and Mercury Monitoring in PM2.5",
@@ -403,14 +450,38 @@ export const allNewsItems: NewsItem[] = [
   },
 ];
 
-// Parse date function for sorting
+// Parse both single dates ("25 May 2026") and event ranges
+// ("20–24 July 2026"). Date ranges are ordered by their start date.
 export const parseDate = (dateString: string): Date => {
   const cleanDate = dateString.replace(/,/g, '').trim();
-  try {
-    return new Date(cleanDate);
-  } catch {
-    return new Date(0);
+  const eventDateMatch = cleanDate.match(
+    /^(\d{1,2})(?:\s*[–—-]\s*\d{1,2})?\s+([A-Za-z]+)\s+(\d{4})$/,
+  );
+
+  if (eventDateMatch) {
+    const [, day, monthName, year] = eventDateMatch;
+    const month = [
+      'january',
+      'february',
+      'march',
+      'april',
+      'may',
+      'june',
+      'july',
+      'august',
+      'september',
+      'october',
+      'november',
+      'december',
+    ].indexOf(monthName.toLowerCase());
+
+    if (month !== -1) {
+      return new Date(Date.UTC(Number(year), month, Number(day)));
+    }
   }
+
+  const timestamp = Date.parse(cleanDate);
+  return Number.isNaN(timestamp) ? new Date(0) : new Date(timestamp);
 };
 
 // Get sorted news items (latest first)  
