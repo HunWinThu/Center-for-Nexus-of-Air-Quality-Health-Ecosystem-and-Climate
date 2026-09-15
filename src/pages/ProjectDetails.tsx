@@ -78,43 +78,6 @@ const ProjectDetails = () => {
   } = {
     ongoing: [
       {
-        id: 1,
-        title: 'Air Quality Improvement Program in Thailand (AQIP-Thailand)',
-        sponsor: 'Agence Française de Développement (AFD)',
-        partners: 'Egis, AirParif, Citepa',
-        duration: '2023-2026',
-        objectives: [
-          'The overall objective of this project is to support Thailand and at the local scale by supporting Chiang Mai provinces in their efforts to develop and implement policies and projects in order to improve air quality.',
-          'The specific objectives of the project are:',
-          'To strengthen the current air quality management system',
-          'To build up the capacities and sharp competencies of local Thai agencies',
-          'To provide technical support and recommendations to implement "quick win" measures to reduce air pollution',
-          'To assess the feasibility of the introduction of zero-emission vehicles such as electric bus in a widespread urban area',
-          'To have a better knowledge and monitoring of the air quality'
-        ],
-        activities: [
-          '1. Strengthening of the air quality management system',
-          '1.1. Audit of different existing emission inventories and modelling tools: This task assesses the needs of the Pollution Control Department (PCD) in terms of capacity building on emission inventory, on modelling tools, and to adapt the training sessions to their needs.',
-          '1.2. Critical analysis of the existing tools: The conclusions of the audit (1.1) are presented in a document including a mapping of the existing tools and short- and medium-term improvements.',
-          '1.3. Based on the results of the audit of the existing emission inventory and modelling tools, provide the capacity building sessions for the PCD on emission inventory and modelling tools.',
-          '1.4. Training capacity building sessions for the PCD on the tools and methods to assess the spatial representativeness of monitoring stations.',
-          '1.5. Organize workshops to address the spatial representativeness of stations of the existing PCD\'s network.',
-          '1.6. Guidelines to assess the spatial representativeness of the PCD\'s monitoring network.',
-          '1.7. Training sessions for the PCD on the environmental data integration tools and related statistical models for the calculation of the population-mean annual exposure.',
-          '2. Capacity-building at the national/regional scale',
-          '2.1. Organization of a study tour on the articulation of air quality management at the local, national, and regional scales.',
-          '2.2. Organization of workshop to define the future role of the PCD and other organizations.',
-          '3. Support to develop activities led by the Office of Transport and Planning (OTP)',
-          '3.1. Capacity building to the three Ministries on European regulation, implementation, and enforcement of emission standards for on-road vehicles and industrial sites.',
-          '3.2. Support to the Ministry of Transport in the drafting of the decree aiming at accelerating the renewal of the vehicle fleet towards the Euro 5 and Euro 6 norms.',
-          '3.3. Planning for the deployment of electric buses in Chiang Mai.',
-          '4. Support to develop activities led by Chiang Mai Municipalities',
-          '4.1. Compilation of emission inventory for key sources in Chiang Mai province.',
-          '4.2. Conducting surveys for assessing the composition of the vehicle fleets in Chiang Mai.'
-        ],
-        image: governmentImg
-      },
-      {
         id: 3,
         title: 'Assessment of agricultural and forest burning emissions in Lao PDR (Forest Fire Emission- Lao)',
         sponsor: 'The World Bank Group (WBG)',
@@ -208,6 +171,43 @@ const ProjectDetails = () => {
       }
     ],
     completed: [
+      {
+        id: 1,
+        title: 'Air Quality Improvement Program in Thailand (AQIP-Thailand)',
+        sponsor: 'Agence Française de Développement (AFD)',
+        partners: 'Egis, AirParif, Citepa',
+        duration: '2023-2026',
+        objectives: [
+          'The overall objective of this project is to support Thailand and at the local scale by supporting Chiang Mai provinces in their efforts to develop and implement policies and projects in order to improve air quality.',
+          'The specific objectives of the project are:',
+          'To strengthen the current air quality management system',
+          'To build up the capacities and sharp competencies of local Thai agencies',
+          'To provide technical support and recommendations to implement "quick win" measures to reduce air pollution',
+          'To assess the feasibility of the introduction of zero-emission vehicles such as electric bus in a widespread urban area',
+          'To have a better knowledge and monitoring of the air quality'
+        ],
+        activities: [
+          '1. Strengthening of the air quality management system',
+          '1.1. Audit of different existing emission inventories and modelling tools: This task assesses the needs of the Pollution Control Department (PCD) in terms of capacity building on emission inventory, on modelling tools, and to adapt the training sessions to their needs.',
+          '1.2. Critical analysis of the existing tools: The conclusions of the audit (1.1) are presented in a document including a mapping of the existing tools and short- and medium-term improvements.',
+          '1.3. Based on the results of the audit of the existing emission inventory and modelling tools, provide the capacity building sessions for the PCD on emission inventory and modelling tools.',
+          '1.4. Training capacity building sessions for the PCD on the tools and methods to assess the spatial representativeness of monitoring stations.',
+          '1.5. Organize workshops to address the spatial representativeness of stations of the existing PCD\'s network.',
+          '1.6. Guidelines to assess the spatial representativeness of the PCD\'s monitoring network.',
+          '1.7. Training sessions for the PCD on the environmental data integration tools and related statistical models for the calculation of the population-mean annual exposure.',
+          '2. Capacity-building at the national/regional scale',
+          '2.1. Organization of a study tour on the articulation of air quality management at the local, national, and regional scales.',
+          '2.2. Organization of workshop to define the future role of the PCD and other organizations.',
+          '3. Support to develop activities led by the Office of Transport and Planning (OTP)',
+          '3.1. Capacity building to the three Ministries on European regulation, implementation, and enforcement of emission standards for on-road vehicles and industrial sites.',
+          '3.2. Support to the Ministry of Transport in the drafting of the decree aiming at accelerating the renewal of the vehicle fleet towards the Euro 5 and Euro 6 norms.',
+          '3.3. Planning for the deployment of electric buses in Chiang Mai.',
+          '4. Support to develop activities led by Chiang Mai Municipalities',
+          '4.1. Compilation of emission inventory for key sources in Chiang Mai province.',
+          '4.2. Conducting surveys for assessing the composition of the vehicle fleets in Chiang Mai.'
+        ],
+        image: governmentImg
+      },
       {
         id: 5,
         title: 'USAID Clean Air (K-CAP or Swachchha Hawa)',

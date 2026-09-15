@@ -84,11 +84,6 @@ const Blog = () => {
   } = {
     ongoing: [
       {
-        id: 1,
-        title: 'Air Quality Improvement Program in Thailand (AQIP-Thailand)',
-        image: governmentImg
-      },
-      {
         id: 4,
         title: 'Deliver training programme for implementing decrees for reducing open waste burning and air pollution',
         image: openburning
@@ -105,6 +100,11 @@ const Blog = () => {
       }
     ],
     completed: [
+      {
+        id: 1,
+        title: 'Air Quality Improvement Program in Thailand (AQIP-Thailand)',
+        image: governmentImg
+      },
       {
         id: 3,
         title: 'Assessment of agricultural and forest burning emissions in Lao PDR (Forest Fire Emission- Lao)',

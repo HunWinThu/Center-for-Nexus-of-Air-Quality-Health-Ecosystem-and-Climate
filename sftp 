@@ -5,3 +5,8 @@ sftp airqn@203.159.5.97
 
 password:
 `lGy8e59!7yo
+
+DEPLOY_TARGET=ait npm run build
+
+put -r /Users/hun/D/Work/Center-for-Nexus-of-Air-Quality-Health-Ecosystem-and-Climate/dist/* .
+
