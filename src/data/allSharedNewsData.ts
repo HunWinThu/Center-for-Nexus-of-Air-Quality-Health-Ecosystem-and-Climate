@@ -86,6 +86,10 @@ import m70 from '@/assets/Event/m70.png';
 import m71 from '@/assets/Event/m71.jpg';
 import m72 from '@/assets/Event/m72.jpg';
 import m73 from '@/assets/Event/m73.jpg';
+import vietnamConference1 from '@/assets/outreach-oct-2026/image1.jpg';
+import vietnamConference2 from '@/assets/outreach-oct-2026/image2.jpeg';
+import vietnamConference3 from '@/assets/outreach-oct-2026/image3.jpg';
+import fudanSymposium2 from '@/assets/outreach-oct-2026/image5.png';
 
 export interface NewsItem {
   id: number;
@@ -99,6 +103,33 @@ export interface NewsItem {
 
 // All news items - Events and Media
 export const allNewsItems: NewsItem[] = [
+  {
+    id: 30,
+    title: "AirQC Presents Forest Fire and Haze Early Warning Research at Fudan University Symposium",
+    excerpt: `Prof. Nguyen Thi Kim Oanh, Director of the Air Quality Nexus Center (AirQC) at the Asian Institute of Technology (AIT), participated online in The 2026 Symposium on AI-Driven Urban Sustainable Development, organized by Fudan University, China, on 15 October 2026.<br /><br />At the symposium, Prof. Kim delivered a presentation entitled “Development of Early Warning for Forest Fire Potential and Haze Episodes in Northern Southeast Asia.” Her presentation addressed the development of early warning approaches to identify potential forest fire events and anticipate haze episodes in Northern Southeast Asia, a region that experiences recurring transboundary air pollution associated with forest fires and biomass burning.<br /><br />The research highlights the importance of strengthening early warning capabilities to support timely decision-making, improve preparedness, and mitigate the impacts of forest fires and haze on air quality, public health, and the environment. Integrating scientific research, environmental monitoring, and predictive approaches can help provide useful information for authorities and stakeholders to develop proactive responses to regional air pollution events.<br /><br />Prof. Kim’s participation reflects AirQC’s ongoing commitment to advancing research, promoting scientific collaboration, and developing practical solutions to address complex air quality and climate challenges. The presentation also aligns with the symposium’s focus on applying artificial intelligence and innovative technologies to support urban sustainability and environmental resilience.`,
+    category: "Event",
+    date: "15 October 2026",
+    image: [fudanSymposium2],
+    link: "#",
+  },
+  {
+    id: 29,
+    title: "AirQC Participates in the Climate and Clean Air Coalition Annual Meeting 2026",
+    excerpt: `The Air Quality Nexus Center (AirQC) at the Asian Institute of Technology (AIT) participated in the Climate and Clean Air Coalition (CCAC) Annual Meeting 2026, held from 13 to 15 October 2026 in Bangkok, Thailand. The meeting brought together government representatives, international organizations, development partners, researchers, and technical experts to strengthen global collaboration on reducing short-lived climate pollutants and advancing climate and clean air action.<br /><br />As part of the meeting, Prof. Nguyen Thi Kim Oanh, Director of AirQC, delivered a keynote address in the session titled “Alternatives to Open Agricultural Burning: Clearing the Air, Strengthening Markets for Residue, Shifting Behaviours.” Her contribution highlighted the importance of promoting practical alternatives to open agricultural residue burning through integrated approaches that address air pollution, encourage the productive use of agricultural residues, strengthen markets for residue-based products, and support behavioural change among farmers and other stakeholders.<br /><br />The annual meeting provided a platform for exchanging scientific knowledge, sharing policy experiences, and exploring practical solutions to accelerate the implementation of clean air and climate mitigation measures. Discussions addressed opportunities to reduce emissions of short-lived climate pollutants, strengthen enabling policies, mobilize financing, and enhance collaboration among governments, research institutions, and development partners.<br /><br />Through its participation and keynote contribution, AirQC reaffirmed its commitment to advancing evidence-based research, regional collaboration, and capacity building for integrated air quality management. The Center continues to promote solutions that deliver co-benefits for air quality, public health, ecosystems, and climate, supporting the transition towards cleaner and more sustainable communities.<br /><br /><strong>Read more:</strong> <a href="https://www.ccacoalition.org/events/climate-and-clean-air-coalition-annual-meeting-2026" target="_blank" rel="noopener noreferrer" style="color: hsl(105 33% 30%); text-decoration: underline;">Climate and Clean Air Coalition Annual Meeting 2026 – Official Event Page</a>`,
+    category: "Event",
+    date: "13–15 October 2026",
+    image: [],
+    link: "https://www.ccacoalition.org/events/climate-and-clean-air-coalition-annual-meeting-2026",
+  },
+  {
+    id: 28,
+    title: "AirQC Participates in Viet Nam’s National Conference on Air Pollution and Air Quality Improvement",
+    excerpt: `Prof. Nguyen Thi Kim Oanh, Director of the Air Quality Nexus Center (AirQC) at the Asian Institute of Technology (AIT), and Dr. Lai Nguyen Huy participated in the national conference “Combatting Air Pollution and Improving Air Quality in Viet Nam: Turning Policy to Action,” held on 29 September 2026 in Viet Nam.<br /><br />Organized by the Ministry of Agriculture and Environment in coordination with the Ministry of Health, the United Nations Development Programme (UNDP), and the World Health Organization (WHO) in Viet Nam, the conference focused on translating national air quality policies into practical actions. Key topics included emission source control, air quality monitoring and forecasting, inter-sectoral coordination, and the application of technological and financial solutions to reduce air pollution. The discussions also highlighted the links between clean air, public health, green transition, greenhouse gas emission reduction, and sustainable urban development.<br /><br />The participation of Prof. Kim and Dr. Huy reflects AirQC’s continued engagement in regional knowledge exchange and collaborative efforts to improve air quality. The conference’s emphasis on integrated air pollution management and evidence-based policy action aligns with AirQC’s mission to advance research and capacity building at the intersection of air quality, health, ecosystems, and climate, supporting practical solutions for cleaner and more sustainable cities.<br /><br /><strong>Read more:</strong> <a href="https://en.mae.gov.vn/environment/clean-air-acts-as-broader-vision-for-green-city-models-9725.htm" target="_blank" rel="noopener noreferrer" style="color: hsl(105 33% 30%); text-decoration: underline;">Clean air acts as broader vision for green city models – Ministry of Agriculture and Environment of Viet Nam</a>`,
+    category: "Event",
+    date: "29 September 2026",
+    image: [vietnamConference3, vietnamConference2, vietnamConference1],
+    link: "https://en.mae.gov.vn/environment/clean-air-acts-as-broader-vision-for-green-city-models-9725.htm",
+  },
   // EVENTS
   {
   id: 27,

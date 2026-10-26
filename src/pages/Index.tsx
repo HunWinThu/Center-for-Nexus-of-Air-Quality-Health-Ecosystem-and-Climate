@@ -63,7 +63,7 @@ import React, { lazy, Suspense, useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { supabase } from '@/services/supabase';
-import { getLatestNews, type NewsItem } from '@/data/allSharedNewsData';
+import { getLatestNews, parseDate, type NewsItem } from '@/data/allSharedNewsData';
 import { SMOOTH_TRANSITIONS } from '@/constants';
 
 
@@ -316,10 +316,10 @@ const Index = () => {
                           <div className="bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-lg">
                             <div className="text-center">
                               <div className="text-lg font-bold text-primary">
-                                {new Date(news.date).getDate()}
+                                {parseDate(news.date).getUTCDate()}
                               </div>
                               <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                                {new Date(news.date).toLocaleDateString('en-US', { month: 'short' })}
+                                {parseDate(news.date).toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' })}
                               </div>
                             </div>
                           </div>
